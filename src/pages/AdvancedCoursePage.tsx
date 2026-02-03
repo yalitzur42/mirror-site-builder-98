@@ -1,0 +1,94 @@
+import Layout from "@/components/layout/Layout";
+import HeroSplit from "@/components/ui/HeroSplit";
+import Section from "@/components/ui/Section";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import CTASection from "@/components/ui/CTASection";
+import { Clock, Users, Award, Sparkles } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+
+const AdvancedCoursePage = () => {
+  const modules = [
+    "טכניקות Fade מתקדמות",
+    "עיצוב זקן מורכב",
+    "צביעה וגוונים",
+    "טרנדים עדכניים",
+    "מיתוג אישי",
+    "בניית פורטפוליו",
+  ];
+
+  return (
+    <Layout>
+      <Breadcrumbs items={[
+        { label: "האקדמיה", href: "/academy" },
+        { label: "קורסים למתקדמים" }
+      ]} />
+      
+      <HeroSplit
+        title="קורס למתקדמים"
+        subtitle="שדרגו את המיומנויות"
+        description="קורס מתקדם לספרים עם ניסיון שרוצים להעלות רמה. טכניקות מתקדמות, טרנדים חדשים ובניית מותג אישי."
+        primaryCta={{ label: "להרשמה", href: "/contact" }}
+      />
+
+      <Section>
+        <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <Card className="bg-card text-center p-6">
+            <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h3 className="font-bold text-lg mb-2">משך הקורס</h3>
+            <p className="text-muted-foreground">6 שבועות</p>
+          </Card>
+          <Card className="bg-card text-center p-6">
+            <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h3 className="font-bold text-lg mb-2">גודל הכיתה</h3>
+            <p className="text-muted-foreground">עד 6 תלמידים</p>
+          </Card>
+          <Card className="bg-card text-center p-6">
+            <Sparkles className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h3 className="font-bold text-lg mb-2">דרישות קדם</h3>
+            <p className="text-muted-foreground">שנת ניסיון</p>
+          </Card>
+          <Card className="bg-card text-center p-6">
+            <Award className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h3 className="font-bold text-lg mb-2">תעודה</h3>
+            <p className="text-muted-foreground">הסמכה מתקדמת</p>
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="תכני הקורס" className="bg-secondary">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {modules.map((module, index) => (
+            <div key={index} className="flex items-center gap-3 p-4 bg-card rounded-lg">
+              <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold">
+                {index + 1}
+              </div>
+              <span>{module}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <div className="text-center">
+          <h2 className="mb-4">מחיר הקורס</h2>
+          <div className="text-5xl font-black text-accent mb-4">₪5,500</div>
+          <p className="text-muted-foreground mb-8">לספרים פעילים בלבד</p>
+          <Button asChild size="lg">
+            <Link to="/contact">להרשמה</Link>
+          </Button>
+        </div>
+      </Section>
+
+      <CTASection
+        title="מוכנים לשדרג?"
+        buttonLabel="הרשמו עכשיו"
+        buttonHref="/contact"
+        variant="gradient"
+      />
+    </Layout>
+  );
+};
+
+export default AdvancedCoursePage;
