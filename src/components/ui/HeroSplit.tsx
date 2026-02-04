@@ -24,22 +24,16 @@ const HeroSplit = ({
   children,
 }: HeroSplitProps) => {
   return (
-    <section className="gradient-hero relative overflow-hidden">
+    <section className="gradient-hero relative overflow-hidden rounded-b-[90px] md:rounded-b-[140px]">
       <div className="container-main py-16 md:py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="order-2 lg:order-1 text-center lg:text-right">
-            {badge && (
-              <span className="inline-block text-accent text-sm mb-4">{badge}</span>
-            )}
+            {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
             <h1 className="text-foreground mb-4">{title}</h1>
-            {subtitle && (
-              <p className="text-xl md:text-2xl text-accent font-bold mb-4">{subtitle}</p>
-            )}
+            {subtitle && <p className="text-xl md:text-2xl text-accent font-bold mb-4">{subtitle}</p>}
             {description && (
-              <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto lg:mx-0">
-                {description}
-              </p>
+              <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto lg:mx-0">{description}</p>
             )}
             {(primaryCta || secondaryCta) && (
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -49,7 +43,12 @@ const HeroSplit = ({
                   </Button>
                 )}
                 {secondaryCta && (
-                  <Button asChild size="lg" variant="outline" className="border-foreground text-foreground hover:bg-foreground/10">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-foreground text-foreground hover:bg-foreground/10"
+                  >
                     <Link to={secondaryCta.href}>{secondaryCta.label}</Link>
                   </Button>
                 )}
@@ -61,11 +60,7 @@ const HeroSplit = ({
           {/* Image */}
           <div className="order-1 lg:order-2 relative">
             {image ? (
-              <img
-                src={image}
-                alt=""
-                className="w-full max-w-md mx-auto lg:max-w-none"
-              />
+              <img src={image} alt="" className="w-full max-w-md mx-auto lg:max-w-none" />
             ) : (
               <div className="aspect-square bg-muted/20 rounded-lg flex items-center justify-center">
                 <span className="text-muted-foreground">תמונה</span>
