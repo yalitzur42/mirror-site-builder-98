@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 interface HeroSplitProps {
   badge?: string;
@@ -12,6 +13,29 @@ interface HeroSplitProps {
   image?: string;
   children?: ReactNode;
 }
+
+/* ===== Animations ===== */
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+    },
+  },
+};
+
+const letter = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeOut",
+      duration: 0.4,
+    },
+  },
+};
 
 const HeroSplit = ({
   badge,
@@ -29,14 +53,66 @@ const HeroSplit = ({
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="order-2 lg:order-1 text-center lg:text-right">
-            {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
-            <h1 className="text-foreground mb-4">{title}</h1>
-            {subtitle && <p className="text-xl md:text-2xl text-accent font-bold mb-4">{subtitle}</p>}
-            {description && (
-              <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto lg:mx-0">{description}</p>
+            {badge && (
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="inline-block text-accent text-sm mb-4"
+              >
+                {badge}
+              </motion.span>
             )}
+
+            {/* Title – letter by letter */}
+            <motion.h1
+              className="text-foreground mb-4 inline-block"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
+              {title.split("").map((char, index) => (
+                <motion.span key={index} variants={letter} className="inline-block">
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </motion.h1>
+
+            {/* Subtitle – letter by letter (slight delay) */}
+            {subtitle && (
+              <motion.p
+                className="text-xl md:text-2xl text-accent font-bold mb-4 inline-block"
+                variants={container}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.35 }}
+              >
+                {subtitle.split("").map((char, index) => (
+                  <motion.span key={index} variants={letter} className="inline-block">
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </motion.p>
+            )}
+
+            {description && (
+              <motion.p
+                className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                {description}
+              </motion.p>
+            )}
+
             {(primaryCta || secondaryCta) && (
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <motion.div
+                className="flex flex-wrap gap-4 justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+              >
                 {primaryCta && (
                   <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
                     <Link to={primaryCta.href}>{primaryCta.label}</Link>
@@ -52,23 +128,32 @@ const HeroSplit = ({
                     <Link to={secondaryCta.href}>{secondaryCta.label}</Link>
                   </Button>
                 )}
-              </div>
+              </motion.div>
             )}
+
             {children}
           </div>
 
           {/* Image */}
           <div className="order-1 lg:order-2 relative">
             {image ? (
-              <img src={image} alt="" className="w-full max-w-md mx-auto lg:max-w-none" />
+              <motion.img
+                src={image}
+                alt=""
+                className="w-full max-w-md mx-auto lg:max-w-none"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 }}
+              />
             ) : (
               <div className="aspect-square bg-muted/20 rounded-lg flex items-center justify-center">
                 <span className="text-muted-foreground">תמונה</span>
               </div>
             )}
+
             {/* Decorative lines */}
             <div className="absolute -right-8 top-1/4 w-32 h-64 opacity-20">
-              <div className="w-2 h-full bg-foreground/30 transform rotate-12"></div>
+              <div className="w-2 h-full bg-foreground/30 rotate-12" />
             </div>
           </div>
         </div>
