@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap");
 
 @layer base {
   :root {
@@ -55,7 +55,12 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
   }
 
@@ -87,5 +92,24 @@
 
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+}
+
+.hero-animated-title,
+.hero-animated-subtitle {
+  display: inline-block;
+}
+
+.hero-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroLetterIn 0.4s ease-out forwards;
+}
+
+@keyframes heroLetterIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
