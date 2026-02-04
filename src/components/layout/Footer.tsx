@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Youtube, MapPin, Phone, Clock } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,7 +9,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div>
-            <h3 className="text-2xl font-black text-primary mb-4">המספרה</h3>
+            <Link to="/" className="inline-block mb-4">
+              <img src={logo} alt="Mac'ho" className="h-10" />
+            </Link>
             <p className="text-muted-foreground mb-4">
               מובילים את סצנת טיפוח השיער לגברים בישראל. מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת.
             </p>
@@ -89,7 +92,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-border">
         <div className="container-main py-4 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-          <span>© 2024 המספרה. כל הזכויות שמורות.</span>
+          <span>© 2024 Mac'ho. כל הזכויות שמורות.</span>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="hover:text-foreground transition-colors">
               מדיניות פרטיות
