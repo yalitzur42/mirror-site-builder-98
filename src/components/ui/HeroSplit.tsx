@@ -32,7 +32,7 @@ const HeroSplit = ({
             {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
 
             {/* TITLE – letter by letter */}
-            <h1 className="hero-animated-title text-foreground mb-4">
+            <h1 className="hero-title-animate text-foreground mb-4">
               {title.split("").map((char, index) => (
                 <span key={index} className="hero-letter" style={{ animationDelay: `${index * 0.05}s` }}>
                   {char === " " ? "\u00A0" : char}
@@ -42,7 +42,7 @@ const HeroSplit = ({
 
             {/* SUBTITLE – letter by letter */}
             {subtitle && (
-              <p className="hero-animated-subtitle text-xl md:text-2xl text-accent font-bold mb-4">
+              <p className="hero-subtitle-animate text-xl md:text-2xl text-accent font-bold mb-4">
                 {subtitle.split("").map((char, index) => (
                   <span key={index} className="hero-letter" style={{ animationDelay: `${0.6 + index * 0.04}s` }}>
                     {char === " " ? "\u00A0" : char}
