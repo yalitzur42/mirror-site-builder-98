@@ -32,20 +32,7 @@ const HeroSplit = ({
             {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
 
             {/* TITLE – letter by letter */}
-            <h1
-              className="
-  hero-title-animate
-  text-foreground
-  mb-6
-  text-4xl
-  sm:text-5xl
-  md:text-6xl
-  lg:text-7xl
-  font-extrabold
-  leading-tight
-  tracking-tight
-"
-            >
+            <h1 className="hero-title-animate text-foreground mb-4">
               {title.split("").map((char, index) => (
                 <span key={index} className="hero-letter" style={{ animationDelay: `${index * 0.05}s` }}>
                   {char === " " ? "\u00A0" : char}
@@ -55,17 +42,7 @@ const HeroSplit = ({
 
             {/* SUBTITLE – letter by letter */}
             {subtitle && (
-              <p
-                className="
-  hero-subtitle-animate
-  text-accent
-  font-bold
-  mb-6
-  text-xl
-  sm:text-2xl
-  md:text-3xl
-"
-              >
+              <p className="hero-subtitle-animate text-xl md:text-2xl text-accent font-bold mb-4">
                 {subtitle.split("").map((char, index) => (
                   <span key={index} className="hero-letter" style={{ animationDelay: `${0.6 + index * 0.04}s` }}>
                     {char === " " ? "\u00A0" : char}
@@ -75,20 +52,7 @@ const HeroSplit = ({
             )}
 
             {description && (
-              <p
-                className="
-  hero-description
-  text-muted-foreground
-  text-base
-  sm:text-lg
-  md:text-xl
-  leading-relaxed
-  mb-10
-  max-w-2xl
-  mx-auto
-  lg:mx-0
-"
-              >
+              <p className="hero-description text-muted-foreground text-lg mb-8 max-w-xl mx-auto lg:mx-0">
                 {description}
               </p>
             )}
