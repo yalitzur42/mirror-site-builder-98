@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X, Facebook, Instagram, Youtube } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "אודות", href: "/about" },
@@ -10,7 +11,7 @@ const navItems = [
     href: "/barbershop",
     children: [
       { label: "תספורות גברים", href: "/barbershop" },
-      { label: "הסרת שיער בלייזר", href: "/laser" },
+      { label: "פרם לגבר", href: "/perm" },
     ],
   },
   {
@@ -36,8 +37,8 @@ const MainHeader = () => {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
       <div className="container-main py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-black text-primary">
-          המספרה
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Mac'ho" className="h-10" />
         </Link>
 
         {/* Desktop Nav */}

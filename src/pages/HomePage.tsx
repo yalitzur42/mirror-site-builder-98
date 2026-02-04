@@ -14,7 +14,7 @@ const HomePage = () => {
   const servicesCards = [
     { title: "לימודי ספרות גברים", href: "/academy" },
     { title: "תספורות גברים", href: "/barbershop" },
-    { title: "הסרת שיער בלייזר", href: "/laser" },
+    { title: "פרם לגבר", href: "/perm" },
     { title: "מוצרי המספרה", href: "/shop" },
   ];
 
@@ -39,7 +39,7 @@ const HomePage = () => {
         badge="אהלן גבר, ברוך הבא!"
         title="משפחת המספרה"
         subtitle="מובילים את סצנת טיפוח השיער לגברים בישראל!"
-        description="מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת וטיפולי לייזר מותאמים לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר."
+        description="מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר."
         primaryCta={{ label: "לקביעת תור", href: "/contact" }}
         secondaryCta={{ label: "לאקדמיה", href: "/academy" }}
       />
@@ -68,35 +68,35 @@ const HomePage = () => {
         <GalleryGrid images={[]} />
       </Section>
 
-      {/* Laser Service */}
+      {/* Perm Service */}
       <section className="py-16 md:py-24">
         <div className="container-main">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-              <span className="text-muted-foreground">תמונת טיפול לייזר</span>
+              <span className="text-muted-foreground">תמונת פרם לגבר</span>
             </div>
             <div>
-              <h2 className="mb-4">הסרת שיער בלייזר</h2>
+              <h2 className="mb-4">פרם לגבר</h2>
               <p className="text-muted-foreground text-lg mb-6">
-                טיפולי הסרת שיער בלייזר מותאמים במיוחד לגברים. טכנולוגיה מתקדמת, 
+                תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, 
                 תוצאות מוכחות ושירות מקצועי.
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3">
                   <Shield className="w-5 h-5 text-primary" />
-                  <span>טכנולוגיה מתקדמת ובטוחה</span>
+                  <span>מוצרים איכותיים ובטוחים</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-primary" />
-                  <span>טיפולים מהירים ויעילים</span>
+                  <span>תוצאות מהירות וארוכות טווח</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Heart className="w-5 h-5 text-primary" />
-                  <span>התאמה אישית לכל לקוח</span>
+                  <span>התאמה אישית לסגנון שלך</span>
                 </li>
               </ul>
               <Button asChild size="lg">
-                <Link to="/laser">למידע נוסף</Link>
+                <Link to="/perm">למידע נוסף</Link>
               </Button>
             </div>
           </div>
@@ -144,7 +144,7 @@ const HomePage = () => {
                 אנחנו גאים להביא את הטוב ביותר ללקוחות שלנו.
               </p>
               <p>
-                בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או טיפול לייזר – 
+                בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או פרם מושלם – 
                 במספרה תמצא את הכל תחת קורת גג אחת.
               </p>
             </div>
