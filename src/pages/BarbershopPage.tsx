@@ -6,6 +6,14 @@ import GalleryGrid from "@/components/ui/GalleryGrid";
 import CTASection from "@/components/ui/CTASection";
 import { Scissors, Clock, Star, Award } from "lucide-react";
 
+import barbershopInterior from "@/assets/barbershop-interior.jpg";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
+
 const BarbershopPage = () => {
   const services = [
     { icon: Scissors, title: "תספורת גברים", price: "₪80", description: "תספורת מקצועית כולל שטיפה ועיצוב" },
@@ -13,6 +21,8 @@ const BarbershopPage = () => {
     { icon: Scissors, title: "עיצוב זקן", price: "₪50", description: "עיצוב מדויק ומקצועי" },
     { icon: Scissors, title: "גילוח קלאסי", price: "₪70", description: "חוויית גילוח מסורתית" },
   ];
+
+  const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
 
   return (
     <Layout>
@@ -23,40 +33,41 @@ const BarbershopPage = () => {
         subtitle="תספורות ברמה אחרת"
         description="חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני."
         primaryCta={{ label: "לקביעת תור", href: "/contact" }}
+        image={barbershopInterior}
       />
 
-      <Section title="השירותים שלנו">
+      <Section title="השירותים שלנו" variant="light">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <div key={index} className="p-6 bg-card rounded-lg text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                <service.icon className="w-8 h-8 text-primary" />
+            <div key={index} className="p-6 bg-background text-foreground rounded-lg text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary flex items-center justify-center">
+                <service.icon className="w-8 h-8 text-secondary-foreground" />
               </div>
-              <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
-              <p className="text-accent text-2xl font-bold">{service.price}</p>
+              <h3 className="text-xl font-bold mb-2 text-foreground">{service.title}</h3>
+              <p className="text-sm mb-4 opacity-70">{service.description}</p>
+              <p className="text-foreground text-2xl font-bold">{service.price}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section title="מהעבודות שלנו" className="bg-secondary">
-        <GalleryGrid images={[]} />
+      <Section title="מהעבודות שלנו" variant="dark">
+        <GalleryGrid images={galleryImages} />
       </Section>
 
-      <Section>
+      <Section variant="light">
         <div className="grid md:grid-cols-3 gap-8 text-center">
           <div>
-            <div className="text-5xl font-black text-primary mb-2">15+</div>
-            <p className="text-muted-foreground">שנות ניסיון</p>
+            <div className="text-5xl font-black mb-2">15+</div>
+            <p className="opacity-70">שנות ניסיון</p>
           </div>
           <div>
-            <div className="text-5xl font-black text-primary mb-2">10K+</div>
-            <p className="text-muted-foreground">לקוחות מרוצים</p>
+            <div className="text-5xl font-black mb-2">10K+</div>
+            <p className="opacity-70">לקוחות מרוצים</p>
           </div>
           <div>
-            <div className="text-5xl font-black text-primary mb-2">5★</div>
-            <p className="text-muted-foreground">דירוג ממוצע</p>
+            <div className="text-5xl font-black mb-2">5★</div>
+            <p className="opacity-70">דירוג ממוצע</p>
           </div>
         </div>
       </Section>
@@ -66,7 +77,7 @@ const BarbershopPage = () => {
         description="קבעו תור עכשיו"
         buttonLabel="לקביעת תור"
         buttonHref="/contact"
-        variant="gradient"
+        variant="dark"
       />
     </Layout>
   );

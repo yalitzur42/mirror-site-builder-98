@@ -10,6 +10,22 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+// Import images
+import heroBarbershop from "@/assets/hero-barbershop.jpg";
+import permHero from "@/assets/perm-hero.jpg";
+import barbershopInterior from "@/assets/barbershop-interior.jpg";
+import ownerPortrait from "@/assets/owner-portrait.jpg";
+import productBeardOil from "@/assets/product-beard-oil.jpg";
+import productWax from "@/assets/product-wax.jpg";
+import productShampoo from "@/assets/product-shampoo.jpg";
+import productSerum from "@/assets/product-serum.jpg";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
+
 const HomePage = () => {
   const servicesCards = [
     { title: "לימודי ספרות גברים", href: "/academy" },
@@ -26,11 +42,13 @@ const HomePage = () => {
   ];
 
   const products = [
-    { title: "שמן לזקן", description: "תערובת שמנים טבעית", price: "₪89" },
-    { title: "ווקס לשיער", description: "אחיזה חזקה", price: "₪69" },
-    { title: "שמפו מקצועי", description: "לכל סוגי השיער", price: "₪79" },
-    { title: "סרום לשיער", description: "הגנה וברק", price: "₪99" },
+    { title: "שמן לזקן", description: "תערובת שמנים טבעית", price: "₪89", image: productBeardOil },
+    { title: "ווקס לשיער", description: "אחיזה חזקה", price: "₪69", image: productWax },
+    { title: "שמפו מקצועי", description: "לכל סוגי השיער", price: "₪79", image: productShampoo },
+    { title: "סרום לשיער", description: "הגנה וברק", price: "₪99", image: productSerum },
   ];
+
+  const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
 
   return (
     <Layout>
@@ -42,10 +60,11 @@ const HomePage = () => {
         description="מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר."
         primaryCta={{ label: "לקביעת תור", href: "/contact" }}
         secondaryCta={{ label: "לאקדמיה", href: "/academy" }}
+        image={heroBarbershop}
       />
 
       {/* What We Offer */}
-      <Section title="מה תמצאו אצלנו?">
+      <Section title="מה תמצאו אצלנו?" variant="light">
         <CardsGrid items={servicesCards} columns={4} />
       </Section>
 
@@ -53,28 +72,26 @@ const HomePage = () => {
       <Section
         title="האקדמיה של המספרה"
         subtitle="הפוך את התשוקה שלך למקצוע. הצטרף לאקדמיה המובילה בישראל ללימודי ספרות גברים."
-        className="bg-secondary"
+        variant="dark"
       >
         <FeatureGrid items={academyFeatures} columns={4} />
         <div className="text-center mt-12">
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+          <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
             <Link to="/academy">לכל הקורסים</Link>
           </Button>
         </div>
       </Section>
 
       {/* Gallery */}
-      <Section title="מהעבודות שלנו">
-        <GalleryGrid images={[]} />
+      <Section title="מהעבודות שלנו" variant="light">
+        <GalleryGrid images={galleryImages} />
       </Section>
 
       {/* Perm Service */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 section-dark">
         <div className="container-main">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-              <span className="text-muted-foreground">תמונת פרם לגבר</span>
-            </div>
+            <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full" />
             <div>
               <h2 className="mb-4">פרם לגבר</h2>
               <p className="text-muted-foreground text-lg mb-6">
@@ -103,18 +120,16 @@ const HomePage = () => {
       </section>
 
       {/* Products */}
-      <Section title="המוצרים שלנו" className="bg-secondary">
+      <Section title="המוצרים שלנו" variant="light">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
-            <Card key={index} className="bg-card">
-              <div className="aspect-square bg-muted flex items-center justify-center">
-                <span className="text-muted-foreground">תמונת מוצר</span>
-              </div>
-              <CardContent className="p-4 text-center">
-                <h3 className="font-bold text-lg">{product.title}</h3>
+            <Card key={index} className="bg-background text-foreground border-border overflow-hidden">
+              <img src={product.image} alt={product.title} className="aspect-square object-cover w-full" />
+              <CardContent className="p-4 text-center bg-background">
+                <h3 className="font-bold text-lg text-foreground">{product.title}</h3>
                 <p className="text-muted-foreground text-sm mb-2">{product.description}</p>
-                <p className="text-accent font-bold text-xl">{product.price}</p>
-                <Button asChild variant="outline" size="sm" className="mt-4">
+                <p className="text-primary font-bold text-xl">{product.price}</p>
+                <Button asChild variant="outline" size="sm" className="mt-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                   <Link to="/shop">לפרטים</Link>
                 </Button>
               </CardContent>
@@ -122,18 +137,18 @@ const HomePage = () => {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
             <Link to="/shop">לכל המוצרים</Link>
           </Button>
         </div>
       </Section>
 
       {/* SEO Content Section */}
-      <Section>
+      <Section variant="dark">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="mb-6">המספרה – יותר מסתם מספרה</h2>
-            <div className="space-y-4 text-muted-foreground">
+            <div className="space-y-4 opacity-80">
               <p>
                 המספרה נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל
                 גבר מגיע ליחס אישי, מקצועי ואיכותי.
@@ -144,26 +159,22 @@ const HomePage = () => {
               </p>
               <p>בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או פרם מושלם – במספרה תמצא את הכל תחת קורת גג אחת.</p>
             </div>
-            <Button asChild className="mt-6">
+            <Button asChild className="mt-6 bg-secondary text-secondary-foreground hover:bg-secondary/90">
               <Link to="/about">קרא עוד עלינו</Link>
             </Button>
           </div>
-          <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-            <span className="text-muted-foreground">תמונה</span>
-          </div>
+          <img src={barbershopInterior} alt="פנים המספרה" className="rounded-lg w-full" />
         </div>
       </Section>
 
       {/* Owner/Team Section */}
-      <Section className="bg-secondary">
+      <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="aspect-square max-w-md mx-auto bg-muted rounded-lg flex items-center justify-center">
-            <span className="text-muted-foreground">תמונת הבעלים</span>
-          </div>
+          <img src={ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           <div>
             <h2 className="mb-4">הכירו את הצוות</h2>
-            <h3 className="text-xl text-accent mb-4">ישראל ישראלי – מייסד המספרה</h3>
-            <div className="space-y-4 text-muted-foreground">
+            <h3 className="text-xl font-semibold mb-4 opacity-80">ישראל ישראלי – מייסד המספרה</h3>
+            <div className="space-y-4 opacity-70">
               <p>
                 עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את המספרה מתוך חזון להביא שינוי אמיתי לעולם הטיפוח
                 לגברים בישראל.
@@ -180,7 +191,7 @@ const HomePage = () => {
         description="קבעו תור עכשיו וחוו את ההבדל"
         buttonLabel="לקביעת תור"
         buttonHref="/contact"
-        variant="gradient"
+        variant="dark"
       />
     </Layout>
   );

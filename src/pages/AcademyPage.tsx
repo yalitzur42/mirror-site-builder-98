@@ -7,6 +7,8 @@ import FeatureGrid from "@/components/ui/FeatureGrid";
 import CTASection from "@/components/ui/CTASection";
 import { GraduationCap, Users, Award, Clock, BookOpen, Star } from "lucide-react";
 
+import academyClassroom from "@/assets/academy-classroom.jpg";
+
 const AcademyPage = () => {
   const courses = [
     { title: "קורס למתחילים", href: "/academy/beginner", description: "הצעד הראשון בקריירה" },
@@ -33,46 +35,45 @@ const AcademyPage = () => {
         subtitle="הפוך את התשוקה למקצוע"
         description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי."
         primaryCta={{ label: "לפרטים נוספים", href: "/contact" }}
+        image={academyClassroom}
       />
 
-      <Section title="הקורסים שלנו">
+      <Section title="הקורסים שלנו" variant="light">
         <CardsGrid items={courses} columns={4} />
       </Section>
 
-      <Section title="למה ללמוד אצלנו?" className="bg-secondary">
+      <Section title="למה ללמוד אצלנו?" variant="dark">
         <FeatureGrid items={features} columns={3} />
       </Section>
 
-      <Section>
+      <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="mb-6">מה תלמדו באקדמיה?</h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm shrink-0 mt-0.5">✓</div>
+                <div className="w-6 h-6 rounded-full bg-background text-foreground flex items-center justify-center text-sm shrink-0 mt-0.5">✓</div>
                 <span>טכניקות תספורת מתקדמות</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm shrink-0 mt-0.5">✓</div>
+                <div className="w-6 h-6 rounded-full bg-background text-foreground flex items-center justify-center text-sm shrink-0 mt-0.5">✓</div>
                 <span>עיצוב זקן מקצועי</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm shrink-0 mt-0.5">✓</div>
+                <div className="w-6 h-6 rounded-full bg-background text-foreground flex items-center justify-center text-sm shrink-0 mt-0.5">✓</div>
                 <span>צביעה ושינוי צבע</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm shrink-0 mt-0.5">✓</div>
+                <div className="w-6 h-6 rounded-full bg-background text-foreground flex items-center justify-center text-sm shrink-0 mt-0.5">✓</div>
                 <span>ניהול עסק עצמאי</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm shrink-0 mt-0.5">✓</div>
+                <div className="w-6 h-6 rounded-full bg-background text-foreground flex items-center justify-center text-sm shrink-0 mt-0.5">✓</div>
                 <span>שירות לקוחות ומכירות</span>
               </li>
             </ul>
           </div>
-          <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-            <span className="text-muted-foreground">תמונת לימודים</span>
-          </div>
+          <img src={academyClassroom} alt="לימודים באקדמיה" className="rounded-lg w-full" />
         </div>
       </Section>
 
@@ -81,7 +82,7 @@ const AcademyPage = () => {
         description="השאירו פרטים ונחזור אליכם"
         buttonLabel="להרשמה"
         buttonHref="/contact"
-        variant="gradient"
+        variant="dark"
       />
     </Layout>
   );
