@@ -6,7 +6,7 @@ interface CTASectionProps {
   description?: string;
   buttonLabel: string;
   buttonHref: string;
-  variant?: "default" | "gradient";
+  variant?: "default" | "gradient" | "dark" | "light";
 }
 
 const CTASection = ({
@@ -16,20 +16,36 @@ const CTASection = ({
   buttonHref,
   variant = "default",
 }: CTASectionProps) => {
+  const getVariantClasses = () => {
+    switch (variant) {
+      case "gradient":
+        return "gradient-hero";
+      case "dark":
+        return "section-dark";
+      case "light":
+        return "section-light";
+      default:
+        return "bg-secondary";
+    }
+  };
+
+  const getButtonClasses = () => {
+    if (variant === "light") {
+      return "bg-background text-foreground hover:bg-background/90";
+    }
+    return "bg-secondary text-secondary-foreground hover:bg-secondary/90";
+  };
+
   return (
-    <section
-      className={`py-16 md:py-24 ${
-        variant === "gradient" ? "gradient-hero" : "bg-secondary"
-      }`}
-    >
+    <section className={`py-16 md:py-24 ${getVariantClasses()}`}>
       <div className="container-main text-center">
         <h2 className="mb-4">{title}</h2>
         {description && (
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-80">
             {description}
           </p>
         )}
-        <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+        <Button asChild size="lg" className={getButtonClasses()}>
           <Link to={buttonHref}>{buttonLabel}</Link>
         </Button>
       </div>

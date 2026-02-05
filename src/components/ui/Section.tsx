@@ -1,22 +1,34 @@
 import { ReactNode } from "react";
 
+type SectionVariant = "dark" | "light";
+
 interface SectionProps {
   title?: string;
   subtitle?: string;
   children: ReactNode;
   className?: string;
   containerClassName?: string;
+  variant?: SectionVariant;
 }
 
-const Section = ({ title, subtitle, children, className = "", containerClassName = "" }: SectionProps) => {
+const Section = ({ 
+  title, 
+  subtitle, 
+  children, 
+  className = "", 
+  containerClassName = "",
+  variant = "dark"
+}: SectionProps) => {
+  const variantClasses = variant === "light" ? "section-light" : "section-dark";
+  
   return (
-    <section className={`py-16 md:py-24 ${className}`}>
+    <section className={`py-16 md:py-24 ${variantClasses} ${className}`}>
       <div className={`container-main ${containerClassName}`}>
         {(title || subtitle) && (
           <div className="text-center mb-12">
-            {title && <h2 className="mb-4">{title}</h2>}
+            {title && <h2 className="mb-4 text-inherit">{title}</h2>}
             {subtitle && (
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              <p className="text-lg max-w-2xl mx-auto opacity-80">
                 {subtitle}
               </p>
             )}

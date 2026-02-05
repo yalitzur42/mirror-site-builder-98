@@ -24,7 +24,7 @@ const CardsGrid = ({ items, columns = 4 }: CardsGridProps) => {
     <div className={`grid grid-cols-1 ${gridCols[columns]} gap-6`}>
       {items.map((item, index) => (
         <Link key={index} to={item.href || "#"} className="group">
-          <Card className="overflow-hidden bg-card hover:bg-card/80 transition-colors h-full">
+          <Card className="overflow-hidden bg-background text-foreground hover:opacity-90 transition-opacity h-full border-border">
             {item.image ? (
               <div className="aspect-square overflow-hidden">
                 <img
@@ -34,14 +34,14 @@ const CardsGrid = ({ items, columns = 4 }: CardsGridProps) => {
                 />
               </div>
             ) : (
-              <div className="aspect-square bg-muted flex items-center justify-center">
-                <span className="text-muted-foreground">תמונה</span>
+              <div className="aspect-square bg-secondary flex items-center justify-center">
+                <span className="text-secondary-foreground opacity-60">תמונה</span>
               </div>
             )}
             <CardContent className="p-4 text-center">
-              <h3 className="font-bold text-lg">{item.title}</h3>
+              <h3 className="font-bold text-lg text-foreground">{item.title}</h3>
               {item.description && (
-                <p className="text-muted-foreground text-sm mt-2">{item.description}</p>
+                <p className="text-sm mt-2 opacity-70">{item.description}</p>
               )}
             </CardContent>
           </Card>

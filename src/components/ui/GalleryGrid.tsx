@@ -11,7 +11,7 @@ const GalleryGrid = ({ images }: GalleryGridProps) => {
       {displayImages.map((image, index) => (
         <div
           key={index}
-          className="aspect-square overflow-hidden rounded-lg bg-muted"
+          className="aspect-square overflow-hidden rounded-lg bg-background"
         >
           {image ? (
             <img
@@ -20,7 +20,7 @@ const GalleryGrid = ({ images }: GalleryGridProps) => {
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+            <div className="w-full h-full flex items-center justify-center text-foreground opacity-50">
               תמונה {index + 1}
             </div>
           )}
