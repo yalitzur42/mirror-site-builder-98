@@ -8,6 +8,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
+import courseBasicHero from "@/assets/course-basic-hero.jpg";
+
 const BasicCoursePage = () => {
   const modules = [
     "היכרות עם כלי עבודה",
@@ -30,33 +32,34 @@ const BasicCoursePage = () => {
         subtitle="היסודות לקריירה מצליחה"
         description="קורס קצר וממוקד שנותן את כל הבסיס הדרוש להתחיל. מושלם למי שרוצה לטעום את התחום לפני קורס מלא."
         primaryCta={{ label: "להרשמה", href: "/contact" }}
+        image={courseBasicHero}
       />
 
-      <Section>
+      <Section variant="light">
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <Card className="bg-card text-center p-6">
-            <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
+          <Card className="bg-background text-foreground text-center p-6 border-border">
+            <Clock className="w-12 h-12 mx-auto mb-4" />
             <h3 className="font-bold text-xl mb-2">משך הקורס</h3>
-            <p className="text-muted-foreground">4 שבועות</p>
+            <p className="opacity-70">4 שבועות</p>
           </Card>
-          <Card className="bg-card text-center p-6">
-            <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+          <Card className="bg-background text-foreground text-center p-6 border-border">
+            <Users className="w-12 h-12 mx-auto mb-4" />
             <h3 className="font-bold text-xl mb-2">גודל הכיתה</h3>
-            <p className="text-muted-foreground">עד 10 תלמידים</p>
+            <p className="opacity-70">עד 10 תלמידים</p>
           </Card>
-          <Card className="bg-card text-center p-6">
-            <Award className="w-12 h-12 text-primary mx-auto mb-4" />
+          <Card className="bg-background text-foreground text-center p-6 border-border">
+            <Award className="w-12 h-12 mx-auto mb-4" />
             <h3 className="font-bold text-xl mb-2">תעודה</h3>
-            <p className="text-muted-foreground">אישור השתתפות</p>
+            <p className="opacity-70">אישור השתתפות</p>
           </Card>
         </div>
       </Section>
 
-      <Section title="מה תלמדו?" className="bg-secondary">
+      <Section title="מה תלמדו?" variant="dark">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module, index) => (
-            <div key={index} className="flex items-center gap-3 p-4 bg-card rounded-lg">
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
+            <div key={index} className="flex items-center gap-3 p-4 bg-secondary rounded-lg">
+              <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold">
                 {index + 1}
               </div>
               <span>{module}</span>
@@ -65,12 +68,12 @@ const BasicCoursePage = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section variant="light">
         <div className="text-center">
           <h2 className="mb-4">מחיר הקורס</h2>
           <div className="text-5xl font-black text-accent mb-4">₪2,900</div>
-          <p className="text-muted-foreground mb-8">כולל חומרי לימוד</p>
-          <Button asChild size="lg">
+          <p className="opacity-70 mb-8">כולל חומרי לימוד</p>
+          <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
             <Link to="/contact">להרשמה</Link>
           </Button>
         </div>
@@ -81,7 +84,7 @@ const BasicCoursePage = () => {
         description="זה הקורס המושלם להתחיל"
         buttonLabel="דברו איתנו"
         buttonHref="/contact"
-        variant="gradient"
+        variant="dark"
       />
     </Layout>
   );

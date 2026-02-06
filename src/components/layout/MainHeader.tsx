@@ -24,7 +24,7 @@ const navItems = [
       { label: "קורסים דיגיטליים", href: "/online-courses" },
     ],
   },
-  { label: "חנות", href: "/shop" },
+  
   { label: "בלוג", href: "/blog" },
   { label: "צור קשר", href: "/contact" },
 ];
