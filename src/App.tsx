@@ -12,7 +12,7 @@ import BeginnerCoursePage from "./pages/BeginnerCoursePage";
 import AdvancedCoursePage from "./pages/AdvancedCoursePage";
 import BasicCoursePage from "./pages/BasicCoursePage";
 import OnlineCoursesPage from "./pages/OnlineCoursesPage";
-import ShopPage from "./pages/ShopPage";
+
 import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
@@ -35,7 +35,7 @@ const App = () => (
           <Route path="/academy/advanced" element={<AdvancedCoursePage />} />
           <Route path="/academy/basic-course" element={<BasicCoursePage />} />
           <Route path="/online-courses" element={<OnlineCoursesPage />} />
-          <Route path="/shop" element={<ShopPage />} />
+          
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
