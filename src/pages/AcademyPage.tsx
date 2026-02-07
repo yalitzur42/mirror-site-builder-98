@@ -31,7 +31,7 @@ const AcademyPage = () => {
       <Breadcrumbs items={[{ label: "האקדמיה" }]} />
       
       <HeroSplit
-        title="האקדמיה של המספרה"
+        title="האקדמיה של Macho"
         subtitle="הפוך את התשוקה למקצוע"
         description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי."
         primaryCta={{ label: "לפרטים נוספים", href: "/contact" }}
