@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary border-t border-border">
+    <footer className="bg-background text-foreground border-t border-border">
       <div className="container-main py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
@@ -88,7 +88,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-border">
-        <div className="container-main py-4 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="container-main py-4 flex flex-wrap items-center justify-between gap-4 text-sm text-foreground/70">
           <span>© 2024 Mac'ho. כל הזכויות שמורות.</span>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="hover:text-foreground transition-colors">

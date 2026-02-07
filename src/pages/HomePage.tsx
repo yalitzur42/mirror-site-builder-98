@@ -5,33 +5,30 @@ import CardsGrid from "@/components/ui/CardsGrid";
 import FeatureGrid from "@/components/ui/FeatureGrid";
 import GalleryGrid from "@/components/ui/GalleryGrid";
 import CTASection from "@/components/ui/CTASection";
-import { GraduationCap, Scissors, Users, Award, Star, Clock, Shield, Heart } from "lucide-react";
+import { GraduationCap, Users, Award, Star, Clock, Shield, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 
 // Import images
 import heroBarbershop from "@/assets/hero-barbershop.jpg";
 import permHero from "@/assets/perm-hero.jpg";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import ownerPortrait from "@/assets/owner-portrait.jpg";
-import productBeardOil from "@/assets/product-beard-oil.jpg";
-import productWax from "@/assets/product-wax.jpg";
-import productShampoo from "@/assets/product-shampoo.jpg";
-import productSerum from "@/assets/product-serum.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import gallery6 from "@/assets/gallery-6.jpg";
+import serviceAcademy from "@/assets/service-academy.jpg";
+import serviceHaircut from "@/assets/service-haircut.jpg";
+import servicePerm from "@/assets/service-perm.jpg";
 
 const HomePage = () => {
   const servicesCards = [
-    { title: "לימודי ספרות גברים", href: "/academy" },
-    { title: "תספורות גברים", href: "/barbershop" },
-    { title: "פרם לגבר", href: "/perm" },
-    { title: "מוצרי המספרה", href: "/shop" },
+    { title: "לימודי ספרות גברים", href: "/academy", image: serviceAcademy },
+    { title: "תספורות גברים", href: "/barbershop", image: serviceHaircut },
+    { title: "פרם לגבר", href: "/perm", image: servicePerm },
   ];
 
   const academyFeatures = [
@@ -39,13 +36,6 @@ const HomePage = () => {
     { icon: Users, title: "קבוצות קטנות", description: "יחס אישי לכל תלמיד" },
     { icon: Award, title: "תעודה מוכרת", description: "הסמכה רשמית בסיום" },
     { icon: Star, title: "מרצים מובילים", description: "הטובים בתחום" },
-  ];
-
-  const products = [
-    { title: "שמן לזקן", description: "תערובת שמנים טבעית", price: "₪89", image: productBeardOil },
-    { title: "ווקס לשיער", description: "אחיזה חזקה", price: "₪69", image: productWax },
-    { title: "שמפו מקצועי", description: "לכל סוגי השיער", price: "₪79", image: productShampoo },
-    { title: "סרום לשיער", description: "הגנה וברק", price: "₪99", image: productSerum },
   ];
 
   const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
@@ -65,7 +55,7 @@ const HomePage = () => {
 
       {/* What We Offer */}
       <Section title="מה תמצאו אצלנו?" variant="light">
-        <CardsGrid items={servicesCards} columns={4} />
+        <CardsGrid items={servicesCards} columns={3} />
       </Section>
 
       {/* Academy Section */}
@@ -119,29 +109,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Products */}
-      <Section title="המוצרים שלנו" variant="light">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <Card key={index} className="bg-background text-foreground border-border overflow-hidden">
-              <img src={product.image} alt={product.title} className="aspect-square object-cover w-full" />
-              <CardContent className="p-4 text-center bg-background">
-                <h3 className="font-bold text-lg text-foreground">{product.title}</h3>
-                <p className="text-muted-foreground text-sm mb-2">{product.description}</p>
-                <p className="text-primary font-bold text-xl">{product.price}</p>
-                <Button asChild variant="outline" size="sm" className="mt-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                  <Link to="/shop">לפרטים</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <div className="text-center mt-8">
-          <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
-            <Link to="/shop">לכל המוצרים</Link>
-          </Button>
-        </div>
-      </Section>
 
       {/* SEO Content Section */}
       <Section variant="dark">
