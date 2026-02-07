@@ -24,7 +24,7 @@ const HeroSplit = ({
   children,
 }: HeroSplitProps) => {
   return (
-    <section className="gradient-hero relative overflow-hidden rounded-b-[90px] md:rounded-b-[140px]">
+    <section className="gradient-hero relative overflow-hidden">
       <div className="container-main py-16 md:py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
