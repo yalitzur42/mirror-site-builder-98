@@ -90,7 +90,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-foreground">אימייל</h4>
-                    <p className="opacity-70">info@hamaspera.co.il</p>
+                    <p className="opacity-70">info@macho.co.il</p>
                   </div>
                 </CardContent>
               </Card>

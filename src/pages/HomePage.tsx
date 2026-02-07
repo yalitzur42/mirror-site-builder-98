@@ -60,7 +60,7 @@ const HomePage = () => {
 
       {/* Academy Section */}
       <Section
-        title="האקדמיה של המספרה"
+        title="האקדמיה של Macho"
         subtitle="הפוך את התשוקה שלך למקצוע. הצטרף לאקדמיה המובילה בישראל ללימודי ספרות גברים."
         variant="dark"
       >
@@ -78,72 +78,70 @@ const HomePage = () => {
       </Section>
 
       {/* Perm Service */}
-      <section className="py-16 md:py-24 section-dark">
-        <div className="container-main">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full" />
-            <div>
-              <h2 className="mb-4">פרם לגבר</h2>
-              <p className="text-muted-foreground text-lg mb-6">
-                תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.
-              </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <Shield className="w-5 h-5 text-primary" />
-                  <span>מוצרים איכותיים ובטוחים</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-primary" />
-                  <span>תוצאות מהירות וארוכות טווח</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Heart className="w-5 h-5 text-primary" />
-                  <span>התאמה אישית לסגנון שלך</span>
-                </li>
-              </ul>
-              <Button asChild size="lg">
-                <Link to="/perm">למידע נוסף</Link>
-              </Button>
-            </div>
+      <Section variant="dark">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full" />
+          <div>
+            <h2 className="mb-4">פרם לגבר</h2>
+            <p className="text-muted-foreground text-lg mb-6">
+              תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <Shield className="w-5 h-5 text-primary" />
+                <span>מוצרים איכותיים ובטוחים</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock className="w-5 h-5 text-primary" />
+                <span>תוצאות מהירות וארוכות טווח</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Heart className="w-5 h-5 text-primary" />
+                <span>התאמה אישית לסגנון שלך</span>
+              </li>
+            </ul>
+            <Button asChild size="lg">
+              <Link to="/perm">למידע נוסף</Link>
+            </Button>
           </div>
         </div>
-      </section>
+      </Section>
 
 
       {/* SEO Content Section */}
-      <Section variant="dark">
+      <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="mb-6">המספרה – יותר מסתם מספרה</h2>
+            <h2 className="mb-6">Macho – יותר מסתם מספרה</h2>
             <div className="space-y-4 opacity-80">
               <p>
-                המספרה נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל
+                Macho נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל
                 גבר מגיע ליחס אישי, מקצועי ואיכותי.
               </p>
               <p>
                 הצוות שלנו עובר הכשרות מתמידות ומעודכן בטרנדים האחרונים מכל העולם. אנחנו גאים להביא את הטוב ביותר
                 ללקוחות שלנו.
               </p>
-              <p>בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או פרם מושלם – במספרה תמצא את הכל תחת קורת גג אחת.</p>
+              <p>בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או פרם מושלם – ב-Macho תמצא את הכל תחת קורת גג אחת.</p>
             </div>
-            <Button asChild className="mt-6 bg-secondary text-secondary-foreground hover:bg-secondary/90">
+            <Button asChild className="mt-6 bg-background text-foreground hover:bg-background/90">
               <Link to="/about">קרא עוד עלינו</Link>
             </Button>
           </div>
-          <img src={barbershopInterior} alt="פנים המספרה" className="rounded-lg w-full" />
+          <img src={barbershopInterior} alt="פנים Macho" className="rounded-lg w-full" />
         </div>
       </Section>
 
       {/* Owner/Team Section */}
-      <Section variant="light">
+      <Section variant="dark">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <img src={ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           <div>
             <h2 className="mb-4">הכירו את הצוות</h2>
-            <h3 className="text-xl font-semibold mb-4 opacity-80">ישראל ישראלי – מייסד המספרה</h3>
+            <h3 className="text-xl font-semibold mb-4 opacity-80">ישראל ישראלי – מייסד Macho</h3>
             <div className="space-y-4 opacity-70">
               <p>
-                עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את המספרה מתוך חזון להביא שינוי אמיתי לעולם הטיפוח
+                עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את Macho מתוך חזון להביא שינוי אמיתי לעולם הטיפוח
                 לגברים בישראל.
               </p>
               <p>בוגר קורסים מובילים בארץ ובעולם, ישראל משלב ידע מקצועי עמוק עם גישה אישית וחמה לכל לקוח.</p>
@@ -158,7 +156,7 @@ const HomePage = () => {
         description="קבעו תור עכשיו וחוו את ההבדל"
         buttonLabel="לקביעת תור"
         buttonHref="/contact"
-        variant="dark"
+        variant="light"
       />
     </Layout>
   );
