@@ -21,9 +21,7 @@ const Section = ({
   isFirstSection = false
 }: SectionProps & { isFirstSection?: boolean }) => {
   const variantClasses = variant === "light" ? "section-light" : "section-dark";
-  const firstSectionClasses = isFirstSection 
-    ? "rounded-t-[40px] md:rounded-t-[80px] -mt-10 md:-mt-16 relative z-10" 
-    : "";
+  const firstSectionClasses = isFirstSection ? "-mt-6 md:-mt-10 pt-20 md:pt-28" : "";
   
   return (
     <section className={`py-16 md:py-24 ${variantClasses} ${firstSectionClasses} ${className}`}>
