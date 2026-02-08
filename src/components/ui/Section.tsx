@@ -21,7 +21,8 @@ const Section = ({
   isFirstSection = false
 }: SectionProps & { isFirstSection?: boolean }) => {
   const variantClasses = variant === "light" ? "section-light" : "section-dark";
-  const firstSectionClasses = isFirstSection ? "-mt-6 md:-mt-10 pt-20 md:pt-28" : "";
+  // First section after hero doesn't need negative margin anymore since hero wrapper handles it
+  const firstSectionClasses = isFirstSection ? "" : "";
   
   return (
     <section className={`py-16 md:py-24 ${variantClasses} ${firstSectionClasses} ${className}`}>

@@ -24,8 +24,9 @@ const HeroSplit = ({
   children,
 }: HeroSplitProps) => {
   return (
-    <section className="gradient-hero relative z-10 rounded-b-[40px] md:rounded-b-[80px]">
-      <div className="container-main py-16 md:py-24 lg:py-32">
+    <div className="bg-[hsl(60_56%_91%)]">
+      <section className="gradient-hero relative z-10 rounded-b-[40px] md:rounded-b-[80px] pb-20 md:pb-28">
+        <div className="container-main py-16 md:py-24 lg:py-32 pb-8 md:pb-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="order-2 lg:order-1 text-center lg:text-right">
@@ -91,8 +92,9 @@ const HeroSplit = ({
             )}
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 };
 
