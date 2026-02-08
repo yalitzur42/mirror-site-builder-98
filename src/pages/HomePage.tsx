@@ -54,7 +54,7 @@ const HomePage = () => {
       />
 
       {/* What We Offer */}
-      <Section title="מה תמצאו אצלנו?" variant="light">
+      <Section title="מה תמצאו אצלנו?" variant="light" isFirstSection>
         <CardsGrid items={servicesCards} columns={3} />
       </Section>
 

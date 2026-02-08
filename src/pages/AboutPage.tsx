@@ -19,7 +19,7 @@ const AboutPage = () => {
         image={teamPhoto}
       />
 
-      <Section variant="light">
+      <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <img src={teamPhoto} alt="הצוות שלנו" className="rounded-lg w-full" />
           <div>

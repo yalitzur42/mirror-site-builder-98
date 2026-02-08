@@ -69,7 +69,7 @@ const BlogPage = () => {
         description="מאמרים מקצועיים על טיפוח גברים, טרנדים בעולם הספרות וטיפים שימושיים לחיי היומיום."
       />
 
-      <Section variant="light">
+      <Section variant="light" isFirstSection>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post, index) => (
             <Card key={index} className="bg-background text-foreground overflow-hidden group border-border">

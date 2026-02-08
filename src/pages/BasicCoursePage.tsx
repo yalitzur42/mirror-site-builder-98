@@ -35,7 +35,7 @@ const BasicCoursePage = () => {
         image={courseBasicHero}
       />
 
-      <Section variant="light">
+      <Section variant="light" isFirstSection>
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <Card className="bg-background text-foreground text-center p-6 border-border">
             <Clock className="w-12 h-12 mx-auto mb-4" />

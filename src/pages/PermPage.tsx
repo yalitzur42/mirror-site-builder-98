@@ -35,7 +35,7 @@ const PermPage = () => {
         image={permHero}
       />
 
-      <Section title="היתרונות שלנו" variant="light">
+      <Section title="היתרונות שלנו" variant="light" isFirstSection>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, index) => (
             <div key={index} className="p-6 bg-background text-foreground rounded-lg text-center">

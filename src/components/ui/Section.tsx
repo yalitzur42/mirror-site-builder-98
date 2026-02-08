@@ -17,12 +17,16 @@ const Section = ({
   children, 
   className = "", 
   containerClassName = "",
-  variant = "dark"
-}: SectionProps) => {
+  variant = "dark",
+  isFirstSection = false
+}: SectionProps & { isFirstSection?: boolean }) => {
   const variantClasses = variant === "light" ? "section-light" : "section-dark";
+  const firstSectionClasses = isFirstSection 
+    ? "rounded-t-[40px] md:rounded-t-[80px] -mt-10 md:-mt-16 relative z-10" 
+    : "";
   
   return (
-    <section className={`py-16 md:py-24 ${variantClasses} ${className}`}>
+    <section className={`py-16 md:py-24 ${variantClasses} ${firstSectionClasses} ${className}`}>
       <div className={`container-main ${containerClassName}`}>
         {(title || subtitle) && (
           <div className="text-center mb-12">
