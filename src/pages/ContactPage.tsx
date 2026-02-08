@@ -21,7 +21,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      <Section variant="light">
+      <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div>

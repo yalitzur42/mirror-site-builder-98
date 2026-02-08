@@ -36,7 +36,7 @@ const BarbershopPage = () => {
         image={barbershopInterior}
       />
 
-      <Section title="השירותים שלנו" variant="light">
+      <Section title="השירותים שלנו" variant="light" isFirstSection>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div key={index} className="p-6 bg-background text-foreground rounded-lg text-center">

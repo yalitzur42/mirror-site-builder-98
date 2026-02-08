@@ -62,7 +62,7 @@ const OnlineCoursesPage = () => {
         description="קורסים מקצועיים בוידאו שתוכלו לצפות מכל מקום ובכל זמן. תכנים איכותיים עם גישה לכל החיים."
       />
 
-      <Section variant="light">
+      <Section variant="light" isFirstSection>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <div key={index} className="text-center">

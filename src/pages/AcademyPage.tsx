@@ -38,7 +38,7 @@ const AcademyPage = () => {
         image={academyClassroom}
       />
 
-      <Section title="הקורסים שלנו" variant="light">
+      <Section title="הקורסים שלנו" variant="light" isFirstSection>
         <CardsGrid items={courses} columns={4} />
       </Section>
 
