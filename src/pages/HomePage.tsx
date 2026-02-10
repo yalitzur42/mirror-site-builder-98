@@ -166,7 +166,7 @@ const HomePage = () => {
             <img src={ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <img src={teamIcon} alt="" className="w-20 h-20 mb-4" />
+            <img src={teamIcon} alt="" className="w-32 mb-4 object-contain" />
             <h2 className="mb-4">👥 הכירו את הצוות</h2>
             <h3 className="text-xl font-semibold mb-4 opacity-80">ישראל ישראלי – מייסד Macho</h3>
             <div className="space-y-4 opacity-70">
