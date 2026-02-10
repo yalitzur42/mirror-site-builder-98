@@ -22,7 +22,7 @@ const navItems = [
       { label: "קורס למתקדמים", href: "/academy/advanced" },
       { label: "קורס כימיה וצבע", href: "/academy/chemistry" },
       { label: "קורס פרם", href: "/academy/perm-course" },
-      { label: "קורסים דיגיטליים", href: "/online-courses" },
+      
     ],
   },
   { label: "פרטי העסק", href: "/business" },

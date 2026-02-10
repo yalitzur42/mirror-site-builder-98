@@ -18,7 +18,7 @@ const AcademyPage = () => {
     { title: "קורס למתקדמים", href: "/academy/advanced", description: "שדרוג המיומנויות", image: courseAdvancedHero },
     { title: "קורס כימיה וצבע", href: "/academy/chemistry", description: "צביעה וגוונים מקצועיים" },
     { title: "קורס פרם", href: "/academy/perm-course", description: "התמחות בפרם לגברים" },
-    { title: "קורסים דיגיטליים", href: "/online-courses", description: "למידה מרחוק" },
+    
   ];
 
   const features = [
