@@ -28,8 +28,8 @@ const PermCoursePage = () => {
 
       <HeroSplit
         title="קורס פרם"
-        subtitle="הפכו למומחי פרם לגברים"
-        description="קורס ייחודי מסוגו בישראל – למדו את אמנות הפרם לגברים מהחלוצים בתחום. טכניקות, כימיה ושירות ברמה הגבוהה ביותר."
+        subtitle="🌊 הפכו למומחי פרם לגברים"
+        description="קורס ייחודי מסוגו בישראל – למדו את אמנות הפרם לגברים מהחלוצים בתחום. טכניקות, כימיה ושירות ברמה הגבוהה ביותר. 🏅"
         primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972544744031?text=היי, אני מעוניין בקורס פרם" }}
         image={permHero}
       />
@@ -61,7 +61,7 @@ const PermCoursePage = () => {
         </AnimatedSection>
       </Section>
 
-      <Section title="תכני הקורס" variant="dark">
+      <Section title="📋 תכני הקורס" variant="dark">
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {modules.map((module, index) => (
@@ -79,12 +79,12 @@ const PermCoursePage = () => {
       <Section variant="light">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">הפרם הוא העתיד</h2>
+            <h2 className="mb-4">🚀 הפרם הוא העתיד</h2>
             <p className="text-lg opacity-80 mb-4">
               הביקוש לפרם לגברים רק עולה. ספרים שיודעים לעשות פרם מקצועי נמצאים בביקוש עצום. 
               זה הזמן שלכם ללמוד את המיומנות שתבדיל אתכם מכולם.
             </p>
-            <p className="opacity-70 mb-8">למדו מהחלוצים בתחום הפרם לגברים בישראל</p>
+            <p className="opacity-70 mb-8">👑 למדו מהחלוצים בתחום הפרם לגברים בישראל</p>
             <a
               href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס פרם"
               target="_blank"
@@ -98,8 +98,8 @@ const PermCoursePage = () => {
       </Section>
 
       <CTASection
-        title="יש שאלות?"
-        description="אנחנו כאן בשבילכם"
+        title="❓ יש שאלות?"
+        description="🙋 אנחנו כאן בשבילכם"
         buttonLabel="💬 דברו איתנו"
         buttonHref="https://wa.me/972544744031"
         variant="dark"

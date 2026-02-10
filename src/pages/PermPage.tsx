@@ -35,14 +35,14 @@ const PermPage = () => {
 
       <HeroSplit
         title="פרם לגבר"
-        subtitle="תלתלים מושלמים לגברים"
-        description="תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל."
+        subtitle="🌊 תלתלים מושלמים לגברים"
+        description="תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל. 🏆"
         primaryCta={{ label: "📲 לייעוץ חינם", href: "https://wa.me/972544744031?text=היי, אני מעוניין בייעוץ לפרם לגבר" }}
         image={permHero}
       />
 
       {/* היתרונות */}
-      <Section title="היתרונות שלנו" variant="light" isFirstSection>
+      <Section title="💎 היתרונות שלנו" variant="light" isFirstSection>
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
@@ -82,7 +82,7 @@ const PermPage = () => {
       </Section>
 
       {/* סוגי פרם */}
-      <Section title="סוגי פרם" variant="light">
+      <Section title="✨ סוגי פרם" variant="light">
         <AnimatedSection>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {permTypes.map((type, index) => (
@@ -107,7 +107,7 @@ const PermPage = () => {
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">רוצים לדעת איזה פרם מתאים לכם?</h2>
+            <h2 className="mb-4">🤔 רוצים לדעת איזה פרם מתאים לכם?</h2>
             <p className="text-lg opacity-80 mb-8">
               שלחו לנו תמונה בוואטסאפ ונייעץ לכם בחינם – בלי התחייבות.
             </p>
@@ -190,8 +190,8 @@ const PermPage = () => {
       </Section>
 
       <CTASection
-        title="רוצים תלתלים?"
-        description="לחצו לייעוץ חינם ללא התחייבות"
+        title="🌊 רוצים תלתלים?"
+        description="🎯 לחצו לייעוץ חינם ללא התחייבות"
         buttonLabel="📲 דברו איתנו בוואטסאפ"
         buttonHref="https://wa.me/972544744031?text=היי, אני מעוניין בפרם לגבר"
         variant="light"

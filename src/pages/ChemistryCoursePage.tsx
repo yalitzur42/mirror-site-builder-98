@@ -28,8 +28,8 @@ const ChemistryCoursePage = () => {
 
       <HeroSplit
         title="קורס כימיה וצבע"
-        subtitle="שלטו באמנות הצבע"
-        description="קורס מקיף שיעניק לכם שליטה מלאה בעולם הצביעה והכימיה. תלמדו להבין את המדע מאחורי הצבע וליצור תוצאות מדויקות ומרהיבות."
+        subtitle="🎨 שלטו באמנות הצבע"
+        description="קורס מקיף שיעניק לכם שליטה מלאה בעולם הצביעה והכימיה. תלמדו להבין את המדע מאחורי הצבע וליצור תוצאות מדויקות ומרהיבות. 🔬"
         primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972544744031?text=היי, אני מעוניין בקורס כימיה וצבע" }}
         image={courseAdvancedHero}
       />
@@ -61,7 +61,7 @@ const ChemistryCoursePage = () => {
         </AnimatedSection>
       </Section>
 
-      <Section title="מה תלמדו?" variant="dark">
+      <Section title="📋 מה תלמדו?" variant="dark">
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {modules.map((module, index) => (
@@ -79,7 +79,7 @@ const ChemistryCoursePage = () => {
       <Section variant="light">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">הפכו למומחי צבע</h2>
+            <h2 className="mb-4">🎨 הפכו למומחי צבע</h2>
             <p className="text-lg opacity-80 mb-6">
               צביעת שיער היא אמנות ומדע. בקורס הזה תלמדו את שניהם – ותצאו עם היכולת ליצור כל גוון שהלקוח מבקש.
             </p>
@@ -96,8 +96,8 @@ const ChemistryCoursePage = () => {
       </Section>
 
       <CTASection
-        title="יש שאלות?"
-        description="אנחנו כאן בשבילכם"
+        title="❓ יש שאלות?"
+        description="🙋 אנחנו כאן בשבילכם"
         buttonLabel="💬 דברו איתנו"
         buttonHref="https://wa.me/972544744031"
         variant="dark"
