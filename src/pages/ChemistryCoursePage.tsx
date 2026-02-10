@@ -30,7 +30,7 @@ const ChemistryCoursePage = () => {
         title="קורס כימיה וצבע"
         subtitle="🎨 שלטו באמנות הצבע"
         description="קורס מקיף שיעניק לכם שליטה מלאה בעולם הצביעה והכימיה. תלמדו להבין את המדע מאחורי הצבע וליצור תוצאות מדויקות ומרהיבות. 🔬"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972544744031?text=היי, אני מעוניין בקורס כימיה וצבע" }}
+        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+כימיה+וצבע" }}
         image={courseAdvancedHero}
       />
 
@@ -84,7 +84,7 @@ const ChemistryCoursePage = () => {
               צביעת שיער היא אמנות ומדע. בקורס הזה תלמדו את שניהם – ותצאו עם היכולת ליצור כל גוון שהלקוח מבקש.
             </p>
             <a
-              href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס כימיה וצבע"
+              href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+כימיה+וצבע"
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"
@@ -99,7 +99,7 @@ const ChemistryCoursePage = () => {
         title="❓ יש שאלות?"
         description="🙋 אנחנו כאן בשבילכם"
         buttonLabel="💬 דברו איתנו"
-        buttonHref="https://wa.me/972544744031"
+        buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+כימיה+וצבע"
         variant="dark"
       />
     </Layout>

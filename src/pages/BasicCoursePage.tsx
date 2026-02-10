@@ -31,7 +31,7 @@ const BasicCoursePage = () => {
         title="קורס בסיסי"
         subtitle="היסודות לקריירה מצליחה"
         description="קורס קצר וממוקד שנותן את כל הבסיס הדרוש להתחיל. מושלם למי שרוצה לטעום את התחום לפני קורס מלא."
-        primaryCta={{ label: "להרשמה", href: "/contact" }}
+        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+הבסיסי" }}
         image={courseBasicHero}
       />
 
@@ -75,7 +75,7 @@ const BasicCoursePage = () => {
             הקורס הבסיסי הוא הדרך המהירה ביותר לטעום את עולם הספרות. מקומות מוגבלים – שריינו את שלכם.
           </p>
           <a
-            href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס הבסיסי"
+            href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+הבסיסי"
             target="_blank"
             rel="noopener noreferrer"
             className="whatsapp-cta"
@@ -89,7 +89,7 @@ const BasicCoursePage = () => {
         title="מתלבטים?"
         description="דברו איתנו ונעזור לכם להחליט"
         buttonLabel="💬 שלחו הודעה"
-        buttonHref="https://wa.me/972544744031"
+        buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+הבסיסי"
         variant="dark"
       />
     </Layout>

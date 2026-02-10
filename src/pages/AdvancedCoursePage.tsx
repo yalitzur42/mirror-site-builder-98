@@ -31,7 +31,7 @@ const AdvancedCoursePage = () => {
         title="קורס למתקדמים"
         subtitle="⚡ שדרגו את המיומנויות"
         description="קורס מתקדם לספרים עם ניסיון שרוצים להעלות רמה. טכניקות מתקדמות, טרנדים חדשים ובניית מותג אישי. 🔥"
-        primaryCta={{ label: "להרשמה", href: "/contact" }}
+        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתקדמים" }}
         image={courseAdvancedHero}
       />
 
@@ -81,7 +81,7 @@ const AdvancedCoursePage = () => {
           </p>
           <p className="opacity-70 mb-8">לספרים פעילים עם ניסיון בלבד</p>
           <a
-            href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס למתקדמים"
+            href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתקדמים"
             target="_blank"
             rel="noopener noreferrer"
             className="whatsapp-cta"
@@ -95,7 +95,7 @@ const AdvancedCoursePage = () => {
         title="⚡ מוכנים לשדרג?"
         description="⏰ המקומות מוגבלים – אל תפספסו"
         buttonLabel="💬 דברו איתנו"
-        buttonHref="https://wa.me/972544744031"
+        buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתקדמים"
         variant="dark"
       />
     </Layout>

@@ -30,7 +30,7 @@ const PermCoursePage = () => {
         title="קורס פרם"
         subtitle="🌊 הפכו למומחי פרם לגברים"
         description="קורס ייחודי מסוגו בישראל – למדו את אמנות הפרם לגברים מהחלוצים בתחום. טכניקות, כימיה ושירות ברמה הגבוהה ביותר. 🏅"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972544744031?text=היי, אני מעוניין בקורס פרם" }}
+        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם" }}
         image={permHero}
       />
 
@@ -86,7 +86,7 @@ const PermCoursePage = () => {
             </p>
             <p className="opacity-70 mb-8">👑 למדו מהחלוצים בתחום הפרם לגברים בישראל</p>
             <a
-              href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס פרם"
+              href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם"
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"
@@ -101,7 +101,7 @@ const PermCoursePage = () => {
         title="❓ יש שאלות?"
         description="🙋 אנחנו כאן בשבילכם"
         buttonLabel="💬 דברו איתנו"
-        buttonHref="https://wa.me/972544744031"
+        buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם"
         variant="dark"
       />
     </Layout>
