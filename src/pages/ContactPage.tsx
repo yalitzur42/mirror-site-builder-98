@@ -7,30 +7,48 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Clock, Mail, MessageCircle } from "lucide-react";
+import { Warp } from "@paper-design/shaders-react";
 
 const ContactPage = () => {
   return (
     <Layout>
       <Breadcrumbs items={[{ label: "עבדו איתנו" }]} />
 
-      <section className="gradient-hero py-16 md:py-24">
-        <div className="container-main text-center">
-          <h1 className="mb-4">רוצים לעבוד איתנו?</h1>
-          <p className="text-xl opacity-80 max-w-2xl mx-auto mb-8">
-            אנחנו תמיד מחפשים אנשים מוכשרים שרוצים להיות חלק ממשפחת Macho. 
-            בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם.
-          </p>
-          <a
-            href="https://wa.me/972544744031?text=היי, אני מעוניין לעבוד עם Macho"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="whatsapp-cta"
-          >
-            <MessageCircle className="w-5 h-5" />
-            דברו איתנו בוואטסאפ
-          </a>
-        </div>
-      </section>
+      <div className="bg-[hsl(60_56%_91%)]">
+        <section className="relative py-16 md:py-24 overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
+          <div className="absolute inset-0 z-0">
+            <Warp
+              colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
+              speed={0.15}
+              scale={1.2}
+              distortion={0.4}
+              swirl={0.3}
+              swirlIterations={6}
+              softness={0.7}
+              shape="edge"
+              shapeScale={0.5}
+              proportion={0.5}
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
+          <div className="container-main text-center relative z-10">
+            <h1 className="mb-4 text-foreground">רוצים לעבוד איתנו?</h1>
+            <p className="text-xl opacity-80 max-w-2xl mx-auto mb-8 text-foreground">
+              אנחנו תמיד מחפשים אנשים מוכשרים שרוצים להיות חלק ממשפחת Macho. 
+              בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם.
+            </p>
+            <a
+              href="https://wa.me/972544744031?text=היי, אני מעוניין לעבוד עם Macho"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp-cta"
+            >
+              <MessageCircle className="w-5 h-5" />
+              דברו איתנו בוואטסאפ
+            </a>
+          </div>
+        </section>
+      </div>
 
       <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12">
