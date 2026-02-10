@@ -14,7 +14,7 @@ const ContactPage = () => {
     <Layout>
       <Breadcrumbs items={[{ label: "עבדו איתנו" }]} />
 
-      <div className="bg-[hsl(60_56%_91%)]" style={{ backgroundImage: "url('/images/marble-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="section-light">
         <section className="relative py-16 md:py-24 overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
           <Warp
             colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
