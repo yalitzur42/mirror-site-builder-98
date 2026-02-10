@@ -25,7 +25,7 @@ const navItems = [
     ],
   },
   
-  { label: "בלוג", href: "/blog" },
+  { label: "פרטי העסק", href: "/business" },
   { label: "צור קשר", href: "/contact" },
 ];
 

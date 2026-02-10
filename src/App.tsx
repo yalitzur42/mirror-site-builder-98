@@ -13,7 +13,7 @@ import AdvancedCoursePage from "./pages/AdvancedCoursePage";
 import BasicCoursePage from "./pages/BasicCoursePage";
 import OnlineCoursesPage from "./pages/OnlineCoursesPage";
 
-import BlogPage from "./pages/BlogPage";
+import BusinessPage from "./pages/BusinessPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
@@ -36,7 +36,7 @@ const App = () => (
           <Route path="/academy/basic-course" element={<BasicCoursePage />} />
           <Route path="/online-courses" element={<OnlineCoursesPage />} />
           
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/business" element={<BusinessPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
