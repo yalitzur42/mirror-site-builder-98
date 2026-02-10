@@ -33,14 +33,14 @@ const BarbershopPage = () => {
 
       <HeroSplit
         title="מספרת גברים"
-        subtitle="תספורות ברמה אחרת"
-        description="חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני."
+        subtitle="✂️ תספורות ברמה אחרת"
+        description="חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני. 💈"
         primaryCta={{ label: "📲 לקביעת תור", href: "https://wa.me/972544744031?text=היי, אשמח לקבוע תור למספרה" }}
         image={barbershopInterior}
       />
 
       {/* מחירון */}
-      <Section title="מחירון" variant="light" isFirstSection>
+      <Section title="💰 מחירון" variant="light" isFirstSection>
         <AnimatedSection>
           <div className="max-w-3xl mx-auto">
             <div className="divide-y divide-border/30">
@@ -64,7 +64,7 @@ const BarbershopPage = () => {
       </Section>
 
       {/* גלריה */}
-      <Section title="מהעבודות שלנו" variant="dark">
+      <Section title="📸 מהעבודות שלנו" variant="dark">
         <AnimatedSection>
           <GalleryGrid images={galleryImages} />
         </AnimatedSection>
@@ -94,7 +94,7 @@ const BarbershopPage = () => {
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">ספר שרוצה להצטרף לצוות?</h2>
+            <h2 className="mb-4">🤝 ספר שרוצה להצטרף לצוות?</h2>
             <p className="text-lg opacity-80 mb-8">
               אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.
             </p>
@@ -112,8 +112,8 @@ const BarbershopPage = () => {
       </Section>
 
       <CTASection
-        title="מוכנים לתספורת חדשה?"
-        description="קבעו תור עכשיו"
+        title="💇‍♂️ מוכנים לתספורת חדשה?"
+        description="✂️ קבעו תור עכשיו"
         buttonLabel="📲 קבעו תור בוואטסאפ"
         buttonHref="https://wa.me/972544744031?text=היי, אשמח לקבוע תור"
         variant="light"

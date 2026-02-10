@@ -47,17 +47,17 @@ const HomePage = () => {
     <Layout>
       {/* Hero Section */}
       <HeroSplit
-        badge="אהלן גבר, ברוך הבא!"
+        badge="👋 אהלן גבר, ברוך הבא!"
         title="משפחת Macho"
         subtitle="מובילים את סצנת טיפוח השיער לגברים בישראל!"
         description="מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר."
         primaryCta={{ label: "📲 לקביעת תור", href: "https://wa.me/972544744031?text=היי, אשמח לקבוע תור" }}
-        secondaryCta={{ label: "לאקדמיה", href: "/academy" }}
+        secondaryCta={{ label: "🎓 לאקדמיה", href: "/academy" }}
         image={heroBarbershop}
       />
 
       {/* What We Offer */}
-      <Section title="מה תמצאו אצלנו?" variant="light" isFirstSection>
+      <Section title="✨ מה תמצאו אצלנו?" variant="light" isFirstSection>
         <AnimatedSection>
           <CardsGrid items={servicesCards} columns={3} />
         </AnimatedSection>
@@ -65,7 +65,7 @@ const HomePage = () => {
 
       {/* Academy Section */}
       <Section
-        title="האקדמיה של Macho"
+        title="🎓 האקדמיה של Macho"
         subtitle="הפוך את התשוקה שלך למקצוע. הצטרף לאקדמיה המובילה בישראל ללימודי ספרות גברים."
         variant="dark"
       >
@@ -74,13 +74,13 @@ const HomePage = () => {
         </AnimatedSection>
         <AnimatedSection delay={0.3} className="text-center mt-12">
           <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-            <Link to="/academy">לכל הקורסים</Link>
+            <Link to="/academy">📚 לכל הקורסים</Link>
           </Button>
         </AnimatedSection>
       </Section>
 
       {/* Gallery */}
-      <Section title="מהעבודות שלנו" variant="light">
+      <Section title="📸 מהעבודות שלנו" variant="light">
         <AnimatedSection>
           <GalleryGrid images={galleryImages} />
         </AnimatedSection>
@@ -93,7 +93,7 @@ const HomePage = () => {
             <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <h2 className="mb-4">פרם לגבר</h2>
+            <h2 className="mb-4">🔥 פרם לגבר</h2>
             <p className="text-muted-foreground text-lg mb-6">
               תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.
             </p>
@@ -129,7 +129,7 @@ const HomePage = () => {
       <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <AnimatedSection direction="right">
-            <h2 className="mb-6">Macho – יותר מסתם מספרה</h2>
+            <h2 className="mb-6">💈 Macho – יותר מסתם מספרה</h2>
             <div className="space-y-4 opacity-80">
               <p>
                 Macho נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל
@@ -165,7 +165,7 @@ const HomePage = () => {
             <img src={ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <h2 className="mb-4">הכירו את הצוות</h2>
+            <h2 className="mb-4">👥 הכירו את הצוות</h2>
             <h3 className="text-xl font-semibold mb-4 opacity-80">ישראל ישראלי – מייסד Macho</h3>
             <div className="space-y-4 opacity-70">
               <p>
@@ -181,8 +181,8 @@ const HomePage = () => {
       {/* CTA */}
       <AnimatedSection>
         <CTASection
-          title="מוכנים להתחיל?"
-          description="קבעו תור עכשיו וחוו את ההבדל"
+          title="🚀 מוכנים להתחיל?"
+          description="✂️ קבעו תור עכשיו וחוו את ההבדל"
           buttonLabel="📲 קבעו תור בוואטסאפ"
           buttonHref="https://wa.me/972544744031?text=היי, אשמח לקבוע תור"
           variant="light"

@@ -29,8 +29,8 @@ const AdvancedCoursePage = () => {
       
       <HeroSplit
         title="קורס למתקדמים"
-        subtitle="שדרגו את המיומנויות"
-        description="קורס מתקדם לספרים עם ניסיון שרוצים להעלות רמה. טכניקות מתקדמות, טרנדים חדשים ובניית מותג אישי."
+        subtitle="⚡ שדרגו את המיומנויות"
+        description="קורס מתקדם לספרים עם ניסיון שרוצים להעלות רמה. טכניקות מתקדמות, טרנדים חדשים ובניית מותג אישי. 🔥"
         primaryCta={{ label: "להרשמה", href: "/contact" }}
         image={courseAdvancedHero}
       />
@@ -60,7 +60,7 @@ const AdvancedCoursePage = () => {
         </div>
       </Section>
 
-      <Section title="תכני הקורס" variant="dark">
+      <Section title="📋 תכני הקורס" variant="dark">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module, index) => (
             <div key={index} className="flex items-center gap-3 p-4 bg-secondary rounded-lg">
@@ -75,7 +75,7 @@ const AdvancedCoursePage = () => {
 
       <Section variant="light">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="mb-4">מוכנים לעלות רמה?</h2>
+          <h2 className="mb-4">🏆 מוכנים לעלות רמה?</h2>
           <p className="text-lg opacity-80 mb-4">
             הקורס למתקדמים ייקח את הכישורים שלכם לשלב הבא. טכניקות שיבדילו אתכם מכל ספר אחר.
           </p>
@@ -92,8 +92,8 @@ const AdvancedCoursePage = () => {
       </Section>
 
       <CTASection
-        title="מוכנים לשדרג?"
-        description="המקומות מוגבלים – אל תפספסו"
+        title="⚡ מוכנים לשדרג?"
+        description="⏰ המקומות מוגבלים – אל תפספסו"
         buttonLabel="💬 דברו איתנו"
         buttonHref="https://wa.me/972544744031"
         variant="dark"

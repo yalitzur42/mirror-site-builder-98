@@ -29,8 +29,8 @@ const BeginnerCoursePage = () => {
       
       <HeroSplit
         title="קורס למתחילים"
-        subtitle="הצעד הראשון בקריירה שלך"
-        description="קורס מקיף לספרות גברים המיועד למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה."
+        subtitle="🌱 הצעד הראשון בקריירה שלך"
+        description="קורס מקיף לספרות גברים המיועד למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה. 🎯"
         primaryCta={{ label: "להרשמה", href: "/contact" }}
         image={courseBeginnerHero}
       />
@@ -55,7 +55,7 @@ const BeginnerCoursePage = () => {
         </div>
       </Section>
 
-      <Section title="תכני הקורס" variant="dark">
+      <Section title="📋 תכני הקורס" variant="dark">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module, index) => (
             <div key={index} className="flex items-center gap-3 p-4 bg-secondary rounded-lg">
@@ -70,11 +70,11 @@ const BeginnerCoursePage = () => {
 
       <Section variant="light">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="mb-4">מוכנים להתחיל קריירה חדשה?</h2>
+          <h2 className="mb-4">🚀 מוכנים להתחיל קריירה חדשה?</h2>
           <p className="text-lg opacity-80 mb-4">
             הקורס למתחילים הוא הצעד הראשון בדרך לקריירה מצליחה בעולם הספרות. בוגרי הקורס עובדים במספרות המובילות בארץ.
           </p>
-          <p className="opacity-70 mb-8">כולל ערכת ציוד מקצועית מלאה</p>
+          <p className="opacity-70 mb-8">🎒 כולל ערכת ציוד מקצועית מלאה</p>
           <a
             href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס למתחילים"
             target="_blank"
@@ -87,8 +87,8 @@ const BeginnerCoursePage = () => {
       </Section>
 
       <CTASection
-        title="יש שאלות?"
-        description="אנחנו כאן בשבילכם"
+        title="❓ יש שאלות?"
+        description="🙋 אנחנו כאן בשבילכם"
         buttonLabel="💬 דברו איתנו"
         buttonHref="https://wa.me/972544744031"
         variant="dark"

@@ -43,8 +43,8 @@ const AcademyPage = () => {
 
       <HeroSplit
         title="האקדמיה של Macho"
-        subtitle="הפוך את התשוקה למקצוע"
-        description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי."
+        subtitle="🔥 הפוך את התשוקה למקצוע"
+        description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי. 🏆"
         primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972544744031?text=היי, אני מעוניין בפרטים על האקדמיה" }}
         image={academyClassroom}
       />
@@ -63,12 +63,12 @@ const AcademyPage = () => {
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
-          <h2 className="text-center mb-8">הקורסים שלנו</h2>
+          <h2 className="text-center mb-8">📚 הקורסים שלנו</h2>
           <CardsGrid items={courses} columns={4} />
         </AnimatedSection>
       </Section>
 
-      <Section title="למה ללמוד אצלנו?" variant="dark">
+      <Section title="🌟 למה ללמוד אצלנו?" variant="dark">
         <AnimatedSection>
           <FeatureGrid items={features} columns={3} />
         </AnimatedSection>
@@ -78,7 +78,7 @@ const AcademyPage = () => {
         <AnimatedSection>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="mb-6">מה תלמדו באקדמיה?</h2>
+              <h2 className="mb-6">📋 מה תלמדו באקדמיה?</h2>
               <ul className="space-y-4">
                 {[
                   "טכניקות תספורת מתקדמות",
@@ -104,7 +104,7 @@ const AcademyPage = () => {
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="mb-6">הבוגרים שלנו מדברים</h2>
+            <h2 className="mb-6">💬 הבוגרים שלנו מדברים</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-6 bg-secondary rounded-xl text-right">
                 <p className="opacity-85 mb-4">"הקורס ב-Macho שינה לי את החיים. תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה."</p>
@@ -120,8 +120,8 @@ const AcademyPage = () => {
       </Section>
 
       <CTASection
-        title="רוצים להצטרף?"
-        description="שלחו הודעה בוואטסאפ ונחזור אליכם עם כל הפרטים"
+        title="🚀 רוצים להצטרף?"
+        description="💬 שלחו הודעה בוואטסאפ ונחזור אליכם עם כל הפרטים"
         buttonLabel="📲 הירשמו עכשיו"
         buttonHref="https://wa.me/972544744031?text=היי, אני מעוניין להירשם לאקדמיה"
         variant="light"
