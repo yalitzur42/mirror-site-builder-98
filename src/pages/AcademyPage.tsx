@@ -45,7 +45,7 @@ const AcademyPage = () => {
         title="האקדמיה של Macho"
         subtitle="🔥 הפוך את התשוקה למקצוע"
         description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי. 🏆"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972544744031?text=היי, אני מעוניין בפרטים על האקדמיה" }}
+        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+האקדמיה" }}
         image={academyClassroom}
       />
 
@@ -123,7 +123,7 @@ const AcademyPage = () => {
         title="🚀 רוצים להצטרף?"
         description="💬 שלחו הודעה בוואטסאפ ונחזור אליכם עם כל הפרטים"
         buttonLabel="📲 הירשמו עכשיו"
-        buttonHref="https://wa.me/972544744031?text=היי, אני מעוניין להירשם לאקדמיה"
+        buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+האקדמיה"
         variant="light"
       />
     </Layout>

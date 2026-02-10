@@ -31,7 +31,7 @@ const BeginnerCoursePage = () => {
         title="קורס למתחילים"
         subtitle="🌱 הצעד הראשון בקריירה שלך"
         description="קורס מקיף לספרות גברים המיועד למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה. 🎯"
-        primaryCta={{ label: "להרשמה", href: "/contact" }}
+        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתחילים" }}
         image={courseBeginnerHero}
       />
 
@@ -76,7 +76,7 @@ const BeginnerCoursePage = () => {
           </p>
           <p className="opacity-70 mb-8">🎒 כולל ערכת ציוד מקצועית מלאה</p>
           <a
-            href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס למתחילים"
+            href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתחילים"
             target="_blank"
             rel="noopener noreferrer"
             className="whatsapp-cta"
@@ -90,7 +90,7 @@ const BeginnerCoursePage = () => {
         title="❓ יש שאלות?"
         description="🙋 אנחנו כאן בשבילכם"
         buttonLabel="💬 דברו איתנו"
-        buttonHref="https://wa.me/972544744031"
+        buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתחילים"
         variant="dark"
       />
     </Layout>
