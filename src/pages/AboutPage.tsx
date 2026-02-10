@@ -78,7 +78,7 @@ const AboutPage = () => {
         title="🤗 רוצים להצטרף למשפחה?"
         description="✂️ קבעו תור עכשיו וחוו את ההבדל"
         buttonLabel="📲 לקביעת תור"
-        buttonHref="/contact"
+        buttonHref="https://calmark.io/p/ZBfbx"
         variant="light"
       />
     </Layout>

@@ -42,7 +42,7 @@ const BarbershopPage = () => {
         title="מספרת גברים"
         subtitle="✂️ תספורות ברמה אחרת"
         description="חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני. 💈"
-        primaryCta={{ label: "📲 לקביעת תור", href: "https://wa.me/972544744031?text=היי, אשמח לקבוע תור למספרה" }}
+        primaryCta={{ label: "📲 לקביעת תור", href: "https://calmark.io/p/ZBfbx" }}
         image={barbershopInterior}
       />
 
@@ -134,7 +134,7 @@ const BarbershopPage = () => {
         title="💇‍♂️ מוכנים לתספורת חדשה?"
         description="✂️ קבעו תור עכשיו"
         buttonLabel="📲 קבעו תור בוואטסאפ"
-        buttonHref="https://wa.me/972544744031?text=היי, אשמח לקבוע תור"
+        buttonHref="https://calmark.io/p/ZBfbx"
         variant="light"
       />
     </Layout>
