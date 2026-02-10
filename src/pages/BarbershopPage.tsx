@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GalleryGrid from "@/components/ui/GalleryGrid";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { Scissors, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
@@ -14,15 +14,22 @@ import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import gallery6 from "@/assets/gallery-6.jpg";
+import barberLiav from "@/assets/barber-liav.jpg";
+import barberNehoray from "@/assets/barber-nehoray.jpg";
+import barberYali from "@/assets/barber-yali.jpg";
 
 const BarbershopPage = () => {
-  const priceList = [
-    { name: "תספורת גברים", price: "₪80", desc: "כולל שטיפה ועיצוב" },
-    { name: "תספורת + זקן", price: "₪120", desc: "חבילה מושלמת לטיפוח מלא" },
-    { name: "עיצוב זקן", price: "₪50", desc: "עיצוב מדויק ומקצועי" },
-    { name: "גילוח קלאסי", price: "₪70", desc: "חוויית גילוח מסורתית" },
-    { name: "תספורת ילדים", price: "₪60", desc: "עד גיל 12" },
-    { name: "צביעת שיער", price: "₪150", desc: "צבע מקצועי + תספורת" },
+  const barbers = [
+    { nameHe: "ליאב", nameEn: "LIAV", image: barberLiav, prices: [70, 80, 70, 100] },
+    { nameHe: "נהוראי", nameEn: "NEHORAY", image: barberNehoray, prices: [70, 90, 80, 100] },
+    { nameHe: "יהלי", nameEn: "YALI", image: barberYali, prices: [100, 120, 100, 130] },
+  ];
+
+  const services = [
+    { name: "תספורת גבר בלבד" },
+    { name: "תספורת גבר וזקן" },
+    { name: "תספורת חייל בסדיר", note: "(נוער עד גיל 18)" },
+    { name: "תספורת MAKEOVER" },
   ];
 
   const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
@@ -39,23 +46,35 @@ const BarbershopPage = () => {
         image={barbershopInterior}
       />
 
-      {/* מחירון */}
       <Section title="💰 מחירון" variant="light" isFirstSection>
         <AnimatedSection>
-          <div className="max-w-3xl mx-auto">
-            <div className="divide-y divide-border/30">
-              {priceList.map((item, index) => (
-                <div key={index} className="flex items-center justify-between py-5 gap-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-background/20 flex items-center justify-center shrink-0">
-                      <Scissors className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold">{item.name}</h3>
-                      <p className="text-sm opacity-60">{item.desc}</p>
-                    </div>
+          <div className="max-w-4xl mx-auto">
+            {/* Barber headers */}
+            <div className="grid grid-cols-3 gap-6 mb-8">
+              {barbers.map((barber, i) => (
+                <div key={i} className="text-center">
+                  <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-accent">
+                    <img src={barber.image} alt={barber.nameHe} className="w-full h-full object-cover" />
                   </div>
-                  <span className="text-2xl font-black whitespace-nowrap">{item.price}</span>
+                  <h3 className="font-bold text-lg">{barber.nameHe}</h3>
+                  <p className="text-sm opacity-60 font-semibold tracking-wider">{barber.nameEn}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Price rows */}
+            <div className="divide-y divide-border/30">
+              {services.map((service, sIdx) => (
+                <div key={sIdx} className="py-4">
+                  <p className="text-center font-bold text-lg mb-3">
+                    {service.name}
+                    {service.note && <span className="text-sm font-normal opacity-60 mr-2">{service.note}</span>}
+                  </p>
+                  <div className="grid grid-cols-3 gap-6 text-center">
+                    {barbers.map((barber, bIdx) => (
+                      <span key={bIdx} className="text-2xl font-black">₪{barber.prices[sIdx]}</span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
