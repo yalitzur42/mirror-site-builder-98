@@ -16,21 +16,19 @@ const ContactPage = () => {
 
       <div className="bg-[hsl(60_56%_91%)]">
         <section className="relative py-16 md:py-24 overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
-          <div className="absolute inset-0 z-0">
-            <Warp
-              colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
-              speed={0.15}
-              scale={1.2}
-              distortion={0.4}
-              swirl={0.3}
-              swirlIterations={6}
-              softness={0.7}
-              shape="edge"
-              shapeScale={0.5}
-              proportion={0.5}
-              style={{ width: "100%", height: "100%" }}
-            />
-          </div>
+          <Warp
+            colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
+            speed={0.15}
+            scale={1.2}
+            distortion={0.4}
+            swirl={0.3}
+            swirlIterations={6}
+            softness={0.7}
+            shape="edge"
+            shapeScale={0.5}
+            proportion={0.5}
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 0 }}
+          />
           <div className="container-main text-center relative z-10">
             <h1 className="mb-4 text-foreground">רוצים לעבוד איתנו?</h1>
             <p className="text-xl opacity-80 max-w-2xl mx-auto mb-8 text-foreground">
