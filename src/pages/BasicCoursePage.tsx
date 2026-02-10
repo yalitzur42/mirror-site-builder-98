@@ -3,7 +3,7 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
-import { Clock, Users, Award } from "lucide-react";
+import { Clock, Users, Award, Smartphone, MessageCircle, HelpCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -31,7 +31,7 @@ const BasicCoursePage = () => {
         title="קורס בסיסי"
         subtitle="היסודות לקריירה מצליחה"
         description="קורס קצר וממוקד שנותן את כל הבסיס הדרוש להתחיל. מושלם למי שרוצה לטעום את התחום לפני קורס מלא."
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+הבסיסי" }}
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לפרטים והרשמה</>, href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+הבסיסי" }}
         image={courseBasicHero}
       />
 
@@ -80,15 +80,16 @@ const BasicCoursePage = () => {
             rel="noopener noreferrer"
             className="whatsapp-cta"
           >
-            📲 שריינו מקום בוואטסאפ
+            <Smartphone className="w-5 h-5" />
+            שריינו מקום בוואטסאפ
           </a>
         </div>
       </Section>
 
       <CTASection
-        title="מתלבטים?"
+        title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> מתלבטים?</>}
         description="דברו איתנו ונעזור לכם להחליט"
-        buttonLabel="💬 שלחו הודעה"
+        buttonLabel={<><MessageCircle className="w-4 h-4" /> שלחו הודעה</>}
         buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+הבסיסי"
         variant="dark"
       />

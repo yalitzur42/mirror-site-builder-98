@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Warp } from "@paper-design/shaders-react";
 
 interface HeroSplitProps {
-  badge?: string;
+  badge?: ReactNode;
   title: string;
   subtitle?: string;
-  description?: string;
-  primaryCta?: { label: string; href: string };
-  secondaryCta?: { label: string; href: string };
+  description?: ReactNode;
+  primaryCta?: { label: ReactNode; href: string };
+  secondaryCta?: { label: ReactNode; href: string };
   image?: string;
   children?: ReactNode;
 }

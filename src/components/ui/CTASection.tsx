@@ -1,10 +1,11 @@
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 interface CTASectionProps {
-  title: string;
-  description?: string;
-  buttonLabel: string;
+  title: ReactNode;
+  description?: ReactNode;
+  buttonLabel: ReactNode;
   buttonHref: string;
   variant?: "default" | "gradient" | "dark" | "light";
 }

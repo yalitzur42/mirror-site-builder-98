@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 type SectionVariant = "dark" | "light";
 
 interface SectionProps {
-  title?: string;
+  title?: ReactNode;
   subtitle?: string;
   children: ReactNode;
   className?: string;

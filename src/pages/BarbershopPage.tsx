@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GalleryGrid from "@/components/ui/GalleryGrid";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "lucide-react";
 
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
@@ -40,13 +40,13 @@ const BarbershopPage = () => {
 
       <HeroSplit
         title="מספרת גברים"
-        subtitle="✂️ תספורות ברמה אחרת"
-        description="חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני. 💈"
-        primaryCta={{ label: "📲 לקביעת תור", href: "https://calmark.io/p/ZBfbx" }}
+        subtitle="תספורות ברמה אחרת"
+        description="חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני."
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: "https://calmark.io/p/ZBfbx" }}
         image={barbershopInterior}
       />
 
-      <Section title="💰 מחירון" variant="light" isFirstSection>
+      <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light" isFirstSection>
         <AnimatedSection>
           <div className="max-w-4xl mx-auto">
             {/* Barber headers */}
@@ -83,7 +83,7 @@ const BarbershopPage = () => {
       </Section>
 
       {/* גלריה */}
-      <Section title="📸 מהעבודות שלנו" variant="dark">
+      <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> מהעבודות שלנו</>} variant="dark">
         <AnimatedSection>
           <GalleryGrid images={galleryImages} />
         </AnimatedSection>
@@ -113,7 +113,7 @@ const BarbershopPage = () => {
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">🤝 ספר שרוצה להצטרף לצוות?</h2>
+            <h2 className="mb-4"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> ספר שרוצה להצטרף לצוות?</h2>
             <p className="text-lg opacity-80 mb-8">
               אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.
             </p>
@@ -131,9 +131,9 @@ const BarbershopPage = () => {
       </Section>
 
       <CTASection
-        title="💇‍♂️ מוכנים לתספורת חדשה?"
-        description="✂️ קבעו תור עכשיו"
-        buttonLabel="📲 קבעו תור בוואטסאפ"
+        title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לתספורת חדשה?</>}
+        description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו</>}
+        buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור בוואטסאפ</>}
         buttonHref="https://calmark.io/p/ZBfbx"
         variant="light"
       />

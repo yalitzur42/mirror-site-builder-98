@@ -3,7 +3,7 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
-import { Clock, Users, Award } from "lucide-react";
+import { Clock, Users, Award, Sprout, Smartphone, Rocket, ClipboardList, HelpCircle, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -29,9 +29,9 @@ const BeginnerCoursePage = () => {
       
       <HeroSplit
         title="קורס למתחילים"
-        subtitle="🌱 הצעד הראשון בקריירה שלך"
-        description="קורס מקיף לספרות גברים המיועד למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה. 🎯"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתחילים" }}
+        subtitle="הצעד הראשון בקריירה שלך"
+        description="קורס מקיף לספרות גברים המיועד למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה."
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לפרטים והרשמה</>, href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתחילים" }}
         image={courseBeginnerHero}
       />
 
@@ -55,7 +55,7 @@ const BeginnerCoursePage = () => {
         </div>
       </Section>
 
-      <Section title="📋 תכני הקורס" variant="dark">
+      <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס</>} variant="dark">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module, index) => (
             <div key={index} className="flex items-center gap-3 p-4 bg-secondary rounded-lg">
@@ -70,26 +70,27 @@ const BeginnerCoursePage = () => {
 
       <Section variant="light">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="mb-4">🚀 מוכנים להתחיל קריירה חדשה?</h2>
+          <h2 className="mb-4"><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים להתחיל קריירה חדשה?</h2>
           <p className="text-lg opacity-80 mb-4">
             הקורס למתחילים הוא הצעד הראשון בדרך לקריירה מצליחה בעולם הספרות. בוגרי הקורס עובדים במספרות המובילות בארץ.
           </p>
-          <p className="opacity-70 mb-8">🎒 כולל ערכת ציוד מקצועית מלאה</p>
+          <p className="opacity-70 mb-8">כולל ערכת ציוד מקצועית מלאה</p>
           <a
             href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתחילים"
             target="_blank"
             rel="noopener noreferrer"
             className="whatsapp-cta"
           >
-            📲 הירשמו עכשיו בוואטסאפ
+            <Smartphone className="w-5 h-5" />
+            הירשמו עכשיו בוואטסאפ
           </a>
         </div>
       </Section>
 
       <CTASection
-        title="❓ יש שאלות?"
-        description="🙋 אנחנו כאן בשבילכם"
-        buttonLabel="💬 דברו איתנו"
+        title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> יש שאלות?</>}
+        description="אנחנו כאן בשבילכם"
+        buttonLabel={<><MessageCircle className="w-4 h-4" /> דברו איתנו</>}
         buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתחילים"
         variant="dark"
       />

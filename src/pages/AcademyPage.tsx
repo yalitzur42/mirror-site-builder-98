@@ -6,7 +6,7 @@ import CardsGrid from "@/components/ui/CardsGrid";
 import FeatureGrid from "@/components/ui/FeatureGrid";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { GraduationCap, Users, Award, Clock, BookOpen, Star } from "lucide-react";
+import { GraduationCap, Users, Award, Clock, BookOpen, Star, Flame, Smartphone, MessageCircle, Rocket, ClipboardList } from "lucide-react";
 
 import academyClassroom from "@/assets/academy-classroom.jpg";
 import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";
@@ -43,9 +43,9 @@ const AcademyPage = () => {
 
       <HeroSplit
         title="האקדמיה של Macho"
-        subtitle="🔥 הפוך את התשוקה למקצוע"
-        description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי. 🏆"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+האקדמיה" }}
+        subtitle="הפוך את התשוקה למקצוע"
+        description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי."
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לפרטים והרשמה</>, href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+האקדמיה" }}
         image={academyClassroom}
       />
 
@@ -63,12 +63,12 @@ const AcademyPage = () => {
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
-          <h2 className="text-center mb-8">📚 הקורסים שלנו</h2>
+          <h2 className="text-center mb-8"><BookOpen className="w-6 h-6 inline-block align-middle ml-1" /> הקורסים שלנו</h2>
           <CardsGrid items={courses} columns={4} />
         </AnimatedSection>
       </Section>
 
-      <Section title="🌟 למה ללמוד אצלנו?" variant="dark">
+      <Section title={<><Star className="w-6 h-6 inline-block align-middle ml-1" /> למה ללמוד אצלנו?</>} variant="dark">
         <AnimatedSection>
           <FeatureGrid items={features} columns={3} />
         </AnimatedSection>
@@ -78,7 +78,7 @@ const AcademyPage = () => {
         <AnimatedSection>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="mb-6">📋 מה תלמדו באקדמיה?</h2>
+              <h2 className="mb-6"><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> מה תלמדו באקדמיה?</h2>
               <ul className="space-y-4">
                 {[
                   "טכניקות תספורת מתקדמות",
@@ -104,7 +104,7 @@ const AcademyPage = () => {
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="mb-6">💬 הבוגרים שלנו מדברים</h2>
+            <h2 className="mb-6"><MessageCircle className="w-6 h-6 inline-block align-middle ml-1" /> הבוגרים שלנו מדברים</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-6 bg-secondary rounded-xl text-right">
                 <p className="opacity-85 mb-4">"הקורס ב-Macho שינה לי את החיים. תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה."</p>
@@ -120,9 +120,9 @@ const AcademyPage = () => {
       </Section>
 
       <CTASection
-        title="🚀 רוצים להצטרף?"
-        description="💬 שלחו הודעה בוואטסאפ ונחזור אליכם עם כל הפרטים"
-        buttonLabel="📲 הירשמו עכשיו"
+        title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> רוצים להצטרף?</>}
+        description={<><MessageCircle className="w-5 h-5 inline-block align-middle ml-1" /> שלחו הודעה בוואטסאפ ונחזור אליכם עם כל הפרטים</>}
+        buttonLabel={<><Smartphone className="w-4 h-4" /> הירשמו עכשיו</>}
         buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+האקדמיה"
         variant="light"
       />

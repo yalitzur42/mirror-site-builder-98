@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Clock, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, MessageCircle, Handshake, Zap, FileText } from "lucide-react";
 import { Warp } from "@paper-design/shaders-react";
 
 const ContactPage = () => {
@@ -32,8 +32,8 @@ const ContactPage = () => {
           <div className="container-main text-center relative z-10">
             <h1 className="hero-title-animate mb-4">רוצים לעבוד איתנו?</h1>
             <p className="text-xl opacity-80 max-w-2xl mx-auto mb-8 text-foreground">
-              🤝 אנחנו תמיד מחפשים אנשים מוכשרים שרוצים להיות חלק ממשפחת Macho. 
-              בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם. 💪
+              <Handshake className="w-5 h-5 inline-block align-middle ml-1" /> אנחנו תמיד מחפשים אנשים מוכשרים שרוצים להיות חלק ממשפחת Macho. 
+              בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם. <Zap className="w-5 h-5 inline-block align-middle ml-1" />
             </p>
             <a
               href="https://wa.me/972544744031?text=היי, אני מעוניין לעבוד עם Macho"
@@ -52,8 +52,8 @@ const ContactPage = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* טופס */}
           <AnimatedSection direction="right">
-            <h2 className="text-2xl font-bold mb-2">📝 השאירו פרטים</h2>
-            <p className="opacity-70 mb-6">✉️ מעדיפים שנחזור אליכם? מלאו את הטופס ונחזור בהקדם.</p>
+            <h2 className="text-2xl font-bold mb-2"><FileText className="w-5 h-5 inline-block align-middle ml-1" /> השאירו פרטים</h2>
+            <p className="opacity-70 mb-6"><Mail className="w-4 h-4 inline-block align-middle ml-1" /> מעדיפים שנחזור אליכם? מלאו את הטופס ונחזור בהקדם.</p>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -81,7 +81,7 @@ const ContactPage = () => {
 
           {/* פרטי קשר */}
           <AnimatedSection direction="left" delay={0.2}>
-            <h2 className="text-2xl font-bold mb-6">📞 פרטי התקשרות</h2>
+            <h2 className="text-2xl font-bold mb-6"><Phone className="w-5 h-5 inline-block align-middle ml-1" /> פרטי התקשרות</h2>
             <div className="space-y-4">
               <Card className="bg-background text-foreground border-border">
                 <CardContent className="p-4 flex items-center gap-4">
