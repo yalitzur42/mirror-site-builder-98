@@ -37,7 +37,7 @@ const PermPage = () => {
         title="פרם לגבר"
         subtitle="🌊 תלתלים מושלמים לגברים"
         description="תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל. 🏆"
-        primaryCta={{ label: "📲 לייעוץ חינם", href: "https://wa.me/972544744031?text=היי, אני מעוניין בייעוץ לפרם לגבר" }}
+        primaryCta={{ label: "📲 לייעוץ חינם", href: "https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." }}
         image={permHero}
       />
 
@@ -112,7 +112,7 @@ const PermPage = () => {
               שלחו לנו תמונה בוואטסאפ ונייעץ לכם בחינם – בלי התחייבות.
             </p>
             <a
-              href="https://wa.me/972544744031?text=היי, אני מעוניין בייעוץ לפרם לגבר"
+              href="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם."
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"
@@ -193,7 +193,7 @@ const PermPage = () => {
         title="🌊 רוצים תלתלים?"
         description="🎯 לחצו לייעוץ חינם ללא התחייבות"
         buttonLabel="📲 דברו איתנו בוואטסאפ"
-        buttonHref="https://wa.me/972544744031?text=היי, אני מעוניין בפרם לגבר"
+        buttonHref="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם."
         variant="light"
       />
     </Layout>
