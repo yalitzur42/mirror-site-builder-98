@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, MapPin, Phone, Clock } from "lucide-react";
+import { Facebook, Instagram, Youtube, MapPin, Phone, Clock, Compass } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* Navigation Column */}
           <div>
-            <h4 className="text-lg font-bold mb-4">🧭 ניווט</h4>
+            <h4 className="text-lg font-bold mb-4"><Compass className="w-4 h-4 inline-block align-middle ml-1" /> ניווט</h4>
             <nav className="space-y-2">
               <Link to="/about" className="block text-muted-foreground hover:text-foreground transition-colors">
                 אודות
@@ -52,7 +52,7 @@ const Footer = () => {
 
           {/* Contact Column */}
           <div>
-            <h4 className="text-lg font-bold mb-4">📞 פרטי קשר</h4>
+            <h4 className="text-lg font-bold mb-4"><Phone className="w-4 h-4 inline-block align-middle ml-1" /> פרטי קשר</h4>
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4 shrink-0" />
@@ -67,7 +67,7 @@ const Footer = () => {
 
           {/* Hours Column */}
           <div>
-            <h4 className="text-lg font-bold mb-4">🕐 שעות פעילות</h4>
+            <h4 className="text-lg font-bold mb-4"><Clock className="w-4 h-4 inline-block align-middle ml-1" /> שעות פעילות</h4>
             <div className="space-y-2 text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 shrink-0" />

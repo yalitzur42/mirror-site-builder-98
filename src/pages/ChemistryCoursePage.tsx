@@ -4,7 +4,7 @@ import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { Clock, Users, Award, Palette } from "lucide-react";
+import { Clock, Users, Award, Palette, Smartphone, ClipboardList, HelpCircle, MessageCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 import courseAdvancedHero from "@/assets/course-advanced-hero.jpg";
@@ -28,9 +28,9 @@ const ChemistryCoursePage = () => {
 
       <HeroSplit
         title="קורס כימיה וצבע"
-        subtitle="🎨 שלטו באמנות הצבע"
-        description="קורס מקיף שיעניק לכם שליטה מלאה בעולם הצביעה והכימיה. תלמדו להבין את המדע מאחורי הצבע וליצור תוצאות מדויקות ומרהיבות. 🔬"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+כימיה+וצבע" }}
+        subtitle="שלטו באמנות הצבע"
+        description="קורס מקיף שיעניק לכם שליטה מלאה בעולם הצביעה והכימיה. תלמדו להבין את המדע מאחורי הצבע וליצור תוצאות מדויקות ומרהיבות."
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לפרטים והרשמה</>, href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+כימיה+וצבע" }}
         image={courseAdvancedHero}
       />
 
@@ -61,7 +61,7 @@ const ChemistryCoursePage = () => {
         </AnimatedSection>
       </Section>
 
-      <Section title="📋 מה תלמדו?" variant="dark">
+      <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> מה תלמדו?</>} variant="dark">
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {modules.map((module, index) => (
@@ -79,7 +79,7 @@ const ChemistryCoursePage = () => {
       <Section variant="light">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">🎨 הפכו למומחי צבע</h2>
+            <h2 className="mb-4"><Palette className="w-6 h-6 inline-block align-middle ml-1" /> הפכו למומחי צבע</h2>
             <p className="text-lg opacity-80 mb-6">
               צביעת שיער היא אמנות ומדע. בקורס הזה תלמדו את שניהם – ותצאו עם היכולת ליצור כל גוון שהלקוח מבקש.
             </p>
@@ -89,16 +89,17 @@ const ChemistryCoursePage = () => {
               rel="noopener noreferrer"
               className="whatsapp-cta"
             >
-              📲 הצטרפו לקורס הבא
+              <Smartphone className="w-5 h-5" />
+              הצטרפו לקורס הבא
             </a>
           </div>
         </AnimatedSection>
       </Section>
 
       <CTASection
-        title="❓ יש שאלות?"
-        description="🙋 אנחנו כאן בשבילכם"
-        buttonLabel="💬 דברו איתנו"
+        title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> יש שאלות?</>}
+        description="אנחנו כאן בשבילכם"
+        buttonLabel={<><MessageCircle className="w-4 h-4" /> דברו איתנו</>}
         buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+כימיה+וצבע"
         variant="dark"
       />

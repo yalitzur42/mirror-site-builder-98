@@ -4,7 +4,7 @@ import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { Clock, Users, Award, Sparkles } from "lucide-react";
+import { Clock, Users, Award, Sparkles, Smartphone, Rocket, Crown, ClipboardList, HelpCircle, MessageCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 import permHero from "@/assets/perm-hero.jpg";
@@ -28,9 +28,9 @@ const PermCoursePage = () => {
 
       <HeroSplit
         title="קורס פרם"
-        subtitle="🌊 הפכו למומחי פרם לגברים"
-        description="קורס ייחודי מסוגו בישראל – למדו את אמנות הפרם לגברים מהחלוצים בתחום. טכניקות, כימיה ושירות ברמה הגבוהה ביותר. 🏅"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם" }}
+        subtitle="הפכו למומחי פרם לגברים"
+        description="קורס ייחודי מסוגו בישראל – למדו את אמנות הפרם לגברים מהחלוצים בתחום. טכניקות, כימיה ושירות ברמה הגבוהה ביותר."
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לפרטים והרשמה</>, href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם" }}
         image={permHero}
       />
 
@@ -61,7 +61,7 @@ const PermCoursePage = () => {
         </AnimatedSection>
       </Section>
 
-      <Section title="📋 תכני הקורס" variant="dark">
+      <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס</>} variant="dark">
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {modules.map((module, index) => (
@@ -79,28 +79,29 @@ const PermCoursePage = () => {
       <Section variant="light">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">🚀 הפרם הוא העתיד</h2>
+            <h2 className="mb-4"><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> הפרם הוא העתיד</h2>
             <p className="text-lg opacity-80 mb-4">
               הביקוש לפרם לגברים רק עולה. ספרים שיודעים לעשות פרם מקצועי נמצאים בביקוש עצום. 
               זה הזמן שלכם ללמוד את המיומנות שתבדיל אתכם מכולם.
             </p>
-            <p className="opacity-70 mb-8">👑 למדו מהחלוצים בתחום הפרם לגברים בישראל</p>
+            <p className="opacity-70 mb-8"><Crown className="w-5 h-5 inline-block align-middle ml-1" /> למדו מהחלוצים בתחום הפרם לגברים בישראל</p>
             <a
               href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם"
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"
             >
-              📲 הצטרפו לקורס הבא
+              <Smartphone className="w-5 h-5" />
+              הצטרפו לקורס הבא
             </a>
           </div>
         </AnimatedSection>
       </Section>
 
       <CTASection
-        title="❓ יש שאלות?"
-        description="🙋 אנחנו כאן בשבילכם"
-        buttonLabel="💬 דברו איתנו"
+        title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> יש שאלות?</>}
+        description="אנחנו כאן בשבילכם"
+        buttonLabel={<><MessageCircle className="w-4 h-4" /> דברו איתנו</>}
         buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם"
         variant="dark"
       />

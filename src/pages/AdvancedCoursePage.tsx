@@ -3,7 +3,7 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
-import { Clock, Users, Award, Sparkles } from "lucide-react";
+import { Clock, Users, Award, Sparkles, Zap, Smartphone, Trophy, ClipboardList, MessageCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -29,9 +29,9 @@ const AdvancedCoursePage = () => {
       
       <HeroSplit
         title="קורס למתקדמים"
-        subtitle="⚡ שדרגו את המיומנויות"
-        description="קורס מתקדם לספרים עם ניסיון שרוצים להעלות רמה. טכניקות מתקדמות, טרנדים חדשים ובניית מותג אישי. 🔥"
-        primaryCta={{ label: "📲 לפרטים והרשמה", href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתקדמים" }}
+        subtitle="שדרגו את המיומנויות"
+        description="קורס מתקדם לספרים עם ניסיון שרוצים להעלות רמה. טכניקות מתקדמות, טרנדים חדשים ובניית מותג אישי."
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לפרטים והרשמה</>, href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתקדמים" }}
         image={courseAdvancedHero}
       />
 
@@ -60,7 +60,7 @@ const AdvancedCoursePage = () => {
         </div>
       </Section>
 
-      <Section title="📋 תכני הקורס" variant="dark">
+      <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס</>} variant="dark">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module, index) => (
             <div key={index} className="flex items-center gap-3 p-4 bg-secondary rounded-lg">
@@ -75,7 +75,7 @@ const AdvancedCoursePage = () => {
 
       <Section variant="light">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="mb-4">🏆 מוכנים לעלות רמה?</h2>
+          <h2 className="mb-4"><Trophy className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לעלות רמה?</h2>
           <p className="text-lg opacity-80 mb-4">
             הקורס למתקדמים ייקח את הכישורים שלכם לשלב הבא. טכניקות שיבדילו אתכם מכל ספר אחר.
           </p>
@@ -86,15 +86,16 @@ const AdvancedCoursePage = () => {
             rel="noopener noreferrer"
             className="whatsapp-cta"
           >
-            📲 הצטרפו לקורס הבא
+            <Smartphone className="w-5 h-5" />
+            הצטרפו לקורס הבא
           </a>
         </div>
       </Section>
 
       <CTASection
-        title="⚡ מוכנים לשדרג?"
-        description="⏰ המקומות מוגבלים – אל תפספסו"
-        buttonLabel="💬 דברו איתנו"
+        title={<><Zap className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לשדרג?</>}
+        description="המקומות מוגבלים – אל תפספסו"
+        buttonLabel={<><MessageCircle className="w-4 h-4" /> דברו איתנו</>}
         buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+ספרות+למתקדמים"
         variant="dark"
       />

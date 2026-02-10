@@ -19,8 +19,8 @@ const BusinessPage = () => {
 
       <HeroSplit
         title="פרטי העסק"
-        subtitle="📍 Macho – כפר סבא"
-        description="כל מה שצריך לדעת לפני שמגיעים אלינו. מיקום, שעות פעילות ודרכי התקשרות. 📞"
+        subtitle="Macho – כפר סבא"
+        description={<>כל מה שצריך לדעת לפני שמגיעים אלינו. מיקום, שעות פעילות ודרכי התקשרות.</>}
       />
 
       <Section variant="light" isFirstSection>

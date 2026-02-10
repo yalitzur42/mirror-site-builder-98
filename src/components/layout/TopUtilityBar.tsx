@@ -1,5 +1,4 @@
-import { MapPin, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { MapPin, Phone, Sparkles, Car } from "lucide-react";
 
 const TopUtilityBar = () => {
   return (
@@ -19,8 +18,8 @@ const TopUtilityBar = () => {
           </a>
         </div>
         <div className="flex items-center gap-4 text-muted-foreground">
-          <span>🎉 10% הנחה על הזמנה ראשונה של מוצרים באתר!</span>
-          <span>🚗 חניה חינם ללקוחות "המספרה"</span>
+          <span className="flex items-center gap-1"><Sparkles className="w-3 h-3" /> 10% הנחה על הזמנה ראשונה של מוצרים באתר!</span>
+          <span className="flex items-center gap-1"><Car className="w-3 h-3" /> חניה חינם ללקוחות "המספרה"</span>
         </div>
       </div>
     </div>

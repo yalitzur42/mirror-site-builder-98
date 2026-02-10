@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import StaggerChildren from "@/components/ui/StaggerChildren";
-import { Shield, Clock, CheckCircle, Sparkles, Crown, Trophy } from "lucide-react";
+import { Shield, Clock, CheckCircle, Sparkles, Crown, Trophy, Waves, Gem, Smartphone, MessageCircle, HelpCircle, Target } from "lucide-react";
 
 import permHero from "@/assets/perm-hero.jpg";
 import permClassic from "@/assets/perm-classic.jpg";
@@ -35,14 +35,14 @@ const PermPage = () => {
 
       <HeroSplit
         title="פרם לגבר"
-        subtitle="🌊 תלתלים מושלמים לגברים"
-        description="תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל. 🏆"
-        primaryCta={{ label: "📲 לייעוץ חינם", href: "https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." }}
+        subtitle="תלתלים מושלמים לגברים"
+        description="תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל."
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לייעוץ חינם</>, href: "https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." }}
         image={permHero}
       />
 
       {/* היתרונות */}
-      <Section title="💎 היתרונות שלנו" variant="light" isFirstSection>
+      <Section title={<><Gem className="w-6 h-6 inline-block align-middle ml-1" /> היתרונות שלנו</>} variant="light" isFirstSection>
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
@@ -82,7 +82,7 @@ const PermPage = () => {
       </Section>
 
       {/* סוגי פרם */}
-      <Section title="✨ סוגי פרם" variant="light">
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> סוגי פרם</>} variant="light">
         <AnimatedSection>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {permTypes.map((type, index) => (
@@ -107,7 +107,7 @@ const PermPage = () => {
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">🤔 רוצים לדעת איזה פרם מתאים לכם?</h2>
+            <h2 className="mb-4"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> רוצים לדעת איזה פרם מתאים לכם?</h2>
             <p className="text-lg opacity-80 mb-8">
               שלחו לנו תמונה בוואטסאפ ונייעץ לכם בחינם – בלי התחייבות.
             </p>
@@ -117,44 +117,45 @@ const PermPage = () => {
               rel="noopener noreferrer"
               className="whatsapp-cta"
             >
-              📲 לייעוץ חינם בוואטסאפ
+              <Smartphone className="w-5 h-5" />
+              לייעוץ חינם בוואטסאפ
             </a>
           </div>
         </AnimatedSection>
       </Section>
 
-      {/* איך זה עובד – צבעוני ואימוג'י */}
+      {/* איך זה עובד */}
       <Section variant="light">
         <AnimatedSection>
-          <h2 className="text-center mb-12">איך זה עובד? 🤔</h2>
+          <h2 className="text-center mb-12"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד?</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <img src={gallery3} alt="תהליך פרם" className="rounded-xl w-full" />
             <div className="space-y-6">
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(35, 60%, 92%)' }}>
-                <div className="w-14 h-14 rounded-full flex items-center justify-center text-3xl shrink-0" style={{ backgroundColor: 'hsl(35, 70%, 85%)' }}>
-                  💬
+                <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'hsl(35, 70%, 85%)' }}>
+                  <MessageCircle className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">1. ייעוץ ראשוני</h4>
-                  <p className="opacity-70">פגישת היכרות קצרה – מבינים מה הסגנון שמתאים לך ומתאימים את סוג הפרם 🎯</p>
+                  <p className="opacity-70">פגישת היכרות קצרה – מבינים מה הסגנון שמתאים לך ומתאימים את סוג הפרם</p>
                 </div>
               </div>
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(140, 40%, 90%)' }}>
-                <div className="w-14 h-14 rounded-full flex items-center justify-center text-3xl shrink-0" style={{ backgroundColor: 'hsl(140, 50%, 82%)' }}>
-                  ✨
+                <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'hsl(140, 50%, 82%)' }}>
+                  <Sparkles className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">2. הטיפול</h4>
-                  <p className="opacity-70">כ-2 שעות של טיפול מקצועי עם מוצרים איכותיים. אתה פשוט יושב ונהנה ☕</p>
+                  <p className="opacity-70">כ-2 שעות של טיפול מקצועי עם מוצרים איכותיים. אתה פשוט יושב ונהנה</p>
                 </div>
               </div>
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(210, 50%, 92%)' }}>
-                <div className="w-14 h-14 rounded-full flex items-center justify-center text-3xl shrink-0" style={{ backgroundColor: 'hsl(210, 55%, 84%)' }}>
-                  🔥
+                <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'hsl(210, 55%, 84%)' }}>
+                  <Trophy className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">3. תלתלים מושלמים!</h4>
-                  <p className="opacity-70">יוצא מהמספרה עם לוק חדש לגמרי. התוצאה נשמרת 3-6 חודשים 💪</p>
+                  <p className="opacity-70">יוצא מהמספרה עם לוק חדש לגמרי. התוצאה נשמרת 3-6 חודשים</p>
                 </div>
               </div>
             </div>
@@ -190,9 +191,9 @@ const PermPage = () => {
       </Section>
 
       <CTASection
-        title="🌊 רוצים תלתלים?"
-        description="🎯 לחצו לייעוץ חינם ללא התחייבות"
-        buttonLabel="📲 דברו איתנו בוואטסאפ"
+        title={<><Waves className="w-6 h-6 inline-block align-middle ml-1" /> רוצים תלתלים?</>}
+        description={<><Target className="w-5 h-5 inline-block align-middle ml-1" /> לחצו לייעוץ חינם ללא התחייבות</>}
+        buttonLabel={<><Smartphone className="w-4 h-4" /> דברו איתנו בוואטסאפ</>}
         buttonHref="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם."
         variant="light"
       />
