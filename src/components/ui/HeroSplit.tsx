@@ -25,7 +25,7 @@ const HeroSplit = ({
   children,
 }: HeroSplitProps) => {
   return (
-    <div className="bg-[hsl(60_56%_91%)]">
+    <div className="bg-[hsl(60_56%_91%)]" style={{ backgroundImage: "url('/images/marble-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
       <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] pb-20 md:pb-28 overflow-hidden">
         {/* Warp Shader Background */}
         <Warp
