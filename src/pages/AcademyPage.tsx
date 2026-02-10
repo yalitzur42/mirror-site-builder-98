@@ -64,7 +64,7 @@ const AcademyPage = () => {
 
         <AnimatedSection delay={0.2}>
           <h2 className="text-center mb-8">הקורסים שלנו</h2>
-          <CardsGrid items={courses} columns={3} />
+          <CardsGrid items={courses} columns={4} />
         </AnimatedSection>
       </Section>
 
