@@ -18,7 +18,7 @@ const ContactPage = () => {
         <section className="relative py-16 md:py-24 overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
           <Warp
             colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
-            speed={0.15}
+            speed={1.2}
             scale={1.2}
             distortion={0.4}
             swirl={0.3}
