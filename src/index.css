@@ -123,6 +123,9 @@
   opacity: 0;
   transform: translateY(24px);
   animation: heroTitleIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  -webkit-text-stroke: 2px hsl(60 56% 91%);
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 @keyframes heroTitleIn {
