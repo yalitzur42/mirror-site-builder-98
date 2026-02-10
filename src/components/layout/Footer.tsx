@@ -41,8 +41,8 @@ const Footer = () => {
               <Link to="/academy" className="block text-muted-foreground hover:text-foreground transition-colors">
                 קורסים
               </Link>
-              <Link to="/blog" className="block text-muted-foreground hover:text-foreground transition-colors">
-                בלוג
+              <Link to="/business" className="block text-muted-foreground hover:text-foreground transition-colors">
+                פרטי העסק
               </Link>
               <Link to="/contact" className="block text-muted-foreground hover:text-foreground transition-colors">
                 צור קשר

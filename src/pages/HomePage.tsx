@@ -51,7 +51,7 @@ const HomePage = () => {
         title="משפחת Macho"
         subtitle="מובילים את סצנת טיפוח השיער לגברים בישראל!"
         description="מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר."
-        primaryCta={{ label: "לקביעת תור", href: "/contact" }}
+        primaryCta={{ label: "📲 לקביעת תור", href: "https://wa.me/972544744031?text=היי, אשמח לקבוע תור" }}
         secondaryCta={{ label: "לאקדמיה", href: "/academy" }}
         image={heroBarbershop}
       />
@@ -183,8 +183,8 @@ const HomePage = () => {
         <CTASection
           title="מוכנים להתחיל?"
           description="קבעו תור עכשיו וחוו את ההבדל"
-          buttonLabel="לקביעת תור"
-          buttonHref="/contact"
+          buttonLabel="📲 קבעו תור בוואטסאפ"
+          buttonHref="https://wa.me/972544744031?text=היי, אשמח לקבוע תור"
           variant="light"
         />
       </AnimatedSection>

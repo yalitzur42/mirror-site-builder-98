@@ -18,15 +18,15 @@ const navItems = [
     label: "האקדמיה",
     href: "/academy",
     children: [
-      { label: "קורסים למתחילים", href: "/academy/beginner" },
-      { label: "קורסים למתקדמים", href: "/academy/advanced" },
-      { label: "קורס בסיסי", href: "/academy/basic-course" },
+      { label: "קורס למתחילים", href: "/academy/beginner" },
+      { label: "קורס למתקדמים", href: "/academy/advanced" },
+      { label: "קורס כימיה וצבע", href: "/academy/chemistry" },
+      { label: "קורס פרם", href: "/academy/perm-course" },
       { label: "קורסים דיגיטליים", href: "/online-courses" },
     ],
   },
-  
   { label: "פרטי העסק", href: "/business" },
-  { label: "צור קשר", href: "/contact" },
+  { label: "עבדו איתנו", href: "/contact" },
 ];
 
 const MainHeader = () => {

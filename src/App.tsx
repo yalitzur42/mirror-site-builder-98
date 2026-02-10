@@ -11,6 +11,8 @@ import AcademyPage from "./pages/AcademyPage";
 import BeginnerCoursePage from "./pages/BeginnerCoursePage";
 import AdvancedCoursePage from "./pages/AdvancedCoursePage";
 import BasicCoursePage from "./pages/BasicCoursePage";
+import ChemistryCoursePage from "./pages/ChemistryCoursePage";
+import PermCoursePage from "./pages/PermCoursePage";
 import OnlineCoursesPage from "./pages/OnlineCoursesPage";
 
 import BusinessPage from "./pages/BusinessPage";
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/academy/beginner" element={<BeginnerCoursePage />} />
           <Route path="/academy/advanced" element={<AdvancedCoursePage />} />
           <Route path="/academy/basic-course" element={<BasicCoursePage />} />
+          <Route path="/academy/chemistry" element={<ChemistryCoursePage />} />
+          <Route path="/academy/perm-course" element={<PermCoursePage />} />
           <Route path="/online-courses" element={<OnlineCoursesPage />} />
           
           <Route path="/business" element={<BusinessPage />} />
