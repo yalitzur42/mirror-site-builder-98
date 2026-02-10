@@ -14,9 +14,9 @@ const TopUtilityBar = () => {
             <Phone className="w-4 h-4" />
             <span>054-4744031</span>
           </div>
-          <Link to="/contact" className="text-accent hover:underline">
+          <a href="https://calmark.io/p/ZBfbx" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
             לקביעת תור
-          </Link>
+          </a>
         </div>
         <div className="flex items-center gap-4 text-muted-foreground">
           <span>🎉 10% הנחה על הזמנה ראשונה של מוצרים באתר!</span>

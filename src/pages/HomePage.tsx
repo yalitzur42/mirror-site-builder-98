@@ -52,7 +52,7 @@ const HomePage = () => {
         title="משפחת Macho"
         subtitle="מובילים את סצנת טיפוח השיער לגברים בישראל!"
         description="מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר."
-        primaryCta={{ label: "📲 לקביעת תור", href: "https://wa.me/972544744031?text=היי, אשמח לקבוע תור" }}
+        primaryCta={{ label: "📲 לקביעת תור", href: "https://calmark.io/p/ZBfbx" }}
         secondaryCta={{ label: "🎓 לאקדמיה", href: "/academy" }}
         image={heroBarbershop}
       />
@@ -186,7 +186,7 @@ const HomePage = () => {
           title="🚀 מוכנים להתחיל?"
           description="✂️ קבעו תור עכשיו וחוו את ההבדל"
           buttonLabel="📲 קבעו תור בוואטסאפ"
-          buttonHref="https://wa.me/972544744031?text=היי, אשמח לקבוע תור"
+          buttonHref="https://calmark.io/p/ZBfbx"
           variant="light"
         />
       </AnimatedSection>
