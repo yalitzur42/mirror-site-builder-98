@@ -59,7 +59,8 @@ const MainHeader = () => {
               </Link>
 
               {item.children && openDropdown === item.label && (
-                <div className="absolute top-full right-0 mt-2 bg-popover border border-border rounded-lg shadow-lg py-2 min-w-[200px]">
+                <div className="absolute top-full right-0 pt-2">
+                <div className="bg-popover border border-border rounded-lg shadow-lg py-2 min-w-[200px] z-50">
                   {item.children.map((child) => (
                     <Link
                       key={child.label}
@@ -69,6 +70,7 @@ const MainHeader = () => {
                       {child.label}
                     </Link>
                   ))}
+                </div>
                 </div>
               )}
             </div>
