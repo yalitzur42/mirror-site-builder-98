@@ -46,7 +46,11 @@ const CTASection = ({
           </p>
         )}
         <Button asChild size="lg" className={getButtonClasses()}>
-          <Link to={buttonHref}>{buttonLabel}</Link>
+          {buttonHref.startsWith("http") ? (
+            <a href={buttonHref} target="_blank" rel="noopener noreferrer">{buttonLabel}</a>
+          ) : (
+            <Link to={buttonHref}>{buttonLabel}</Link>
+          )}
         </Button>
       </div>
     </section>

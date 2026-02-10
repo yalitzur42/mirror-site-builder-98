@@ -74,20 +74,28 @@ const AdvancedCoursePage = () => {
       </Section>
 
       <Section variant="light">
-        <div className="text-center">
-          <h2 className="mb-4">מחיר הקורס</h2>
-          <div className="text-5xl font-black text-accent mb-4">₪5,500</div>
-          <p className="opacity-70 mb-8">לספרים פעילים בלבד</p>
-          <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
-            <Link to="/contact">להרשמה</Link>
-          </Button>
+        <div className="text-center max-w-2xl mx-auto">
+          <h2 className="mb-4">מוכנים לעלות רמה?</h2>
+          <p className="text-lg opacity-80 mb-4">
+            הקורס למתקדמים ייקח את הכישורים שלכם לשלב הבא. טכניקות שיבדילו אתכם מכל ספר אחר.
+          </p>
+          <p className="opacity-70 mb-8">לספרים פעילים עם ניסיון בלבד</p>
+          <a
+            href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס למתקדמים"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whatsapp-cta"
+          >
+            📲 הצטרפו לקורס הבא
+          </a>
         </div>
       </Section>
 
       <CTASection
         title="מוכנים לשדרג?"
-        buttonLabel="הרשמו עכשיו"
-        buttonHref="/contact"
+        description="המקומות מוגבלים – אל תפספסו"
+        buttonLabel="💬 דברו איתנו"
+        buttonHref="https://wa.me/972544744031"
         variant="dark"
       />
     </Layout>

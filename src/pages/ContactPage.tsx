@@ -1,31 +1,43 @@
 import Layout from "@/components/layout/Layout";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Clock, Mail } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, MessageCircle } from "lucide-react";
 
 const ContactPage = () => {
   return (
     <Layout>
-      <Breadcrumbs items={[{ label: "צור קשר" }]} />
-      
+      <Breadcrumbs items={[{ label: "עבדו איתנו" }]} />
+
       <section className="gradient-hero py-16 md:py-24">
         <div className="container-main text-center">
-          <h1 className="mb-4">צרו קשר</h1>
-          <p className="text-xl opacity-80 max-w-2xl mx-auto">
-            יש לכם שאלות? רוצים לקבוע תור? השאירו פרטים ונחזור אליכם בהקדם.
+          <h1 className="mb-4">רוצים לעבוד איתנו?</h1>
+          <p className="text-xl opacity-80 max-w-2xl mx-auto mb-8">
+            אנחנו תמיד מחפשים אנשים מוכשרים שרוצים להיות חלק ממשפחת Macho. 
+            בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם.
           </p>
+          <a
+            href="https://wa.me/972544744031?text=היי, אני מעוניין לעבוד עם Macho"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whatsapp-cta"
+          >
+            <MessageCircle className="w-5 h-5" />
+            דברו איתנו בוואטסאפ
+          </a>
         </div>
       </section>
 
       <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">השאירו פרטים</h2>
+          {/* טופס */}
+          <AnimatedSection direction="right">
+            <h2 className="text-2xl font-bold mb-2">השאירו פרטים</h2>
+            <p className="opacity-70 mb-6">מעדיפים שנחזור אליכם? מלאו את הטופס ונחזור בהקדם.</p>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -42,21 +54,17 @@ const ContactPage = () => {
                 <Input type="email" placeholder="your@email.com" className="bg-background border-border text-foreground" />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">נושא</label>
-                <Input placeholder="במה נוכל לעזור?" className="bg-background border-border text-foreground" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">הודעה</label>
-                <Textarea placeholder="כתבו את הודעתכם כאן..." rows={5} className="bg-background border-border text-foreground" />
+                <label className="block text-sm font-medium mb-2">ספרו לנו על עצמכם</label>
+                <Textarea placeholder="ניסיון, מוטיבציה, מה אתם מחפשים..." rows={5} className="bg-background border-border text-foreground" />
               </div>
               <Button type="submit" size="lg" className="w-full bg-background text-foreground hover:bg-background/90">
-                שלחו הודעה
+                שלחו פרטים
               </Button>
             </form>
-          </div>
+          </AnimatedSection>
 
-          {/* Contact Info */}
-          <div>
+          {/* פרטי קשר */}
+          <AnimatedSection direction="left" delay={0.2}>
             <h2 className="text-2xl font-bold mb-6">פרטי התקשרות</h2>
             <div className="space-y-4">
               <Card className="bg-background text-foreground border-border">
@@ -109,11 +117,20 @@ const ContactPage = () => {
               </Card>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="mt-6 aspect-video bg-background rounded-lg flex items-center justify-center border border-border">
-              <span className="text-foreground opacity-50">מפה</span>
+            {/* מפה */}
+            <div className="mt-6 aspect-video rounded-lg overflow-hidden border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.5!2d34.9!3d32.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDEwJzQ4LjAiTiAzNMKwNTQnMDAuMCJF!5e0!3m2!1siw!2sil!4v1700000000000"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="מיקום Macho - תל חי 37, כפר סבא"
+              />
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </Section>
     </Layout>

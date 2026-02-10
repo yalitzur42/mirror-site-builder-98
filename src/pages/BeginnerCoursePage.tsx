@@ -69,21 +69,28 @@ const BeginnerCoursePage = () => {
       </Section>
 
       <Section variant="light">
-        <div className="text-center">
-          <h2 className="mb-4">מחיר הקורס</h2>
-          <div className="text-5xl font-black text-accent mb-4">₪8,500</div>
-          <p className="opacity-70 mb-8">כולל ערכת ציוד מקצועית</p>
-          <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
-            <Link to="/contact">להרשמה</Link>
-          </Button>
+        <div className="text-center max-w-2xl mx-auto">
+          <h2 className="mb-4">מוכנים להתחיל קריירה חדשה?</h2>
+          <p className="text-lg opacity-80 mb-4">
+            הקורס למתחילים הוא הצעד הראשון בדרך לקריירה מצליחה בעולם הספרות. בוגרי הקורס עובדים במספרות המובילות בארץ.
+          </p>
+          <p className="opacity-70 mb-8">כולל ערכת ציוד מקצועית מלאה</p>
+          <a
+            href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס למתחילים"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whatsapp-cta"
+          >
+            📲 הירשמו עכשיו בוואטסאפ
+          </a>
         </div>
       </Section>
 
       <CTASection
         title="יש שאלות?"
-        description="צרו קשר ונשמח לעזור"
-        buttonLabel="צרו קשר"
-        buttonHref="/contact"
+        description="אנחנו כאן בשבילכם"
+        buttonLabel="💬 דברו איתנו"
+        buttonHref="https://wa.me/972544744031"
         variant="dark"
       />
     </Layout>

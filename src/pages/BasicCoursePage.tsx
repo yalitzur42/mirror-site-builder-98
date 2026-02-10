@@ -69,21 +69,27 @@ const BasicCoursePage = () => {
       </Section>
 
       <Section variant="light">
-        <div className="text-center">
-          <h2 className="mb-4">מחיר הקורס</h2>
-          <div className="text-5xl font-black text-accent mb-4">₪2,900</div>
-          <p className="opacity-70 mb-8">כולל חומרי לימוד</p>
-          <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
-            <Link to="/contact">להרשמה</Link>
-          </Button>
+        <div className="text-center max-w-2xl mx-auto">
+          <h2 className="mb-4">הצעד הבא שלך מתחיל כאן</h2>
+          <p className="text-lg opacity-80 mb-6">
+            הקורס הבסיסי הוא הדרך המהירה ביותר לטעום את עולם הספרות. מקומות מוגבלים – שריינו את שלכם.
+          </p>
+          <a
+            href="https://wa.me/972544744031?text=היי, אני מעוניין בקורס הבסיסי"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whatsapp-cta"
+          >
+            📲 שריינו מקום בוואטסאפ
+          </a>
         </div>
       </Section>
 
       <CTASection
         title="מתלבטים?"
-        description="זה הקורס המושלם להתחיל"
-        buttonLabel="דברו איתנו"
-        buttonHref="/contact"
+        description="דברו איתנו ונעזור לכם להחליט"
+        buttonLabel="💬 שלחו הודעה"
+        buttonHref="https://wa.me/972544744031"
         variant="dark"
       />
     </Layout>

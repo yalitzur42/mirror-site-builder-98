@@ -62,7 +62,11 @@ const HeroSplit = ({
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 {primaryCta && (
                   <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                    <Link to={primaryCta.href}>{primaryCta.label}</Link>
+                    {primaryCta.href.startsWith("http") ? (
+                      <a href={primaryCta.href} target="_blank" rel="noopener noreferrer">{primaryCta.label}</a>
+                    ) : (
+                      <Link to={primaryCta.href}>{primaryCta.label}</Link>
+                    )}
                   </Button>
                 )}
                 {secondaryCta && (
@@ -72,7 +76,11 @@ const HeroSplit = ({
                     variant="outline"
                     className="border-foreground text-foreground hover:bg-foreground/10"
                   >
-                    <Link to={secondaryCta.href}>{secondaryCta.label}</Link>
+                    {secondaryCta.href.startsWith("http") ? (
+                      <a href={secondaryCta.href} target="_blank" rel="noopener noreferrer">{secondaryCta.label}</a>
+                    ) : (
+                      <Link to={secondaryCta.href}>{secondaryCta.label}</Link>
+                    )}
                   </Button>
                 )}
               </div>
