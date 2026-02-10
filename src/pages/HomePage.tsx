@@ -17,6 +17,7 @@ import heroBarbershop from "@/assets/hero-barbershop.jpg";
 import permHero from "@/assets/perm-hero.jpg";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import ownerPortrait from "@/assets/owner-portrait.jpg";
+import teamIcon from "@/assets/team-icon.png";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -165,6 +166,7 @@ const HomePage = () => {
             <img src={ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
+            <img src={teamIcon} alt="" className="w-20 h-20 mb-4" />
             <h2 className="mb-4">👥 הכירו את הצוות</h2>
             <h3 className="text-xl font-semibold mb-4 opacity-80">ישראל ישראלי – מייסד Macho</h3>
             <div className="space-y-4 opacity-70">
