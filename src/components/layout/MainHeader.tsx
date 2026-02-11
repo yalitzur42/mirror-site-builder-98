@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X, Facebook, Instagram, Youtube } from "lucide-react";
+import { ChevronDown, Menu, X, Instagram, Youtube } from "lucide-react";
+import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 
@@ -79,8 +80,8 @@ const MainHeader = () => {
 
         {/* Social Icons */}
         <div className="hidden lg:flex items-center gap-4">
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Facebook className="w-5 h-5" />
+          <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <TikTokIcon className="w-5 h-5" />
           </a>
           <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
             <Instagram className="w-5 h-5" />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, MapPin, Phone, Clock, Compass } from "lucide-react";
+import { Instagram, Youtube, MapPin, Phone, Clock, Compass } from "lucide-react";
+import TikTokIcon from "@/components/ui/TikTokIcon";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -16,8 +17,8 @@ const Footer = () => {
               מובילים את סצנת טיפוח השיער לגברים בישראל. מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                <TikTokIcon className="w-5 h-5" />
               </a>
               <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
