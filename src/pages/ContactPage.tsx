@@ -136,7 +136,7 @@ const ContactPage = () => {
             {/* מפה */}
             <div className="mt-6 aspect-video rounded-lg overflow-hidden border border-border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.5!2d35.289!3d32.608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCszNiczAuMCJOIDM1wrAxNyczNC4wIkU!5e0!3m2!1siw!2sil!4v1700000000000"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=%D7%94%D7%9E%D7%97%D7%A9%D7%9C%D7%99%D7%9D+5+%D7%A2%D7%A4%D7%95%D7%9C%D7%94&zoom=16"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
