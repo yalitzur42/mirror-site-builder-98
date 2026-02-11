@@ -82,7 +82,7 @@ const MainHeader = () => {
           <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
             <Facebook className="w-5 h-5" />
           </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+          <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
             <Instagram className="w-5 h-5" />
           </a>
           <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">

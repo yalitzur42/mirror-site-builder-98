@@ -106,7 +106,7 @@ const BusinessPage = () => {
             <AnimatedSection direction="right" delay={0.5}>
               <h3 className="text-xl font-bold mb-3">עקבו אחרינו</h3>
               <div className="flex gap-4">
-                <a href="#" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
+                <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
                   <Instagram className="w-6 h-6 text-[hsl(60_56%_91%)]" />
                 </a>
                 <a href="#" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
