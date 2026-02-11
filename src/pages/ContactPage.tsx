@@ -90,7 +90,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-foreground">כתובת</h4>
-                    <p className="opacity-70">תל חי 37, כפר סבא</p>
+                    <p className="opacity-70">המחשלים 5, עפולה</p>
                   </div>
                 </CardContent>
               </Card>
@@ -136,14 +136,14 @@ const ContactPage = () => {
             {/* מפה */}
             <div className="mt-6 aspect-video rounded-lg overflow-hidden border border-border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.5!2d34.9!3d32.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDEwJzQ4LjAiTiAzNMKwNTQnMDAuMCJF!5e0!3m2!1siw!2sil!4v1700000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.5!2d35.289!3d32.608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCszNiczAuMCJOIDM1wrAxNyczNC4wIkU!5e0!3m2!1siw!2sil!4v1700000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="מיקום Macho - תל חי 37, כפר סבא"
+                title="מיקום Macho - המחשלים 5, עפולה"
               />
             </div>
           </AnimatedSection>

@@ -7,7 +7,7 @@ const TopUtilityBar = () => {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2 text-muted-foreground">
             <MapPin className="w-4 h-4" />
-            <span>תל חי 37, כפר סבא</span>
+            <span>המחשלים 5, עפולה</span>
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
             <Phone className="w-4 h-4" />
