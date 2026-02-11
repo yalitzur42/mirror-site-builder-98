@@ -3,7 +3,8 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { MapPin, Phone, Clock, Car, Scissors, Instagram, Facebook, Youtube } from "lucide-react";
+import { MapPin, Phone, Clock, Car, Scissors, Instagram, Youtube } from "lucide-react";
+import TikTokIcon from "@/components/ui/TikTokIcon";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 
 const BusinessPage = () => {
@@ -109,8 +110,8 @@ const BusinessPage = () => {
                 <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
                   <Instagram className="w-6 h-6 text-[hsl(60_56%_91%)]" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
-                  <Facebook className="w-6 h-6 text-[hsl(60_56%_91%)]" />
+                <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
+                  <TikTokIcon className="w-6 h-6 text-[hsl(60_56%_91%)]" />
                 </a>
                 <a href="#" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
                   <Youtube className="w-6 h-6 text-[hsl(60_56%_91%)]" />
