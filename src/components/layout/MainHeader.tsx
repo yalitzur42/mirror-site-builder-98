@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X, Instagram, Youtube } from "lucide-react";
+import { ChevronDown, Menu, X, Instagram } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
@@ -85,9 +85,6 @@ const MainHeader = () => {
           </a>
           <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
             <Instagram className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Youtube className="w-5 h-5" />
           </a>
         </div>
 

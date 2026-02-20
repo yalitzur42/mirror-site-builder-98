@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Youtube, MapPin, Phone, Clock, Compass } from "lucide-react";
+import { Instagram, MapPin, Phone, Clock, Compass } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import logo from "@/assets/logo.png";
 
@@ -22,9 +22,6 @@ const Footer = () => {
               </a>
               <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
