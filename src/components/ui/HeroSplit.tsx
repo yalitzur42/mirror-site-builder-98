@@ -36,9 +36,9 @@ const HeroSplit = ({
             "#2a1a0d",
             "#6b4226",
           ]}
-          speed={1.2}
-          scale={1.2}
-          distortion={0.4}
+          speed={3.5}
+          scale={1.5}
+          distortion={0.6}
           swirl={0.3}
           swirlIterations={6}
           softness={0.7}
