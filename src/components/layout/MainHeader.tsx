@@ -36,10 +36,10 @@ const MainHeader = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
-      <div className="container-main py-4 flex items-center justify-between">
+      <div className="container-main py-5 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Mac'ho" className="h-10" />
+          <img src={logo} alt="Mac'ho" className="h-14" />
         </Link>
 
         {/* Desktop Nav */}
