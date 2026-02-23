@@ -163,7 +163,7 @@ const HomePage = () => {
             </motion.div>
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <img src={barbershopInterior} alt="פנים Macho" className="rounded-lg w-full" />
+            <img src={barbershopInterior} alt="פנים Macho" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
           </AnimatedSection>
         </div>
       </Section>
