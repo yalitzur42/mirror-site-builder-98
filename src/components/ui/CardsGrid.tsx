@@ -38,7 +38,7 @@ const CardsGrid = ({ items, columns = 4 }: CardsGridProps) => {
                 <span className="text-secondary-foreground opacity-60">תמונה</span>
               </div>
             )}
-            <CardContent className="p-4 text-center bg-primary text-primary-foreground">
+            <CardContent className="p-4 text-center bg-[hsl(60,56%,91%)] text-[hsl(25,50%,20%)]">
               <h3 className="font-bold text-lg">{item.title}</h3>
               {item.description && (
                 <p className="text-sm mt-2 opacity-80">{item.description}</p>
