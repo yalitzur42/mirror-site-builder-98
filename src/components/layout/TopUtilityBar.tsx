@@ -34,14 +34,14 @@ const TopUtilityBar = () => {
             href={wazeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
           >
             <Navigation className="w-4 h-4" />
             <span>נווטו אלינו</span>
           </a>
           <a
             href="tel:054-4744031"
-            className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
           >
             <Phone className="w-4 h-4" />
             <span>054-4744031</span>
@@ -57,7 +57,7 @@ const TopUtilityBar = () => {
           </a>
         </div>
         {/* Desktop only extras */}
-        <div className="hidden md:flex items-center gap-4 text-primary-foreground/70">
+        <div className="hidden md:flex items-center gap-4 text-white/80">
           <span className="flex items-center gap-1"><Sparkles className="w-3 h-3" /> 10% הנחה על הזמנה ראשונה של מוצרים באתר!</span>
           <span className="flex items-center gap-1"><Car className="w-3 h-3" /> חניה חינם ללקוחות "המספרה"</span>
         </div>
