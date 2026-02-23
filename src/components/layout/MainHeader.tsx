@@ -43,7 +43,7 @@ const MainHeader = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-2">
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -53,25 +53,30 @@ const MainHeader = () => {
             >
               <Link
                 to={item.href}
-                className="flex items-center gap-1 text-foreground hover:text-primary transition-colors"
+                className={cn(
+                  "flex items-center gap-1 px-4 py-2 rounded-full text-sm font-bold tracking-wide",
+                  "border border-foreground/20 text-foreground",
+                  "hover:bg-foreground hover:text-background",
+                  "transition-all duration-300"
+                )}
               >
                 {item.label}
-                {item.children && <ChevronDown className="w-4 h-4" />}
+                {item.children && <ChevronDown className="w-3.5 h-3.5" />}
               </Link>
 
               {item.children && openDropdown === item.label && (
-                <div className="absolute top-full right-0 pt-2">
-                <div className="bg-popover border border-border rounded-lg shadow-lg py-2 min-w-[200px] z-50">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.label}
-                      to={child.href}
-                      className="block px-4 py-2 hover:bg-muted transition-colors"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
+                <div className="absolute top-full right-0 pt-3">
+                  <div className="bg-popover/95 backdrop-blur-md border border-border/50 rounded-xl shadow-2xl py-2 min-w-[220px] z-50">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        to={child.href}
+                        className="block px-5 py-2.5 text-sm hover:bg-foreground/10 transition-colors"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
