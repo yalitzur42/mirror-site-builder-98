@@ -20,25 +20,11 @@ const shapes: Record<DividerShape, string> = {
 };
 
 const SectionDivider = ({ from = "dark", to = "light", shape = "zigzag" }: SectionDividerProps) => {
-  const topColor = from === "dark" ? "hsl(25, 50%, 20%)" : "hsl(60, 56%, 91%)";
-  const bottomColor = to === "dark" ? "hsl(25, 50%, 20%)" : "hsl(60, 56%, 91%)";
-  const isToLight = to === "light";
+  const topColor = from === "dark" ? "hsl(25, 50%, 20%)" : "transparent";
+  const bgColor = to === "dark" ? "hsl(25, 50%, 20%)" : "transparent";
 
   return (
-    <div className="relative w-full h-8 md:h-12 -my-px overflow-hidden" style={{ backgroundColor: bottomColor }}>
-      {/* If transitioning TO light, show marble texture in background */}
-      {isToLight && (
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "url('/images/marble-bg.png')",
-            backgroundSize: "100% auto",
-            backgroundPosition: "top center",
-            backgroundRepeat: "repeat-y",
-            backgroundColor: "hsl(60, 56%, 91%)",
-          }}
-        />
-      )}
+    <div className="relative w-full h-8 md:h-12 -my-px overflow-hidden" style={{ backgroundColor: bgColor }}>
       <svg
         className="absolute top-0 left-0 w-full h-full"
         viewBox="0 0 1200 48"

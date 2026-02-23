@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import StaggerChildren from "@/components/ui/StaggerChildren";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Shield, Clock, CheckCircle, Sparkles, Crown, Trophy, Waves, Gem, Smartphone, MessageCircle, HelpCircle, Target } from "lucide-react";
 
 import permHero from "@/assets/perm-hero.jpg";
@@ -41,7 +42,6 @@ const PermPage = () => {
         image={permHero}
       />
 
-      {/* היתרונות */}
       <Section title={<><Gem className="w-6 h-6 inline-block align-middle ml-1" /> היתרונות שלנו</>} variant="light" isFirstSection>
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -58,41 +58,30 @@ const PermPage = () => {
         </AnimatedSection>
       </Section>
 
-      {/* מה זה פרם? */}
+      <SectionDivider from="light" to="dark" shape="waves" />
+
       <Section variant="dark">
         <AnimatedSection>
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="mb-6">מה זה פרם?</h2>
             <div className="space-y-4 text-lg opacity-85">
-              <p>
-                פרם הוא טיפול מקצועי שמעניק לשיער גלים או תלתלים באופן קבוע למשך מספר חודשים. 
-                הטכנולוגיה התפתחה מאוד בשנים האחרונות – המוצרים בטוחים, התוצאה טבעית והשיער נשאר בריא.
-              </p>
-              <p>
-                <strong>למי זה מתאים?</strong> לכל גבר שרוצה להוסיף נפח, טקסטורה וסגנון לשיער שלו. 
-                בין אם השיער שלך ישר לגמרי ובין אם יש לך גלים קלים – פרם יכול לשדרג את הלוק שלך ברמות.
-              </p>
-              <p>
-                <strong>למה זה עובד היום?</strong> המוצרים של 2024 הם לא המוצרים של פעם. 
-                טכנולוגיה מתקדמת שומרת על בריאות השיער ונותנת תוצאה שנראית 100% טבעית.
-              </p>
+              <p>פרם הוא טיפול מקצועי שמעניק לשיער גלים או תלתלים באופן קבוע למשך מספר חודשים. הטכנולוגיה התפתחה מאוד בשנים האחרונות – המוצרים בטוחים, התוצאה טבעית והשיער נשאר בריא.</p>
+              <p><strong>למי זה מתאים?</strong> לכל גבר שרוצה להוסיף נפח, טקסטורה וסגנון לשיער שלו. בין אם השיער שלך ישר לגמרי ובין אם יש לך גלים קלים – פרם יכול לשדרג את הלוק שלך ברמות.</p>
+              <p><strong>למה זה עובד היום?</strong> המוצרים של 2024 הם לא המוצרים של פעם. טכנולוגיה מתקדמת שומרת על בריאות השיער ונותנת תוצאה שנראית 100% טבעית.</p>
             </div>
           </div>
         </AnimatedSection>
       </Section>
 
-      {/* סוגי פרם */}
+      <SectionDivider from="dark" to="light" shape="triangles" />
+
       <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> סוגי פרם</>} variant="light">
         <AnimatedSection>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {permTypes.map((type, index) => (
               <div key={index} className="group overflow-hidden rounded-xl">
                 <div className="aspect-[3/4] overflow-hidden rounded-xl">
-                  <img
-                    src={type.image}
-                    alt={type.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  <img src={type.image} alt={type.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="py-3 text-center">
                   <h3 className="font-bold text-lg">{type.name}</h3>
@@ -103,20 +92,14 @@ const PermPage = () => {
         </AnimatedSection>
       </Section>
 
-      {/* CTA ייעוץ */}
+      <SectionDivider from="light" to="dark" shape="curves" />
+
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="mb-4"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> רוצים לדעת איזה פרם מתאים לכם?</h2>
-            <p className="text-lg opacity-80 mb-8">
-              שלחו לנו תמונה בוואטסאפ ונייעץ לכם בחינם – בלי התחייבות.
-            </p>
-            <a
-              href="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whatsapp-cta"
-            >
+            <p className="text-lg opacity-80 mb-8">שלחו לנו תמונה בוואטסאפ ונייעץ לכם בחינם – בלי התחייבות.</p>
+            <a href="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." target="_blank" rel="noopener noreferrer" className="whatsapp-cta">
               <Smartphone className="w-5 h-5" />
               לייעוץ חינם בוואטסאפ
             </a>
@@ -124,7 +107,8 @@ const PermPage = () => {
         </AnimatedSection>
       </Section>
 
-      {/* איך זה עובד */}
+      <SectionDivider from="dark" to="light" shape="steps" />
+
       <Section variant="light">
         <AnimatedSection>
           <h2 className="text-center mb-12"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד?</h2>
@@ -163,7 +147,8 @@ const PermPage = () => {
         </AnimatedSection>
       </Section>
 
-      {/* הסיפור של Macho והפרם */}
+      <SectionDivider from="light" to="dark" shape="waves" />
+
       <Section variant="dark">
         <AnimatedSection>
           <div className="max-w-3xl mx-auto">
@@ -173,22 +158,15 @@ const PermPage = () => {
               <Trophy className="w-8 h-8 text-accent" />
             </div>
             <div className="space-y-4 text-lg opacity-85 text-center">
-              <p>
-                <strong>Macho היו הראשונים בישראל</strong> שהביאו את עולם הפרם לגברים לרמה מקצועית אמיתית. 
-                כשכולם עוד חשבו שפרם זה "דבר של פעם" – אנחנו כבר הבנו שזה הטרנד הבא.
-              </p>
-              <p>
-                נסענו לחו"ל, למדנו מהטובים בעולם, הבאנו את הטכנולוגיות המתקדמות ביותר 
-                ופיתחנו שיטות עבודה ייחודיות שמותאמות לשיער ולאקלים הישראלי.
-              </p>
-              <p>
-                היום אנחנו גאים להיות המובילים בתחום – עם מאות גברים מרוצים שהפכו 
-                את הפרם לחלק בלתי נפרד מהסגנון שלהם. <strong>הניסיון שלנו הוא הביטוח שלכם.</strong>
-              </p>
+              <p><strong>Macho היו הראשונים בישראל</strong> שהביאו את עולם הפרם לגברים לרמה מקצועית אמיתית. כשכולם עוד חשבו שפרם זה "דבר של פעם" – אנחנו כבר הבנו שזה הטרנד הבא.</p>
+              <p>נסענו לחו"ל, למדנו מהטובים בעולם, הבאנו את הטכנולוגיות המתקדמות ביותר ופיתחנו שיטות עבודה ייחודיות שמותאמות לשיער ולאקלים הישראלי.</p>
+              <p>היום אנחנו גאים להיות המובילים בתחום – עם מאות גברים מרוצים שהפכו את הפרם לחלק בלתי נפרד מהסגנון שלהם. <strong>הניסיון שלנו הוא הביטוח שלכם.</strong></p>
             </div>
           </div>
         </AnimatedSection>
       </Section>
+
+      <SectionDivider from="dark" to="light" shape="zigzag" />
 
       <CTASection
         title={<><Waves className="w-6 h-6 inline-block align-middle ml-1" /> רוצים תלתלים?</>}

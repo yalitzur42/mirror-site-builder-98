@@ -4,27 +4,18 @@ import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Clock, Users, Award, Sparkles, Smartphone, Rocket, Crown, ClipboardList, HelpCircle, MessageCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 import permHero from "@/assets/perm-hero.jpg";
 
 const PermCoursePage = () => {
-  const modules = [
-    "מבוא לפרם לגברים",
-    "כימיה של פרם – תיאוריה ומעשה",
-    "סוגי תלתלים וגלים",
-    "התאמת פרם לסוג שיער",
-    "טכניקות גלילה מתקדמות",
-    "טיפול ותחזוקה אחרי פרם",
-  ];
+  const modules = ["מבוא לפרם לגברים", "כימיה של פרם – תיאוריה ומעשה", "סוגי תלתלים וגלים", "התאמת פרם לסוג שיער", "טכניקות גלילה מתקדמות", "טיפול ותחזוקה אחרי פרם"];
 
   return (
     <Layout>
-      <Breadcrumbs items={[
-        { label: "האקדמיה", href: "/academy" },
-        { label: "קורס פרם" }
-      ]} />
+      <Breadcrumbs items={[{ label: "האקדמיה", href: "/academy" }, { label: "קורס פרם" }]} />
 
       <HeroSplit
         title="קורס פרם"
@@ -61,14 +52,14 @@ const PermCoursePage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="light" to="dark" shape="waves" />
+
       <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס</>} variant="dark">
         <AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {modules.map((module, index) => (
               <div key={index} className="flex items-center gap-3 p-4 bg-secondary rounded-lg">
-                <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">
-                  {index + 1}
-                </div>
+                <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">{index + 1}</div>
                 <span>{module}</span>
               </div>
             ))}
@@ -76,27 +67,23 @@ const PermCoursePage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="dark" to="light" shape="curves" />
+
       <Section variant="light">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="mb-4"><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> הפרם הוא העתיד</h2>
-            <p className="text-lg opacity-80 mb-4">
-              הביקוש לפרם לגברים רק עולה. ספרים שיודעים לעשות פרם מקצועי נמצאים בביקוש עצום. 
-              זה הזמן שלכם ללמוד את המיומנות שתבדיל אתכם מכולם.
-            </p>
+            <p className="text-lg opacity-80 mb-4">הביקוש לפרם לגברים רק עולה. ספרים שיודעים לעשות פרם מקצועי נמצאים בביקוש עצום. זה הזמן שלכם ללמוד את המיומנות שתבדיל אתכם מכולם.</p>
             <p className="opacity-70 mb-8"><Crown className="w-5 h-5 inline-block align-middle ml-1" /> למדו מהחלוצים בתחום הפרם לגברים בישראל</p>
-            <a
-              href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whatsapp-cta"
-            >
+            <a href="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+הקורס+פרם" target="_blank" rel="noopener noreferrer" className="whatsapp-cta">
               <Smartphone className="w-5 h-5" />
               הצטרפו לקורס הבא
             </a>
           </div>
         </AnimatedSection>
       </Section>
+
+      <SectionDivider from="light" to="dark" shape="triangles" />
 
       <CTASection
         title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> יש שאלות?</>}

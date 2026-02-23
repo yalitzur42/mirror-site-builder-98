@@ -121,7 +121,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-opensans text-2xl leading-relaxed;
+    @apply text-foreground font-opensans text-2xl leading-relaxed;
+    background-color: hsl(60 56% 91%);
+    background-image: url('/images/marble-bg.png');
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: repeat-y;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -168,11 +173,7 @@
   }
 
   .section-light {
-    background-color: hsl(60 56% 91%);
-    background-image: url('/images/marble-bg.png');
-    background-size: 100% auto;
-    background-position: top center;
-    background-repeat: repeat-y;
+    background-color: transparent;
     color: hsl(25 50% 20%);
   }
 
