@@ -16,6 +16,9 @@ export default {
       fontFamily: {
         rubik: ["Rubik", "sans-serif"],
         suez: ["Suez One", "serif"],
+        opensans: ["Open Sans Hebrew Condensed", "sans-serif"],
+        narkis: ["Narkisim", "serif"],
+        abraham: ["Abraham", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
