@@ -121,7 +121,7 @@
   }
 
   body {
-    @apply text-foreground font-opensans text-2xl leading-relaxed;
+    @apply text-foreground font-opensans text-2xl lg:text-3xl leading-relaxed;
     background-color: hsl(60 56% 91%);
     background-image: url('/images/marble-bg.png');
     background-size: 100% auto;
@@ -157,7 +157,7 @@
 
 @layer utilities {
   .container-main {
-    @apply max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8;
+    @apply max-w-[1400px] mx-auto px-4 md:px-6 lg:px-10;
   }
 
   .gradient-hero {
