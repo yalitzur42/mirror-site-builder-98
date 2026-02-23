@@ -43,7 +43,7 @@ const MainHeader = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-3">
+        <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -54,7 +54,7 @@ const MainHeader = () => {
               <Link
                 to={item.href}
                 className={cn(
-                  "flex items-center gap-2 px-6 py-3 rounded-full text-lg font-bold tracking-wide",
+                  "flex items-center gap-2 px-5 py-3 rounded-full text-base font-extrabold tracking-wide",
                   "bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]",
                   "hover:bg-transparent hover:text-[hsl(25,50%,20%)]",
                   "transition-all duration-300"
