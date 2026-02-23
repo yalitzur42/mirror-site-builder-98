@@ -39,7 +39,7 @@ const MainHeader = () => {
       <div className="container-main py-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Mac'ho" className="w-auto mix-blend-multiply" style={{ height: '5.5rem' }} />
+          <img src={logo} alt="Mac'ho" className="w-auto mix-blend-multiply" style={{ height: '9rem' }} />
         </Link>
 
         {/* Desktop Nav */}
