@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
 @layer base {
@@ -55,7 +56,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-rubik;
+    @apply bg-background text-foreground font-suez;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
