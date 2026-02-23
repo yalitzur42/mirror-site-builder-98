@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GalleryGrid from "@/components/ui/GalleryGrid";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "lucide-react";
 
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
@@ -49,7 +50,6 @@ const BarbershopPage = () => {
       <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light" isFirstSection>
         <AnimatedSection>
           <div className="max-w-4xl mx-auto">
-            {/* Barber headers */}
             <div className="grid grid-cols-3 gap-6 mb-8">
               {barbers.map((barber, i) => (
                 <div key={i} className="text-center">
@@ -61,8 +61,6 @@ const BarbershopPage = () => {
                 </div>
               ))}
             </div>
-
-            {/* Price rows */}
             <div className="divide-y divide-border/30">
               {services.map((service, sIdx) => (
                 <div key={sIdx} className="py-4">
@@ -82,14 +80,16 @@ const BarbershopPage = () => {
         </AnimatedSection>
       </Section>
 
-      {/* גלריה */}
+      <SectionDivider from="light" to="dark" shape="waves" />
+
       <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> מהעבודות שלנו</>} variant="dark">
         <AnimatedSection>
           <GalleryGrid images={galleryImages} />
         </AnimatedSection>
       </Section>
 
-      {/* מספרים */}
+      <SectionDivider from="dark" to="light" shape="curves" />
+
       <Section variant="light">
         <AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 text-center">
@@ -109,7 +109,8 @@ const BarbershopPage = () => {
         </AnimatedSection>
       </Section>
 
-      {/* הצטרפות לצוות */}
+      <SectionDivider from="light" to="dark" shape="triangles" />
+
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
@@ -129,6 +130,8 @@ const BarbershopPage = () => {
           </div>
         </AnimatedSection>
       </Section>
+
+      <SectionDivider from="dark" to="light" shape="steps" />
 
       <CTASection
         title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לתספורת חדשה?</>}

@@ -6,6 +6,7 @@ import CardsGrid from "@/components/ui/CardsGrid";
 import FeatureGrid from "@/components/ui/FeatureGrid";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { GraduationCap, Users, Award, Clock, BookOpen, Star, Flame, Smartphone, MessageCircle, Rocket, ClipboardList } from "lucide-react";
 
 import academyClassroom from "@/assets/academy-classroom.jpg";
@@ -18,7 +19,6 @@ const AcademyPage = () => {
     { title: "קורס למתקדמים", href: "/academy/advanced", description: "שדרוג המיומנויות", image: courseAdvancedHero },
     { title: "קורס כימיה וצבע", href: "/academy/chemistry", description: "צביעה וגוונים מקצועיים" },
     { title: "קורס פרם", href: "/academy/perm-course", description: "התמחות בפרם לגברים" },
-    
   ];
 
   const features = [
@@ -49,7 +49,6 @@ const AcademyPage = () => {
         image={academyClassroom}
       />
 
-      {/* מספרים יבשים – אמון */}
       <Section variant="light" isFirstSection>
         <AnimatedSection>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-16">
@@ -68,11 +67,15 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="light" to="dark" shape="waves" />
+
       <Section title={<><Star className="w-6 h-6 inline-block align-middle ml-1" /> למה ללמוד אצלנו?</>} variant="dark">
         <AnimatedSection>
           <FeatureGrid items={features} columns={3} />
         </AnimatedSection>
       </Section>
+
+      <SectionDivider from="dark" to="light" shape="triangles" />
 
       <Section variant="light">
         <AnimatedSection>
@@ -100,7 +103,8 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
-      {/* תלמידים ותוצאות */}
+      <SectionDivider from="light" to="dark" shape="curves" />
+
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
@@ -118,6 +122,8 @@ const AcademyPage = () => {
           </div>
         </AnimatedSection>
       </Section>
+
+      <SectionDivider from="dark" to="light" shape="steps" />
 
       <CTASection
         title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> רוצים להצטרף?</>}
