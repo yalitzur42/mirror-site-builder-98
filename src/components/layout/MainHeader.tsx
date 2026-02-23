@@ -36,14 +36,14 @@ const MainHeader = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border section-light">
-      <div className="container-main py-6 flex items-center justify-between">
+      <div className="container-main py-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Mac'ho" className="h-18 w-auto" style={{ height: '4.5rem' }} />
+          <img src={logo} alt="Mac'ho" className="w-auto" style={{ height: '5.5rem' }} />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-2">
+        <nav className="hidden lg:flex items-center gap-3">
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -54,14 +54,14 @@ const MainHeader = () => {
               <Link
                 to={item.href}
                 className={cn(
-                  "flex items-center gap-1.5 px-5 py-2.5 rounded-full text-base font-bold tracking-wide",
+                  "flex items-center gap-2 px-6 py-3 rounded-full text-lg font-bold tracking-wide",
                   "bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]",
                   "hover:bg-transparent hover:text-[hsl(25,50%,20%)]",
                   "transition-all duration-300"
                 )}
               >
                 {item.label}
-                {item.children && <ChevronDown className="w-3.5 h-3.5" />}
+                {item.children && <ChevronDown className="w-4 h-4" />}
               </Link>
 
               {item.children && openDropdown === item.label && (
@@ -71,7 +71,7 @@ const MainHeader = () => {
                       <Link
                         key={child.label}
                         to={child.href}
-                        className="block px-5 py-2.5 text-sm text-[hsl(60,56%,91%)] hover:bg-[hsl(60,56%,91%)] hover:text-[hsl(25,50%,20%)] transition-all duration-300"
+                        className="block px-5 py-2.5 text-base text-[hsl(60,56%,91%)] hover:bg-[hsl(60,56%,91%)] hover:text-[hsl(25,50%,20%)] transition-all duration-300"
                       >
                         {child.label}
                       </Link>
@@ -84,12 +84,16 @@ const MainHeader = () => {
         </nav>
 
         {/* Social Icons */}
-        <div className="hidden lg:flex items-center gap-5">
-          <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="text-[hsl(25,50%,20%)]/60 hover:text-[hsl(25,50%,20%)] transition-colors">
-            <TikTokIcon className="w-6 h-6" />
+        <div className="hidden lg:flex items-center gap-3">
+          <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer"
+            className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300"
+          >
+            <TikTokIcon className="w-5 h-5" />
           </a>
-          <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-[hsl(25,50%,20%)]/60 hover:text-[hsl(25,50%,20%)] transition-colors">
-            <Instagram className="w-6 h-6" />
+          <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer"
+            className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300"
+          >
+            <Instagram className="w-5 h-5" />
           </a>
         </div>
 
