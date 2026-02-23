@@ -32,14 +32,14 @@ const TopUtilityBar = () => {
           href={wazeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/15 backdrop-blur-sm text-white text-sm font-bold border border-white/20 hover:bg-white/25 transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#33ccff] text-white text-sm font-bold border border-[#33ccff]/50 hover:bg-[#28b8e8] transition-all"
         >
           <Navigation className="w-4 h-4" />
           <span>נווטו אלינו</span>
         </a>
         <a
           href="tel:054-4744031"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/15 backdrop-blur-sm text-white text-sm font-bold border border-white/20 hover:bg-white/25 transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25D366] text-white text-sm font-bold border border-[#25D366]/50 hover:bg-[#20bd5a] transition-all"
         >
           <Phone className="w-4 h-4" />
           <span>054-4744031</span>
