@@ -84,7 +84,8 @@
   body {
     @apply bg-background text-foreground font-migdal text-lg leading-relaxed;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    letter-spacing: 0.02em;
+    letter-spacing: 0.08em;
+    word-spacing: 0.15em;
   }
 
   h1,
