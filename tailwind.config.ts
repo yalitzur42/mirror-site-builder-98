@@ -19,6 +19,7 @@ export default {
         opensans: ["Open Sans Hebrew Condensed", "sans-serif"],
         narkis: ["Narkisim", "serif"],
         abraham: ["Abraham", "sans-serif"],
+        migdal: ["Migdal", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
