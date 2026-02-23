@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -47,6 +48,8 @@ const ContactPage = () => {
           </div>
         </section>
       </div>
+
+      <SectionDivider from="dark" to="light" shape="curves" />
 
       <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12">

@@ -4,6 +4,7 @@ import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Play, Monitor, Clock, Infinity } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -74,6 +75,8 @@ const OnlineCoursesPage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="light" to="dark" shape="triangles" />
+
       <Section title="הקורסים שלנו" variant="dark">
         <AnimatedSection>
           <div className="grid md:grid-cols-2 gap-6">
@@ -106,6 +109,8 @@ const OnlineCoursesPage = () => {
           </div>
         </AnimatedSection>
       </Section>
+
+      <SectionDivider from="dark" to="light" shape="steps" />
 
       <CTASection
         title="רוצים לראות תצוגה מקדימה?"

@@ -3,6 +3,7 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { MapPin, Phone, Clock, Car, Scissors, Instagram, Youtube } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
@@ -23,6 +24,8 @@ const BusinessPage = () => {
         subtitle="Macho – עפולה"
         description={<>כל מה שצריך לדעת לפני שמגיעים אלינו. מיקום, שעות פעילות ודרכי התקשרות.</>}
       />
+
+      <SectionDivider from="dark" to="light" shape="waves" />
 
       <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12">
