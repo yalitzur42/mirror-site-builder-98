@@ -178,8 +178,8 @@ const HomePage = () => {
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
             <img src={teamIcon} alt="" className="w-32 mb-4 object-contain" />
-            <h2 className="mb-4 font-extrabold">הכירו את הצוות</h2>
-            <h3 className="text-xl font-bold mb-4">ישראל ישראלי – מייסד Macho</h3>
+            <h2 className="mb-4 font-extrabold">הכירו את יהלי</h2>
+            <h3 className="text-xl font-bold mb-4">יהלי צור – מייסד Macho</h3>
             <div className="space-y-4 text-lg">
               <p>
                 עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את Macho מתוך חזון להביא שינוי אמיתי לעולם הטיפוח
