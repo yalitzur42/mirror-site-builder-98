@@ -104,24 +104,24 @@ const MainHeader = () => {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <nav className="container-main py-4 space-y-4">
+        <div className="lg:hidden section-light border-t border-[hsl(25,50%,20%)]/20">
+          <nav className="container-main py-4 space-y-3">
             {navItems.map((item) => (
               <div key={item.label}>
                 <Link
                   to={item.href}
-                  className="block py-2 text-foreground hover:text-primary"
+                  className="block px-5 py-2.5 rounded-full text-base font-bold bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
                 </Link>
                 {item.children && (
-                  <div className="pr-4 space-y-2">
+                  <div className="pr-4 mt-2 space-y-2">
                     {item.children.map((child) => (
                       <Link
                         key={child.label}
                         to={child.href}
-                        className="block py-1 text-muted-foreground hover:text-primary"
+                        className="block px-5 py-2 rounded-full text-sm font-bold bg-[hsl(25,50%,20%)]/80 text-[hsl(60,56%,91%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] border-2 border-[hsl(25,50%,20%)]/80 transition-all duration-300"
                         onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
