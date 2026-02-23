@@ -18,6 +18,7 @@ export default {
         suez: ["Suez One", "serif"],
         opensans: ["Open Sans Hebrew Condensed", "sans-serif"],
         narkis: ["Narkisim", "serif"],
+        narkisblock: ["NarkisBlock", "serif"],
         abraham: ["Abraham", "sans-serif"],
         migdal: ["Migdal", "sans-serif"],
       },

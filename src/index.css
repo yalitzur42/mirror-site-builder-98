@@ -4,7 +4,46 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Hebrew+Condensed:wght@300;400;700&display=swap");
+
+@font-face {
+  font-family: 'Open Sans Hebrew Condensed';
+  src: url('/fonts/OpenSansHebrewCondensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans Hebrew Condensed';
+  src: url('/fonts/OpenSansHebrewCondensed-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans Hebrew Condensed';
+  src: url('/fonts/OpenSansHebrewCondensed-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans Hebrew Condensed';
+  src: url('/fonts/OpenSansHebrewCondensed-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NarkisBlock';
+  src: url('/fonts/NarkisBlockMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: 'Narkisim';
