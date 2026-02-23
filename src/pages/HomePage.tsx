@@ -98,7 +98,7 @@ const HomePage = () => {
       <Section variant="dark">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full" />
+            <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
              <h2 className="mb-4 font-extrabold"><Flame className="w-7 h-7 inline-block align-middle ml-1" /> פרם לגבר</h2>
