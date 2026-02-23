@@ -15,13 +15,13 @@ interface CardsGridProps {
 
 const CardsGrid = ({ items, columns = 4 }: CardsGridProps) => {
   const gridCols = {
-    2: "md:grid-cols-2",
-    3: "md:grid-cols-3",
-    4: "md:grid-cols-2 lg:grid-cols-4",
+    2: "grid-cols-2 md:grid-cols-2",
+    3: "grid-cols-3 md:grid-cols-3",
+    4: "grid-cols-2 lg:grid-cols-4",
   };
 
   return (
-    <div className={`grid grid-cols-1 ${gridCols[columns]} gap-6`}>
+    <div className={`grid ${gridCols[columns]} gap-3 md:gap-6`}>
       {items.map((item, index) => (
         <Link key={index} to={item.href || "#"} className="group">
           <Card className="overflow-hidden bg-card text-card-foreground hover:opacity-90 transition-opacity h-full border-border">
