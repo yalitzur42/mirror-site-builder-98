@@ -55,8 +55,8 @@ const MainHeader = () => {
                 to={item.href}
                 className={cn(
                   "flex items-center gap-1.5 px-5 py-2.5 rounded-full text-base font-bold tracking-wide",
-                  "border-2 border-[hsl(25,50%,20%)] text-[hsl(25,50%,20%)]",
-                  "hover:bg-[hsl(25,50%,20%)] hover:text-[hsl(60,56%,91%)]",
+                  "bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]",
+                  "hover:bg-transparent hover:text-[hsl(25,50%,20%)]",
                   "transition-all duration-300"
                 )}
               >
