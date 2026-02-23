@@ -1,13 +1,33 @@
 import { Navigation, Phone, Sparkles, Car, Calendar } from "lucide-react";
+import { Warp } from "@paper-design/shaders-react";
 
 const TopUtilityBar = () => {
   const address = "המחשלים 5, עפולה";
   const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
-    <div className="bg-primary border-b border-primary/80 text-sm text-primary-foreground">
-      <div className="container-main py-2 flex flex-wrap items-center justify-between gap-2">
+    <div className="relative overflow-hidden text-sm">
+      {/* Warp Shader Background */}
+      <Warp
+        colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
+        speed={3.5}
+        scale={1.5}
+        distortion={0.6}
+        swirl={0.3}
+        swirlIterations={6}
+        softness={0.7}
+        shape="edge"
+        shapeScale={0.5}
+        proportion={0.5}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+        }}
+      />
+      <div className="container-main py-2 flex flex-wrap items-center justify-between gap-2 relative z-10">
         {/* Mobile: only navigate, phone, booking */}
         <div className="flex items-center gap-4 md:gap-6">
           <a
