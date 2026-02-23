@@ -66,12 +66,12 @@ const MainHeader = () => {
 
               {item.children && openDropdown === item.label && (
                 <div className="absolute top-full right-0 pt-3">
-                  <div className="bg-popover/95 backdrop-blur-md border border-border/50 rounded-xl shadow-2xl py-2 min-w-[220px] z-50">
+                  <div className="bg-[hsl(25,50%,20%)] backdrop-blur-md border border-[hsl(25,50%,20%)] rounded-xl shadow-2xl py-2 min-w-[220px] z-50">
                     {item.children.map((child) => (
                       <Link
                         key={child.label}
                         to={child.href}
-                        className="block px-5 py-2.5 text-sm hover:bg-foreground/10 transition-colors"
+                        className="block px-5 py-2.5 text-sm text-[hsl(60,56%,91%)] hover:bg-[hsl(60,56%,91%)] hover:text-[hsl(25,50%,20%)] transition-all duration-300"
                       >
                         {child.label}
                       </Link>
