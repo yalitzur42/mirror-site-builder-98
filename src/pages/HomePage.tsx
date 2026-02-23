@@ -7,6 +7,7 @@ import GalleryGrid from "@/components/ui/GalleryGrid";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import StaggerChildren from "@/components/ui/StaggerChildren";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { GraduationCap, Users, Award, Star, Clock, Shield, Heart, Sparkles, Flame, Camera, BookOpen, Rocket, Smartphone, Scissors, Hand } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -64,6 +65,8 @@ const HomePage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="light" to="dark" />
+
       {/* Academy Section */}
       <Section
         title={<><GraduationCap className="w-6 h-6 inline-block align-middle ml-1" /> האקדמיה של Macho</>}
@@ -80,6 +83,8 @@ const HomePage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="dark" to="light" />
+
       {/* Gallery */}
       <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> מהעבודות שלנו</>} variant="light">
         <AnimatedSection>
@@ -87,16 +92,18 @@ const HomePage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="light" to="dark" />
+
       {/* Perm Service */}
       <Section variant="dark">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
             <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <h2 className="mb-4"><Flame className="w-6 h-6 inline-block align-middle ml-1" /> פרם לגבר</h2>
-            <p className="text-muted-foreground text-lg mb-6">
-              תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.
+             <h2 className="mb-4 font-extrabold"><Flame className="w-7 h-7 inline-block align-middle ml-1" /> פרם לגבר</h2>
+             <p className="text-muted-foreground text-xl mb-6 font-semibold">
+               תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.
             </p>
             <StaggerChildren className="space-y-3 mb-8" staggerDelay={0.1}>
               <li className="flex items-center gap-3">
@@ -126,12 +133,14 @@ const HomePage = () => {
         </div>
       </Section>
 
+      <SectionDivider from="dark" to="light" />
+
       {/* SEO Content Section */}
       <Section variant="light">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <h2 className="mb-6"><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> Macho – יותר מסתם מספרה</h2>
-            <div className="space-y-4 opacity-80">
+            <h2 className="mb-6 font-extrabold"><Scissors className="w-7 h-7 inline-block align-middle ml-1" /> Macho – יותר מסתם מספרה</h2>
+            <div className="space-y-4 text-lg">
               <p>
                 Macho נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל
                 גבר מגיע ליחס אישי, מקצועי ואיכותי.
@@ -159,17 +168,19 @@ const HomePage = () => {
         </div>
       </Section>
 
+      <SectionDivider from="light" to="dark" />
+
       {/* Owner/Team Section */}
       <Section variant="dark">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
             <img src={ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
             <img src={teamIcon} alt="" className="w-32 mb-4 object-contain" />
-            <h2 className="mb-4">הכירו את הצוות</h2>
-            <h3 className="text-xl font-semibold mb-4 opacity-80">ישראל ישראלי – מייסד Macho</h3>
-            <div className="space-y-4 opacity-70">
+            <h2 className="mb-4 font-extrabold">הכירו את הצוות</h2>
+            <h3 className="text-xl font-bold mb-4">ישראל ישראלי – מייסד Macho</h3>
+            <div className="space-y-4 text-lg">
               <p>
                 עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את Macho מתוך חזון להביא שינוי אמיתי לעולם הטיפוח
                 לגברים בישראל.

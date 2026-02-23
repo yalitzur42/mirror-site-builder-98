@@ -25,13 +25,13 @@ const Section = ({
   const firstSectionClasses = isFirstSection ? "" : "";
   
   return (
-    <section className={`py-16 md:py-24 ${variantClasses} ${firstSectionClasses} ${className}`}>
+    <section className={`py-12 md:py-16 ${variantClasses} ${firstSectionClasses} ${className}`}>
       <div className={`container-main ${containerClassName}`}>
         {(title || subtitle) && (
-          <div className="text-center mb-12">
-            {title && <h2 className="mb-4 text-inherit">{title}</h2>}
+          <div className="text-center mb-8">
+            {title && <h2 className="mb-3 text-inherit font-extrabold">{title}</h2>}
             {subtitle && (
-              <p className="text-lg max-w-2xl mx-auto opacity-80">
+              <p className="text-xl max-w-2xl mx-auto opacity-80 font-semibold">
                 {subtitle}
               </p>
             )}
