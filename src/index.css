@@ -192,9 +192,22 @@
   opacity: 0;
   transform: translateY(24px);
   animation: heroTitleIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  -webkit-text-stroke: 2px hsl(60 56% 91%);
+  -webkit-text-stroke: 3px hsl(25 50% 20%);
   -webkit-text-fill-color: transparent;
   color: transparent;
+  font-size: 4rem;
+}
+
+@media (min-width: 768px) {
+  .hero-title-animate {
+    font-size: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title-animate {
+    font-size: 7rem;
+  }
 }
 
 @keyframes heroTitleIn {
