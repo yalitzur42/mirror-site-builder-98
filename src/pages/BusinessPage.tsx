@@ -30,7 +30,7 @@ const BusinessPage = () => {
         image={barbershopInterior}
       />
 
-      <SectionDivider from="dark" to="light" shape="waves" />
+      
 
       <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12">

@@ -49,7 +49,7 @@ const ContactPage = () => {
         </section>
       </div>
 
-      <SectionDivider from="dark" to="light" shape="curves" />
+      
 
       <Section variant="light" isFirstSection>
         <div className="grid lg:grid-cols-2 gap-12">
