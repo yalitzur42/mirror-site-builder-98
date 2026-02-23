@@ -65,7 +65,7 @@ const HomePage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="light" to="dark" />
+      <SectionDivider from="light" to="dark" shape="waves" />
 
       {/* Academy Section */}
       <Section
@@ -83,7 +83,7 @@ const HomePage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="dark" to="light" />
+      <SectionDivider from="dark" to="light" shape="triangles" />
 
       {/* Gallery */}
       <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> מהעבודות שלנו</>} variant="light">
@@ -92,7 +92,7 @@ const HomePage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="light" to="dark" />
+      <SectionDivider from="light" to="dark" shape="curves" />
 
       {/* Perm Service */}
       <Section variant="dark">
@@ -133,7 +133,7 @@ const HomePage = () => {
         </div>
       </Section>
 
-      <SectionDivider from="dark" to="light" />
+      <SectionDivider from="dark" to="light" shape="steps" />
 
       {/* SEO Content Section */}
       <Section variant="light">
@@ -168,7 +168,7 @@ const HomePage = () => {
         </div>
       </Section>
 
-      <SectionDivider from="light" to="dark" />
+      <SectionDivider from="light" to="dark" shape="waves" />
 
       {/* Owner/Team Section */}
       <Section variant="dark">

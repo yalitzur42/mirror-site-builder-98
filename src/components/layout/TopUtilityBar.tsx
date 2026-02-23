@@ -48,7 +48,7 @@ const TopUtilityBar = () => {
           href="https://calmark.io/p/ZBfbx"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent text-accent-foreground text-sm font-bold hover:bg-accent/90 transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-red-600 text-white text-sm font-bold hover:bg-red-700 transition-all"
         >
           <Calendar className="w-4 h-4" />
           <span>לקביעת תור</span>

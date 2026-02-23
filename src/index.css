@@ -121,7 +121,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-opensans text-xl leading-relaxed;
+    @apply bg-background text-foreground font-opensans text-2xl leading-relaxed;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
