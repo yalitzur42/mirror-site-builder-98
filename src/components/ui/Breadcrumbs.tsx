@@ -13,7 +13,7 @@ interface BreadcrumbsProps {
 const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
   return (
     <nav className="container-main py-4">
-      <ol className="flex items-center gap-2 text-sm text-muted-foreground">
+      <ol className="flex items-center gap-2 text-sm" style={{ color: 'hsl(25, 50%, 20%)' }}>
         <li>
           <Link to="/" className="flex items-center hover:text-foreground transition-colors">
             <Home className="w-4 h-4" />
