@@ -35,11 +35,11 @@ const MainHeader = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
-      <div className="container-main py-5 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-border section-light">
+      <div className="container-main py-6 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Mac'ho" className="h-14" />
+          <img src={logo} alt="Mac'ho" className="h-18 w-auto" style={{ height: '4.5rem' }} />
         </Link>
 
         {/* Desktop Nav */}
@@ -54,9 +54,9 @@ const MainHeader = () => {
               <Link
                 to={item.href}
                 className={cn(
-                  "flex items-center gap-1 px-4 py-2 rounded-full text-sm font-bold tracking-wide",
-                  "border border-foreground/20 text-foreground",
-                  "hover:bg-foreground hover:text-background",
+                  "flex items-center gap-1.5 px-5 py-2.5 rounded-full text-base font-bold tracking-wide",
+                  "border-2 border-[hsl(25,50%,20%)] text-[hsl(25,50%,20%)]",
+                  "hover:bg-[hsl(25,50%,20%)] hover:text-[hsl(60,56%,91%)]",
                   "transition-all duration-300"
                 )}
               >
@@ -84,12 +84,12 @@ const MainHeader = () => {
         </nav>
 
         {/* Social Icons */}
-        <div className="hidden lg:flex items-center gap-4">
-          <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-            <TikTokIcon className="w-5 h-5" />
+        <div className="hidden lg:flex items-center gap-5">
+          <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="text-[hsl(25,50%,20%)]/60 hover:text-[hsl(25,50%,20%)] transition-colors">
+            <TikTokIcon className="w-6 h-6" />
           </a>
-          <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Instagram className="w-5 h-5" />
+          <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="text-[hsl(25,50%,20%)]/60 hover:text-[hsl(25,50%,20%)] transition-colors">
+            <Instagram className="w-6 h-6" />
           </a>
         </div>
 
