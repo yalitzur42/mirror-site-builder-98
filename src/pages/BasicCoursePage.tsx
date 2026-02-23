@@ -3,6 +3,7 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Clock, Users, Award, Smartphone, MessageCircle, HelpCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -55,6 +56,8 @@ const BasicCoursePage = () => {
         </div>
       </Section>
 
+      <SectionDivider from="light" to="dark" shape="waves" />
+
       <Section title="מה תלמדו?" variant="dark">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module, index) => (
@@ -67,6 +70,8 @@ const BasicCoursePage = () => {
           ))}
         </div>
       </Section>
+
+      <SectionDivider from="dark" to="light" shape="curves" />
 
       <Section variant="light">
         <div className="text-center max-w-2xl mx-auto">
@@ -85,6 +90,8 @@ const BasicCoursePage = () => {
           </a>
         </div>
       </Section>
+
+      <SectionDivider from="light" to="dark" shape="triangles" />
 
       <CTASection
         title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> מתלבטים?</>}
