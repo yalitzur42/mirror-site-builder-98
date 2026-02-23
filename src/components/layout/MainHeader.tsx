@@ -109,23 +109,24 @@ const MainHeader = () => {
       {/* Mobile Nav */}
       {mobileOpen && (
         <div className="lg:hidden section-light border-t border-[hsl(25,50%,20%)]/20">
-          <nav className="container-main py-4 space-y-3">
+          <nav className="container-main py-4 space-y-2">
             {navItems.map((item) => (
               <div key={item.label}>
                 <Link
                   to={item.href}
-                  className="block px-5 py-2.5 rounded-full text-base font-bold bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300"
+                  className="flex items-center justify-between px-5 py-3 rounded-xl text-lg font-extrabold bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] hover:opacity-90 transition-all duration-300"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
+                  {item.children && <ChevronDown className="w-5 h-5 opacity-60" />}
                 </Link>
                 {item.children && (
-                  <div className="pr-4 mt-2 space-y-2">
+                  <div className="mr-6 mt-1 mb-2 space-y-1 border-r-2 border-[hsl(25,50%,20%)]/30 pr-4">
                     {item.children.map((child) => (
                       <Link
                         key={child.label}
                         to={child.href}
-                        className="block px-5 py-2 rounded-full text-sm font-bold bg-[hsl(25,50%,20%)]/80 text-[hsl(60,56%,91%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] border-2 border-[hsl(25,50%,20%)]/80 transition-all duration-300"
+                        className="block px-4 py-2.5 rounded-lg text-base font-semibold text-[hsl(25,50%,20%)] bg-[hsl(25,50%,20%)]/10 hover:bg-[hsl(25,50%,20%)]/20 transition-all duration-300"
                         onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
