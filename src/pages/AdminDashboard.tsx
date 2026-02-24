@@ -1,0 +1,269 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { siteContentConfig, type PageConfig, type ContentField } from "@/lib/siteContentConfig";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import {
+  LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap
+} from "lucide-react";
+
+const pageIcons: Record<string, typeof Home> = {
+  home: Home,
+  about: Info,
+  barbershop: Scissors,
+  perm: Droplets,
+  academy: GraduationCap,
+};
+
+const AdminDashboard = () => {
+  const { user, isAdmin, loading: authLoading, signOut } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [activePage, setActivePage] = useState<string>("home");
+  const [contentValues, setContentValues] = useState<Record<string, string>>({});
+  const [saving, setSaving] = useState(false);
+  const [loadingContent, setLoadingContent] = useState(true);
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    if (!authLoading && (!user || !isAdmin)) {
+      navigate("/admin/login");
+    }
+  }, [user, isAdmin, authLoading, navigate]);
+
+  // Load content from DB
+  useEffect(() => {
+    const loadContent = async () => {
+      setLoadingContent(true);
+      const { data } = await supabase
+        .from("site_content")
+        .select("page_slug, section_key, field_key, content_value");
+
+      const values: Record<string, string> = {};
+      data?.forEach((row: any) => {
+        values[`${row.page_slug}__${row.section_key}__${row.field_key}`] = row.content_value;
+      });
+      setContentValues(values);
+      setLoadingContent(false);
+    };
+    loadContent();
+  }, []);
+
+  const getFieldValue = (pageSlug: string, sectionKey: string, field: ContentField) => {
+    const key = `${pageSlug}__${sectionKey}__${field.key}`;
+    return contentValues[key] ?? field.defaultValue;
+  };
+
+  const setFieldValue = (pageSlug: string, sectionKey: string, fieldKey: string, value: string) => {
+    setContentValues(prev => ({
+      ...prev,
+      [`${pageSlug}__${sectionKey}__${fieldKey}`]: value,
+    }));
+  };
+
+  const handleImageUpload = async (pageSlug: string, sectionKey: string, fieldKey: string, file: File) => {
+    const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${file.name.split('.').pop()}`;
+    const { error } = await supabase.storage.from("site-assets").upload(filePath, file);
+    if (error) {
+      toast({ title: "שגיאה בהעלאת תמונה", description: error.message, variant: "destructive" });
+      return;
+    }
+    const { data: { publicUrl } } = supabase.storage.from("site-assets").getPublicUrl(filePath);
+    setFieldValue(pageSlug, sectionKey, fieldKey, publicUrl);
+  };
+
+  const handleSaveSection = async (pageSlug: string, section: typeof siteContentConfig[0]["sections"][0]) => {
+    setSaving(true);
+    const upserts = section.fields.map(field => ({
+      page_slug: pageSlug,
+      section_key: section.key,
+      field_key: field.key,
+      field_type: field.type,
+      field_label: field.label,
+      content_value: getFieldValue(pageSlug, section.key, field),
+      updated_by: user?.id,
+    }));
+
+    const { error } = await supabase.from("site_content").upsert(upserts, {
+      onConflict: "page_slug,section_key,field_key",
+    });
+
+    if (error) {
+      toast({ title: "שגיאה בשמירה", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: "נשמר בהצלחה!" });
+    }
+    setSaving(false);
+  };
+
+  const toggleSection = (key: string) => {
+    setExpandedSections(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const currentPage = siteContentConfig.find(p => p.slug === activePage);
+
+  if (authLoading || loadingContent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background text-foreground" dir="rtl">
+      {/* Top Bar */}
+      <header className="sticky top-0 z-50 bg-card border-b border-border px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <LayoutDashboard className="w-6 h-6 text-primary" />
+          <h1 className="text-xl font-bold">ניהול תוכן – Macho</h1>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-muted-foreground hidden md:inline">{user?.email}</span>
+          <Button variant="outline" size="sm" onClick={signOut}>
+            <LogOut className="w-4 h-4" /> יציאה
+          </Button>
+        </div>
+      </header>
+
+      <div className="flex">
+        {/* Sidebar - Pages */}
+        <aside className="w-56 min-h-[calc(100vh-57px)] bg-card border-l border-border p-4 space-y-1 hidden md:block">
+          <p className="text-xs text-muted-foreground font-bold mb-3">דפים</p>
+          {siteContentConfig.map(page => {
+            const Icon = pageIcons[page.slug] || FileText;
+            return (
+              <button
+                key={page.slug}
+                onClick={() => setActivePage(page.slug)}
+                className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-base transition-colors ${
+                  activePage === page.slug
+                    ? "bg-primary text-primary-foreground font-bold"
+                    : "hover:bg-muted text-foreground"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {page.title}
+              </button>
+            );
+          })}
+        </aside>
+
+        {/* Mobile page selector */}
+        <div className="md:hidden w-full px-4 pt-4">
+          <select
+            value={activePage}
+            onChange={(e) => setActivePage(e.target.value)}
+            className="w-full p-3 rounded-lg bg-card border border-border text-foreground text-base"
+          >
+            {siteContentConfig.map(page => (
+              <option key={page.slug} value={page.slug}>{page.title}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Main Content */}
+        <main className="flex-1 p-4 md:p-8 max-w-4xl">
+          {currentPage && (
+            <>
+              <h2 className="text-3xl font-bold mb-6">{currentPage.title}</h2>
+
+              <div className="space-y-4">
+                {currentPage.sections.map(section => {
+                  const isExpanded = expandedSections[`${currentPage.slug}__${section.key}`] !== false;
+                  return (
+                    <div key={section.key} className="bg-card rounded-xl border border-border overflow-hidden">
+                      {/* Section Header */}
+                      <button
+                        onClick={() => toggleSection(`${currentPage.slug}__${section.key}`)}
+                        className="w-full flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
+                      >
+                        <h3 className="text-xl font-bold">{section.title}</h3>
+                        {isExpanded ? <ChevronDown className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+                      </button>
+
+                      {/* Section Fields */}
+                      {isExpanded && (
+                        <div className="p-4 pt-0 space-y-5 border-t border-border">
+                          {section.fields.map(field => (
+                            <div key={field.key} className="space-y-2">
+                              <Label className="text-base text-foreground flex items-center gap-2">
+                                {field.type === "image" ? <Image className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+                                {field.label}
+                              </Label>
+
+                              {field.type === "text" && (
+                                <Input
+                                  value={getFieldValue(currentPage.slug, section.key, field)}
+                                  onChange={(e) => setFieldValue(currentPage.slug, section.key, field.key, e.target.value)}
+                                  className="text-base"
+                                />
+                              )}
+
+                              {field.type === "textarea" && (
+                                <Textarea
+                                  value={getFieldValue(currentPage.slug, section.key, field)}
+                                  onChange={(e) => setFieldValue(currentPage.slug, section.key, field.key, e.target.value)}
+                                  className="text-base min-h-[100px]"
+                                />
+                              )}
+
+                              {field.type === "image" && (
+                                <div className="space-y-3">
+                                  {getFieldValue(currentPage.slug, section.key, field) && (
+                                    <img
+                                      src={getFieldValue(currentPage.slug, section.key, field)}
+                                      alt={field.label}
+                                      className="w-40 h-40 object-cover rounded-lg border border-border"
+                                    />
+                                  )}
+                                  <div>
+                                    <label className="inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-lg cursor-pointer hover:bg-muted/80 transition-colors text-sm">
+                                      <Upload className="w-4 h-4" />
+                                      העלה תמונה
+                                      <input
+                                        type="file"
+                                        accept="image/*"
+                                        className="hidden"
+                                        onChange={(e) => {
+                                          const file = e.target.files?.[0];
+                                          if (file) handleImageUpload(currentPage.slug, section.key, field.key, file);
+                                        }}
+                                      />
+                                    </label>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+
+                          <div className="pt-3">
+                            <Button
+                              onClick={() => handleSaveSection(currentPage.slug, section)}
+                              disabled={saving}
+                              size="sm"
+                            >
+                              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                              שמור סקשן
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default AdminDashboard;
