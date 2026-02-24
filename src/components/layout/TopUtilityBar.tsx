@@ -6,7 +6,7 @@ const TopUtilityBar = () => {
   const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden hidden lg:block">
       {/* Warp Shader Background */}
       <Warp
         colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X, Instagram } from "lucide-react";
+import { ChevronDown, Menu, X, Instagram, Navigation, Phone, Calendar } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
@@ -97,13 +97,37 @@ const MainHeader = () => {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden flex items-center justify-center w-12 h-12 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-        </button>
+        {/* Mobile Action Buttons + Menu */}
+        <div className="lg:hidden flex items-center gap-2">
+          <a
+            href="https://waze.com/ul?q=%D7%94%D7%9E%D7%97%D7%A9%D7%9C%D7%99%D7%9D%205%2C%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94&navigate=yes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-11 h-11 rounded-full bg-[#33ccff] text-white"
+          >
+            <Navigation className="w-5 h-5" />
+          </a>
+          <a
+            href="tel:054-4744031"
+            className="flex items-center justify-center w-11 h-11 rounded-full bg-[#25D366] text-white"
+          >
+            <Phone className="w-5 h-5" />
+          </a>
+          <a
+            href="https://calmark.io/p/ZBfbx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-11 h-11 rounded-full bg-[#7C3AED] text-white"
+          >
+            <Calendar className="w-5 h-5" />
+          </a>
+          <button
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
