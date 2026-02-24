@@ -89,9 +89,9 @@ const AdminLoginPage = () => {
               <p className="text-destructive text-sm text-center">{error}</p>
             )}
 
-            <Button type="submit" className="w-full" size="lg" disabled={submitting || loading}>
+            <Button type="submit" className="w-full" size="lg" disabled={submitting}>
               <LogIn className="w-4 h-4" />
-              {submitting || loading ? "מתחבר..." : "התחבר"}
+              {submitting ? "מתחבר..." : "התחבר"}
             </Button>
           </form>
         </div>
