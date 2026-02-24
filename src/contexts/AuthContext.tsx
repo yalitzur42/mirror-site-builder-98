@@ -30,18 +30,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const syncAuthState = async (currentSession: Session | null) => {
-    setLoading(true);
     setSession(currentSession);
     setUser(currentSession?.user ?? null);
 
     if (currentSession?.user) {
-      const admin = await fetchIsAdmin(currentSession.user.id);
-      setIsAdmin(admin);
+      try {
+        const admin = await fetchIsAdmin(currentSession.user.id);
+        setIsAdmin(admin);
+      } catch {
+        setIsAdmin(false);
+      }
     } else {
       setIsAdmin(false);
     }
-
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -49,10 +50,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
       await syncAuthState(newSession);
+      setLoading(false);
     });
 
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       await syncAuthState(session);
+      setLoading(false);
     });
 
     return () => subscription.unsubscribe();

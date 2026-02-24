@@ -25,15 +25,19 @@ const AdminLoginPage = () => {
     setError("");
     setSubmitting(true);
 
-    const { error } = await signIn(email, password);
-    if (error) {
-      setError("אימייל או סיסמה שגויים");
+    try {
+      const { error } = await signIn(email, password);
+      if (error) {
+        setError("אימייל או סיסמה שגויים");
+        setSubmitting(false);
+        return;
+      }
+      // AuthContext will handle role fetch and redirect via useEffect above
+    } catch (err) {
+      setError("שגיאה בהתחברות, נסה שוב");
+    } finally {
       setSubmitting(false);
-      return;
     }
-
-    // AuthContext will handle role fetch and redirect via useEffect above
-    setSubmitting(false);
   };
 
   return (
