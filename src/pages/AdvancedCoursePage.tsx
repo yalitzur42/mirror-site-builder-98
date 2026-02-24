@@ -56,7 +56,7 @@ const AdvancedCoursePage = () => {
       <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס</>} variant="dark">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {modules.map((module, index) => (
-            <div key={index} className="flex items-center gap-3 p-4 bg-secondary rounded-lg">
+            <div key={index} className="flex items-center gap-3 p-4 bg-secondary text-secondary-foreground rounded-lg">
               <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">{index + 1}</div>
               <span>{module}</span>
             </div>
