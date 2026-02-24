@@ -103,23 +103,29 @@ const MainHeader = () => {
             href="https://waze.com/ul?q=%D7%94%D7%9E%D7%97%D7%A9%D7%9C%D7%99%D7%9D%205%2C%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94&navigate=yes"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-11 h-11 rounded-full bg-[#33ccff] text-white"
+            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#33ccff] text-white"
+            title="נווטו אלינו"
           >
             <Navigation className="w-5 h-5" />
+            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">נווטו אלינו</span>
           </a>
           <a
             href="tel:054-4744031"
-            className="flex items-center justify-center w-11 h-11 rounded-full bg-[#25D366] text-white"
+            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#25D366] text-white"
+            title="חייגו אלינו"
           >
             <Phone className="w-5 h-5" />
+            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">חייגו אלינו</span>
           </a>
           <a
             href="https://calmark.io/p/ZBfbx"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-11 h-11 rounded-full bg-[#7C3AED] text-white"
+            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#7C3AED] text-white"
+            title="לקביעת תור"
           >
             <Calendar className="w-5 h-5" />
+            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">לקביעת תור</span>
           </a>
           <button
             className="flex items-center justify-center w-12 h-12 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]"
