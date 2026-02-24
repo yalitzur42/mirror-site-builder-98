@@ -48,15 +48,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
-      await syncAuthState(newSession);
-      setLoading(false);
+    } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      void syncAuthState(newSession).finally(() => {
+        setLoading(false);
+      });
     });
 
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      await syncAuthState(session);
-      setLoading(false);
-    });
+    const bootstrapAuth = async () => {
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        await syncAuthState(session);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void bootstrapAuth();
 
     return () => subscription.unsubscribe();
   }, []);
