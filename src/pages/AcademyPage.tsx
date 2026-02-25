@@ -110,11 +110,11 @@ const AcademyPage = () => {
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="mb-6"><MessageCircle className="w-6 h-6 inline-block align-middle ml-1" /> הבוגרים שלנו מדברים</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 bg-secondary rounded-xl text-right">
+              <div className="p-6 bg-secondary text-secondary-foreground rounded-xl text-right">
                 <p className="opacity-85 mb-4">"הקורס ב-Macho שינה לי את החיים. תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה."</p>
                 <p className="font-bold text-sm">— דן, בוגר מחזור 2024</p>
               </div>
-              <div className="p-6 bg-secondary rounded-xl text-right">
+              <div className="p-6 bg-secondary text-secondary-foreground rounded-xl text-right">
                 <p className="opacity-85 mb-4">"היחס האישי והמקצועיות של הצוות הם ברמה אחרת. הרגשתי שבאמת אכפת להם שאצליח."</p>
                 <p className="font-bold text-sm">— אור, בוגר מחזור 2023</p>
               </div>
