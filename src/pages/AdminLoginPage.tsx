@@ -41,15 +41,15 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4" dir="rtl">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 text-base" dir="rtl">
       <div className="w-full max-w-md">
-        <div className="bg-card rounded-2xl p-8 shadow-2xl border border-border">
-          <div className="text-center mb-8">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <Lock className="w-8 h-8 text-primary" />
+        <div className="bg-card rounded-2xl p-6 md:p-8 shadow-2xl border border-border">
+          <div className="text-center mb-6 md:mb-8">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <Lock className="w-7 h-7 md:w-8 md:h-8 text-primary" />
             </div>
-            <h1 className="text-3xl font-bold text-foreground">כניסת אדמין</h1>
-            <p className="text-muted-foreground text-lg mt-2">ניהול תוכן האתר</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-foreground">כניסת אדמין</h1>
+            <p className="text-muted-foreground text-sm md:text-lg mt-2">ניהול תוכן האתר</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">

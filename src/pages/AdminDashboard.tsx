@@ -116,23 +116,23 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground" dir="rtl">
+    <div className="min-h-screen bg-background text-foreground text-base" dir="rtl">
       {/* Top Bar */}
-      <header className="sticky top-0 z-50 bg-card border-b border-border px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <LayoutDashboard className="w-6 h-6 text-primary" />
-          <h1 className="text-xl font-bold">ניהול תוכן – Macho</h1>
+      <header className="sticky top-0 z-50 bg-card border-b border-border px-3 md:px-4 py-3 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <LayoutDashboard className="w-5 h-5 md:w-6 md:h-6 text-primary shrink-0" />
+          <h1 className="text-base md:text-xl font-bold truncate">ניהול תוכן – Macho</h1>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-muted-foreground hidden md:inline">{user?.email}</span>
-          <Button variant="outline" size="sm" onClick={signOut}>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-xs text-muted-foreground hidden md:inline">{user?.email}</span>
+          <Button variant="outline" size="sm" onClick={signOut} className="text-sm">
             <LogOut className="w-4 h-4" /> יציאה
           </Button>
         </div>
       </header>
 
-      <div className="flex">
-        {/* Sidebar - Pages */}
+      <div className="flex flex-col md:flex-row">
+        {/* Sidebar - Desktop */}
         <aside className="w-56 min-h-[calc(100vh-57px)] bg-card border-l border-border p-4 space-y-1 hidden md:block">
           <p className="text-xs text-muted-foreground font-bold mb-3">דפים</p>
           {siteContentConfig.map(page => {
@@ -141,7 +141,7 @@ const AdminDashboard = () => {
               <button
                 key={page.slug}
                 onClick={() => setActivePage(page.slug)}
-                className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-base transition-colors ${
+                className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                   activePage === page.slug
                     ? "bg-primary text-primary-foreground font-bold"
                     : "hover:bg-muted text-foreground"
@@ -154,26 +154,26 @@ const AdminDashboard = () => {
           })}
         </aside>
 
-        {/* Mobile page selector */}
-        <div className="md:hidden w-full px-4 pt-4">
-          <select
-            value={activePage}
-            onChange={(e) => setActivePage(e.target.value)}
-            className="w-full p-3 rounded-lg bg-card border border-border text-foreground text-base"
-          >
-            {siteContentConfig.map(page => (
-              <option key={page.slug} value={page.slug}>{page.title}</option>
-            ))}
-          </select>
-        </div>
-
         {/* Main Content */}
-        <main className="flex-1 p-4 md:p-8 max-w-4xl">
+        <main className="flex-1 p-3 md:p-8 max-w-4xl">
+          {/* Mobile page selector */}
+          <div className="md:hidden mb-4">
+            <select
+              value={activePage}
+              onChange={(e) => setActivePage(e.target.value)}
+              className="w-full p-2.5 rounded-lg bg-card border border-border text-foreground text-sm"
+            >
+              {siteContentConfig.map(page => (
+                <option key={page.slug} value={page.slug}>{page.title}</option>
+              ))}
+            </select>
+          </div>
+
           {currentPage && (
             <>
-              <h2 className="text-3xl font-bold mb-6">{currentPage.title}</h2>
+              <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-6">{currentPage.title}</h2>
 
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 {currentPage.sections.map(section => {
                   const isExpanded = expandedSections[`${currentPage.slug}__${section.key}`] !== false;
                   return (
@@ -181,18 +181,18 @@ const AdminDashboard = () => {
                       {/* Section Header */}
                       <button
                         onClick={() => toggleSection(`${currentPage.slug}__${section.key}`)}
-                        className="w-full flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
+                        className="w-full flex items-center justify-between p-3 md:p-4 hover:bg-muted/50 transition-colors"
                       >
-                        <h3 className="text-xl font-bold">{section.title}</h3>
+                        <h3 className="text-base md:text-xl font-bold">{section.title}</h3>
                         {isExpanded ? <ChevronDown className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
                       </button>
 
                       {/* Section Fields */}
                       {isExpanded && (
-                        <div className="p-4 pt-0 space-y-5 border-t border-border">
+                        <div className="p-3 md:p-4 pt-0 space-y-4 border-t border-border">
                           {section.fields.map(field => (
-                            <div key={field.key} className="space-y-2">
-                              <Label className="text-base text-foreground flex items-center gap-2">
+                            <div key={field.key} className="space-y-1.5">
+                              <Label className="text-sm md:text-base text-foreground flex items-center gap-2">
                                 {field.type === "image" ? <Image className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
                                 {field.label}
                               </Label>
@@ -201,7 +201,7 @@ const AdminDashboard = () => {
                                 <Input
                                   value={getFieldValue(currentPage.slug, section.key, field)}
                                   onChange={(e) => setFieldValue(currentPage.slug, section.key, field.key, e.target.value)}
-                                  className="text-base"
+                                  className="text-sm md:text-base"
                                 />
                               )}
 
@@ -209,21 +209,21 @@ const AdminDashboard = () => {
                                 <Textarea
                                   value={getFieldValue(currentPage.slug, section.key, field)}
                                   onChange={(e) => setFieldValue(currentPage.slug, section.key, field.key, e.target.value)}
-                                  className="text-base min-h-[100px]"
+                                  className="text-sm md:text-base min-h-[80px] md:min-h-[100px]"
                                 />
                               )}
 
                               {field.type === "image" && (
-                                <div className="space-y-3">
+                                <div className="space-y-2">
                                   {getFieldValue(currentPage.slug, section.key, field) && (
                                     <img
                                       src={getFieldValue(currentPage.slug, section.key, field)}
                                       alt={field.label}
-                                      className="w-40 h-40 object-cover rounded-lg border border-border"
+                                      className="w-28 h-28 md:w-40 md:h-40 object-cover rounded-lg border border-border"
                                     />
                                   )}
                                   <div>
-                                    <label className="inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-lg cursor-pointer hover:bg-muted/80 transition-colors text-sm">
+                                    <label className="inline-flex items-center gap-2 px-3 py-2 bg-muted rounded-lg cursor-pointer hover:bg-muted/80 transition-colors text-xs md:text-sm">
                                       <Upload className="w-4 h-4" />
                                       העלה תמונה
                                       <input
@@ -242,11 +242,12 @@ const AdminDashboard = () => {
                             </div>
                           ))}
 
-                          <div className="pt-3">
+                          <div className="pt-2">
                             <Button
                               onClick={() => handleSaveSection(currentPage.slug, section)}
                               disabled={saving}
                               size="sm"
+                              className="text-sm"
                             >
                               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                               שמור סקשן
