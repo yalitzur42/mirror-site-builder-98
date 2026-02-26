@@ -138,7 +138,7 @@ const MainHeader = () => {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="lg:hidden section-light border-t border-[hsl(25,50%,20%)]/20">
+        <div className="lg:hidden section-light border-t border-[hsl(25,50%,20%)]/20 max-h-[calc(100vh-180px)] overflow-y-auto">
           <nav className="container-main py-4 space-y-2">
             {navItems.map((item) => (
               <div key={item.label}>
