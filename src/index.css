@@ -169,9 +169,7 @@
   }
 
   .section-dark {
-    background-color: hsl(25, 50%, 20%);
-    color: hsl(60, 56%, 91%);
-    background-image: none;
+    @apply bg-background text-foreground;
   }
 
   .section-light {
