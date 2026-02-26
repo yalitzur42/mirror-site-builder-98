@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Warp } from "@paper-design/shaders-react";
@@ -24,35 +24,45 @@ const HeroSplit = ({
   image,
   children,
 }: HeroSplitProps) => {
+  const [shaderReady, setShaderReady] = useState(false);
+
+  useEffect(() => {
+    // Delay shader mount slightly to ensure canvas dimensions are established
+    const timer = requestAnimationFrame(() => setShaderReady(true));
+    return () => cancelAnimationFrame(timer);
+  }, []);
+
   return (
     <div className="section-light">
-      <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] pb-20 md:pb-28 overflow-hidden">
+      <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] pb-20 md:pb-28 overflow-hidden" style={{ backgroundColor: '#3d2310' }}>
         {/* Warp Shader Background */}
-        <Warp
-          colors={[
-            "#3d2310",
-            "#5a351a",
-            "#4B2E1A",
-            "#2a1a0d",
-            "#6b4226",
-          ]}
-          speed={3.5}
-          scale={1.5}
-          distortion={0.6}
-          swirl={0.3}
-          swirlIterations={6}
-          softness={0.7}
-          shape="edge"
-          shapeScale={0.5}
-          proportion={0.5}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 0,
-          }}
-        />
+        {shaderReady && (
+          <Warp
+            colors={[
+              "#3d2310",
+              "#5a351a",
+              "#4B2E1A",
+              "#2a1a0d",
+              "#6b4226",
+            ]}
+            speed={3.5}
+            scale={1.5}
+            distortion={0.6}
+            swirl={0.3}
+            swirlIterations={6}
+            softness={0.7}
+            shape="edge"
+            shapeScale={0.5}
+            proportion={0.5}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 0,
+            }}
+          />
+        )}
 
         {/* Content */}
         <div className="container-main py-16 md:py-24 lg:py-32 pb-8 md:pb-12 relative z-10">
