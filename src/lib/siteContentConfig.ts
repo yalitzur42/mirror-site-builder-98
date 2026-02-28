@@ -4,7 +4,7 @@
 export interface ContentField {
   key: string;
   label: string;
-  type: "text" | "textarea" | "image";
+  type: "text" | "textarea" | "image" | "gallery";
   defaultValue: string;
 }
 
@@ -71,12 +71,7 @@ export const siteContentConfig: PageConfig[] = [
         title: "מהעבודות שלנו",
         fields: [
           { key: "title", label: "כותרת", type: "text", defaultValue: "מהעבודות שלנו" },
-          { key: "image1", label: "תמונה 1", type: "image", defaultValue: "" },
-          { key: "image2", label: "תמונה 2", type: "image", defaultValue: "" },
-          { key: "image3", label: "תמונה 3", type: "image", defaultValue: "" },
-          { key: "image4", label: "תמונה 4", type: "image", defaultValue: "" },
-          { key: "image5", label: "תמונה 5", type: "image", defaultValue: "" },
-          { key: "image6", label: "תמונה 6", type: "image", defaultValue: "" },
+          { key: "images", label: "תמונות עבודות", type: "gallery", defaultValue: "[]" },
         ],
       },
       {
@@ -198,12 +193,7 @@ export const siteContentConfig: PageConfig[] = [
         key: "gallery",
         title: "מהעבודות שלנו",
         fields: [
-          { key: "image1", label: "תמונה 1", type: "image", defaultValue: "" },
-          { key: "image2", label: "תמונה 2", type: "image", defaultValue: "" },
-          { key: "image3", label: "תמונה 3", type: "image", defaultValue: "" },
-          { key: "image4", label: "תמונה 4", type: "image", defaultValue: "" },
-          { key: "image5", label: "תמונה 5", type: "image", defaultValue: "" },
-          { key: "image6", label: "תמונה 6", type: "image", defaultValue: "" },
+          { key: "images", label: "תמונות עבודות", type: "gallery", defaultValue: "[]" },
         ],
       },
       {

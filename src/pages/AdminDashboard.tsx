@@ -9,8 +9,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import {
-  LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap
+  LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap, Images
 } from "lucide-react";
+import GalleryFieldEditor from "@/components/admin/GalleryFieldEditor";
 
 const pageIcons: Record<string, typeof Home> = {
   home: Home,
@@ -193,7 +194,7 @@ const AdminDashboard = () => {
                           {section.fields.map(field => (
                             <div key={field.key} className="space-y-1.5">
                               <Label className="text-sm md:text-base text-foreground flex items-center gap-2">
-                                {field.type === "image" ? <Image className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+                                {field.type === "image" ? <Image className="w-4 h-4" /> : field.type === "gallery" ? <Images className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
                                 {field.label}
                               </Label>
 
@@ -239,8 +240,19 @@ const AdminDashboard = () => {
                                   </div>
                                 </div>
                               )}
+
+                              {field.type === "gallery" && (
+                                <GalleryFieldEditor
+                                  value={getFieldValue(currentPage.slug, section.key, field)}
+                                  onChange={(val) => setFieldValue(currentPage.slug, section.key, field.key, val)}
+                                  pageSlug={currentPage.slug}
+                                  sectionKey={section.key}
+                                  fieldKey={field.key}
+                                />
+                              )}
                             </div>
                           ))}
+
 
                           <div className="pt-2">
                             <Button
