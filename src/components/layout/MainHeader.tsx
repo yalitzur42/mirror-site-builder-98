@@ -7,14 +7,8 @@ import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "אודות", href: "/about" },
-  {
-    label: "מספרת גברים",
-    href: "/barbershop",
-    children: [
-      { label: "תספורות גברים", href: "/barbershop" },
-      { label: "פרם לגבר", href: "/perm" },
-    ],
-  },
+  { label: "מספרת גברים", href: "/barbershop" },
+  { label: "פרם לגבר", href: "/perm" },
   {
     label: "האקדמיה",
     href: "/academy",
