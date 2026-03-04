@@ -2,23 +2,23 @@ import Layout from "@/components/layout/Layout";
 import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import CardsGrid from "@/components/ui/CardsGrid";
-import FeatureGrid from "@/components/ui/FeatureGrid";
 import CTASection from "@/components/ui/CTASection";
-import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionDivider from "@/components/ui/SectionDivider";
-import { GraduationCap, Users, Award, Clock, BookOpen, Star, Flame, Smartphone, MessageCircle, Rocket, ClipboardList } from "lucide-react";
+import AnimatedSection from "@/components/ui/AnimatedSection";
+import { Clock, Users, Award, Smartphone, Rocket, ClipboardList, HelpCircle, MessageCircle, GraduationCap, Star, BookOpen } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 import academyClassroom from "@/assets/academy-classroom.jpg";
 import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";
-import courseAdvancedHero from "@/assets/course-advanced-hero.jpg";
 
 const AcademyPage = () => {
-  const courses = [
-    { title: "קורס למתחילים", href: "/academy/beginner", description: "הצעד הראשון בקריירה", image: courseBeginnerHero },
-    { title: "קורס למתקדמים", href: "/academy/advanced", description: "שדרוג המיומנויות", image: courseAdvancedHero },
-    { title: "קורס כימיה וצבע", href: "/academy/chemistry", description: "צביעה וגוונים מקצועיים" },
-    { title: "קורס פרם", href: "/academy/perm-course", description: "התמחות בפרם לגברים" },
+  const modules = ["מבוא לספרות גברים", "כלי עבודה והיגיינה", "טכניקות בסיסיות", "תספורות קלאסיות", "עיצוב זקן בסיסי", "שירות לקוחות"];
+
+  const stats = [
+    { number: "15+", label: "שנות ניסיון בהוראה" },
+    { number: "500+", label: "בוגרים עובדים בתעשייה" },
+    { number: "98%", label: "שביעות רצון תלמידים" },
+    { number: "12", label: "מחזורים בשנה" },
   ];
 
   const features = [
@@ -30,23 +30,16 @@ const AcademyPage = () => {
     { icon: Star, title: "ליווי אישי", description: "תמיכה גם אחרי הקורס" },
   ];
 
-  const stats = [
-    { number: "15+", label: "שנות ניסיון בהוראה" },
-    { number: "500+", label: "בוגרים עובדים בתעשייה" },
-    { number: "98%", label: "שביעות רצון תלמידים" },
-    { number: "12", label: "מחזורים בשנה" },
-  ];
-
   return (
     <Layout>
       <Breadcrumbs items={[{ label: "האקדמיה" }]} />
 
       <HeroSplit
         title="האקדמיה של Macho"
-        subtitle="הפוך את התשוקה למקצוע"
-        description="אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי."
+        subtitle="הצעד הראשון בקריירה שלך"
+        description="קורס מקיף לספרות גברים המיועד למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה."
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לפרטים והרשמה</>, href: "https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+האקדמיה" }}
-        image={academyClassroom}
+        image={courseBeginnerHero}
       />
 
       <Section variant="light" isFirstSection>
@@ -62,48 +55,58 @@ const AcademyPage = () => {
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
-          <h2 className="text-center mb-8"><BookOpen className="w-6 h-6 inline-block align-middle ml-1" /> הקורסים שלנו</h2>
-          <CardsGrid items={courses} columns={4} />
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <Card className="bg-background text-foreground text-center p-6 border-border">
+              <Clock className="w-12 h-12 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-2">משך הקורס</h3>
+              <p className="opacity-70">3 חודשים</p>
+            </Card>
+            <Card className="bg-background text-foreground text-center p-6 border-border">
+              <Users className="w-12 h-12 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-2">גודל הכיתה</h3>
+              <p className="opacity-70">עד 8 תלמידים</p>
+            </Card>
+            <Card className="bg-background text-foreground text-center p-6 border-border">
+              <Award className="w-12 h-12 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-2">תעודה</h3>
+              <p className="opacity-70">הסמכה רשמית</p>
+            </Card>
+          </div>
         </AnimatedSection>
       </Section>
 
       <SectionDivider from="light" to="dark" shape="waves" />
 
-      <Section title={<><Star className="w-6 h-6 inline-block align-middle ml-1" /> למה ללמוד אצלנו?</>} variant="dark">
+      <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס</>} variant="dark">
         <AnimatedSection>
-          <FeatureGrid items={features} columns={3} />
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="dark" to="light" shape="triangles" />
-
-      <Section variant="light">
-        <AnimatedSection>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="mb-6"><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> מה תלמדו באקדמיה?</h2>
-              <ul className="space-y-4">
-                {[
-                  "טכניקות תספורת מתקדמות",
-                  "עיצוב זקן מקצועי",
-                  "צביעה ושינוי צבע",
-                  "טכניקות פרם מתקדמות",
-                  "ניהול עסק עצמאי",
-                  "שירות לקוחות ומכירות",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-background/20 flex items-center justify-center text-sm shrink-0 mt-0.5">✓</div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <img src={academyClassroom} alt="לימודים באקדמיה" className="rounded-lg w-full" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {modules.map((module, index) => (
+              <div key={index} className="flex items-center gap-3 p-4 bg-secondary text-secondary-foreground rounded-lg">
+                <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold">{index + 1}</div>
+                <span>{module}</span>
+              </div>
+            ))}
           </div>
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="light" to="dark" shape="curves" />
+      <SectionDivider from="dark" to="light" shape="curves" />
+
+      <Section title={<><Star className="w-6 h-6 inline-block align-middle ml-1" /> למה ללמוד אצלנו?</>} variant="light">
+        <AnimatedSection>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <div key={index} className="text-center p-6">
+                <feature.icon className="w-10 h-10 mx-auto mb-3 opacity-80" />
+                <h3 className="font-bold text-lg mb-1">{feature.title}</h3>
+                <p className="opacity-70 text-sm">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="light" to="dark" shape="triangles" />
 
       <Section variant="dark">
         <AnimatedSection>
@@ -126,8 +129,8 @@ const AcademyPage = () => {
       <SectionDivider from="dark" to="light" shape="steps" />
 
       <CTASection
-        title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> רוצים להצטרף?</>}
-        description={<><MessageCircle className="w-5 h-5 inline-block align-middle ml-1" /> שלחו הודעה בוואטסאפ ונחזור אליכם עם כל הפרטים</>}
+        title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים להתחיל קריירה חדשה?</>}
+        description="הקורס למתחילים הוא הצעד הראשון בדרך לקריירה מצליחה. כולל ערכת ציוד מקצועית מלאה."
         buttonLabel={<><Smartphone className="w-4 h-4" /> הירשמו עכשיו</>}
         buttonHref="https://wa.me/972552935987?text=היי+אני+אשמח+לשמוע+עוד+פרטים+על+האקדמיה"
         variant="light"

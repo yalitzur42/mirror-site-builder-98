@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X, Instagram, Navigation, Phone, Calendar } from "lucide-react";
+import { Menu, X, Instagram, Navigation, Phone, Calendar } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
@@ -9,24 +9,13 @@ const navItems = [
   { label: "אודות", href: "/about" },
   { label: "מספרת גברים", href: "/barbershop" },
   { label: "פרם לגבר", href: "/perm" },
-  {
-    label: "האקדמיה",
-    href: "/academy",
-    children: [
-      { label: "קורס למתחילים", href: "/academy/beginner" },
-      { label: "קורס למתקדמים", href: "/academy/advanced" },
-      { label: "קורס כימיה וצבע", href: "/academy/chemistry" },
-      { label: "קורס פרם", href: "/academy/perm-course" },
-      
-    ],
-  },
+  { label: "האקדמיה", href: "/academy" },
   { label: "פרטי העסק", href: "/business" },
   { label: "עבדו איתנו", href: "/contact" },
 ];
 
 const MainHeader = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border" style={{ backgroundColor: 'hsl(60, 56%, 91%)', backgroundImage: "url('/images/marble-bg.png')", backgroundSize: '100% auto', backgroundPosition: 'top center', backgroundRepeat: 'repeat-y', color: 'hsl(25, 50%, 20%)' }}>
@@ -36,44 +25,20 @@ const MainHeader = () => {
           <img src={logo} alt="Mac'ho" className="w-auto mix-blend-multiply" style={{ height: '9rem' }} />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
-            <div
+            <Link
               key={item.label}
-              className="relative"
-              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-              onMouseLeave={() => setOpenDropdown(null)}
-            >
-              <Link
-                to={item.href}
-                className={cn(
-                  "flex items-center gap-2 px-5 py-3 rounded-full text-base font-extrabold tracking-wide",
-                  "bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]",
-                  "hover:bg-transparent hover:text-[hsl(25,50%,20%)]",
-                  "transition-all duration-300"
-                )}
-              >
-                {item.label}
-                {item.children && <ChevronDown className="w-4 h-4" />}
-              </Link>
-
-              {item.children && openDropdown === item.label && (
-                <div className="absolute top-full right-0 pt-3">
-                  <div className="bg-[hsl(25,50%,20%)] backdrop-blur-md border border-[hsl(25,50%,20%)] rounded-xl shadow-2xl py-2 min-w-[220px] z-50">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.href}
-                        className="block px-5 py-2.5 text-base text-[hsl(60,56%,91%)] hover:bg-[hsl(60,56%,91%)] hover:text-[hsl(25,50%,20%)] transition-all duration-300"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+              to={item.href}
+              className={cn(
+                "flex items-center gap-2 px-5 py-3 rounded-full text-base font-extrabold tracking-wide",
+                "bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]",
+                "hover:bg-transparent hover:text-[hsl(25,50%,20%)]",
+                "transition-all duration-300"
               )}
-            </div>
+            >
+              {item.label}
+            </Link>
           ))}
         </nav>
 
@@ -135,30 +100,14 @@ const MainHeader = () => {
         <div className="lg:hidden section-light border-t border-[hsl(25,50%,20%)]/20 max-h-[calc(100vh-180px)] overflow-y-auto">
           <nav className="container-main py-4 space-y-2">
             {navItems.map((item) => (
-              <div key={item.label}>
-                <Link
-                  to={item.href}
-                  className="flex items-center justify-between px-5 py-3 rounded-xl text-lg font-extrabold bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] hover:opacity-90 transition-all duration-300"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                  {item.children && <ChevronDown className="w-5 h-5 opacity-60" />}
-                </Link>
-                {item.children && (
-                  <div className="mr-6 mt-1 mb-2 space-y-1 border-r-2 border-[hsl(25,50%,20%)]/30 pr-4">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.href}
-                        className="block px-4 py-2.5 rounded-lg text-base font-semibold text-[hsl(25,50%,20%)] bg-[hsl(25,50%,20%)]/10 hover:bg-[hsl(25,50%,20%)]/20 transition-all duration-300"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <Link
+                key={item.label}
+                to={item.href}
+                className="flex items-center justify-between px-5 py-3 rounded-xl text-lg font-extrabold bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] hover:opacity-90 transition-all duration-300"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
         </div>
