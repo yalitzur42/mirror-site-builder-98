@@ -294,7 +294,7 @@ const AcademyPage = () => {
   return (
     <Layout>
       {/* TOP SCROLL PROGRESS */}
-      <div className="fixed top-0 left-0 right-0 z-[200] h-1 bg-transparent">
+      <div className="fixed top-0 left-0 right-0 z-40 h-1 bg-transparent">
         <div
           className="h-full bg-foreground/80"
           style={{ width: `${scrollProgress}%` }}
@@ -322,7 +322,7 @@ const AcademyPage = () => {
       />
 
       {/* URGENCY BAR */}
-      <div className="sticky top-1 z-[150] bg-foreground text-background">
+      <div className="sticky top-1 z-40 bg-foreground text-background">
         <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-sm md:text-base font-semibold">
             <Sparkles className="w-4 h-4" />
