@@ -1,4 +1,4 @@
-```tsx
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import HeroSplit from "@/components/ui/HeroSplit";
@@ -30,6 +30,7 @@ import {
   BriefcaseBusiness,
   Video,
   Scissors,
+  HelpCircle,
 } from "lucide-react";
 
 import academyClassroom from "@/assets/academy-classroom.jpg";
@@ -896,4 +897,4 @@ const AcademyPage = () => {
 };
 
 export default AcademyPage;
-```
+
