@@ -837,10 +837,10 @@ const AcademyPage = () => {
       <CTASection
         title={
           <>
-            <Rocket className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים להתחיל קריירה חדשה?
+            <Rocket className="w-6 h-6 inline-block align-middle ml-1" /> {v("cta", "title", "מוכנים להתחיל קריירה חדשה?")}
           </>
         }
-        description="שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר."
+        description={v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
         buttonLabel={
           <>
             <Smartphone className="w-4 h-4" /> שריינו מקום / בדקו התאמה
