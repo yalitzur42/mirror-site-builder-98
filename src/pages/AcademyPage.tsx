@@ -103,72 +103,55 @@ function getTimeParts(targetISO: string) {
 type FaqItem = { q: string; a: string };
 
 const AcademyPage = () => {
-  // ====== DATA (edit freely) ======
+  const { v } = useSiteContent("academy");
+
+  // ====== DATA (dynamic from admin) ======
   const modules = useMemo(
     () => [
-      "מבוא לספרות גברים (מה הלקוחות באמת מבקשים)",
-      "כלי עבודה והיגיינה (סטנדרט מקצועי במספרות)",
-      "טכניקות בסיסיות (אחיזות, מעברים, טקסטורות)",
-      "תספורות קלאסיות וביקוש גבוה (Fade, Taper, Classic)",
-      "עיצוב זקן בסיסי (קווים נקיים, סימטריה, התאמה לפנים)",
-      "שירות לקוחות ומכירה (איך להפוך לקוח לקבוע)",
+      v("modules", "module1", "מבוא לספרות גברים"),
+      v("modules", "module2", "כלי עבודה והיגיינה"),
+      v("modules", "module3", "טכניקות בסיסיות"),
+      v("modules", "module4", "תספורות קלאסיות"),
+      v("modules", "module5", "עיצוב זקן בסיסי"),
+      v("modules", "module6", "שירות לקוחות ומכירה"),
     ],
-    []
+    [v]
   );
 
   const stats = useMemo(
     () => [
-      { value: 15, suffix: "+", label: "שנות ניסיון בהוראה" },
-      { value: 500, suffix: "+", label: "בוגרים עובדים בתעשייה" },
-      { value: 98, suffix: "%", label: "שביעות רצון תלמידים" },
-      { value: 12, suffix: "", label: "מחזורים בשנה" },
+      { value: parseInt(v("stats", "stat1_number", "15")) || 15, suffix: v("stats", "stat1_number", "15+").replace(/\d+/, ""), label: v("stats", "stat1_label", "שנות ניסיון בהוראה") },
+      { value: parseInt(v("stats", "stat2_number", "500")) || 500, suffix: v("stats", "stat2_number", "500+").replace(/\d+/, ""), label: v("stats", "stat2_label", "בוגרים עובדים בתעשייה") },
+      { value: parseInt(v("stats", "stat3_number", "98")) || 98, suffix: v("stats", "stat3_number", "98%").replace(/\d+/, ""), label: v("stats", "stat3_label", "שביעות רצון תלמידים") },
+      { value: parseInt(v("stats", "stat4_number", "12")) || 12, suffix: v("stats", "stat4_number", "12").replace(/\d+/, ""), label: v("stats", "stat4_label", "מחזורים בשנה") },
     ],
-    []
+    [v]
   );
 
   const features = useMemo(
     () => [
-      { icon: GraduationCap, title: "הכשרה מעשית", description: "לומדים תוך כדי עבודה אמיתית" },
-      { icon: Users, title: "קבוצות קטנות", description: "עד 8 תלמידים בכיתה — יחס אישי" },
-      { icon: Award, title: "תעודה מוכרת", description: "הסמכה רשמית בסיום" },
-      { icon: Clock, title: "גמישות בשעות", description: "מסלולי בוקר/ערב" },
-      { icon: BookOpen, title: "חומרי לימוד", description: "סילבוס מסודר + תרגול מובנה" },
-      { icon: Star, title: "ליווי אישי", description: "תמיכה גם אחרי הקורס" },
+      { icon: GraduationCap, title: v("why_us", "feature1_title", "הכשרה מעשית"), description: v("why_us", "feature1_desc", "לומדים תוך כדי עבודה אמיתית") },
+      { icon: Users, title: v("why_us", "feature2_title", "קבוצות קטנות"), description: v("why_us", "feature2_desc", "עד 8 תלמידים בכיתה") },
+      { icon: Award, title: v("why_us", "feature3_title", "תעודה מוכרת"), description: v("why_us", "feature3_desc", "הסמכה רשמית בסיום") },
+      { icon: Clock, title: v("why_us", "feature4_title", "גמישות בשעות"), description: v("why_us", "feature4_desc", "מסלולי בוקר/ערב") },
+      { icon: BookOpen, title: v("why_us", "feature5_title", "חומרי לימוד"), description: v("why_us", "feature5_desc", "ערכת ציוד מקצועית לכל תלמיד") },
+      { icon: Star, title: v("why_us", "feature6_title", "ליווי אישי"), description: v("why_us", "feature6_desc", "תמיכה גם אחרי הקורס") },
     ],
-    []
+    [v]
   );
 
-  // Set a REAL date for next cohort (edit here)
-  const nextCohortStartISO = "2026-04-15T18:00:00.000+03:00";
+  // Set a REAL date for next cohort (from admin or fallback)
+  const nextCohortStartISO = v("details", "next_cohort", "2026-04-15") + "T18:00:00.000+03:00";
 
   const faq: FaqItem[] = useMemo(
     () => [
-      {
-        q: "צריך ניסיון קודם?",
-        a: "לא. הקורס מיועד למתחילים. מתחילים מהבסיס ומתקדמים לתרגול מעשי בהדרגה.",
-      },
-      {
-        q: "כמה פעמים בשבוע לומדים?",
-        a: "בד״כ 2–3 מפגשים בשבוע (תלוי במסלול). תקבלו מערכת מסודרת לפני תחילת המחזור.",
-      },
-      {
-        q: "האם מקבלים תעודה?",
-        a: "כן. בסיום הקורס ובהשלמת המטלות והתרגול תקבלו תעודת הסמכה רשמית.",
-      },
-      {
-        q: "יש ליווי אחרי הקורס?",
-        a: "כן. יש קבוצת בוגרים/מנטורינג והכוונה להשתלבות במספרות לפי התאמה.",
-      },
-      {
-        q: "מה לגבי ציוד?",
-        a: "כולל ערכת ציוד מקצועית בסיסית לכל תלמיד (לפי מה שמצויין בהרשמה).",
-      },
-      {
-        q: "איפה מתקיים הקורס?",
-        a: "בכיתה/מספרה של Macho (כתובת תישלח בוואטסאפ לאחר השארת פרטים).",
-      },
+      { q: v("faq", "q1", "צריך ניסיון קודם?"), a: v("faq", "a1", "לא. הקורס מיועד למתחילים. מתחילים מהבסיס ומתקדמים לתרגול מעשי בהדרגה.") },
+      { q: v("faq", "q2", "כמה פעמים בשבוע לומדים?"), a: v("faq", "a2", "בד״כ 2–3 מפגשים בשבוע (תלוי במסלול).") },
+      { q: v("faq", "q3", "האם מקבלים תעודה?"), a: v("faq", "a3", "כן. בסיום הקורס ובהשלמת המטלות תקבלו תעודת הסמכה רשמית.") },
+      { q: v("faq", "q4", "יש ליווי אחרי הקורס?"), a: v("faq", "a4", "כן. יש קבוצת בוגרים/מנטורינג והכוונה להשתלבות במספרות.") },
+      { q: v("faq", "q5", "מה לגבי ציוד?"), a: v("faq", "a5", "כולל ערכת ציוד מקצועית בסיסית לכל תלמיד.") },
     ],
-    []
+    [v]
   );
 
   // ====== CRO STATE ======
