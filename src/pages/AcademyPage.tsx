@@ -311,7 +311,7 @@ const AcademyPage = () => {
       />
 
       {/* URGENCY BAR */}
-      <div className="sticky top-0 z-40 bg-foreground text-background">
+      <div className="sticky top-0 z-[45] bg-foreground text-background">
         <div className="container mx-auto px-4 py-1 flex flex-col md:flex-row items-center justify-between gap-1">
           <div className="flex items-center gap-1.5 text-xs md:text-sm font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
