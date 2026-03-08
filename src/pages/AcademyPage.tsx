@@ -302,7 +302,7 @@ const AcademyPage = () => {
           ),
           href: buildWaLink("היי 👋 אני רוצה לבדוק התאמה לקורס באקדמיה של Macho. אפשר פרטים?"),
         }}
-        image={courseBeginnerHero}
+        image={v("hero", "image") || courseBeginnerHero}
       />
 
       {/* URGENCY BAR */}
