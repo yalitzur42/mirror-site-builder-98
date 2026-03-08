@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -9,8 +10,38 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Clock, Mail, MessageCircle, Handshake, Zap, FileText } from "lucide-react";
 import { Warp } from "@paper-design/shaders-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactPage = () => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!name.trim() || !phone.trim()) {
+      toast({ title: "שגיאה", description: "נא למלא שם וטלפון", variant: "destructive" });
+      return;
+    }
+
+    const text = [
+      `היי, אני רוצה לעבוד עם Macho 💈`,
+      `שם: ${name.trim()}`,
+      phone.trim() ? `טלפון: ${phone.trim()}` : "",
+      email.trim() ? `אימייל: ${email.trim()}` : "",
+      message.trim() ? `עוד פרטים: ${message.trim()}` : "",
+    ].filter(Boolean).join("\n");
+
+    window.open(
+      `https://wa.me/972544744031?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
     <Layout>
       <Breadcrumbs items={[{ label: "עבדו איתנו" }]} />
@@ -57,27 +88,28 @@ const ContactPage = () => {
           <AnimatedSection direction="right">
             <h2 className="text-2xl font-bold mb-2"><FileText className="w-5 h-5 inline-block align-middle ml-1" /> השאירו פרטים</h2>
             <p className="opacity-70 mb-6"><Mail className="w-4 h-4 inline-block align-middle ml-1" /> מעדיפים שנחזור אליכם? מלאו את הטופס ונחזור בהקדם.</p>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">שם מלא</label>
-                  <Input placeholder="הכניסו את שמכם" className="bg-background border-border text-foreground" />
+                  <label className="block text-sm font-medium mb-2">שם מלא *</label>
+                  <Input placeholder="הכניסו את שמכם" className="bg-background border-border text-foreground" value={name} onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">טלפון</label>
-                  <Input type="tel" placeholder="050-0000000" className="bg-background border-border text-foreground" />
+                  <label className="block text-sm font-medium mb-2">טלפון *</label>
+                  <Input type="tel" placeholder="050-0000000" className="bg-background border-border text-foreground" value={phone} onChange={(e) => setPhone(e.target.value)} required />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">אימייל</label>
-                <Input type="email" placeholder="your@email.com" className="bg-background border-border text-foreground" />
+                <Input type="email" placeholder="your@email.com" className="bg-background border-border text-foreground" value={email} onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">ספרו לנו על עצמכם</label>
-                <Textarea placeholder="ניסיון, מוטיבציה, מה אתם מחפשים..." rows={5} className="bg-background border-border text-foreground" />
+                <Textarea placeholder="ניסיון, מוטיבציה, מה אתם מחפשים..." rows={5} className="bg-background border-border text-foreground" value={message} onChange={(e) => setMessage(e.target.value)} />
               </div>
               <Button type="submit" size="lg" className="w-full bg-background text-foreground hover:bg-background/90">
-                שלחו פרטים
+                <MessageCircle className="w-5 h-5 ml-2" />
+                שלחו פרטים בוואטסאפ
               </Button>
             </form>
           </AnimatedSection>
