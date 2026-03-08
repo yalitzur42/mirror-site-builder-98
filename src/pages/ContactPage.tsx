@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -9,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Clock, Mail, MessageCircle, Handshake, Zap, FileText } from "lucide-react";
 import { Warp } from "@paper-design/shaders-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactPage = () => {
   return (
