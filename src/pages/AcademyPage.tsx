@@ -675,7 +675,7 @@ const AcademyPage = () => {
             </Card>
             <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
               <ShieldCheck className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg">סטנדרט היגיינה</h3>
+              <h3 className="font-black text-lg text-primary">סטנדרט היגיינה</h3>
               <p className="opacity-80 text-sm mt-1">איך לעבוד נכון ומקצועי לפי נהלים</p>
             </Card>
             <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
