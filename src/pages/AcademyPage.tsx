@@ -668,20 +668,20 @@ const AcademyPage = () => {
         {/* Micro proof row */}
         <AnimatedSection delay={0.12}>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
-            <Card className="p-6 rounded-2xl border-border">
-              <Video className="w-10 h-10 mb-3 opacity-80" />
+            <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
+              <Video className="w-10 h-10 mb-3" />
               <h3 className="font-black text-lg">תרגול מודרך</h3>
-              <p className="opacity-70 text-sm mt-1">לא רק תיאוריה — עובדים ידיים על הכלים</p>
+              <p className="opacity-80 text-sm mt-1">לא רק תיאוריה — עובדים ידיים על הכלים</p>
             </Card>
-            <Card className="p-6 rounded-2xl border-border">
-              <ShieldCheck className="w-10 h-10 mb-3 opacity-80" />
+            <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
+              <ShieldCheck className="w-10 h-10 mb-3" />
               <h3 className="font-black text-lg">סטנדרט היגיינה</h3>
-              <p className="opacity-70 text-sm mt-1">איך לעבוד נכון ומקצועי לפי נהלים</p>
+              <p className="opacity-80 text-sm mt-1">איך לעבוד נכון ומקצועי לפי נהלים</p>
             </Card>
-            <Card className="p-6 rounded-2xl border-border">
-              <BriefcaseBusiness className="w-10 h-10 mb-3 opacity-80" />
+            <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
+              <BriefcaseBusiness className="w-10 h-10 mb-3" />
               <h3 className="font-black text-lg">כניסה לתעשייה</h3>
-              <p className="opacity-70 text-sm mt-1">איך למצוא מקום, איך להציג את עצמך</p>
+              <p className="opacity-80 text-sm mt-1">איך למצוא מקום, איך להציג את עצמך</p>
             </Card>
           </div>
         </AnimatedSection>
