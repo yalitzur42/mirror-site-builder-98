@@ -311,27 +311,27 @@ const AcademyPage = () => {
       />
 
       {/* URGENCY BAR */}
-      <div className="sticky top-1 z-[150] bg-foreground text-background">
-        <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2 text-sm md:text-base font-semibold">
-            <Sparkles className="w-4 h-4" />
+      <div className="sticky top-0 z-40 bg-foreground text-background">
+        <div className="container mx-auto px-4 py-1 flex flex-col md:flex-row items-center justify-between gap-1">
+          <div className="flex items-center gap-1.5 text-xs md:text-sm font-semibold">
+            <Sparkles className="w-3.5 h-3.5" />
             <span>{urgencyText}</span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <button
               onClick={onScrollToLead}
-              className="inline-flex items-center gap-2 rounded-full bg-background text-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
+              className="inline-flex items-center gap-1.5 rounded-full bg-background text-foreground px-3 py-1 text-xs font-semibold hover:opacity-90 transition"
             >
-              <BadgeCheck className="w-4 h-4" />
+              <BadgeCheck className="w-3.5 h-3.5" />
               השארת פרטים מהירה
             </button>
 
             <button
               onClick={onPrimaryCTA}
-              className="inline-flex items-center gap-2 rounded-full bg-background/10 text-background px-4 py-2 text-sm font-semibold hover:bg-background/15 transition"
+              className="inline-flex items-center gap-1.5 rounded-full bg-background/10 text-background px-3 py-1 text-xs font-semibold hover:bg-background/15 transition"
             >
-              <Smartphone className="w-4 h-4" />
+              <Smartphone className="w-3.5 h-3.5" />
               וואטסאפ עכשיו
             </button>
           </div>
