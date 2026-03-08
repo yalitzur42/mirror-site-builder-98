@@ -72,7 +72,7 @@ const HeroSplit = ({
               {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
 
               {/* TITLE */}
-              <h1 className="hero-title-animate text-foreground mb-4">
+              <h1 className="hero-title-animate text-foreground mb-4 break-words overflow-hidden">
                 {title.split("").map((char, index) => (
                   <span key={index} className="hero-letter" style={{ animationDelay: `${index * 0.05}s` }}>
                     {char === " " ? "\u00A0" : char}
@@ -82,7 +82,7 @@ const HeroSplit = ({
 
               {/* SUBTITLE */}
               {subtitle && (
-                <p className="hero-subtitle-animate text-2xl md:text-3xl lg:text-4xl text-accent font-bold mb-4">
+                <p className="hero-subtitle-animate text-2xl md:text-3xl lg:text-4xl text-accent font-bold mb-4 break-words overflow-hidden">
                   {subtitle.split("").map((char, index) => (
                     <span key={index} className="hero-letter" style={{ animationDelay: `${0.6 + index * 0.04}s` }}>
                       {char === " " ? "\u00A0" : char}
@@ -92,7 +92,7 @@ const HeroSplit = ({
               )}
 
               {description && (
-                <p className="hero-description text-muted-foreground text-xl md:text-2xl lg:text-2xl mb-8 max-w-xl mx-auto lg:mx-0">
+                <p className="hero-description text-muted-foreground text-xl md:text-2xl lg:text-2xl mb-8 max-w-xl mx-auto lg:mx-0 break-words overflow-hidden">
                   {description}
                 </p>
               )}
