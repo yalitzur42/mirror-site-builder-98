@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import PageSkeleton from "@/components/ui/PageSkeleton";
 
 // Import images (fallbacks)
 import heroBarbershop from "@/assets/hero-barbershop.jpg";
@@ -31,7 +32,9 @@ import serviceHaircut from "@/assets/service-haircut.jpg";
 import servicePerm from "@/assets/service-perm.jpg";
 
 const HomePage = () => {
-  const { v } = useSiteContent("home");
+  const { v, loading } = useSiteContent("home");
+
+  if (loading) return <Layout><PageSkeleton /></Layout>;
 
   const servicesCards = [
     { title: v("services", "card1_title", "לימודי ספרות גברים"), href: "/academy", image: v("services", "card1_image") || serviceAcademy },

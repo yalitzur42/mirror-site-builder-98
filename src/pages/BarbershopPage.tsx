@@ -8,6 +8,7 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import PageSkeleton from "@/components/ui/PageSkeleton";
 
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
@@ -21,7 +22,9 @@ import barberNehoray from "@/assets/barber-nehoray.jpg";
 import barberYali from "@/assets/barber-yali.jpg";
 
 const BarbershopPage = () => {
-  const { v } = useSiteContent("barbershop");
+  const { v, loading } = useSiteContent("barbershop");
+
+  if (loading) return <Layout><PageSkeleton /></Layout>;
 
   const defaultBarberImages = [barberLiav, barberNehoray, barberYali];
 

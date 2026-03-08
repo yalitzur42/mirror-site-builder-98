@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import PageSkeleton from "@/components/ui/PageSkeleton";
 import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -103,7 +104,9 @@ function getTimeParts(targetISO: string) {
 type FaqItem = { q: string; a: string };
 
 const AcademyPage = () => {
-  const { v } = useSiteContent("academy");
+  const { v, loading } = useSiteContent("academy");
+
+  
 
   // ====== DATA (dynamic from admin) ======
   const modules = useMemo(
@@ -274,6 +277,8 @@ const AcademyPage = () => {
   const urgencyText = timeLeft.diff > 0
     ? `המחזור הבא מתחיל בעוד ${timeLeft.days} ימים • ${formatTwo(timeLeft.hours)}:${formatTwo(timeLeft.minutes)}:${formatTwo(timeLeft.seconds)}`
     : "המחזור הבא נפתח עכשיו — נשארו מקומות אחרונים";
+
+  if (loading) return <Layout><PageSkeleton /></Layout>;
 
   return (
     <Layout>
