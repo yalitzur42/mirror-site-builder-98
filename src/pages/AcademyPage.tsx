@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import PageSkeleton from "@/components/ui/PageSkeleton";
 import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
