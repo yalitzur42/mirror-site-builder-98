@@ -13,6 +13,35 @@ import { Warp } from "@paper-design/shaders-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactPage = () => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!name.trim() || !phone.trim()) {
+      toast({ title: "שגיאה", description: "נא למלא שם וטלפון", variant: "destructive" });
+      return;
+    }
+
+    const text = [
+      `היי, אני רוצה לעבוד עם Macho 💈`,
+      `שם: ${name.trim()}`,
+      phone.trim() ? `טלפון: ${phone.trim()}` : "",
+      email.trim() ? `אימייל: ${email.trim()}` : "",
+      message.trim() ? `עוד פרטים: ${message.trim()}` : "",
+    ].filter(Boolean).join("\n");
+
+    window.open(
+      `https://wa.me/972544744031?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
     <Layout>
       <Breadcrumbs items={[{ label: "עבדו איתנו" }]} />
