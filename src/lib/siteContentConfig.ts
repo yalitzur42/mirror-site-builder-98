@@ -297,10 +297,10 @@ export const siteContentConfig: PageConfig[] = [
     ],
   },
 
-  // ==================== אקדמיה ====================
+  // ==================== האקדמיה – קורס למתחילים ====================
   {
     slug: "academy",
-    title: "אקדמיה",
+    title: "האקדמיה – קורס למתחילים",
     sections: [
       {
         key: "hero",
@@ -308,7 +308,7 @@ export const siteContentConfig: PageConfig[] = [
         fields: [
           { key: "title", label: "כותרת", type: "text", defaultValue: "האקדמיה של Macho" },
           { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "הפוך את התשוקה למקצוע" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "אקדמיה מובילה ללימודי ספרות גברים בישראל. תוכניות לימוד מקיפות, מרצים מובילים וציוד מקצועי." },
+          { key: "description", label: "תיאור", type: "textarea", defaultValue: "קורס מקיף לספרות גברים למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה." },
           { key: "image", label: "תמונה", type: "image", defaultValue: "" },
         ],
       },
@@ -327,87 +327,13 @@ export const siteContentConfig: PageConfig[] = [
         ],
       },
       {
-        key: "courses",
-        title: "הקורסים שלנו",
-        fields: [
-          { key: "course1_title", label: "קורס 1 - כותרת", type: "text", defaultValue: "קורס למתחילים" },
-          { key: "course1_desc", label: "קורס 1 - תיאור", type: "text", defaultValue: "הצעד הראשון בקריירה" },
-          { key: "course1_image", label: "קורס 1 - תמונה", type: "image", defaultValue: "" },
-          { key: "course2_title", label: "קורס 2 - כותרת", type: "text", defaultValue: "קורס למתקדמים" },
-          { key: "course2_desc", label: "קורס 2 - תיאור", type: "text", defaultValue: "שדרוג המיומנויות" },
-          { key: "course2_image", label: "קורס 2 - תמונה", type: "image", defaultValue: "" },
-          { key: "course3_title", label: "קורס 3 - כותרת", type: "text", defaultValue: "קורס כימיה וצבע" },
-          { key: "course3_desc", label: "קורס 3 - תיאור", type: "text", defaultValue: "צביעה וגוונים מקצועיים" },
-          { key: "course4_title", label: "קורס 4 - כותרת", type: "text", defaultValue: "קורס פרם" },
-          { key: "course4_desc", label: "קורס 4 - תיאור", type: "text", defaultValue: "התמחות בפרם לגברים" },
-        ],
-      },
-      {
-        key: "why_us",
-        title: "למה ללמוד אצלנו?",
-        fields: [
-          { key: "feature1_title", label: "תכונה 1 - כותרת", type: "text", defaultValue: "הכשרה מקיפה" },
-          { key: "feature1_desc", label: "תכונה 1 - תיאור", type: "text", defaultValue: "תוכנית לימודים מלאה ומעשית" },
-          { key: "feature2_title", label: "תכונה 2 - כותרת", type: "text", defaultValue: "קבוצות קטנות" },
-          { key: "feature2_desc", label: "תכונה 2 - תיאור", type: "text", defaultValue: "עד 8 תלמידים בכיתה" },
-          { key: "feature3_title", label: "תכונה 3 - כותרת", type: "text", defaultValue: "תעודה מוכרת" },
-          { key: "feature3_desc", label: "תכונה 3 - תיאור", type: "text", defaultValue: "הסמכה רשמית בסיום" },
-          { key: "feature4_title", label: "תכונה 4 - כותרת", type: "text", defaultValue: "גמישות בשעות" },
-          { key: "feature4_desc", label: "תכונה 4 - תיאור", type: "text", defaultValue: "קורסים בבוקר ובערב" },
-          { key: "feature5_title", label: "תכונה 5 - כותרת", type: "text", defaultValue: "חומרי לימוד" },
-          { key: "feature5_desc", label: "תכונה 5 - תיאור", type: "text", defaultValue: "ערכה מקצועית לכל תלמיד" },
-          { key: "feature6_title", label: "תכונה 6 - כותרת", type: "text", defaultValue: "ליווי אישי" },
-          { key: "feature6_desc", label: "תכונה 6 - תיאור", type: "text", defaultValue: "תמיכה גם אחרי הקורס" },
-        ],
-      },
-      {
-        key: "curriculum",
-        title: "מה תלמדו באקדמיה?",
-        fields: [
-          { key: "item1", label: "נושא 1", type: "text", defaultValue: "טכניקות תספורת מתקדמות" },
-          { key: "item2", label: "נושא 2", type: "text", defaultValue: "עיצוב זקן מקצועי" },
-          { key: "item3", label: "נושא 3", type: "text", defaultValue: "צביעה ושינוי צבע" },
-          { key: "item4", label: "נושא 4", type: "text", defaultValue: "טכניקות פרם מתקדמות" },
-          { key: "item5", label: "נושא 5", type: "text", defaultValue: "ניהול עסק עצמאי" },
-          { key: "item6", label: "נושא 6", type: "text", defaultValue: "שירות לקוחות ומכירות" },
-          { key: "image", label: "תמונה", type: "image", defaultValue: "" },
-        ],
-      },
-      {
-        key: "testimonials",
-        title: "הבוגרים שלנו מדברים",
-        fields: [
-          { key: "testimonial1_text", label: "ביקורת 1 - טקסט", type: "textarea", defaultValue: "הקורס ב-Macho שינה לי את החיים. תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה." },
-          { key: "testimonial1_name", label: "ביקורת 1 - שם", type: "text", defaultValue: "דן, בוגר מחזור 2024" },
-          { key: "testimonial2_text", label: "ביקורת 2 - טקסט", type: "textarea", defaultValue: "היחס האישי והמקצועיות של הצוות הם ברמה אחרת. הרגשתי שבאמת אכפת להם שאצליח." },
-          { key: "testimonial2_name", label: "ביקורת 2 - שם", type: "text", defaultValue: "אור, בוגר מחזור 2023" },
-        ],
-      },
-    ],
-  },
-
-  // ==================== קורס למתחילים ====================
-  {
-    slug: "academy-beginner",
-    title: "קורס למתחילים",
-    sections: [
-      {
-        key: "hero",
-        title: "סקשן ראשי",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "קורס למתחילים" },
-          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "הצעד הראשון בקריירה שלך" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "קורס מקיף לספרות גברים המיועד למתחילים ללא ניסיון קודם. תלמדו את כל הבסיס הדרוש להתחיל קריירה מצליחה." },
-          { key: "image", label: "תמונה", type: "image", defaultValue: "" },
-        ],
-      },
-      {
         key: "details",
         title: "פרטי הקורס",
         fields: [
           { key: "duration", label: "משך הקורס", type: "text", defaultValue: "3 חודשים" },
           { key: "class_size", label: "גודל הכיתה", type: "text", defaultValue: "עד 8 תלמידים" },
           { key: "certificate", label: "תעודה", type: "text", defaultValue: "הסמכה רשמית" },
+          { key: "next_cohort", label: "תאריך מחזור הבא", type: "text", defaultValue: "2026-04-15" },
         ],
       },
       {
@@ -419,7 +345,41 @@ export const siteContentConfig: PageConfig[] = [
           { key: "module3", label: "מודול 3", type: "text", defaultValue: "טכניקות בסיסיות" },
           { key: "module4", label: "מודול 4", type: "text", defaultValue: "תספורות קלאסיות" },
           { key: "module5", label: "מודול 5", type: "text", defaultValue: "עיצוב זקן בסיסי" },
-          { key: "module6", label: "מודול 6", type: "text", defaultValue: "שירות לקוחות" },
+          { key: "module6", label: "מודול 6", type: "text", defaultValue: "שירות לקוחות ומכירה" },
+        ],
+      },
+      {
+        key: "why_us",
+        title: "למה ללמוד אצלנו?",
+        fields: [
+          { key: "feature1_title", label: "תכונה 1 - כותרת", type: "text", defaultValue: "הכשרה מעשית" },
+          { key: "feature1_desc", label: "תכונה 1 - תיאור", type: "text", defaultValue: "לומדים תוך כדי עבודה אמיתית" },
+          { key: "feature2_title", label: "תכונה 2 - כותרת", type: "text", defaultValue: "קבוצות קטנות" },
+          { key: "feature2_desc", label: "תכונה 2 - תיאור", type: "text", defaultValue: "עד 8 תלמידים בכיתה" },
+          { key: "feature3_title", label: "תכונה 3 - כותרת", type: "text", defaultValue: "תעודה מוכרת" },
+          { key: "feature3_desc", label: "תכונה 3 - תיאור", type: "text", defaultValue: "הסמכה רשמית בסיום" },
+          { key: "feature4_title", label: "תכונה 4 - כותרת", type: "text", defaultValue: "גמישות בשעות" },
+          { key: "feature4_desc", label: "תכונה 4 - תיאור", type: "text", defaultValue: "מסלולי בוקר/ערב" },
+          { key: "feature5_title", label: "תכונה 5 - כותרת", type: "text", defaultValue: "חומרי לימוד" },
+          { key: "feature5_desc", label: "תכונה 5 - תיאור", type: "text", defaultValue: "ערכת ציוד מקצועית לכל תלמיד" },
+          { key: "feature6_title", label: "תכונה 6 - כותרת", type: "text", defaultValue: "ליווי אישי" },
+          { key: "feature6_desc", label: "תכונה 6 - תיאור", type: "text", defaultValue: "תמיכה גם אחרי הקורס" },
+        ],
+      },
+      {
+        key: "faq",
+        title: "שאלות נפוצות",
+        fields: [
+          { key: "q1", label: "שאלה 1", type: "text", defaultValue: "צריך ניסיון קודם?" },
+          { key: "a1", label: "תשובה 1", type: "textarea", defaultValue: "לא. הקורס מיועד למתחילים. מתחילים מהבסיס ומתקדמים לתרגול מעשי בהדרגה." },
+          { key: "q2", label: "שאלה 2", type: "text", defaultValue: "כמה פעמים בשבוע לומדים?" },
+          { key: "a2", label: "תשובה 2", type: "textarea", defaultValue: "בד״כ 2–3 מפגשים בשבוע (תלוי במסלול)." },
+          { key: "q3", label: "שאלה 3", type: "text", defaultValue: "האם מקבלים תעודה?" },
+          { key: "a3", label: "תשובה 3", type: "textarea", defaultValue: "כן. בסיום הקורס ובהשלמת המטלות תקבלו תעודת הסמכה רשמית." },
+          { key: "q4", label: "שאלה 4", type: "text", defaultValue: "יש ליווי אחרי הקורס?" },
+          { key: "a4", label: "תשובה 4", type: "textarea", defaultValue: "כן. יש קבוצת בוגרים/מנטורינג והכוונה להשתלבות במספרות." },
+          { key: "q5", label: "שאלה 5", type: "text", defaultValue: "מה לגבי ציוד?" },
+          { key: "a5", label: "תשובה 5", type: "textarea", defaultValue: "כולל ערכת ציוד מקצועית בסיסית לכל תלמיד." },
         ],
       },
       {
@@ -427,154 +387,8 @@ export const siteContentConfig: PageConfig[] = [
         title: "קריאה לפעולה",
         fields: [
           { key: "title", label: "כותרת", type: "text", defaultValue: "מוכנים להתחיל קריירה חדשה?" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "הקורס למתחילים הוא הצעד הראשון בדרך לקריירה מצליחה בעולם הספרות. בוגרי הקורס עובדים במספרות המובילות בארץ." },
+          { key: "description", label: "תיאור", type: "textarea", defaultValue: "הקורס למתחילים הוא הצעד הראשון בדרך לקריירה מצליחה בעולם הספרות." },
           { key: "note", label: "הערה", type: "text", defaultValue: "כולל ערכת ציוד מקצועית מלאה" },
-        ],
-      },
-    ],
-  },
-
-  // ==================== קורס למתקדמים ====================
-  {
-    slug: "academy-advanced",
-    title: "קורס למתקדמים",
-    sections: [
-      {
-        key: "hero",
-        title: "סקשן ראשי",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "קורס למתקדמים" },
-          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "שדרגו את המיומנויות" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "קורס מתקדם לספרים עם ניסיון שרוצים להעלות רמה. טכניקות מתקדמות, טרנדים חדשים ובניית מותג אישי." },
-          { key: "image", label: "תמונה", type: "image", defaultValue: "" },
-        ],
-      },
-      {
-        key: "details",
-        title: "פרטי הקורס",
-        fields: [
-          { key: "duration", label: "משך הקורס", type: "text", defaultValue: "6 שבועות" },
-          { key: "class_size", label: "גודל הכיתה", type: "text", defaultValue: "עד 6 תלמידים" },
-          { key: "prerequisites", label: "דרישות קדם", type: "text", defaultValue: "שנת ניסיון" },
-          { key: "certificate", label: "תעודה", type: "text", defaultValue: "הסמכה מתקדמת" },
-        ],
-      },
-      {
-        key: "modules",
-        title: "תכני הקורס",
-        fields: [
-          { key: "module1", label: "מודול 1", type: "text", defaultValue: "טכניקות Fade מתקדמות" },
-          { key: "module2", label: "מודול 2", type: "text", defaultValue: "עיצוב זקן מורכב" },
-          { key: "module3", label: "מודול 3", type: "text", defaultValue: "צביעה וגוונים" },
-          { key: "module4", label: "מודול 4", type: "text", defaultValue: "טרנדים עדכניים" },
-          { key: "module5", label: "מודול 5", type: "text", defaultValue: "מיתוג אישי" },
-          { key: "module6", label: "מודול 6", type: "text", defaultValue: "בניית פורטפוליו" },
-        ],
-      },
-      {
-        key: "cta",
-        title: "קריאה לפעולה",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "מוכנים לעלות רמה?" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "הקורס למתקדמים ייקח את הכישורים שלכם לשלב הבא. טכניקות שיבדילו אתכם מכל ספר אחר." },
-          { key: "note", label: "הערה", type: "text", defaultValue: "לספרים פעילים עם ניסיון בלבד" },
-        ],
-      },
-    ],
-  },
-
-  // ==================== קורס כימיה וצבע ====================
-  {
-    slug: "academy-chemistry",
-    title: "קורס כימיה וצבע",
-    sections: [
-      {
-        key: "hero",
-        title: "סקשן ראשי",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "קורס כימיה וצבע" },
-          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "שלטו באמנות הצבע" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "קורס מקיף שיעניק לכם שליטה מלאה בעולם הצביעה והכימיה. תלמדו להבין את המדע מאחורי הצבע וליצור תוצאות מדויקות ומרהיבות." },
-          { key: "image", label: "תמונה", type: "image", defaultValue: "" },
-        ],
-      },
-      {
-        key: "details",
-        title: "פרטי הקורס",
-        fields: [
-          { key: "duration", label: "משך הקורס", type: "text", defaultValue: "8 שבועות" },
-          { key: "class_size", label: "גודל הכיתה", type: "text", defaultValue: "עד 6 תלמידים" },
-          { key: "specialization", label: "התמחות", type: "text", defaultValue: "צביעה וכימיה" },
-          { key: "certificate", label: "תעודה", type: "text", defaultValue: "הסמכה מקצועית" },
-        ],
-      },
-      {
-        key: "modules",
-        title: "מה תלמדו?",
-        fields: [
-          { key: "module1", label: "מודול 1", type: "text", defaultValue: "בסיס כימיה של שיער" },
-          { key: "module2", label: "מודול 2", type: "text", defaultValue: "תורת הצבע והגוונים" },
-          { key: "module3", label: "מודול 3", type: "text", defaultValue: "טכניקות צביעה מתקדמות" },
-          { key: "module4", label: "מודול 4", type: "text", defaultValue: "הבהרה והכהיה" },
-          { key: "module5", label: "מודול 5", type: "text", defaultValue: "תיקון צבע" },
-          { key: "module6", label: "מודול 6", type: "text", defaultValue: "שימוש במוצרים מקצועיים" },
-        ],
-      },
-      {
-        key: "cta",
-        title: "קריאה לפעולה",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "הפכו למומחי צבע" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "צביעת שיער היא אמנות ומדע. בקורס הזה תלמדו את שניהם – ותצאו עם היכולת ליצור כל גוון שהלקוח מבקש." },
-        ],
-      },
-    ],
-  },
-
-  // ==================== קורס פרם ====================
-  {
-    slug: "academy-perm",
-    title: "קורס פרם",
-    sections: [
-      {
-        key: "hero",
-        title: "סקשן ראשי",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "קורס פרם" },
-          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "הפכו למומחי פרם לגברים" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "קורס ייחודי מסוגו בישראל – למדו את אמנות הפרם לגברים מהחלוצים בתחום. טכניקות, כימיה ושירות ברמה הגבוהה ביותר." },
-          { key: "image", label: "תמונה", type: "image", defaultValue: "" },
-        ],
-      },
-      {
-        key: "details",
-        title: "פרטי הקורס",
-        fields: [
-          { key: "duration", label: "משך הקורס", type: "text", defaultValue: "6 שבועות" },
-          { key: "class_size", label: "גודל הכיתה", type: "text", defaultValue: "עד 6 תלמידים" },
-          { key: "prerequisites", label: "דרישות קדם", type: "text", defaultValue: "ניסיון בסיסי בספרות" },
-          { key: "certificate", label: "תעודה", type: "text", defaultValue: "הסמכת פרם מקצועית" },
-        ],
-      },
-      {
-        key: "modules",
-        title: "תכני הקורס",
-        fields: [
-          { key: "module1", label: "מודול 1", type: "text", defaultValue: "מבוא לפרם לגברים" },
-          { key: "module2", label: "מודול 2", type: "text", defaultValue: "כימיה של פרם – תיאוריה ומעשה" },
-          { key: "module3", label: "מודול 3", type: "text", defaultValue: "סוגי תלתלים וגלים" },
-          { key: "module4", label: "מודול 4", type: "text", defaultValue: "התאמת פרם לסוג שיער" },
-          { key: "module5", label: "מודול 5", type: "text", defaultValue: "טכניקות גלילה מתקדמות" },
-          { key: "module6", label: "מודול 6", type: "text", defaultValue: "טיפול ותחזוקה אחרי פרם" },
-        ],
-      },
-      {
-        key: "cta",
-        title: "קריאה לפעולה",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "הפרם הוא העתיד" },
-          { key: "description", label: "תיאור", type: "textarea", defaultValue: "הביקוש לפרם לגברים רק עולה. ספרים שיודעים לעשות פרם מקצועי נמצאים בביקוש עצום. זה הזמן שלכם ללמוד את המיומנות שתבדיל אתכם מכולם." },
-          { key: "note", label: "הערה", type: "text", defaultValue: "למדו מהחלוצים בתחום הפרם לגברים בישראל" },
         ],
       },
     ],
