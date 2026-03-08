@@ -291,9 +291,9 @@ const AcademyPage = () => {
       <div ref={heroAnchorRef} />
 
       <HeroSplit
-        title="האקדמיה של Macho"
-        subtitle="תוך 3 חודשים — בדרך לקריירה בספרות גברים"
-        description="קורס למתחילים ללא ניסיון: הרבה תרגול, קבוצות קטנות, תעודה בסיום וליווי עד שמתחילים לעבוד."
+        title={v("hero", "title", "האקדמיה של Macho")}
+        subtitle={v("hero", "subtitle", "תוך 3 חודשים — בדרך לקריירה בספרות גברים")}
+        description={v("hero", "description", "קורס למתחילים ללא ניסיון: הרבה תרגול, קבוצות קטנות, תעודה בסיום וליווי עד שמתחילים לעבוד.")}
         primaryCta={{
           label: (
             <>
