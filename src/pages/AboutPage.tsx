@@ -11,7 +11,9 @@ import PageSkeleton from "@/components/ui/PageSkeleton";
 import teamPhoto from "@/assets/team-photo.jpg";
 
 const AboutPage = () => {
-  const { v } = useSiteContent("about");
+  const { v, loading } = useSiteContent("about");
+
+  if (loading) return <Layout><PageSkeleton /></Layout>;
 
   return (
     <Layout>

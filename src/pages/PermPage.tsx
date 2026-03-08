@@ -18,7 +18,9 @@ import permLight from "@/assets/perm-light.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 
 const PermPage = () => {
-  const { v } = useSiteContent("perm");
+  const { v, loading } = useSiteContent("perm");
+
+  if (loading) return <Layout><PageSkeleton /></Layout>;
 
   const defaultPermImages = [permClassic, permWaves, permTight, permLight];
 

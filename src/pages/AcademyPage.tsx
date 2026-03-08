@@ -104,7 +104,9 @@ function getTimeParts(targetISO: string) {
 type FaqItem = { q: string; a: string };
 
 const AcademyPage = () => {
-  const { v } = useSiteContent("academy");
+  const { v, loading } = useSiteContent("academy");
+
+  if (loading) return <Layout><PageSkeleton /></Layout>;
 
   // ====== DATA (dynamic from admin) ======
   const modules = useMemo(

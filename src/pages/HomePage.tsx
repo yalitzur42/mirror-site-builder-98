@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import PageSkeleton from "@/components/ui/PageSkeleton";
 
 // Import images (fallbacks)
 import heroBarbershop from "@/assets/hero-barbershop.jpg";

@@ -22,7 +22,9 @@ import barberNehoray from "@/assets/barber-nehoray.jpg";
 import barberYali from "@/assets/barber-yali.jpg";
 
 const BarbershopPage = () => {
-  const { v } = useSiteContent("barbershop");
+  const { v, loading } = useSiteContent("barbershop");
+
+  if (loading) return <Layout><PageSkeleton /></Layout>;
 
   const defaultBarberImages = [barberLiav, barberNehoray, barberYali];
 
