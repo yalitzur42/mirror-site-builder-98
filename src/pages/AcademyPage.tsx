@@ -550,17 +550,17 @@ const AcademyPage = () => {
             <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
               <Clock className="w-12 h-12 mx-auto mb-4" />
               <h3 className="font-bold text-xl mb-2">משך הקורס</h3>
-              <p className="opacity-70">3 חודשים</p>
+              <p className="opacity-70">{v("details", "duration", "3 חודשים")}</p>
             </Card>
             <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
               <Users className="w-12 h-12 mx-auto mb-4" />
               <h3 className="font-bold text-xl mb-2">גודל הכיתה</h3>
-              <p className="opacity-70">עד 8 תלמידים</p>
+              <p className="opacity-70">{v("details", "class_size", "עד 8 תלמידים")}</p>
             </Card>
             <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
               <Award className="w-12 h-12 mx-auto mb-4" />
               <h3 className="font-bold text-xl mb-2">תעודה</h3>
-              <p className="opacity-70">הסמכה רשמית</p>
+              <p className="opacity-70">{v("details", "certificate", "הסמכה רשמית")}</p>
             </Card>
           </div>
         </AnimatedSection>
