@@ -19,21 +19,21 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
             <Home className="w-4 h-4" />
           </Link>
         </li>
-        {items.map((item, index) => (
-          <li key={index} className="flex items-center gap-2">
+        {items.map((item, index) =>
+        <li key={index} className="flex items-center gap-2">
             <ChevronLeft className="w-4 h-4" />
-            {item.href ? (
-              <Link to={item.href} className="hover:text-foreground transition-colors">
+            {item.href ?
+          <Link to={item.href} className="hover:text-foreground transition-colors">
                 {item.label}
-              </Link>
-            ) : (
-              <span className="text-foreground">{item.label}</span>
-            )}
+              </Link> :
+
+          <span className="text-primary-foreground text-lg font-semibold">{item.label}</span>
+          }
           </li>
-        ))}
+        )}
       </ol>
-    </nav>
-  );
+    </nav>);
+
 };
 
 export default Breadcrumbs;
