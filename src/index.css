@@ -118,6 +118,7 @@
 
   html {
     direction: rtl;
+    overflow-x: hidden;
   }
 
   body {
