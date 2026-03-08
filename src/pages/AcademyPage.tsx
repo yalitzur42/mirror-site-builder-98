@@ -278,6 +278,8 @@ const AcademyPage = () => {
     ? `המחזור הבא מתחיל בעוד ${timeLeft.days} ימים • ${formatTwo(timeLeft.hours)}:${formatTwo(timeLeft.minutes)}:${formatTwo(timeLeft.seconds)}`
     : "המחזור הבא נפתח עכשיו — נשארו מקומות אחרונים";
 
+  if (loading) return <Layout><PageSkeleton /></Layout>;
+
   return (
     <Layout>
       {/* TOP SCROLL PROGRESS */}
