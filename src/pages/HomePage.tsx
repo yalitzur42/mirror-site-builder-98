@@ -12,8 +12,9 @@ import { GraduationCap, Users, Award, Star, Clock, Shield, Heart, Sparkles, Flam
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
-// Import images
+// Import images (fallbacks)
 import heroBarbershop from "@/assets/hero-barbershop.jpg";
 import permHero from "@/assets/perm-hero.jpg";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
@@ -30,36 +31,46 @@ import serviceHaircut from "@/assets/service-haircut.jpg";
 import servicePerm from "@/assets/service-perm.jpg";
 
 const HomePage = () => {
+  const { v } = useSiteContent("home");
+
   const servicesCards = [
-    { title: "לימודי ספרות גברים", href: "/academy", image: serviceAcademy },
-    { title: "תספורות גברים", href: "/barbershop", image: serviceHaircut },
-    { title: "פרם לגבר", href: "/perm", image: servicePerm },
+    { title: v("services", "card1_title", "לימודי ספרות גברים"), href: "/academy", image: v("services", "card1_image") || serviceAcademy },
+    { title: v("services", "card2_title", "תספורות גברים"), href: "/barbershop", image: v("services", "card2_image") || serviceHaircut },
+    { title: v("services", "card3_title", "פרם לגבר"), href: "/perm", image: v("services", "card3_image") || servicePerm },
   ];
 
   const academyFeatures = [
-    { icon: GraduationCap, title: "הכשרה מקצועית", description: "תוכנית לימודים מקיפה" },
-    { icon: Users, title: "קבוצות קטנות", description: "יחס אישי לכל תלמיד" },
-    { icon: Award, title: "תעודה מוכרת", description: "הסמכה רשמית בסיום" },
-    { icon: Star, title: "מרצים מובילים", description: "הטובים בתחום" },
+    { icon: GraduationCap, title: v("academy", "feature1_title", "הכשרה מקצועית"), description: v("academy", "feature1_desc", "תוכנית לימודים מקיפה") },
+    { icon: Users, title: v("academy", "feature2_title", "קבוצות קטנות"), description: v("academy", "feature2_desc", "יחס אישי לכל תלמיד") },
+    { icon: Award, title: v("academy", "feature3_title", "תעודה מוכרת"), description: v("academy", "feature3_desc", "הסמכה רשמית בסיום") },
+    { icon: Star, title: v("academy", "feature4_title", "מרצים מובילים"), description: v("academy", "feature4_desc", "הטובים בתחום") },
   ];
 
-  const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+  // Gallery: try dynamic, fall back to static
+  const dynamicGallery = v("gallery", "images");
+  let galleryImages: string[];
+  try {
+    const parsed = JSON.parse(dynamicGallery);
+    galleryImages = Array.isArray(parsed) && parsed.length > 0 ? parsed : [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+  } catch {
+    galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+  }
 
   return (
     <Layout>
       {/* Hero Section */}
       <HeroSplit
-        badge={<><Hand className="w-4 h-4 inline-block align-middle ml-1" /> אהלן גבר, ברוך הבא!</>}
-        title="משפחת Macho"
-        subtitle="מובילים את סצנת טיפוח השיער לגברים בישראל!"
-        description="מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר."
+        badge={<><Hand className="w-4 h-4 inline-block align-middle ml-1" /> {v("hero", "badge", "אהלן גבר, ברוך הבא!")}</>}
+        title={v("hero", "title", "משפחת Macho")}
+        subtitle={v("hero", "subtitle", "מובילים את סצנת טיפוח השיער לגברים בישראל!")}
+        description={v("hero", "description", "מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: "https://calmark.io/p/ZBfbx" }}
         secondaryCta={{ label: <><GraduationCap className="w-4 h-4" /> לאקדמיה</>, href: "/academy" }}
-        image={heroBarbershop}
+        image={v("hero", "image") || heroBarbershop}
       />
 
       {/* What We Offer */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> מה תמצאו אצלנו?</>} variant="light" isFirstSection>
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> {v("services", "title", "מה תמצאו אצלנו?")}</>} variant="light" isFirstSection>
         <AnimatedSection>
           <CardsGrid items={servicesCards} columns={3} />
         </AnimatedSection>
@@ -69,8 +80,8 @@ const HomePage = () => {
 
       {/* Academy Section */}
       <Section
-        title={<><GraduationCap className="w-6 h-6 inline-block align-middle ml-1" /> האקדמיה של Macho</>}
-        subtitle="הפוך את התשוקה שלך למקצוע. הצטרף לאקדמיה המובילה בישראל ללימודי ספרות גברים."
+        title={<><GraduationCap className="w-6 h-6 inline-block align-middle ml-1" /> {v("academy", "title", "האקדמיה של Macho")}</>}
+        subtitle={v("academy", "subtitle", "הפוך את התשוקה שלך למקצוע. הצטרף לאקדמיה המובילה בישראל ללימודי ספרות גברים.")}
         variant="dark"
       >
         <AnimatedSection>
@@ -86,7 +97,7 @@ const HomePage = () => {
       <SectionDivider from="dark" to="light" shape="triangles" />
 
       {/* Gallery */}
-      <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> מהעבודות שלנו</>} variant="light">
+      <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> {v("gallery", "title", "מהעבודות שלנו")}</>} variant="light">
         <AnimatedSection>
           <GalleryGrid images={galleryImages} />
         </AnimatedSection>
@@ -98,25 +109,25 @@ const HomePage = () => {
       <Section variant="dark">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <img src={permHero} alt="פרם לגבר" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
+            <img src={v("perm", "image") || permHero} alt="פרם לגבר" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-             <h2 className="mb-4 font-extrabold"><Flame className="w-7 h-7 inline-block align-middle ml-1" /> פרם לגבר</h2>
+             <h2 className="mb-4 font-extrabold"><Flame className="w-7 h-7 inline-block align-middle ml-1" /> {v("perm", "title", "פרם לגבר")}</h2>
              <p className="text-muted-foreground text-xl mb-6 font-semibold">
-               תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.
+               {v("perm", "description", "תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.")}
             </p>
             <StaggerChildren className="space-y-3 mb-8" staggerDelay={0.1}>
               <li className="flex items-center gap-3">
                 <Shield className="w-5 h-5 text-primary" />
-                <span>מוצרים איכותיים ובטוחים</span>
+                <span>{v("perm", "bullet1", "מוצרים איכותיים ובטוחים")}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-primary" />
-                <span>תוצאות מהירות וארוכות טווח</span>
+                <span>{v("perm", "bullet2", "תוצאות מהירות וארוכות טווח")}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Heart className="w-5 h-5 text-primary" />
-                <span>התאמה אישית לסגנון שלך</span>
+                <span>{v("perm", "bullet3", "התאמה אישית לסגנון שלך")}</span>
               </li>
             </StaggerChildren>
             <motion.div
@@ -139,17 +150,11 @@ const HomePage = () => {
       <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <h2 className="mb-6 font-extrabold"><Scissors className="w-7 h-7 inline-block align-middle ml-1" /> Macho – יותר מסתם מספרה</h2>
+            <h2 className="mb-6 font-extrabold"><Scissors className="w-7 h-7 inline-block align-middle ml-1" /> {v("about_preview", "title", "Macho – יותר מסתם מספרה")}</h2>
             <div className="space-y-4 text-lg">
-              <p>
-                Macho נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל
-                גבר מגיע ליחס אישי, מקצועי ואיכותי.
-              </p>
-              <p>
-                הצוות שלנו עובר הכשרות מתמידות ומעודכן בטרנדים האחרונים מכל העולם. אנחנו גאים להביא את הטוב ביותר
-                ללקוחות שלנו.
-              </p>
-              <p>בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או פרם מושלם – ב-Macho תמצא את הכל תחת קורת גג אחת.</p>
+              <p>{v("about_preview", "paragraph1", "Macho נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל גבר מגיע ליחס אישי, מקצועי ואיכותי.")}</p>
+              <p>{v("about_preview", "paragraph2", "הצוות שלנו עובר הכשרות מתמידות ומעודכן בטרנדים האחרונים מכל העולם. אנחנו גאים להביא את הטוב ביותר ללקוחות שלנו.")}</p>
+              <p>{v("about_preview", "paragraph3", "בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או פרם מושלם – ב-Macho תמצא את הכל תחת קורת גג אחת.")}</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -163,7 +168,7 @@ const HomePage = () => {
             </motion.div>
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <img src={barbershopInterior} alt="פנים Macho" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
+            <img src={v("about_preview", "image") || barbershopInterior} alt="פנים Macho" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
           </AnimatedSection>
         </div>
       </Section>
@@ -174,18 +179,15 @@ const HomePage = () => {
       <Section variant="dark">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <img src={ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
+            <img src={v("owner", "image") || ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
             <img src={teamIcon} alt="" className="w-32 mb-4 object-contain" />
-            <h2 className="mb-4 font-extrabold">הכירו את יהלי</h2>
-            <h3 className="text-xl font-bold mb-4">יהלי צור – מייסד Macho</h3>
+            <h2 className="mb-4 font-extrabold">{v("owner", "title", "הכירו את יהלי")}</h2>
+            <h3 className="text-xl font-bold mb-4">{v("owner", "subtitle", "יהלי צור – מייסד Macho")}</h3>
             <div className="space-y-4 text-lg">
-              <p>
-                עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את Macho מתוך חזון להביא שינוי אמיתי לעולם הטיפוח
-                לגברים בישראל.
-              </p>
-              <p>בוגר קורסים מובילים בארץ ובעולם, ישראל משלב ידע מקצועי עמוק עם גישה אישית וחמה לכל לקוח.</p>
+              <p>{v("owner", "paragraph1", "עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את Macho מתוך חזון להביא שינוי אמיתי לעולם הטיפוח לגברים בישראל.")}</p>
+              <p>{v("owner", "paragraph2", "בוגר קורסים מובילים בארץ ובעולם, ישראל משלב ידע מקצועי עמוק עם גישה אישית וחמה לכל לקוח.")}</p>
             </div>
           </AnimatedSection>
         </div>

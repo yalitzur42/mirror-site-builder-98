@@ -7,6 +7,7 @@ import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
@@ -20,31 +21,47 @@ import barberNehoray from "@/assets/barber-nehoray.jpg";
 import barberYali from "@/assets/barber-yali.jpg";
 
 const BarbershopPage = () => {
-  const barbers = [
-    { nameHe: "ליאב", nameEn: "LIAV", image: barberLiav, prices: [70, 80, 70, 100] },
-    { nameHe: "נהוראי", nameEn: "NEHORAY", image: barberNehoray, prices: [70, 90, 80, 100] },
-    { nameHe: "יהלי", nameEn: "YALI", image: barberYali, prices: [100, 120, 100, 130] },
-  ];
+  const { v } = useSiteContent("barbershop");
+
+  const defaultBarberImages = [barberLiav, barberNehoray, barberYali];
+
+  const barbers = [1, 2, 3].map((i, idx) => {
+    const pricesStr = v("pricing", `barber${i}_prices`, "70,80,70,100");
+    return {
+      nameHe: v("pricing", `barber${i}_name`, ["ליאב", "נהוראי", "יהלי"][idx]),
+      nameEn: v("pricing", `barber${i}_name_en`, ["LIAV", "NEHORAY", "YALI"][idx]),
+      image: v("pricing", `barber${i}_image`) || defaultBarberImages[idx],
+      prices: pricesStr.split(",").map(Number),
+    };
+  });
 
   const services = [
-    { name: "תספורת גבר בלבד" },
-    { name: "תספורת גבר וזקן" },
-    { name: "תספורת חייל בסדיר", note: "(נוער עד גיל 18)" },
-    { name: "תספורת MAKEOVER" },
+    { name: v("pricing", "service1", "תספורת גבר בלבד") },
+    { name: v("pricing", "service2", "תספורת גבר וזקן") },
+    { name: v("pricing", "service3", "תספורת חייל בסדיר"), note: v("pricing", "service3_note", "(נוער עד גיל 18)") },
+    { name: v("pricing", "service4", "תספורת MAKEOVER") },
   ];
 
-  const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+  // Gallery: try dynamic, fall back to static
+  const dynamicGallery = v("gallery", "images");
+  let galleryImages: string[];
+  try {
+    const parsed = JSON.parse(dynamicGallery);
+    galleryImages = Array.isArray(parsed) && parsed.length > 0 ? parsed : [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+  } catch {
+    galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+  }
 
   return (
     <Layout>
       <Breadcrumbs items={[{ label: "מספרת גברים" }]} />
 
       <HeroSplit
-        title="מספרת גברים"
-        subtitle="תספורות ברמה אחרת"
-        description="חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני."
+        title={v("hero", "title", "מספרת גברים")}
+        subtitle={v("hero", "subtitle", "תספורות ברמה אחרת")}
+        description={v("hero", "description", "חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: "https://calmark.io/p/ZBfbx" }}
-        image={barbershopInterior}
+        image={v("hero", "image") || barbershopInterior}
       />
 
       <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light" isFirstSection>
@@ -94,16 +111,16 @@ const BarbershopPage = () => {
         <AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-5xl font-black mb-2">15+</div>
-              <p className="opacity-70">שנות ניסיון</p>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat1_number", "15+")}</div>
+              <p className="opacity-70">{v("stats", "stat1_label", "שנות ניסיון")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">10K+</div>
-              <p className="opacity-70">לקוחות מרוצים</p>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat2_number", "10K+")}</div>
+              <p className="opacity-70">{v("stats", "stat2_label", "לקוחות מרוצים")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">5★</div>
-              <p className="opacity-70">דירוג ממוצע</p>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "5★")}</div>
+              <p className="opacity-70">{v("stats", "stat3_label", "דירוג ממוצע")}</p>
             </div>
           </div>
         </AnimatedSection>
@@ -114,9 +131,9 @@ const BarbershopPage = () => {
       <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> ספר שרוצה להצטרף לצוות?</h2>
+            <h2 className="mb-4"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> {v("join_team", "title", "ספר שרוצה להצטרף לצוות?")}</h2>
             <p className="text-lg opacity-80 mb-8">
-              אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.
+              {v("join_team", "description", "אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.")}
             </p>
             <a
               href="https://wa.me/972544744031?text=היי, אני ספר ומעוניין להצטרף לצוות Macho"
