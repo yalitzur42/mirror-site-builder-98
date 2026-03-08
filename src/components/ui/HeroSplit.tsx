@@ -72,7 +72,7 @@ const HeroSplit = ({
               {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
 
               {/* TITLE */}
-              <h1 className="hero-title-animate text-foreground mb-4">
+              <h1 className="hero-title-animate text-foreground mb-4 break-words overflow-hidden">
                 {title.split("").map((char, index) => (
                   <span key={index} className="hero-letter" style={{ animationDelay: `${index * 0.05}s` }}>
                     {char === " " ? "\u00A0" : char}
