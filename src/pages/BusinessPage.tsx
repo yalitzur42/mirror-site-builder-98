@@ -36,7 +36,7 @@ const BusinessPage = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Column – Info */}
           <div className="space-y-10">
-            {/* Address - mobile: button, desktop: text + map */}
+            {/* Address */}
             <AnimatedSection direction="right">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center shrink-0">
@@ -44,11 +44,9 @@ const BusinessPage = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">כתובת</h3>
-                  {/* Desktop: show address text */}
-                  <p className="hidden lg:block opacity-70 text-lg">המחשלים 5, עפולה</p>
-                  <p className="hidden lg:block opacity-50 text-sm mt-1">אזור התעשייה עפולה</p>
-                  {/* Mobile: navigation buttons */}
-                  <div className="flex gap-2 lg:hidden mt-2">
+                  <p className="opacity-70 text-lg">המחשלים 5, עפולה</p>
+                  <p className="opacity-50 text-sm mt-1">אזור התעשייה עפולה</p>
+                  <div className="flex gap-2 mt-3">
                     <a
                       href={wazeUrl}
                       target="_blank"
@@ -121,23 +119,6 @@ const BusinessPage = () => {
             </AnimatedSection>
           </div>
 
-          {/* Right Column – Map (desktop only) */}
-          <div className="hidden lg:block">
-            <AnimatedSection direction="left">
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <iframe
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=%D7%94%D7%9E%D7%97%D7%A9%D7%9C%D7%99%D7%9D+5+%D7%A2%D7%A4%D7%95%D7%9C%D7%94&zoom=16"
-                  width="100%"
-                  height="450"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="מיקום Macho על המפה – המחשלים 5, עפולה"
-                />
-              </div>
-            </AnimatedSection>
-          </div>
         </div>
       </Section>
     </Layout>
