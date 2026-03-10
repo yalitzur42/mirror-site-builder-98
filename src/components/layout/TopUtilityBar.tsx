@@ -45,7 +45,7 @@ const TopUtilityBar = () => {
           <span>חייגו אלינו</span>
         </a>
         <a
-          href="https://calmark.io/p/ZBfbx"
+          href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#7C3AED] text-white text-sm font-bold hover:bg-[#6D28D9] transition-all"

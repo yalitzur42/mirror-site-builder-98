@@ -158,7 +158,7 @@ const BarbershopPage = () => {
         title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לתספורת חדשה?</>}
         description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו</>}
         buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור בוואטסאפ</>}
-        buttonHref="https://calmark.io/p/ZBfbx"
+        buttonHref={BOOKING_URL}
         variant="light"
       />
     </Layout>

@@ -74,7 +74,7 @@ const AboutPage = () => {
         title={<><Heart className="w-6 h-6 inline-block align-middle ml-1" /> רוצים להצטרף למשפחה?</>}
         description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו וחוו את ההבדל</>}
         buttonLabel={<><Smartphone className="w-4 h-4" /> לקביעת תור</>}
-        buttonHref="https://calmark.io/p/ZBfbx"
+        buttonHref={BOOKING_URL}
         variant="light"
       />
     </Layout>

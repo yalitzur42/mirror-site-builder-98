@@ -68,7 +68,7 @@ const ContactPage = () => {
               בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם. <Zap className="w-5 h-5 inline-block align-middle ml-1" />
             </p>
             <a
-              href="https://wa.me/972544744031?text=היי, אני מעוניין לעבוד עם Macho"
+              href={waLink(WA_GENERAL, "היי, אני מעוניין לעבוד עם Macho")}
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"

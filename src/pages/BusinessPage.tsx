@@ -97,10 +97,10 @@ const BusinessPage = () => {
             <div className="flex flex-col items-center gap-3">
               <h3 className="text-xl font-bold">עקבו אחרינו</h3>
               <div className="flex gap-4">
-                <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
                   <Instagram className="w-6 h-6 text-[hsl(60_56%_91%)]" />
                 </a>
-                <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
+                <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
                   <TikTokIcon className="w-6 h-6 text-[hsl(60_56%_91%)]" />
                 </a>
               </div>
