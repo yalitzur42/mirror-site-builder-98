@@ -1,5 +1,6 @@
 interface GalleryGridProps {
   images: string[];
+  altPrefix?: string;
 }
 
 const GalleryGrid = ({ images }: GalleryGridProps) => {
