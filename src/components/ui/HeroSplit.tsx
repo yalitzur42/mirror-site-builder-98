@@ -92,7 +92,7 @@ const HeroSplit = ({
               )}
 
               {description && (
-                <p className="hero-description text-muted-foreground text-xl md:text-2xl lg:text-2xl mb-8 max-w-xl mx-auto lg:mx-0 break-words overflow-hidden">
+                <p className="hero-description text-muted-foreground text-lg md:text-xl mb-8 max-w-xl mx-auto lg:mx-0 break-words overflow-hidden">
                   {description}
                 </p>
               )}
