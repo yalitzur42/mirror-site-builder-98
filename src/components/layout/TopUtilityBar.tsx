@@ -38,7 +38,7 @@ const TopUtilityBar = () => {
           <span>נווטו אלינו</span>
         </a>
         <a
-          href="tel:054-4744031"
+          href={`tel:${PHONE_DISPLAY}`}
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25D366] text-white text-sm font-bold border border-[#25D366]/50 hover:bg-[#20bd5a] transition-all"
         >
           <Phone className="w-4 h-4" />
