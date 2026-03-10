@@ -11,6 +11,8 @@ import PermPage from "./pages/PermPage";
 import AcademyPage from "./pages/AcademyPage";
 import BusinessPage from "./pages/BusinessPage";
 import ContactPage from "./pages/ContactPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
