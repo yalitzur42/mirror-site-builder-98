@@ -454,21 +454,21 @@ const AcademyPage = () => {
                 <Card className="overflow-hidden rounded-2xl border-border bg-background">
                   <div className="grid md:grid-cols-2">
                     <div className="p-6 md:p-8">
-                      <h3 className="text-xl md:text-2xl font-black">
-                        מה יוצא לכם מזה בפועל?
-                      </h3>
-                      <ul className="mt-4 grid gap-3 text-sm md:text-base">
-                        {[
-                        "תספורות בביקוש גבוה (Fade/Taper/Classic)",
-                        "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)",
-                        "תיק עבודות לתחילת עבודה במספרות",
-                        "בטחון מקצועי מול לקוחות אמיתיים"].
-                        map((item) =>
-                        <li key={item} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
-                            <span className="opacity-85">{item}</span>
-                          </li>
-                        )}
+                       <h3 className="text-xl md:text-2xl font-black">
+                         {v("outcomes", "title", "מה יוצא לכם מזה בפועל?")}
+                       </h3>
+                       <ul className="mt-4 grid gap-3 text-sm md:text-base">
+                         {[
+                         v("outcomes", "item1", "תספורות בביקוש גבוה (Fade/Taper/Classic)"),
+                         v("outcomes", "item2", "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)"),
+                         v("outcomes", "item3", "תיק עבודות לתחילת עבודה במספרות"),
+                         v("outcomes", "item4", "בטחון מקצועי מול לקוחות אמיתיים")].
+                         map((item) =>
+                         <li key={item} className="flex items-start gap-2">
+                             <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
+                             <span className="opacity-85">{item}</span>
+                           </li>
+                         )}
                       </ul>
 
                       <div className="mt-6 flex flex-wrap gap-3">
