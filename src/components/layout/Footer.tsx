@@ -3,8 +3,11 @@ import { Instagram, MapPin, Phone, Clock, Compass } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import logo from "@/assets/logo.png";
 import { TIKTOK_URL, INSTAGRAM_URL, BOOKING_URL, BUSINESS_ADDRESS, PHONE_DISPLAY } from "@/lib/constants";
+import { useBusinessHours } from "@/hooks/useBusinessHours";
 
 const Footer = () => {
+  const { hours } = useBusinessHours();
+
   return (
     <footer className="bg-background text-foreground border-t border-border">
       <div className="container-main py-12">
@@ -68,18 +71,12 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-4"><Clock className="w-4 h-4 inline-block align-middle ml-1" /> שעות פעילות</h4>
             <div className="space-y-2 text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 shrink-0" />
-                <span>ראשון - חמישי: 09:00 - 20:00</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 shrink-0" />
-                <span>שישי: 09:00 - 14:00</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 shrink-0" />
-                <span>שבת: סגור</span>
-              </div>
+              {hours.map((h) => (
+                <div key={h.day} className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 shrink-0" />
+                  <span>{h.day}: {h.time}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

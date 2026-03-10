@@ -19,6 +19,7 @@ const pageIcons: Record<string, typeof Home> = {
   barbershop: Scissors,
   perm: Droplets,
   academy: GraduationCap,
+  global: Settings,
 };
 
 const AdminDashboard = () => {
