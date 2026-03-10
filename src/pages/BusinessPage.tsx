@@ -36,7 +36,7 @@ const BusinessPage = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Column – Info */}
           <div className="space-y-10">
-            {/* Address - mobile: button, desktop: text + map */}
+            {/* Address */}
             <AnimatedSection direction="right">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center shrink-0">
@@ -44,11 +44,9 @@ const BusinessPage = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">כתובת</h3>
-                  {/* Desktop: show address text */}
-                  <p className="hidden lg:block opacity-70 text-lg">המחשלים 5, עפולה</p>
-                  <p className="hidden lg:block opacity-50 text-sm mt-1">אזור התעשייה עפולה</p>
-                  {/* Mobile: navigation buttons */}
-                  <div className="flex gap-2 lg:hidden mt-2">
+                  <p className="opacity-70 text-lg">המחשלים 5, עפולה</p>
+                  <p className="opacity-50 text-sm mt-1">אזור התעשייה עפולה</p>
+                  <div className="flex gap-2 mt-3">
                     <a
                       href={wazeUrl}
                       target="_blank"
