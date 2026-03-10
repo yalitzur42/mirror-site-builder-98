@@ -17,7 +17,7 @@ const GalleryGrid = ({ images, altPrefix = "תמונת גלריה" }: GalleryGri
           {image ? (
             <img
               src={image}
-              alt=""
+              alt={`${altPrefix} ${index + 1}`}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           ) : (

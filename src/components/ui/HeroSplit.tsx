@@ -131,7 +131,7 @@ const HeroSplit = ({
             {/* Image */}
             <div className="order-1 lg:order-2 relative flex items-center justify-center">
               {image ? (
-                <img src={image} alt="" className="w-full max-w-xs md:max-w-sm lg:max-w-md rounded-lg shadow-2xl" />
+                <img src={image} alt={title} className="w-full max-w-xs md:max-w-sm lg:max-w-md rounded-lg shadow-2xl" />
               ) : (
                 <div className="aspect-square bg-muted/20 rounded-lg flex items-center justify-center">
                   <span className="text-muted-foreground">תמונה</span>
