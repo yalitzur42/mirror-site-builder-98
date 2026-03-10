@@ -463,4 +463,21 @@ export const siteContentConfig: PageConfig[] = [
       },
     ],
   },
+
+  // ==================== הגדרות כלליות ====================
+  {
+    slug: "global",
+    title: "הגדרות כלליות",
+    sections: [
+      {
+        key: "hours",
+        title: "שעות פעילות",
+        fields: [
+          { key: "sunday_thursday", label: "ראשון - חמישי", type: "text", defaultValue: "09:00 - 20:00" },
+          { key: "friday", label: "שישי", type: "text", defaultValue: "08:00 - 14:00" },
+          { key: "saturday", label: "שבת", type: "text", defaultValue: "סגור" },
+        ],
+      },
+    ],
+  },
 ];
