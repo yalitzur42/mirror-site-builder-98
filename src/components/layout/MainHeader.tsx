@@ -50,7 +50,7 @@ const MainHeader = () => {
             
             <TikTokIcon className="w-5 h-5" />
           </a>
-          <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer"
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300">
             
             <Instagram className="w-5 h-5" />
