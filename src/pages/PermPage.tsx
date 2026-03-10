@@ -106,7 +106,7 @@ const PermPage = () => {
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="mb-4"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> רוצים לדעת איזה פרם מתאים לכם?</h2>
             <p className="text-lg opacity-80 mb-8">שלחו לנו תמונה בוואטסאפ ונייעץ לכם בחינם – בלי התחייבות.</p>
-            <a href="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." target="_blank" rel="noopener noreferrer" className="whatsapp-cta">
+            <a href={waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.")} target="_blank" rel="noopener noreferrer" className="whatsapp-cta">
               <Smartphone className="w-5 h-5" />
               לייעוץ חינם בוואטסאפ
             </a>
