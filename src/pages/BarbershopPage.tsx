@@ -10,6 +10,7 @@ import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "l
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL, WA_GENERAL, waLink } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
