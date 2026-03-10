@@ -489,7 +489,7 @@ const AcademyPage = () => {
 
                     <div className="relative min-h-[260px] md:min-h-full">
                       <img
-                        src={academyClassroom}
+                        src={v("outcomes", "image") || academyClassroom}
                         alt="כיתה באקדמיה"
                         className="absolute inset-0 w-full h-full object-cover"
                         loading="lazy" />

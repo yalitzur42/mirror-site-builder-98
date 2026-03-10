@@ -409,6 +409,7 @@ export const siteContentConfig: PageConfig[] = [
         title: "מה יוצא לכם מזה בפועל",
         fields: [
           { key: "title", label: "כותרת", type: "text", defaultValue: "מה יוצא לכם מזה בפועל?" },
+          { key: "image", label: "תמונה", type: "image", defaultValue: "" },
           { key: "item1", label: "תוצאה 1", type: "text", defaultValue: "תספורות בביקוש גבוה (Fade/Taper/Classic)" },
           { key: "item2", label: "תוצאה 2", type: "text", defaultValue: "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)" },
           { key: "item3", label: "תוצאה 3", type: "text", defaultValue: "תיק עבודות לתחילת עבודה במספרות" },
