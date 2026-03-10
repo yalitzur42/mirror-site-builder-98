@@ -186,7 +186,7 @@ const HomePage = () => {
             <img src={v("owner", "image") || ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <img src={teamIcon} alt="" className="w-32 mb-4 object-contain" />
+            <img src={teamIcon} alt="צוות Macho" className="w-32 mb-4 object-contain" />
             <h2 className="mb-4 font-extrabold">{v("owner", "title", "הכירו את יהלי")}</h2>
             <h3 className="text-xl font-bold mb-4">{v("owner", "subtitle", "יהלי צור – מייסד Macho")}</h3>
             <div className="space-y-4 text-lg">

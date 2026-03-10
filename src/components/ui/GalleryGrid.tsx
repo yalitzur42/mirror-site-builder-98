@@ -1,8 +1,9 @@
 interface GalleryGridProps {
   images: string[];
+  altPrefix?: string;
 }
 
-const GalleryGrid = ({ images }: GalleryGridProps) => {
+const GalleryGrid = ({ images, altPrefix = "תמונת גלריה" }: GalleryGridProps) => {
   // Use placeholder if no images provided
   const displayImages = images.length > 0 ? images : Array(8).fill(null);
 
@@ -16,7 +17,7 @@ const GalleryGrid = ({ images }: GalleryGridProps) => {
           {image ? (
             <img
               src={image}
-              alt=""
+              alt={`${altPrefix} ${index + 1}`}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           ) : (
