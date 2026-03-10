@@ -31,7 +31,7 @@ const Section = ({
           <div className="text-center mb-8 overflow-hidden">
             {title && <h2 className="mb-3 text-inherit font-extrabold break-words">{title}</h2>}
             {subtitle && (
-              <p className="text-xl max-w-2xl mx-auto opacity-80 font-semibold break-words">
+              <p className="text-lg max-w-2xl mx-auto opacity-80 font-semibold break-words">
                 {subtitle}
               </p>
             )}

@@ -82,7 +82,7 @@ const HeroSplit = ({
 
               {/* SUBTITLE */}
               {subtitle && (
-                <p className="hero-subtitle-animate text-2xl md:text-3xl lg:text-4xl text-accent font-bold mb-4 break-words overflow-hidden">
+                <p className="hero-subtitle-animate text-xl md:text-2xl lg:text-3xl text-accent font-bold mb-4 break-words overflow-hidden">
                   {subtitle.split("").map((char, index) => (
                     <span key={index} className="hero-letter" style={{ animationDelay: `${0.6 + index * 0.04}s` }}>
                       {char === " " ? "\u00A0" : char}
