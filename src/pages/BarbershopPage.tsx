@@ -64,7 +64,7 @@ const BarbershopPage = () => {
         title={v("hero", "title", "מספרת גברים")}
         subtitle={v("hero", "subtitle", "תספורות ברמה אחרת")}
         description={v("hero", "description", "חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני.")}
-        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: "https://calmark.io/p/ZBfbx" }}
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         image={v("hero", "image") || barbershopInterior}
       />
 
