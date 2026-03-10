@@ -13,8 +13,6 @@ import { useBusinessHours } from "@/hooks/useBusinessHours";
 const BusinessPage = () => {
   usePageMeta({ title: "פרטי העסק", description: "כתובת, שעות פעילות ודרכי התקשרות - Mac'ho עפולה" });
   const { hours } = useBusinessHours();
-  const wazeUrl = WAZE_URL;
-  const gmapsUrl = GMAPS_URL;
 
   return (
     <Layout>
