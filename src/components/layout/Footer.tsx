@@ -88,7 +88,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-border">
         <div className="container-main py-4 flex flex-wrap items-center justify-between gap-4 text-sm text-foreground/70">
-          <span>© 2024 Mac'ho. כל הזכויות שמורות.</span>
+          <span>© {new Date().getFullYear()} Mac'ho. כל הזכויות שמורות.</span>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="hover:text-foreground transition-colors">
               מדיניות פרטיות
