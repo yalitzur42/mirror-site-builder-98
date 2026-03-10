@@ -7,17 +7,12 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { MapPin, Phone, Clock, Instagram, Navigation } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
+import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_NOTE, BUSINESS_HOURS, PHONE_DISPLAY, PHONE_TEL, WAZE_URL, GMAPS_URL, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/constants";
 
 const BusinessPage = () => {
-  const hours = [
-    { day: "ראשון - חמישי", time: "09:00 - 20:00" },
-    { day: "שישי", time: "08:00 - 14:00" },
-    { day: "שבת", time: "סגור" },
-  ];
-
-  const address = "המחשלים 5, עפולה";
-  const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
-  const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  const hours = BUSINESS_HOURS;
+  const wazeUrl = WAZE_URL;
+  const gmapsUrl = GMAPS_URL;
 
   return (
     <Layout>
@@ -41,8 +36,8 @@ const BusinessPage = () => {
                 <MapPin className="w-6 h-6 text-[hsl(60_56%_91%)]" />
               </div>
               <h3 className="text-xl font-bold">כתובת</h3>
-              <p className="opacity-70 text-lg">המחשלים 5, עפולה</p>
-              <p className="opacity-50 text-sm">אזור התעשייה עפולה</p>
+              <p className="opacity-70 text-lg">{BUSINESS_ADDRESS}</p>
+              <p className="opacity-50 text-sm">{BUSINESS_ADDRESS_NOTE}</p>
               <div className="flex gap-2 mt-1">
                 <a
                   href={wazeUrl}
@@ -73,8 +68,8 @@ const BusinessPage = () => {
                 <Phone className="w-6 h-6 text-[hsl(60_56%_91%)]" />
               </div>
               <h3 className="text-xl font-bold">טלפון</h3>
-              <a href="tel:0544744031" className="opacity-70 text-lg hover:opacity-100 transition-opacity">
-                054-4744031
+              <a href={`tel:${PHONE_TEL}`} className="opacity-70 text-lg hover:opacity-100 transition-opacity">
+                {PHONE_DISPLAY}
               </a>
             </div>
           </AnimatedSection>
@@ -102,10 +97,10 @@ const BusinessPage = () => {
             <div className="flex flex-col items-center gap-3">
               <h3 className="text-xl font-bold">עקבו אחרינו</h3>
               <div className="flex gap-4">
-                <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
                   <Instagram className="w-6 h-6 text-[hsl(60_56%_91%)]" />
                 </a>
-                <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
+                <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
                   <TikTokIcon className="w-6 h-6 text-[hsl(60_56%_91%)]" />
                 </a>
               </div>

@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MessageCircle, Handshake, Zap, FileText } from "lucide-react";
 import { Warp } from "@paper-design/shaders-react";
 import { useToast } from "@/hooks/use-toast";
+import { WA_GENERAL, waLink } from "@/lib/constants";
 
 const ContactPage = () => {
   const [name, setName] = useState("");
@@ -35,7 +36,7 @@ const ContactPage = () => {
     ].filter(Boolean).join("\n");
 
     window.open(
-      `https://wa.me/972544744031?text=${encodeURIComponent(text)}`,
+      waLink(WA_GENERAL, text),
       "_blank",
       "noopener,noreferrer"
     );
@@ -67,7 +68,7 @@ const ContactPage = () => {
               בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם. <Zap className="w-5 h-5 inline-block align-middle ml-1" />
             </p>
             <a
-              href="https://wa.me/972544744031?text=היי, אני מעוניין לעבוד עם Macho"
+              href={waLink(WA_GENERAL, "היי, אני מעוניין לעבוד עם Macho")}
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"

@@ -7,6 +7,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { Target, Eye, Heart, Handshake, Scissors, Smartphone, BookOpen } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
+import { BOOKING_URL } from "@/lib/constants";
 
 import teamPhoto from "@/assets/team-photo.jpg";
 
@@ -73,7 +74,7 @@ const AboutPage = () => {
         title={<><Heart className="w-6 h-6 inline-block align-middle ml-1" /> רוצים להצטרף למשפחה?</>}
         description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו וחוו את ההבדל</>}
         buttonLabel={<><Smartphone className="w-4 h-4" /> לקביעת תור</>}
-        buttonHref="https://calmark.io/p/ZBfbx"
+        buttonHref={BOOKING_URL}
         variant="light"
       />
     </Layout>

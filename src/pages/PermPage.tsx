@@ -9,6 +9,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { Shield, Clock, CheckCircle, Sparkles, Crown, Trophy, Waves, Gem, Smartphone, MessageCircle, HelpCircle, Target } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
+import { WA_PERM, waLink } from "@/lib/constants";
 
 import permHero from "@/assets/perm-hero.jpg";
 import permClassic from "@/assets/perm-classic.jpg";
@@ -44,7 +45,7 @@ const PermPage = () => {
         title={v("hero", "title", "פרם לגבר")}
         subtitle={v("hero", "subtitle", "תלתלים מושלמים לגברים")}
         description={v("hero", "description", "תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל.")}
-        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לייעוץ חינם</>, href: "https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." }}
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לייעוץ חינם</>, href: waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.") }}
         image={v("hero", "image") || permHero}
       />
 
@@ -105,7 +106,7 @@ const PermPage = () => {
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="mb-4"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> רוצים לדעת איזה פרם מתאים לכם?</h2>
             <p className="text-lg opacity-80 mb-8">שלחו לנו תמונה בוואטסאפ ונייעץ לכם בחינם – בלי התחייבות.</p>
-            <a href="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." target="_blank" rel="noopener noreferrer" className="whatsapp-cta">
+            <a href={waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.")} target="_blank" rel="noopener noreferrer" className="whatsapp-cta">
               <Smartphone className="w-5 h-5" />
               לייעוץ חינם בוואטסאפ
             </a>
@@ -178,7 +179,7 @@ const PermPage = () => {
         title={<><Waves className="w-6 h-6 inline-block align-middle ml-1" /> רוצים תלתלים?</>}
         description={<><Target className="w-5 h-5 inline-block align-middle ml-1" /> לחצו לייעוץ חינם ללא התחייבות</>}
         buttonLabel={<><Smartphone className="w-4 h-4" /> דברו איתנו בוואטסאפ</>}
-        buttonHref="https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם."
+        buttonHref={waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.")}
         variant="light"
       />
     </Layout>

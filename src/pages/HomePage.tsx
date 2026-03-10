@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
+import { BOOKING_URL } from "@/lib/constants";
 
 // Import images (fallbacks)
 import heroBarbershop from "@/assets/hero-barbershop.jpg";
@@ -67,7 +68,7 @@ const HomePage = () => {
         title={v("hero", "title", "משפחת Macho")}
         subtitle={v("hero", "subtitle", "מובילים את סצנת טיפוח השיער לגברים בישראל!")}
         description={v("hero", "description", "מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר.")}
-        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: "https://calmark.io/p/ZBfbx" }}
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         secondaryCta={{ label: <><GraduationCap className="w-4 h-4" /> לאקדמיה</>, href: "/academy" }}
         image={v("hero", "image") || heroBarbershop}
       />
@@ -202,7 +203,7 @@ const HomePage = () => {
           title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים להתחיל?</>}
           description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו וחוו את ההבדל</>}
           buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור בוואטסאפ</>}
-          buttonHref="https://calmark.io/p/ZBfbx"
+          buttonHref={BOOKING_URL}
           variant="light"
         />
       </AnimatedSection>

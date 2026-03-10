@@ -4,6 +4,7 @@ import { Menu, X, Instagram, Navigation, Phone, Calendar } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
+import { TIKTOK_URL, INSTAGRAM_URL, WAZE_URL, PHONE_DISPLAY, BOOKING_URL } from "@/lib/constants";
 
 const navItems = [
 { label: "אודות", href: "/about" },
@@ -44,12 +45,12 @@ const MainHeader = () => {
 
         {/* Social Icons */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer"
+          <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300">
             
             <TikTokIcon className="w-5 h-5" />
           </a>
-          <a href="https://www.instagram.com/macho.afula" target="_blank" rel="noopener noreferrer"
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300">
             
             <Instagram className="w-5 h-5" />
@@ -59,7 +60,7 @@ const MainHeader = () => {
         {/* Mobile Action Buttons + Menu */}
         <div className="lg:hidden flex items-center gap-2">
           <a
-            href="https://waze.com/ul?q=%D7%94%D7%9E%D7%97%D7%A9%D7%9C%D7%99%D7%9D%205%2C%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94&navigate=yes"
+            href={WAZE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#33ccff] text-white"
@@ -69,7 +70,7 @@ const MainHeader = () => {
             <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">נווטו אלינו</span>
           </a>
           <a
-            href="tel:054-4744031"
+            href={`tel:${PHONE_DISPLAY}`}
             className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#25D366] text-white"
             title="חייגו אלינו">
             
@@ -77,7 +78,7 @@ const MainHeader = () => {
             <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">חייגו אלינו</span>
           </a>
           <a
-            href="https://calmark.io/p/ZBfbx"
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#7C3AED] text-white"

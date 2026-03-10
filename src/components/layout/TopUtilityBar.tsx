@@ -1,9 +1,9 @@
 import { Navigation, Phone, Calendar } from "lucide-react";
 import { Warp } from "@paper-design/shaders-react";
+import { WAZE_URL, PHONE_DISPLAY, BOOKING_URL } from "@/lib/constants";
 
 const TopUtilityBar = () => {
-  const address = "המחשלים 5, עפולה";
-  const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
+  const wazeUrl = WAZE_URL;
 
   return (
     <div className="relative overflow-hidden hidden lg:block">
@@ -38,14 +38,14 @@ const TopUtilityBar = () => {
           <span>נווטו אלינו</span>
         </a>
         <a
-          href="tel:054-4744031"
+          href={`tel:${PHONE_DISPLAY}`}
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25D366] text-white text-sm font-bold border border-[#25D366]/50 hover:bg-[#20bd5a] transition-all"
         >
           <Phone className="w-4 h-4" />
           <span>חייגו אלינו</span>
         </a>
         <a
-          href="https://calmark.io/p/ZBfbx"
+          href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#7C3AED] text-white text-sm font-bold hover:bg-[#6D28D9] transition-all"

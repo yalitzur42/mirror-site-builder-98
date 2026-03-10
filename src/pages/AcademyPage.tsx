@@ -50,12 +50,10 @@ import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";
    - gallery placeholders (use your real images)
 -------------------------------------------------- */
 
-const WHATSAPP_NUMBER = "972552935987";
-const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}`;
+import { WA_ACADEMY, waLink as _waLink } from "@/lib/constants";
 
 function buildWaLink(text: string) {
-  const encoded = encodeURIComponent(text);
-  return `${WHATSAPP_BASE}?text=${encoded}`;
+  return _waLink(WA_ACADEMY, text);
 }
 
 function clamp(n: number, min: number, max: number) {

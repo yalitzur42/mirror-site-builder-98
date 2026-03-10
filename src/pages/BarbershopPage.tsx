@@ -9,6 +9,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
+import { BOOKING_URL, WA_GENERAL, waLink } from "@/lib/constants";
 
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
@@ -63,7 +64,7 @@ const BarbershopPage = () => {
         title={v("hero", "title", "מספרת גברים")}
         subtitle={v("hero", "subtitle", "תספורות ברמה אחרת")}
         description={v("hero", "description", "חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני.")}
-        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: "https://calmark.io/p/ZBfbx" }}
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         image={v("hero", "image") || barbershopInterior}
       />
 
@@ -139,7 +140,7 @@ const BarbershopPage = () => {
               {v("join_team", "description", "אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.")}
             </p>
             <a
-              href="https://wa.me/972544744031?text=היי, אני ספר ומעוניין להצטרף לצוות Macho"
+              href={waLink(WA_GENERAL, "היי, אני ספר ומעוניין להצטרף לצוות Macho")}
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"
@@ -157,7 +158,7 @@ const BarbershopPage = () => {
         title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לתספורת חדשה?</>}
         description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו</>}
         buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור בוואטסאפ</>}
-        buttonHref="https://calmark.io/p/ZBfbx"
+        buttonHref={BOOKING_URL}
         variant="light"
       />
     </Layout>
