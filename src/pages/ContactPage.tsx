@@ -36,7 +36,7 @@ const ContactPage = () => {
     ].filter(Boolean).join("\n");
 
     window.open(
-      `https://wa.me/972544744031?text=${encodeURIComponent(text)}`,
+      waLink(WA_GENERAL, text),
       "_blank",
       "noopener,noreferrer"
     );
