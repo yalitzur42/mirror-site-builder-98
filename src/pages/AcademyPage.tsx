@@ -173,7 +173,7 @@ const AcademyPage = () => {
       </div>
 
       {/* LEAD SECTION */}
-      <Section variant="light" isFirstSection>
+      <Section variant="light">
         <div id="lead-section" className="scroll-mt-28" />
 
         <AnimatedSection>

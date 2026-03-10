@@ -74,7 +74,7 @@ const HomePage = () => {
       />
 
       {/* What We Offer */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> {v("services", "title", "מה תמצאו אצלנו?")}</>} variant="light" isFirstSection>
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> {v("services", "title", "מה תמצאו אצלנו?")}</>} variant="light">
         <AnimatedSection>
           <CardsGrid items={servicesCards} columns={3} />
         </AnimatedSection>

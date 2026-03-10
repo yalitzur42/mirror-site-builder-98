@@ -27,7 +27,7 @@ const AboutPage = () => {
         image={v("hero", "image") || teamPhoto}
       />
 
-      <Section variant="light" isFirstSection>
+      <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <img src={v("who_we_are", "image") || teamPhoto} alt="הצוות שלנו" className="rounded-lg w-full max-w-md mx-auto" />
           <div>
