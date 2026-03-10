@@ -67,7 +67,21 @@ const AdminDashboard = () => {
     }));
   };
 
+  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"];
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+  const validateFile = (file: File): string | null => {
+    if (!ALLOWED_TYPES.includes(file.type)) return `סוג קובץ לא נתמך: ${file.type}`;
+    if (file.size > MAX_FILE_SIZE) return `הקובץ גדול מדי (מקסימום 5MB)`;
+    return null;
+  };
+
   const handleImageUpload = async (pageSlug: string, sectionKey: string, fieldKey: string, file: File) => {
+    const validationError = validateFile(file);
+    if (validationError) {
+      toast({ title: "שגיאה", description: validationError, variant: "destructive" });
+      return;
+    }
     const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${file.name.split('.').pop()}`;
     const { error } = await supabase.storage.from("site-assets").upload(filePath, file);
     if (error) {

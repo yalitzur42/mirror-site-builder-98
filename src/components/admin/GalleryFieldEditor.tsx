@@ -23,12 +23,28 @@ const GalleryFieldEditor = ({ value, onChange, pageSlug, sectionKey, fieldKey }:
     images = [];
   }
 
+  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"];
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+  const MAX_FILES = 20;
+
   const handleUpload = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
+    if (images.length + files.length > MAX_FILES) {
+      toast({ title: "שגיאה", description: `ניתן להעלות עד ${MAX_FILES} תמונות`, variant: "destructive" });
+      return;
+    }
     setUploading(true);
 
     const newImages = [...images];
     for (const file of Array.from(files)) {
+      if (!ALLOWED_TYPES.includes(file.type)) {
+        toast({ title: "שגיאה", description: `סוג קובץ לא נתמך: ${file.name}`, variant: "destructive" });
+        continue;
+      }
+      if (file.size > MAX_FILE_SIZE) {
+        toast({ title: "שגיאה", description: `${file.name} גדול מדי (מקסימום 5MB)`, variant: "destructive" });
+        continue;
+      }
       const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}-${Math.random().toString(36).slice(2)}.${file.name.split('.').pop()}`;
       const { error } = await supabase.storage.from("site-assets").upload(filePath, file);
       if (error) {
