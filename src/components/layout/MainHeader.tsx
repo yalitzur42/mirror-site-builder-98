@@ -4,6 +4,7 @@ import { Menu, X, Instagram, Navigation, Phone, Calendar } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
+import { TIKTOK_URL, INSTAGRAM_URL, WAZE_URL, PHONE_DISPLAY, BOOKING_URL } from "@/lib/constants";
 
 const navItems = [
 { label: "אודות", href: "/about" },
