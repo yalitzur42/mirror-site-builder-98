@@ -742,13 +742,13 @@ const AcademyPage = () => {
                     <Star className="w-4 h-4 opacity-80" />
                     <Star className="w-4 h-4 opacity-80" />
                   </div>
-                  <span className="text-xs opacity-60">מחזור 2024</span>
+                  <span className="text-xs opacity-60">{v("testimonials", "review1_cohort", "מחזור 2024")}</span>
                 </div>
 
                 <p className="opacity-85 mb-4">
-                  "תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה. התרגול והיחס האישי עשו את ההבדל."
+                  "{v("testimonials", "review1_text", "תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה. התרגול והיחס האישי עשו את ההבדל.")}"
                 </p>
-                <p className="font-bold text-sm">— דן</p>
+                <p className="font-bold text-sm">— {v("testimonials", "review1_name", "דן")}</p>
               </Card>
 
               <Card className="p-6 rounded-2xl border-border text-right bg-background">
@@ -760,13 +760,13 @@ const AcademyPage = () => {
                     <Star className="w-4 h-4 opacity-80" />
                     <Star className="w-4 h-4 opacity-80" />
                   </div>
-                  <span className="text-xs opacity-60">מחזור 2023</span>
+                  <span className="text-xs opacity-60">{v("testimonials", "review2_cohort", "מחזור 2023")}</span>
                 </div>
 
                 <p className="opacity-85 mb-4">
-                  "המקצועיות של הצוות ברמה אחרת. קיבלתי ביטחון אמיתי לעבוד מול לקוחות, גם אחרי הקורס המשיכו ללוות."
+                  "{v("testimonials", "review2_text", "המקצועיות של הצוות ברמה אחרת. קיבלתי ביטחון אמיתי לעבוד מול לקוחות, גם אחרי הקורס המשיכו ללוות.")}"
                 </p>
-                <p className="font-bold text-sm">— אור</p>
+                <p className="font-bold text-sm">— {v("testimonials", "review2_name", "אור")}</p>
               </Card>
             </div>
 
