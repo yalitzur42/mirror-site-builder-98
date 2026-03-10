@@ -34,7 +34,7 @@ const Footer = () => {
               <Link to="/about" className="block text-muted-foreground hover:text-foreground transition-colors">
                 אודות
               </Link>
-              <a href="https://calmark.io/p/ZBfbx" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-foreground transition-colors">
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-foreground transition-colors">
                 קביעת תור
               </a>
               <Link to="/academy" className="block text-muted-foreground hover:text-foreground transition-colors">
