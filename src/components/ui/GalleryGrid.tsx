@@ -3,7 +3,7 @@ interface GalleryGridProps {
   altPrefix?: string;
 }
 
-const GalleryGrid = ({ images }: GalleryGridProps) => {
+const GalleryGrid = ({ images, altPrefix = "תמונת גלריה" }: GalleryGridProps) => {
   // Use placeholder if no images provided
   const displayImages = images.length > 0 ? images : Array(8).fill(null);
 
