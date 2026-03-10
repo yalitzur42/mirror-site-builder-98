@@ -7,8 +7,10 @@ import { MapPin, Phone, Clock, Instagram, Navigation } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_NOTE, BUSINESS_HOURS, PHONE_DISPLAY, PHONE_TEL, WAZE_URL, GMAPS_URL, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const BusinessPage = () => {
+  usePageMeta({ title: "פרטי העסק", description: "כתובת, שעות פעילות ודרכי התקשרות - Mac'ho עפולה" });
   const hours = BUSINESS_HOURS;
   const wazeUrl = WAZE_URL;
   const gmapsUrl = GMAPS_URL;

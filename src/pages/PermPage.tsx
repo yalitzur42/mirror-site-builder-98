@@ -10,6 +10,7 @@ import { Shield, Clock, CheckCircle, Sparkles, Crown, Trophy, Waves, Gem, Smartp
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { WA_PERM, waLink } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 import permHero from "@/assets/perm-hero.jpg";
 import permClassic from "@/assets/perm-classic.jpg";
@@ -20,6 +21,7 @@ import gallery3 from "@/assets/gallery-3.jpg";
 
 const PermPage = () => {
   const { v, loading } = useSiteContent("perm");
+  usePageMeta({ title: "פרם לגבר", description: "פרם מקצועי לגברים - גלים טבעיים, תלתלים וסטיילינג מותאם אישית" });
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 

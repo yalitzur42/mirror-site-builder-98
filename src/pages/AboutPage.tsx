@@ -8,11 +8,13 @@ import { Target, Eye, Heart, Handshake, Scissors, Smartphone, BookOpen } from "l
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 import teamPhoto from "@/assets/team-photo.jpg";
 
 const AboutPage = () => {
   const { v, loading } = useSiteContent("about");
+  usePageMeta({ title: "אודות", description: "הכירו את Mac'ho - הסיפור, הצוות והחזון שלנו" });
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 

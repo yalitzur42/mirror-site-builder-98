@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 // Import images (fallbacks)
 import heroBarbershop from "@/assets/hero-barbershop.jpg";
@@ -34,6 +35,7 @@ import servicePerm from "@/assets/service-perm.jpg";
 
 const HomePage = () => {
   const { v, loading } = useSiteContent("home");
+  usePageMeta({ title: "מספרה ואקדמיה לגברים", description: "Mac'ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים בעפולה" });
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 

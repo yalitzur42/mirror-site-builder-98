@@ -22,6 +22,7 @@ import academyClassroom from "@/assets/academy-classroom.jpg";
 import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";
 
 import { WA_ACADEMY, waLink as _waLink } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import UrgencyBar from "@/components/academy/UrgencyBar";
 import LeadForm from "@/components/academy/LeadForm";
@@ -35,6 +36,7 @@ function buildWaLink(text: string) {
 
 const AcademyPage = () => {
   const { v, loading } = useSiteContent("academy");
+  usePageMeta({ title: "האקדמיה", description: "קורס ספרות גברים למתחילים - 3 חודשים, קבוצות קטנות, תעודה בסיום וליווי להשתלבות בעבודה" });
 
   // ====== DATA (dynamic from admin) ======
   const modules = useMemo(

@@ -1,6 +1,8 @@
 import Layout from "@/components/layout/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const PrivacyPage = () => {
+  usePageMeta({ title: "מדיניות פרטיות", description: "מדיניות הפרטיות של Mac'ho" });
   return (
     <Layout>
       <div className="container-main py-16">
