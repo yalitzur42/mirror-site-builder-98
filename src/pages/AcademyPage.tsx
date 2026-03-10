@@ -343,19 +343,19 @@ const AcademyPage = () => {
         <div className="container mx-auto px-4 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 opacity-80" />
-            <span>קבוצות קטנות • יחס אישי</span>
+            <span>{v("trust_strip", "item1", "קבוצות קטנות • יחס אישי")}</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 opacity-80" />
-            <span>תעודה בסיום</span>
+            <span>{v("trust_strip", "item2", "תעודה בסיום")}</span>
           </div>
           <div className="flex items-center gap-2">
             <BriefcaseBusiness className="w-4 h-4 opacity-80" />
-            <span>הכוונה להשתלבות בעבודה</span>
+            <span>{v("trust_strip", "item3", "הכוונה להשתלבות בעבודה")}</span>
           </div>
           <div className="flex items-center gap-2">
             <Scissors className="w-4 h-4 opacity-80" />
-            <span>תרגול אמיתי לאורך הקורס</span>
+            <span>{v("trust_strip", "item4", "תרגול אמיתי לאורך הקורס")}</span>
           </div>
         </div>
       </div>
