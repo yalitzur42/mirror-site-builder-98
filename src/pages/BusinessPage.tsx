@@ -49,7 +49,7 @@ const BusinessPage = () => {
                   Waze
                 </a>
                 <a
-                  href={gmapsUrl}
+                  href={GMAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background text-foreground text-sm font-bold hover:opacity-90 transition-all"
