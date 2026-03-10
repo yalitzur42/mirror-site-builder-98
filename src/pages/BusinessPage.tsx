@@ -40,7 +40,7 @@ const BusinessPage = () => {
               <p className="opacity-50 text-sm">{BUSINESS_ADDRESS_NOTE}</p>
               <div className="flex gap-2 mt-1">
                 <a
-                  href={wazeUrl}
+                  href={WAZE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-waze text-white text-sm font-bold hover:bg-brand-waze-hover transition-all"
