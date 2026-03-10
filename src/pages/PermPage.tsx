@@ -21,6 +21,7 @@ import gallery3 from "@/assets/gallery-3.jpg";
 
 const PermPage = () => {
   const { v, loading } = useSiteContent("perm");
+  usePageMeta({ title: "פרם לגבר", description: "פרם מקצועי לגברים - גלים טבעיים, תלתלים וסטיילינג מותאם אישית" });
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 

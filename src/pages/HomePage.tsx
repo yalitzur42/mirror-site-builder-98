@@ -35,6 +35,7 @@ import servicePerm from "@/assets/service-perm.jpg";
 
 const HomePage = () => {
   const { v, loading } = useSiteContent("home");
+  usePageMeta({ title: "מספרה ואקדמיה לגברים", description: "Mac'ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים בעפולה" });
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 

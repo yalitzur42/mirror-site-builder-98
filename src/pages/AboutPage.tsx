@@ -14,6 +14,7 @@ import teamPhoto from "@/assets/team-photo.jpg";
 
 const AboutPage = () => {
   const { v, loading } = useSiteContent("about");
+  usePageMeta({ title: "אודות", description: "הכירו את Mac'ho - הסיפור, הצוות והחזון שלנו" });
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 

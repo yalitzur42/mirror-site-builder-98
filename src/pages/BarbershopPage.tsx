@@ -25,6 +25,7 @@ import barberYali from "@/assets/barber-yali.jpg";
 
 const BarbershopPage = () => {
   const { v, loading } = useSiteContent("barbershop");
+  usePageMeta({ title: "מספרת גברים", description: "תספורות גברים מקצועיות, פייד, קלאסי ועיצוב זקן - Mac'ho עפולה" });
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 

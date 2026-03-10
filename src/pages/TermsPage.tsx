@@ -1,6 +1,8 @@
 import Layout from "@/components/layout/Layout";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const TermsPage = () => {
+  usePageMeta({ title: "תקנון האתר", description: "תנאי השימוש באתר Mac'ho" });
   return (
     <Layout>
       <div className="container-main py-16">

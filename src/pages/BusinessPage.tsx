@@ -10,6 +10,7 @@ import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_NOTE, BUSINESS_HOURS, PHONE_DISPLAY,
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const BusinessPage = () => {
+  usePageMeta({ title: "פרטי העסק", description: "כתובת, שעות פעילות ודרכי התקשרות - Mac'ho עפולה" });
   const hours = BUSINESS_HOURS;
   const wazeUrl = WAZE_URL;
   const gmapsUrl = GMAPS_URL;

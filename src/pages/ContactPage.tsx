@@ -19,6 +19,7 @@ const ContactPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const { toast } = useToast();
+  usePageMeta({ title: "עבדו איתנו", description: "מחפשים ספרים מוכשרים להצטרף לצוות Mac'ho - שלחו פרטים" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

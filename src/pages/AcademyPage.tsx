@@ -36,6 +36,7 @@ function buildWaLink(text: string) {
 
 const AcademyPage = () => {
   const { v, loading } = useSiteContent("academy");
+  usePageMeta({ title: "האקדמיה", description: "קורס ספרות גברים למתחילים - 3 חודשים, קבוצות קטנות, תעודה בסיום וליווי להשתלבות בעבודה" });
 
   // ====== DATA (dynamic from admin) ======
   const modules = useMemo(
