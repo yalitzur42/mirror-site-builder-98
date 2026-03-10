@@ -845,7 +845,14 @@ const AcademyPage = () => {
             <Rocket className="w-6 h-6 inline-block align-middle ml-1" /> {v("cta", "title", "מוכנים להתחיל קריירה חדשה?")}
           </>
         }
-        description={v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
+        description={
+        <>
+            {v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
+            {v("cta", "note", "") && (
+              <span className="block mt-2 text-sm opacity-70">✦ {v("cta", "note", "כולל ערכת ציוד מקצועית מלאה")}</span>
+            )}
+          </>
+        }
         buttonLabel={
         <>
             <Smartphone className="w-4 h-4" /> שריינו מקום / בדקו התאמה
