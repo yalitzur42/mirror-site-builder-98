@@ -36,8 +36,8 @@ const BusinessPage = () => {
                 <MapPin className="w-6 h-6 text-[hsl(60_56%_91%)]" />
               </div>
               <h3 className="text-xl font-bold">כתובת</h3>
-              <p className="opacity-70 text-lg">המחשלים 5, עפולה</p>
-              <p className="opacity-50 text-sm">אזור התעשייה עפולה</p>
+              <p className="opacity-70 text-lg">{BUSINESS_ADDRESS}</p>
+              <p className="opacity-50 text-sm">{BUSINESS_ADDRESS_NOTE}</p>
               <div className="flex gap-2 mt-1">
                 <a
                   href={wazeUrl}
