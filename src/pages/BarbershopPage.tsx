@@ -140,7 +140,7 @@ const BarbershopPage = () => {
               {v("join_team", "description", "אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.")}
             </p>
             <a
-              href="https://wa.me/972544744031?text=היי, אני ספר ומעוניין להצטרף לצוות Macho"
+              href={waLink(WA_GENERAL, "היי, אני ספר ומעוניין להצטרף לצוות Macho")}
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-cta"
