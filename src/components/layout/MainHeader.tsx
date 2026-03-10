@@ -60,7 +60,7 @@ const MainHeader = () => {
         {/* Mobile Action Buttons + Menu */}
         <div className="lg:hidden flex items-center gap-2">
           <a
-            href="https://waze.com/ul?q=%D7%94%D7%9E%D7%97%D7%A9%D7%9C%D7%99%D7%9D%205%2C%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94&navigate=yes"
+            href={WAZE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#33ccff] text-white"
