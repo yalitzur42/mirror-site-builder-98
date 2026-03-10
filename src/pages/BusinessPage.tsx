@@ -6,14 +6,13 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import { MapPin, Phone, Clock, Instagram, Navigation } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
-import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_NOTE, BUSINESS_HOURS, PHONE_DISPLAY, PHONE_TEL, WAZE_URL, GMAPS_URL, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/constants";
+import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_NOTE, PHONE_DISPLAY, PHONE_TEL, WAZE_URL, GMAPS_URL, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useBusinessHours } from "@/hooks/useBusinessHours";
 
 const BusinessPage = () => {
   usePageMeta({ title: "פרטי העסק", description: "כתובת, שעות פעילות ודרכי התקשרות - Mac'ho עפולה" });
-  const hours = BUSINESS_HOURS;
-  const wazeUrl = WAZE_URL;
-  const gmapsUrl = GMAPS_URL;
+  const { hours } = useBusinessHours();
 
   return (
     <Layout>
@@ -41,7 +40,7 @@ const BusinessPage = () => {
               <p className="opacity-50 text-sm">{BUSINESS_ADDRESS_NOTE}</p>
               <div className="flex gap-2 mt-1">
                 <a
-                  href={wazeUrl}
+                  href={WAZE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-waze text-white text-sm font-bold hover:bg-brand-waze-hover transition-all"
@@ -50,7 +49,7 @@ const BusinessPage = () => {
                   Waze
                 </a>
                 <a
-                  href={gmapsUrl}
+                  href={GMAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background text-foreground text-sm font-bold hover:opacity-90 transition-all"
