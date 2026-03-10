@@ -8,6 +8,7 @@ import { Target, Eye, Heart, Handshake, Scissors, Smartphone, BookOpen } from "l
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 import teamPhoto from "@/assets/team-photo.jpg";
 
