@@ -7,8 +7,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Clock, Mail, MessageCircle, Handshake, Zap, FileText } from "lucide-react";
+import { Phone, Mail, MessageCircle, Handshake, Zap, FileText } from "lucide-react";
 import { Warp } from "@paper-design/shaders-react";
 import { useToast } from "@/hooks/use-toast";
 
