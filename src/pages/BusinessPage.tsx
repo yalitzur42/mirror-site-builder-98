@@ -3,7 +3,6 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import SectionDivider from "@/components/ui/SectionDivider";
 import { MapPin, Phone, Clock, Instagram, Navigation } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
@@ -32,8 +31,8 @@ const BusinessPage = () => {
           {/* Address */}
           <AnimatedSection direction="up">
             <div className="flex flex-col items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-[hsl(60_56%_91%)]" />
+              <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center">
+                <MapPin className="w-6 h-6 text-foreground" />
               </div>
               <h3 className="text-xl font-bold">כתובת</h3>
               <p className="opacity-70 text-lg">{BUSINESS_ADDRESS}</p>
@@ -43,7 +42,7 @@ const BusinessPage = () => {
                   href={wazeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#33ccff] text-white text-sm font-bold hover:bg-[#28b8e8] transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-waze text-white text-sm font-bold hover:bg-brand-waze-hover transition-all"
                 >
                   <Navigation className="w-4 h-4" />
                   Waze
@@ -52,7 +51,7 @@ const BusinessPage = () => {
                   href={gmapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-sm font-bold hover:opacity-90 transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background text-foreground text-sm font-bold hover:opacity-90 transition-all"
                 >
                   <MapPin className="w-4 h-4" />
                   Google Maps
@@ -64,8 +63,8 @@ const BusinessPage = () => {
           {/* Phone */}
           <AnimatedSection direction="up" delay={0.1}>
             <div className="flex flex-col items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center">
-                <Phone className="w-6 h-6 text-[hsl(60_56%_91%)]" />
+              <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center">
+                <Phone className="w-6 h-6 text-foreground" />
               </div>
               <h3 className="text-xl font-bold">טלפון</h3>
               <a href={`tel:${PHONE_TEL}`} className="opacity-70 text-lg hover:opacity-100 transition-opacity">
@@ -77,8 +76,8 @@ const BusinessPage = () => {
           {/* Hours */}
           <AnimatedSection direction="up" delay={0.2}>
             <div className="flex flex-col items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center">
-                <Clock className="w-6 h-6 text-[hsl(60_56%_91%)]" />
+              <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center">
+                <Clock className="w-6 h-6 text-foreground" />
               </div>
               <h3 className="text-xl font-bold mb-1">שעות פעילות</h3>
               <div className="space-y-2">
@@ -97,11 +96,11 @@ const BusinessPage = () => {
             <div className="flex flex-col items-center gap-3">
               <h3 className="text-xl font-bold">עקבו אחרינו</h3>
               <div className="flex gap-4">
-                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
-                  <Instagram className="w-6 h-6 text-[hsl(60_56%_91%)]" />
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-background flex items-center justify-center hover:opacity-80 transition-opacity">
+                  <Instagram className="w-6 h-6 text-foreground" />
                 </a>
-                <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[hsl(25_50%_20%)] flex items-center justify-center hover:opacity-80 transition-opacity">
-                  <TikTokIcon className="w-6 h-6 text-[hsl(60_56%_91%)]" />
+                <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-background flex items-center justify-center hover:opacity-80 transition-opacity">
+                  <TikTokIcon className="w-6 h-6 text-foreground" />
                 </a>
               </div>
             </div>

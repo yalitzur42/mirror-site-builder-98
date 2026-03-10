@@ -32,14 +32,14 @@ const TopUtilityBar = () => {
           href={wazeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#33ccff] text-white text-sm font-bold border border-[#33ccff]/50 hover:bg-[#28b8e8] transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand-waze text-white text-sm font-bold border border-brand-waze/50 hover:bg-brand-waze-hover transition-all"
         >
           <Navigation className="w-4 h-4" />
           <span>נווטו אלינו</span>
         </a>
         <a
           href={`tel:${PHONE_DISPLAY}`}
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25D366] text-white text-sm font-bold border border-[#25D366]/50 hover:bg-[#20bd5a] transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand-whatsapp text-white text-sm font-bold border border-brand-whatsapp/50 hover:bg-brand-whatsapp-hover transition-all"
         >
           <Phone className="w-4 h-4" />
           <span>חייגו אלינו</span>
@@ -48,7 +48,7 @@ const TopUtilityBar = () => {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#7C3AED] text-white text-sm font-bold hover:bg-[#6D28D9] transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand-booking text-white text-sm font-bold hover:bg-brand-booking-hover transition-all"
         >
           <Calendar className="w-4 h-4" />
           <span>לקביעת תור</span>

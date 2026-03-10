@@ -19,7 +19,7 @@ const MainHeader = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border" style={{ backgroundColor: 'hsl(60, 56%, 91%)', backgroundImage: "url('/images/marble-bg.png')", backgroundSize: '100% auto', backgroundPosition: 'top center', backgroundRepeat: 'repeat-y', color: 'hsl(25, 50%, 20%)' }}>
+    <header className="sticky top-0 z-50 border-b border-border bg-primary text-primary-foreground" style={{ backgroundImage: "url('/images/marble-bg.png')", backgroundSize: '100% auto', backgroundPosition: 'top center', backgroundRepeat: 'repeat-y' }}>
       <div className="container-main flex items-center justify-between py-[4px]">
         {/* Logo */}
         <Link to="/" className="flex items-center">
@@ -33,8 +33,8 @@ const MainHeader = () => {
             to={item.href}
             className={cn(
               "flex items-center gap-2 px-5 py-3 rounded-full text-base font-extrabold tracking-wide",
-              "bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]",
-              "hover:bg-transparent hover:text-[hsl(25,50%,20%)]",
+              "bg-background text-foreground border-2 border-background",
+              "hover:bg-transparent hover:text-background",
               "transition-all duration-300"
             )}>
             
@@ -46,12 +46,12 @@ const MainHeader = () => {
         {/* Social Icons */}
         <div className="hidden lg:flex items-center gap-3">
           <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer"
-          className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300">
+          className="flex items-center justify-center w-11 h-11 rounded-full bg-background text-foreground border-2 border-background hover:bg-transparent hover:text-background transition-all duration-300">
             
             <TikTokIcon className="w-5 h-5" />
           </a>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"
-          className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300">
+          className="flex items-center justify-center w-11 h-11 rounded-full bg-background text-foreground border-2 border-background hover:bg-transparent hover:text-background transition-all duration-300">
             
             <Instagram className="w-5 h-5" />
           </a>
@@ -63,32 +63,32 @@ const MainHeader = () => {
             href={WAZE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#33ccff] text-white"
+            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-brand-waze text-white"
             title="נווטו אלינו">
             
             <Navigation className="w-5 h-5" />
-            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">נווטו אלינו</span>
+            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-background text-foreground text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">נווטו אלינו</span>
           </a>
           <a
             href={`tel:${PHONE_DISPLAY}`}
-            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#25D366] text-white"
+            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-brand-whatsapp text-white"
             title="חייגו אלינו">
             
             <Phone className="w-5 h-5" />
-            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">חייגו אלינו</span>
+            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-background text-foreground text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">חייגו אלינו</span>
           </a>
           <a
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#7C3AED] text-white"
+            className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-brand-booking text-white"
             title="לקביעת תור">
             
             <Calendar className="w-5 h-5" />
-            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">לקביעת תור</span>
+            <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-background text-foreground text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">לקביעת תור</span>
           </a>
           <button
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)]"
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-background text-foreground border-2 border-background"
             onClick={() => setMobileOpen(!mobileOpen)}>
             
             {mobileOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
@@ -98,13 +98,13 @@ const MainHeader = () => {
 
       {/* Mobile Nav */}
       {mobileOpen &&
-      <div className="lg:hidden section-light border-t border-[hsl(25,50%,20%)]/20 max-h-[calc(100vh-180px)] overflow-y-auto">
+      <div className="lg:hidden section-light border-t border-background/20 max-h-[calc(100vh-180px)] overflow-y-auto">
           <nav className="container-main py-4 space-y-2">
             {navItems.map((item) =>
           <Link
             key={item.label}
             to={item.href}
-            className="flex items-center justify-between px-5 py-3 rounded-xl text-lg font-extrabold bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] hover:opacity-90 transition-all duration-300"
+            className="flex items-center justify-between px-5 py-3 rounded-xl text-lg font-extrabold bg-background text-foreground hover:opacity-90 transition-all duration-300"
             onClick={() => setMobileOpen(false)}>
             
                 {item.label}
