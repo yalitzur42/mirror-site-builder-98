@@ -11,6 +11,7 @@ import { Phone, Mail, MessageCircle, Handshake, Zap, FileText } from "lucide-rea
 import { Warp } from "@paper-design/shaders-react";
 import { useToast } from "@/hooks/use-toast";
 import { WA_GENERAL, waLink } from "@/lib/constants";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const ContactPage = () => {
   const [name, setName] = useState("");
