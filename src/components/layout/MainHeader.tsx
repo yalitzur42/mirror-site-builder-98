@@ -70,7 +70,7 @@ const MainHeader = () => {
             <span className="absolute -bottom-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] text-xs font-bold whitespace-nowrap opacity-0 group-active:opacity-100 transition-opacity pointer-events-none shadow-lg">נווטו אלינו</span>
           </a>
           <a
-            href="tel:054-4744031"
+            href={`tel:${PHONE_DISPLAY}`}
             className="relative group flex items-center justify-center w-11 h-11 rounded-full bg-[#25D366] text-white"
             title="חייגו אלינו">
             
