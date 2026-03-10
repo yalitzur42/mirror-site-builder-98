@@ -45,7 +45,7 @@ const PermPage = () => {
         title={v("hero", "title", "פרם לגבר")}
         subtitle={v("hero", "subtitle", "תלתלים מושלמים לגברים")}
         description={v("hero", "description", "תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל.")}
-        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לייעוץ חינם</>, href: "https://wa.me/972552938579?text=היי,+אשמח+לקבל+עוד+פרטים+על+תהליך+הפרם." }}
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לייעוץ חינם</>, href: waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.") }}
         image={v("hero", "image") || permHero}
       />
 
