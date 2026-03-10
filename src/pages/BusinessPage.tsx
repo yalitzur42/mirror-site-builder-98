@@ -68,8 +68,8 @@ const BusinessPage = () => {
                 <Phone className="w-6 h-6 text-[hsl(60_56%_91%)]" />
               </div>
               <h3 className="text-xl font-bold">טלפון</h3>
-              <a href="tel:0544744031" className="opacity-70 text-lg hover:opacity-100 transition-opacity">
-                054-4744031
+              <a href={`tel:${PHONE_TEL}`} className="opacity-70 text-lg hover:opacity-100 transition-opacity">
+                {PHONE_DISPLAY}
               </a>
             </div>
           </AnimatedSection>
