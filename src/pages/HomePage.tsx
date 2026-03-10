@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
+import { BOOKING_URL } from "@/lib/constants";
 
 // Import images (fallbacks)
 import heroBarbershop from "@/assets/hero-barbershop.jpg";
