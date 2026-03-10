@@ -45,7 +45,7 @@ const MainHeader = () => {
 
         {/* Social Icons */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="https://www.tiktok.com/@yali.tzur" target="_blank" rel="noopener noreferrer"
+          <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center w-11 h-11 rounded-full bg-[hsl(25,50%,20%)] text-[hsl(60,56%,91%)] border-2 border-[hsl(25,50%,20%)] hover:bg-transparent hover:text-[hsl(25,50%,20%)] transition-all duration-300">
             
             <TikTokIcon className="w-5 h-5" />
