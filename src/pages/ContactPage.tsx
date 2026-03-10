@@ -82,7 +82,7 @@ const ContactPage = () => {
 
       
 
-      <Section variant="light" isFirstSection>
+      <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* טופס */}
           <AnimatedSection direction="right">

@@ -26,7 +26,7 @@ const BusinessPage = () => {
 
       
 
-      <Section variant="light" isFirstSection>
+      <Section variant="light">
         <div className="max-w-2xl mx-auto space-y-10 text-center">
           {/* Address */}
           <AnimatedSection direction="up">

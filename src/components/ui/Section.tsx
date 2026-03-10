@@ -18,14 +18,11 @@ const Section = ({
   className = "", 
   containerClassName = "",
   variant = "dark",
-  isFirstSection = false
-}: SectionProps & { isFirstSection?: boolean }) => {
+}: SectionProps) => {
   const variantClasses = variant === "light" ? "section-light" : "section-dark";
-  // First section after hero doesn't need negative margin anymore since hero wrapper handles it
-  const firstSectionClasses = isFirstSection ? "" : "";
   
   return (
-    <section className={`py-12 md:py-16 ${variantClasses} ${firstSectionClasses} ${className}`}>
+    <section className={`py-12 md:py-16 ${variantClasses} ${className}`}>
       <div className={`container-main ${containerClassName}`}>
         {(title || subtitle) && (
           <div className="text-center mb-8 overflow-hidden">

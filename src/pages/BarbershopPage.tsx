@@ -68,7 +68,7 @@ const BarbershopPage = () => {
         image={v("hero", "image") || barbershopInterior}
       />
 
-      <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light" isFirstSection>
+      <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light">
         <AnimatedSection>
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-3 gap-6 mb-8">
