@@ -56,6 +56,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "brand-waze": {
+          DEFAULT: "hsl(var(--brand-waze))",
+          hover: "hsl(var(--brand-waze-hover))",
+        },
+        "brand-whatsapp": {
+          DEFAULT: "hsl(var(--brand-whatsapp))",
+          hover: "hsl(var(--brand-whatsapp-hover))",
+        },
+        "brand-booking": {
+          DEFAULT: "hsl(var(--brand-booking))",
+          hover: "hsl(var(--brand-booking-hover))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
