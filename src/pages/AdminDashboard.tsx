@@ -134,7 +134,7 @@ const AdminDashboard = () => {
 
       <div className="flex flex-col md:flex-row">
         {/* Sidebar - Desktop */}
-        <aside className="w-56 min-h-[calc(100vh-57px)] bg-card border-l border-border p-4 space-y-1 hidden md:block">
+        <aside className="w-56 min-h-[calc(100vh-57px)] bg-card border-l border-border p-4 space-y-1 hidden md:block sticky top-[57px] self-start">
           <p className="text-xs text-muted-foreground font-bold mb-3">דפים</p>
           {siteContentConfig.map(page => {
             const Icon = pageIcons[page.slug] || FileText;
