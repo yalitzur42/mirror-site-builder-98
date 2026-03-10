@@ -10,15 +10,9 @@ import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_NOTE, BUSINESS_HOURS, PHONE_DISPLAY, PHONE_TEL, WAZE_URL, GMAPS_URL, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/constants";
 
 const BusinessPage = () => {
-  const hours = [
-    { day: "ראשון - חמישי", time: "09:00 - 20:00" },
-    { day: "שישי", time: "08:00 - 14:00" },
-    { day: "שבת", time: "סגור" },
-  ];
-
-  const address = "המחשלים 5, עפולה";
-  const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
-  const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  const hours = BUSINESS_HOURS;
+  const wazeUrl = WAZE_URL;
+  const gmapsUrl = GMAPS_URL;
 
   return (
     <Layout>
