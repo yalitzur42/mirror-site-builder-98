@@ -68,7 +68,7 @@ const HomePage = () => {
         title={v("hero", "title", "משפחת Macho")}
         subtitle={v("hero", "subtitle", "מובילים את סצנת טיפוח השיער לגברים בישראל!")}
         description={v("hero", "description", "מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר.")}
-        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: "https://calmark.io/p/ZBfbx" }}
+        primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         secondaryCta={{ label: <><GraduationCap className="w-4 h-4" /> לאקדמיה</>, href: "/academy" }}
         image={v("hero", "image") || heroBarbershop}
       />
