@@ -1,9 +1,9 @@
 import { Navigation, Phone, Calendar } from "lucide-react";
 import { Warp } from "@paper-design/shaders-react";
+import { WAZE_URL, PHONE_DISPLAY, BOOKING_URL } from "@/lib/constants";
 
 const TopUtilityBar = () => {
-  const address = "המחשלים 5, עפולה";
-  const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
+  const wazeUrl = WAZE_URL;
 
   return (
     <div className="relative overflow-hidden hidden lg:block">
