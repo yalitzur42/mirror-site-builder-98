@@ -42,7 +42,7 @@ const CTASection = ({
       <div className="container-main text-center">
         <h2 className="mb-4">{title}</h2>
         {description && (
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-80">
+          <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto opacity-80">
             {description}
           </p>
         )}
