@@ -343,19 +343,19 @@ const AcademyPage = () => {
         <div className="container mx-auto px-4 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 opacity-80" />
-            <span>קבוצות קטנות • יחס אישי</span>
+            <span>{v("trust_strip", "item1", "קבוצות קטנות • יחס אישי")}</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 opacity-80" />
-            <span>תעודה בסיום</span>
+            <span>{v("trust_strip", "item2", "תעודה בסיום")}</span>
           </div>
           <div className="flex items-center gap-2">
             <BriefcaseBusiness className="w-4 h-4 opacity-80" />
-            <span>הכוונה להשתלבות בעבודה</span>
+            <span>{v("trust_strip", "item3", "הכוונה להשתלבות בעבודה")}</span>
           </div>
           <div className="flex items-center gap-2">
             <Scissors className="w-4 h-4 opacity-80" />
-            <span>תרגול אמיתי לאורך הקורס</span>
+            <span>{v("trust_strip", "item4", "תרגול אמיתי לאורך הקורס")}</span>
           </div>
         </div>
       </div>
@@ -372,10 +372,10 @@ const AcademyPage = () => {
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <div>
                     <h2 className="text-2xl md:text-3xl font-black leading-tight">
-                      בדיקת התאמה מהירה
+                      {v("lead_form", "title", "בדיקת התאמה מהירה")}
                     </h2>
                     <p className="opacity-70 mt-2 text-sm md:text-base">
-                      משאירים 2 פרטים — ונשלח לכם תשובה בוואטסאפ עם כל מה שצריך לדעת.
+                      {v("lead_form", "subtitle", "משאירים 2 פרטים — ונשלח לכם תשובה בוואטסאפ עם כל מה שצריך לדעת.")}
                     </p>
                   </div>
                   <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-2xl bg-foreground text-background">
@@ -386,9 +386,9 @@ const AcademyPage = () => {
                 {/* Goal pills */}
                 <div className="flex flex-wrap gap-2 mb-5">
                   {[
-                  { key: "fit", label: "בדיקת התאמה" },
-                  { key: "info", label: "רק פרטים" },
-                  { key: "reserve", label: "שריון מקום" }].
+                  { key: "fit", label: v("lead_form", "goal1", "בדיקת התאמה") },
+                  { key: "info", label: v("lead_form", "goal2", "רק פרטים") },
+                  { key: "reserve", label: v("lead_form", "goal3", "שריון מקום") }].
                   map((p) => {
                     const active = leadGoal === p.key as any;
                     return (
@@ -431,7 +431,7 @@ const AcademyPage = () => {
                     className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-3 font-bold hover:opacity-95 transition">
                     
                     <Smartphone className="w-5 h-5" />
-                    שלחו לי פרטים בוואטסאפ
+                    {v("lead_form", "button_text", "שלחו לי פרטים בוואטסאפ")}
                   </button>
 
                   <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
@@ -454,21 +454,21 @@ const AcademyPage = () => {
                 <Card className="overflow-hidden rounded-2xl border-border bg-background">
                   <div className="grid md:grid-cols-2">
                     <div className="p-6 md:p-8">
-                      <h3 className="text-xl md:text-2xl font-black">
-                        מה יוצא לכם מזה בפועל?
-                      </h3>
-                      <ul className="mt-4 grid gap-3 text-sm md:text-base">
-                        {[
-                        "תספורות בביקוש גבוה (Fade/Taper/Classic)",
-                        "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)",
-                        "תיק עבודות לתחילת עבודה במספרות",
-                        "בטחון מקצועי מול לקוחות אמיתיים"].
-                        map((item) =>
-                        <li key={item} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
-                            <span className="opacity-85">{item}</span>
-                          </li>
-                        )}
+                       <h3 className="text-xl md:text-2xl font-black">
+                         {v("outcomes", "title", "מה יוצא לכם מזה בפועל?")}
+                       </h3>
+                       <ul className="mt-4 grid gap-3 text-sm md:text-base">
+                         {[
+                         v("outcomes", "item1", "תספורות בביקוש גבוה (Fade/Taper/Classic)"),
+                         v("outcomes", "item2", "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)"),
+                         v("outcomes", "item3", "תיק עבודות לתחילת עבודה במספרות"),
+                         v("outcomes", "item4", "בטחון מקצועי מול לקוחות אמיתיים")].
+                         map((item) =>
+                         <li key={item} className="flex items-start gap-2">
+                             <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
+                             <span className="opacity-85">{item}</span>
+                           </li>
+                         )}
                       </ul>
 
                       <div className="mt-6 flex flex-wrap gap-3">
@@ -587,18 +587,18 @@ const AcademyPage = () => {
             {[
             {
               icon: MessageCircle,
-              title: "1) בדיקת התאמה",
-              desc: "שולחים הודעה קצרה/פרטים — ובודקים התאמה למסלול."
+              title: v("how_it_works", "step1_title", "1) בדיקת התאמה"),
+              desc: v("how_it_works", "step1_desc", "שולחים הודעה קצרה/פרטים — ובודקים התאמה למסלול.")
             },
             {
               icon: Scissors,
-              title: "2) תרגול מעשי",
-              desc: "לומדים בסיס + מתרגלים בהדרכה צמודה עד ביטחון מלא."
+              title: v("how_it_works", "step2_title", "2) תרגול מעשי"),
+              desc: v("how_it_works", "step2_desc", "לומדים בסיס + מתרגלים בהדרכה צמודה עד ביטחון מלא.")
             },
             {
               icon: BriefcaseBusiness,
-              title: "3) התחלת עבודה",
-              desc: "תיק עבודות + ליווי והכוונה להשתלבות במספרות."
+              title: v("how_it_works", "step3_title", "3) התחלת עבודה"),
+              desc: v("how_it_works", "step3_desc", "תיק עבודות + ליווי והכוונה להשתלבות במספרות.")
             }].
             map((step, idx) =>
             <Card
@@ -670,18 +670,18 @@ const AcademyPage = () => {
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
               <Video className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg text-primary">תרגול מודרך</h3>
-              <p className="opacity-80 text-sm mt-1">לא רק תיאוריה — עובדים ידיים על הכלים</p>
+              <h3 className="font-black text-lg text-primary">{v("micro_proof", "card1_title", "תרגול מודרך")}</h3>
+              <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card1_desc", "לא רק תיאוריה — עובדים ידיים על הכלים")}</p>
             </Card>
             <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
               <ShieldCheck className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg text-primary">סטנדרט היגיינה</h3>
-              <p className="opacity-80 text-sm mt-1">איך לעבוד נכון ומקצועי לפי נהלים</p>
+              <h3 className="font-black text-lg text-primary">{v("micro_proof", "card2_title", "סטנדרט היגיינה")}</h3>
+              <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card2_desc", "איך לעבוד נכון ומקצועי לפי נהלים")}</p>
             </Card>
             <Card className="p-6 rounded-2xl border-border text-[hsl(60,56%,91%)]">
               <BriefcaseBusiness className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg text-primary">כניסה לתעשייה</h3>
-              <p className="opacity-80 text-sm mt-1">איך למצוא מקום, איך להציג את עצמך</p>
+              <h3 className="font-black text-lg text-primary">{v("micro_proof", "card3_title", "כניסה לתעשייה")}</h3>
+              <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card3_desc", "איך למצוא מקום, איך להציג את עצמך")}</p>
             </Card>
           </div>
         </AnimatedSection>
@@ -742,13 +742,13 @@ const AcademyPage = () => {
                     <Star className="w-4 h-4 opacity-80" />
                     <Star className="w-4 h-4 opacity-80" />
                   </div>
-                  <span className="text-xs opacity-60">מחזור 2024</span>
+                  <span className="text-xs opacity-60">{v("testimonials", "review1_cohort", "מחזור 2024")}</span>
                 </div>
 
                 <p className="opacity-85 mb-4">
-                  "תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה. התרגול והיחס האישי עשו את ההבדל."
+                  "{v("testimonials", "review1_text", "תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה. התרגול והיחס האישי עשו את ההבדל.")}"
                 </p>
-                <p className="font-bold text-sm">— דן</p>
+                <p className="font-bold text-sm">— {v("testimonials", "review1_name", "דן")}</p>
               </Card>
 
               <Card className="p-6 rounded-2xl border-border text-right bg-background">
@@ -760,13 +760,13 @@ const AcademyPage = () => {
                     <Star className="w-4 h-4 opacity-80" />
                     <Star className="w-4 h-4 opacity-80" />
                   </div>
-                  <span className="text-xs opacity-60">מחזור 2023</span>
+                  <span className="text-xs opacity-60">{v("testimonials", "review2_cohort", "מחזור 2023")}</span>
                 </div>
 
                 <p className="opacity-85 mb-4">
-                  "המקצועיות של הצוות ברמה אחרת. קיבלתי ביטחון אמיתי לעבוד מול לקוחות, גם אחרי הקורס המשיכו ללוות."
+                  "{v("testimonials", "review2_text", "המקצועיות של הצוות ברמה אחרת. קיבלתי ביטחון אמיתי לעבוד מול לקוחות, גם אחרי הקורס המשיכו ללוות.")}"
                 </p>
-                <p className="font-bold text-sm">— אור</p>
+                <p className="font-bold text-sm">— {v("testimonials", "review2_name", "אור")}</p>
               </Card>
             </div>
 
@@ -845,7 +845,14 @@ const AcademyPage = () => {
             <Rocket className="w-6 h-6 inline-block align-middle ml-1" /> {v("cta", "title", "מוכנים להתחיל קריירה חדשה?")}
           </>
         }
-        description={v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
+        description={
+        <>
+            {v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
+            {v("cta", "note", "") && (
+              <span className="block mt-2 text-sm opacity-70">✦ {v("cta", "note", "כולל ערכת ציוד מקצועית מלאה")}</span>
+            )}
+          </>
+        }
         buttonLabel={
         <>
             <Smartphone className="w-4 h-4" /> שריינו מקום / בדקו התאמה
