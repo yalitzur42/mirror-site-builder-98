@@ -386,9 +386,9 @@ const AcademyPage = () => {
                 {/* Goal pills */}
                 <div className="flex flex-wrap gap-2 mb-5">
                   {[
-                  { key: "fit", label: "בדיקת התאמה" },
-                  { key: "info", label: "רק פרטים" },
-                  { key: "reserve", label: "שריון מקום" }].
+                  { key: "fit", label: v("lead_form", "goal1", "בדיקת התאמה") },
+                  { key: "info", label: v("lead_form", "goal2", "רק פרטים") },
+                  { key: "reserve", label: v("lead_form", "goal3", "שריון מקום") }].
                   map((p) => {
                     const active = leadGoal === p.key as any;
                     return (
