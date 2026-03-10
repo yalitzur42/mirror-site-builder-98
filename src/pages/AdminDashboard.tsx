@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import {
-  LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap, Images
+  LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap, Images, Settings
 } from "lucide-react";
 import GalleryFieldEditor from "@/components/admin/GalleryFieldEditor";
 
