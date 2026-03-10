@@ -372,10 +372,10 @@ const AcademyPage = () => {
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <div>
                     <h2 className="text-2xl md:text-3xl font-black leading-tight">
-                      בדיקת התאמה מהירה
+                      {v("lead_form", "title", "בדיקת התאמה מהירה")}
                     </h2>
                     <p className="opacity-70 mt-2 text-sm md:text-base">
-                      משאירים 2 פרטים — ונשלח לכם תשובה בוואטסאפ עם כל מה שצריך לדעת.
+                      {v("lead_form", "subtitle", "משאירים 2 פרטים — ונשלח לכם תשובה בוואטסאפ עם כל מה שצריך לדעת.")}
                     </p>
                   </div>
                   <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-2xl bg-foreground text-background">
