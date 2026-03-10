@@ -587,18 +587,18 @@ const AcademyPage = () => {
             {[
             {
               icon: MessageCircle,
-              title: "1) בדיקת התאמה",
-              desc: "שולחים הודעה קצרה/פרטים — ובודקים התאמה למסלול."
+              title: v("how_it_works", "step1_title", "1) בדיקת התאמה"),
+              desc: v("how_it_works", "step1_desc", "שולחים הודעה קצרה/פרטים — ובודקים התאמה למסלול.")
             },
             {
               icon: Scissors,
-              title: "2) תרגול מעשי",
-              desc: "לומדים בסיס + מתרגלים בהדרכה צמודה עד ביטחון מלא."
+              title: v("how_it_works", "step2_title", "2) תרגול מעשי"),
+              desc: v("how_it_works", "step2_desc", "לומדים בסיס + מתרגלים בהדרכה צמודה עד ביטחון מלא.")
             },
             {
               icon: BriefcaseBusiness,
-              title: "3) התחלת עבודה",
-              desc: "תיק עבודות + ליווי והכוונה להשתלבות במספרות."
+              title: v("how_it_works", "step3_title", "3) התחלת עבודה"),
+              desc: v("how_it_works", "step3_desc", "תיק עבודות + ליווי והכוונה להשתלבות במספרות.")
             }].
             map((step, idx) =>
             <Card
