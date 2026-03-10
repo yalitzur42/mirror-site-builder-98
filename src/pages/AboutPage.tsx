@@ -7,6 +7,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { Target, Eye, Heart, Handshake, Scissors, Smartphone, BookOpen } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
+import { BOOKING_URL } from "@/lib/constants";
 
 import teamPhoto from "@/assets/team-photo.jpg";
 
