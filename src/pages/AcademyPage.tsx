@@ -15,11 +15,12 @@ import {
   Clock, Users, Award, Smartphone, Rocket, ClipboardList, MessageCircle,
   GraduationCap, Star, BookOpen, CheckCircle2, ShieldCheck, Sparkles,
   CalendarDays, MapPin, ChevronDown, BadgeCheck, BriefcaseBusiness,
-  Video, Scissors, HelpCircle
+  Video, Scissors, HelpCircle, AlertTriangle, Target, UserCheck, Play
 } from "lucide-react";
 
 import academyClassroom from "@/assets/academy-classroom.jpg";
 import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";
+import ownerPortrait from "@/assets/owner-portrait.jpg";
 
 import { WA_ACADEMY, waLink as _waLink } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -86,6 +87,36 @@ const AcademyPage = () => {
     [v]
   );
 
+  const problems = useMemo(
+    () => [
+      { icon: AlertTriangle, text: v("problems", "pain1", "רוצה להחליף מקצוע אבל לא יודע מאיפה להתחיל") },
+      { icon: AlertTriangle, text: v("problems", "pain2", "למדת לבד מיוטיוב אבל חסר ביטחון לעבוד מול לקוחות") },
+      { icon: AlertTriangle, text: v("problems", "pain3", "פחד להשקיע כסף וזמן בלי ערבות שזה יוביל לעבודה") },
+      { icon: AlertTriangle, text: v("problems", "pain4", "מחפש מקצוע יצירתי עם חופש ושליטה בזמן שלך") },
+    ],
+    [v]
+  );
+
+  const solutions = useMemo(
+    () => [
+      v("solution", "benefit1", "תרגול מעשי מיום ראשון — לא רק צופים"),
+      v("solution", "benefit2", "מנטור אישי שלוקח אותך יד ביד"),
+      v("solution", "benefit3", "ליווי גם אחרי הקורס עד שנכנסים לעבודה"),
+      v("solution", "benefit4", "ערכת ציוד מקצועית כלולה — מתחילים מוכנים"),
+    ],
+    [v]
+  );
+
+  const whoIsThisFor = useMemo(
+    () => [
+      v("who_is_this_for", "item1", "גברים שרוצים להחליף מקצוע ולהיכנס לתחום הספרות"),
+      v("who_is_this_for", "item2", "צעירים אחרי צבא שמחפשים קריירה יצירתית ועצמאית"),
+      v("who_is_this_for", "item3", "מי שמספר חברים/משפחה ורוצה להפוך את זה למקצוע"),
+      v("who_is_this_for", "item4", "כל מי שמוכן ללמוד ולהשקיע — בלי צורך בניסיון קודם"),
+    ],
+    [v]
+  );
+
   // ====== EFFECTS ======
   const [showSticky, setShowSticky] = useState(false);
   const heroAnchorRef = useRef<HTMLDivElement | null>(null);
@@ -123,6 +154,8 @@ const AcademyPage = () => {
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
+  const videoUrl = v("video", "video_url", "");
+
   return (
     <Layout>
       {/* TOP SCROLL PROGRESS */}
@@ -134,6 +167,7 @@ const AcademyPage = () => {
 
       <div ref={heroAnchorRef} />
 
+      {/* ============ 1️⃣ HERO ============ */}
       <HeroSplit
         title={v("hero", "title", "האקדמיה של Macho")}
         subtitle={v("hero", "subtitle", "תוך 3 חודשים — בדרך לקריירה בספרות גברים")}
@@ -141,6 +175,10 @@ const AcademyPage = () => {
         primaryCta={{
           label: <><Smartphone className="w-4 h-4" /> בדקו התאמה לקורס</>,
           href: buildWaLink("היי 👋 אני רוצה לבדוק התאמה לקורס באקדמיה של Macho. אפשר פרטים?"),
+        }}
+        secondaryCta={{
+          label: <><Play className="w-4 h-4" /> למידע נוסף</>,
+          href: "#lead-section",
         }}
         image={v("hero", "image") || courseBeginnerHero}
       />
@@ -152,32 +190,56 @@ const AcademyPage = () => {
         onPrimaryCTA={onPrimaryCTA}
       />
 
-      {/* TRUST STRIP */}
-      <div className="bg-muted/40 border-y border-border">
-        <div className="container mx-auto px-4 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 opacity-80" />
-            <span>{v("trust_strip", "item1", "קבוצות קטנות • יחס אישי")}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 opacity-80" />
-            <span>{v("trust_strip", "item2", "תעודה בסיום")}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <BriefcaseBusiness className="w-4 h-4 opacity-80" />
-            <span>{v("trust_strip", "item3", "הכוונה להשתלבות בעבודה")}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Scissors className="w-4 h-4 opacity-80" />
-            <span>{v("trust_strip", "item4", "תרגול אמיתי לאורך הקורס")}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* LEAD SECTION */}
+      {/* ============ 2️⃣ VIDEO / INTRO ============ */}
       <Section variant="light">
-        <div id="lead-section" className="scroll-mt-28" />
+        <AnimatedSection>
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black mb-3">
+              <Play className="w-6 h-6 inline-block align-middle ml-1" />
+              {v("video", "title", "צפו ותבינו למה באים ללמוד אצלנו")}
+            </h2>
+            <p className="opacity-70 mb-8 text-base md:text-lg">
+              {v("video", "subtitle", "סרטון קצר שמסביר בדיוק מה תקבלו ואיך הקורס עובד")}
+            </p>
 
+            {videoUrl ? (
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border shadow-lg">
+                <iframe
+                  src={videoUrl}
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="סרטון האקדמיה"
+                />
+              </div>
+            ) : (
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border">
+                <img
+                  src={academyClassroom}
+                  alt="כיתה באקדמיה"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                  <button
+                    onClick={onScrollToLead}
+                    className="flex items-center gap-3 rounded-full bg-foreground text-background px-8 py-4 font-bold text-lg hover:opacity-95 transition"
+                  >
+                    <Smartphone className="w-5 h-5" />
+                    קבלו פרטים נוספים
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="light" to="dark" shape="waves" />
+
+      {/* ============ 3️⃣ PRIMARY FORM ============ */}
+      <Section variant="dark">
+        <div id="lead-section" className="scroll-mt-28" />
         <AnimatedSection>
           <div className="grid lg:grid-cols-12 gap-10 items-stretch">
             <div className="lg:col-span-5">
@@ -185,82 +247,95 @@ const AcademyPage = () => {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="grid gap-6">
-                <Card className="overflow-hidden rounded-2xl border-border bg-background">
-                  <div className="grid md:grid-cols-2">
-                    <div className="p-6 md:p-8">
-                      <h3 className="text-xl md:text-2xl font-black">
-                        {v("outcomes", "title", "מה יוצא לכם מזה בפועל?")}
-                      </h3>
-                      <ul className="mt-4 grid gap-3 text-sm md:text-base">
-                        {[
-                          v("outcomes", "item1", "תספורות בביקוש גבוה (Fade/Taper/Classic)"),
-                          v("outcomes", "item2", "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)"),
-                          v("outcomes", "item3", "תיק עבודות לתחילת עבודה במספרות"),
-                          v("outcomes", "item4", "בטחון מקצועי מול לקוחות אמיתיים"),
-                        ].map((item) => (
-                          <li key={item} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
-                            <span className="opacity-85">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+              <Card className="overflow-hidden rounded-2xl border-border bg-secondary text-secondary-foreground border-0 h-full">
+                <div className="grid md:grid-cols-2 h-full">
+                  <div className="p-6 md:p-8">
+                    <h3 className="text-xl md:text-2xl font-black">
+                      {v("outcomes", "title", "מה יוצא לכם מזה בפועל?")}
+                    </h3>
+                    <ul className="mt-4 grid gap-3 text-sm md:text-base">
+                      {[
+                        v("outcomes", "item1", "תספורות בביקוש גבוה (Fade/Taper/Classic)"),
+                        v("outcomes", "item2", "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)"),
+                        v("outcomes", "item3", "תיק עבודות לתחילת עבודה במספרות"),
+                        v("outcomes", "item4", "בטחון מקצועי מול לקוחות אמיתיים"),
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
+                          <span className="opacity-85">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                      <div className="mt-6 flex flex-wrap gap-3">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-muted/40 border border-border px-4 py-2 text-sm">
-                          <Clock className="w-4 h-4 opacity-80" />
-                          <span>3 חודשים</span>
-                        </div>
-                        <div className="inline-flex items-center gap-2 rounded-full bg-muted/40 border border-border px-4 py-2 text-sm">
-                          <Users className="w-4 h-4 opacity-80" />
-                          <span>עד 8 תלמידים</span>
-                        </div>
-                        <div className="inline-flex items-center gap-2 rounded-full bg-muted/40 border border-border px-4 py-2 text-sm">
-                          <Award className="w-4 h-4 opacity-80" />
-                          <span>תעודה בסיום</span>
-                        </div>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
+                        <Clock className="w-4 h-4 opacity-80" />
+                        <span>3 חודשים</span>
                       </div>
-                    </div>
-
-                    <div className="relative min-h-[260px] md:min-h-full">
-                      <img src={v("outcomes", "image") || academyClassroom} alt="כיתה באקדמיה" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                      <div className="absolute bottom-4 right-4 left-4 text-right text-white">
-                        <div className="text-sm opacity-90 flex items-center justify-end gap-2">
-                          <MapPin className="w-4 h-4" />
-                          <span>מיקום: יישלח בוואטסאפ</span>
-                        </div>
-                        <div className="text-sm opacity-90 flex items-center justify-end gap-2 mt-1">
-                          <CalendarDays className="w-4 h-4" />
-                          <span>מחזור קרוב: {new Date(nextCohortStartISO).toLocaleDateString("he-IL")}</span>
-                        </div>
+                      <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
+                        <Users className="w-4 h-4 opacity-80" />
+                        <span>עד 8 תלמידים</span>
+                      </div>
+                      <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
+                        <Award className="w-4 h-4 opacity-80" />
+                        <span>תעודה בסיום</span>
                       </div>
                     </div>
                   </div>
-                </Card>
 
-                {/* Stats */}
-                <StatsCounter stats={stats} />
-
-                {/* Mini CTA row */}
-                <div className="flex flex-col md:flex-row gap-3">
-                  <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-3 font-bold hover:opacity-95 transition">
-                    <Smartphone className="w-5 h-5" />
-                    שיחה בוואטסאפ עכשיו
-                  </button>
-                  <button onClick={() => document.getElementById("faq")?.scrollIntoView({ behavior: "smooth", block: "start" })} className="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-5 py-3 font-bold hover:bg-muted/40 transition">
-                    <HelpCircle className="w-5 h-5" />
-                    שאלות נפוצות
-                  </button>
+                  <div className="relative min-h-[260px] md:min-h-full">
+                    <img src={v("outcomes", "image") || academyClassroom} alt="כיתה באקדמיה" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute bottom-4 right-4 left-4 text-right text-white">
+                      <div className="text-sm opacity-90 flex items-center justify-end gap-2">
+                        <MapPin className="w-4 h-4" />
+                        <span>מיקום: יישלח בוואטסאפ</span>
+                      </div>
+                      <div className="text-sm opacity-90 flex items-center justify-end gap-2 mt-1">
+                        <CalendarDays className="w-4 h-4" />
+                        <span>מחזור קרוב: {new Date(nextCohortStartISO).toLocaleDateString("he-IL")}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </AnimatedSection>
+      </Section>
 
-        {/* Course quick cards */}
-        <AnimatedSection delay={0.15}>
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
+      <SectionDivider from="dark" to="light" shape="curves" />
+
+      {/* ============ 4️⃣ SOCIAL PROOF ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          {/* Trust Strip */}
+          <div className="bg-muted/40 border border-border rounded-2xl p-5 mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 opacity-80" />
+                <span>{v("trust_strip", "item1", "קבוצות קטנות • יחס אישי")}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 opacity-80" />
+                <span>{v("trust_strip", "item2", "תעודה בסיום")}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <BriefcaseBusiness className="w-4 h-4 opacity-80" />
+                <span>{v("trust_strip", "item3", "הכוונה להשתלבות בעבודה")}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Scissors className="w-4 h-4 opacity-80" />
+                <span>{v("trust_strip", "item4", "תרגול אמיתי לאורך הקורס")}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <StatsCounter stats={stats} />
+
+          {/* Quick course cards */}
+          <div className="grid md:grid-cols-3 gap-6 mt-10">
             <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
               <Clock className="w-12 h-12 mx-auto mb-4" />
               <h3 className="font-bold text-xl mb-2">משך הקורס</h3>
@@ -280,10 +355,101 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
+      <SectionDivider from="light" to="dark" shape="triangles" />
+
+      {/* ============ 5️⃣ PROBLEM SECTION ============ */}
+      <Section
+        title={<><AlertTriangle className="w-6 h-6 inline-block align-middle ml-1" /> {v("problems", "title", "מרגיש שאתה תקוע?")}</>}
+        subtitle={v("problems", "subtitle", "הרבה גברים מגיעים אלינו עם אותן תחושות:")}
+        variant="dark"
+      >
+        <AnimatedSection>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {problems.map((pain, idx) => (
+              <Card key={idx} className="bg-secondary text-secondary-foreground border-0 p-5 rounded-2xl flex items-start gap-3">
+                <pain.icon className="w-5 h-5 mt-0.5 opacity-70 shrink-0" />
+                <span className="opacity-90">{pain.text}</span>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
+              <Smartphone className="w-5 h-5" />
+              אני רוצה לבדוק אם זה בשבילי
+            </button>
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="dark" to="light" shape="curves" />
+
+      {/* ============ 6️⃣ SOLUTION SECTION ============ */}
+      <Section
+        title={<><Target className="w-6 h-6 inline-block align-middle ml-1" /> {v("solution", "title", "הדרך שלנו: מאפס לספר עובד")}</>}
+        subtitle={v("solution", "subtitle", "שיטת ההכשרה של Macho Academy נבנתה כדי לתת לך את כל מה שצריך בפועל — לא רק תיאוריה.")}
+        variant="light"
+      >
+        <AnimatedSection>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {solutions.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-3 p-4 bg-muted/40 border border-border rounded-xl">
+                <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80 shrink-0" />
+                <span className="font-semibold opacity-90">{benefit}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Why us features */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            {features.map((feature, index) => (
+              <Card key={index} className="bg-background text-foreground border-border p-6 rounded-2xl hover:-translate-y-1 transition">
+                <feature.icon className="w-10 h-10 mb-3 opacity-90" />
+                <h3 className="font-black text-lg mb-1">{feature.title}</h3>
+                <p className="opacity-80 text-sm">{feature.description}</p>
+              </Card>
+            ))}
+          </div>
+        </AnimatedSection>
+      </Section>
+
       <SectionDivider from="light" to="dark" shape="waves" />
 
-      {/* HOW IT WORKS */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד בפועל</>} variant="dark">
+      {/* ============ 7️⃣ AUTHORITY SECTION ============ */}
+      <Section variant="dark">
+        <AnimatedSection>
+          <div className="grid lg:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+            <div className="text-center lg:text-right">
+              <h2 className="text-3xl md:text-4xl font-black mb-2">
+                <BadgeCheck className="w-6 h-6 inline-block align-middle ml-1" />
+                {v("authority", "title", "הכירו את יהלי צור")}
+              </h2>
+              <p className="text-accent font-bold text-lg mb-6">
+                {v("authority", "subtitle", "מייסד Macho Academy")}
+              </p>
+              <p className="opacity-85 text-base md:text-lg leading-relaxed mb-4">
+                {v("authority", "paragraph1", "ניסיון של למעלה מ-15 שנה בספרות גברים, מאות בוגרים שעובדים היום בתעשייה, ותשוקה אמיתית ללמד את המקצוע.")}
+              </p>
+              <p className="opacity-80 text-base md:text-lg leading-relaxed">
+                {v("authority", "paragraph2", "יהלי הקים את האקדמיה מתוך אמונה שכל אחד יכול ללמוד את המקצוע — בתנאי שמלמדים אותו נכון, עם סבלנות ועם שיטה.")}
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <img
+                src={v("authority", "image") || ownerPortrait}
+                alt="יהלי צור - מייסד האקדמיה"
+                className="w-full max-w-xs md:max-w-sm rounded-2xl shadow-2xl"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="dark" to="light" shape="steps" />
+
+      {/* ============ 8️⃣ PROGRAM / PROCESS ============ */}
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד בפועל</>} variant="light">
         <AnimatedSection>
           <div className="grid lg:grid-cols-3 gap-6">
             {[
@@ -291,7 +457,7 @@ const AcademyPage = () => {
               { icon: Scissors, title: v("how_it_works", "step2_title", "2) תרגול מעשי"), desc: v("how_it_works", "step2_desc", "לומדים בסיס + מתרגלים בהדרכה צמודה עד ביטחון מלא.") },
               { icon: BriefcaseBusiness, title: v("how_it_works", "step3_title", "3) התחלת עבודה"), desc: v("how_it_works", "step3_desc", "תיק עבודות + ליווי והכוונה להשתלבות במספרות.") },
             ].map((step, idx) => (
-              <Card key={idx} className="bg-secondary text-secondary-foreground border-0 p-6 rounded-2xl">
+              <Card key={idx} className="bg-background text-foreground border-border p-6 rounded-2xl">
                 <step.icon className="w-10 h-10 mb-4 opacity-90" />
                 <h3 className="font-black text-xl mb-2">{step.title}</h3>
                 <p className="opacity-80">{step.desc}</p>
@@ -302,40 +468,31 @@ const AcademyPage = () => {
               </Card>
             ))}
           </div>
-
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-3">
-            <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
-              <BadgeCheck className="w-5 h-5" />
-              בדיקת התאמה מהירה
-            </button>
-            <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background/10 text-background px-6 py-3 font-bold hover:bg-background/15 transition">
-              <Smartphone className="w-5 h-5" />
-              וואטסאפ עכשיו
-            </button>
-          </div>
         </AnimatedSection>
-      </Section>
 
-      <SectionDivider from="dark" to="light" shape="curves" />
-
-      {/* COURSE CONTENT */}
-      <Section title={<><ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס</>} variant="light">
-        <AnimatedSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {modules.map((module, index) => (
-              <div key={index} className="group flex items-center gap-3 p-4 bg-muted/40 hover:bg-muted/55 border border-border rounded-xl transition">
-                <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold">
-                  {index + 1}
+        {/* Course content modules */}
+        <AnimatedSection delay={0.1}>
+          <div className="mt-14">
+            <h3 className="text-2xl md:text-3xl font-black text-center mb-8">
+              <ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {modules.map((module, index) => (
+                <div key={index} className="group flex items-center gap-3 p-4 bg-muted/40 hover:bg-muted/55 border border-border rounded-xl transition">
+                  <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold">
+                    {index + 1}
+                  </div>
+                  <span className="font-semibold opacity-90">{module}</span>
+                  <ChevronDown className="w-4 h-4 opacity-0 group-hover:opacity-60 transition mr-auto" />
                 </div>
-                <span className="font-semibold opacity-90">{module}</span>
-                <ChevronDown className="w-4 h-4 opacity-0 group-hover:opacity-60 transition mr-auto" />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.12}>
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
+        {/* Micro proof cards */}
+        <AnimatedSection delay={0.15}>
+          <div className="grid md:grid-cols-3 gap-6 mt-10">
             <Card className="p-6 rounded-2xl border-border text-foreground">
               <Video className="w-10 h-10 mb-3" />
               <h3 className="font-black text-lg text-primary">{v("micro_proof", "card1_title", "תרגול מודרך")}</h3>
@@ -357,29 +514,8 @@ const AcademyPage = () => {
 
       <SectionDivider from="light" to="dark" shape="triangles" />
 
-      {/* WHY US */}
-      <Section title={<><Star className="w-6 h-6 inline-block align-middle ml-1" /> למה ללמוד אצלנו?</>} variant="dark">
-        <AnimatedSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-secondary text-secondary-foreground border-0 p-6 rounded-2xl hover:-translate-y-1 transition">
-                <feature.icon className="w-10 h-10 mb-3 opacity-90" />
-                <h3 className="font-black text-lg mb-1">{feature.title}</h3>
-                <p className="opacity-80 text-sm">{feature.description}</p>
-                <div className="mt-4 flex items-center gap-2 text-sm opacity-85">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>מיקוד בתכל׳ס — תוצאות</span>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="dark" to="light" shape="steps" />
-
-      {/* TESTIMONIALS */}
-      <Section variant="light">
+      {/* ============ 9️⃣ TESTIMONIALS ============ */}
+      <Section variant="dark">
         <AnimatedSection>
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="mb-3 text-3xl md:text-4xl font-black">
@@ -388,7 +524,7 @@ const AcademyPage = () => {
             <p className="opacity-70 mb-10">אמיתי, קצר ולעניין — מה אנשים חוו ומה יצא להם מזה.</p>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-6 rounded-2xl border-border text-right bg-background">
+              <Card className="p-6 rounded-2xl border-0 text-right bg-secondary text-secondary-foreground">
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <div className="flex items-center gap-2">
                     {Array(5).fill(0).map((_, i) => <Star key={i} className="w-4 h-4 opacity-80" />)}
@@ -399,7 +535,7 @@ const AcademyPage = () => {
                 <p className="font-bold text-sm">— {v("testimonials", "review1_name", "דן")}</p>
               </Card>
 
-              <Card className="p-6 rounded-2xl border-border text-right bg-background">
+              <Card className="p-6 rounded-2xl border-0 text-right bg-secondary text-secondary-foreground">
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <div className="flex items-center gap-2">
                     {Array(5).fill(0).map((_, i) => <Star key={i} className="w-4 h-4 opacity-80" />)}
@@ -410,28 +546,64 @@ const AcademyPage = () => {
                 <p className="font-bold text-sm">— {v("testimonials", "review2_name", "אור")}</p>
               </Card>
             </div>
-
-            <div className="mt-8 flex items-center justify-center">
-              <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
-                <Smartphone className="w-5 h-5" />
-                גם אני רוצה פרטים
-              </button>
-            </div>
           </div>
         </AnimatedSection>
       </Section>
 
-      {/* FAQ */}
+      <SectionDivider from="dark" to="light" shape="curves" />
+
+      {/* ============ 🔟 SECOND FORM / CTA ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <div className="max-w-xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-black mb-3">
+                <Smartphone className="w-6 h-6 inline-block align-middle ml-1" /> מעניין? בואו נדבר
+              </h2>
+              <p className="opacity-70">השאירו פרטים ונחזור אליכם בוואטסאפ — מהר, בלי התחייבות.</p>
+            </div>
+            <LeadForm v={v} onSend={onLeadSend} />
+          </div>
+        </AnimatedSection>
+      </Section>
+
       <SectionDivider from="light" to="dark" shape="waves" />
 
-      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> שאלות נפוצות</>} variant="dark">
+      {/* ============ 1️⃣1️⃣ WHO IS THIS FOR ============ */}
+      <Section
+        title={<><UserCheck className="w-6 h-6 inline-block align-middle ml-1" /> {v("who_is_this_for", "title", "למי הקורס מתאים?")}</>}
+        variant="dark"
+      >
+        <AnimatedSection>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {whoIsThisFor.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3 p-4 bg-secondary text-secondary-foreground rounded-xl border-0">
+                <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80 shrink-0" />
+                <span className="opacity-90 font-semibold">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
+              <Smartphone className="w-5 h-5" />
+              בדיקת התאמה מהירה
+            </button>
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="dark" to="light" shape="steps" />
+
+      {/* ============ 1️⃣2️⃣ FAQ ============ */}
+      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> שאלות נפוצות</>} variant="light">
         <div id="faq" className="scroll-mt-28" />
         <AnimatedSection>
           <FaqAccordion items={faq} />
 
           <div className="mt-10 text-center">
             <p className="opacity-80 mb-4">יש עוד שאלה? שלחו הודעה ונענה מהר.</p>
-            <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
+            <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
               <Smartphone className="w-5 h-5" />
               שלחו שאלה בוואטסאפ
             </button>
@@ -439,9 +611,9 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="dark" to="light" shape="curves" />
+      <SectionDivider from="light" to="dark" shape="curves" />
 
-      {/* FINAL CTA */}
+      {/* ============ 1️⃣3️⃣ FINAL CTA ============ */}
       <CTASection
         title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> {v("cta", "title", "מוכנים להתחיל קריירה חדשה?")}</>}
         description={
@@ -452,7 +624,7 @@ const AcademyPage = () => {
         }
         buttonLabel={<><Smartphone className="w-4 h-4" /> שריינו מקום / בדקו התאמה</>}
         buttonHref={buildWaLink("היי 👋 אני רוצה לשריין מקום למחזור הקרוב באקדמיה של Macho. אפשר פרטים?")}
-        variant="light"
+        variant="dark"
       />
 
       {/* STICKY WHATSAPP CTA */}

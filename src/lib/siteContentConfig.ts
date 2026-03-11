@@ -393,6 +393,61 @@ export const siteContentConfig: PageConfig[] = [
         ],
       },
       {
+        key: "video",
+        title: "סקשן וידאו / הסבר",
+        fields: [
+          { key: "title", label: "כותרת", type: "text", defaultValue: "צפו ותבינו למה באים ללמוד אצלנו" },
+          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "סרטון קצר שמסביר בדיוק מה תקבלו ואיך הקורס עובד" },
+          { key: "video_url", label: "קישור לסרטון (YouTube/Vimeo embed)", type: "text", defaultValue: "" },
+        ],
+      },
+      {
+        key: "problems",
+        title: "בעיות נפוצות (Problem Section)",
+        fields: [
+          { key: "title", label: "כותרת", type: "text", defaultValue: "מרגיש שאתה תקוע?" },
+          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "הרבה גברים מגיעים אלינו עם אותן תחושות:" },
+          { key: "pain1", label: "כאב 1", type: "text", defaultValue: "רוצה להחליף מקצוע אבל לא יודע מאיפה להתחיל" },
+          { key: "pain2", label: "כאב 2", type: "text", defaultValue: "למדת לבד מיוטיוב אבל חסר ביטחון לעבוד מול לקוחות" },
+          { key: "pain3", label: "כאב 3", type: "text", defaultValue: "פחד להשקיע כסף וזמן בלי ערבות שזה יוביל לעבודה" },
+          { key: "pain4", label: "כאב 4", type: "text", defaultValue: "מחפש מקצוע יצירתי עם חופש ושליטה בזמן שלך" },
+        ],
+      },
+      {
+        key: "solution",
+        title: "הפתרון שלנו (Solution Section)",
+        fields: [
+          { key: "title", label: "כותרת", type: "text", defaultValue: "הדרך שלנו: מאפס לספר עובד" },
+          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "שיטת ההכשרה של Macho Academy נבנתה כדי לתת לך את כל מה שצריך בפועל — לא רק תיאוריה." },
+          { key: "benefit1", label: "יתרון 1", type: "text", defaultValue: "תרגול מעשי מיום ראשון — לא רק צופים" },
+          { key: "benefit2", label: "יתרון 2", type: "text", defaultValue: "מנטור אישי שלוקח אותך יד ביד" },
+          { key: "benefit3", label: "יתרון 3", type: "text", defaultValue: "ליווי גם אחרי הקורס עד שנכנסים לעבודה" },
+          { key: "benefit4", label: "יתרון 4", type: "text", defaultValue: "ערכת ציוד מקצועית כלולה — מתחילים מוכנים" },
+        ],
+      },
+      {
+        key: "authority",
+        title: "המומחה / הסמכות",
+        fields: [
+          { key: "title", label: "כותרת", type: "text", defaultValue: "הכירו את יהלי צור" },
+          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "מייסד Macho Academy" },
+          { key: "paragraph1", label: "פסקה 1", type: "textarea", defaultValue: "ניסיון של למעלה מ-15 שנה בספרות גברים, מאות בוגרים שעובדים היום בתעשייה, ותשוקה אמיתית ללמד את המקצוע." },
+          { key: "paragraph2", label: "פסקה 2", type: "textarea", defaultValue: "יהלי הקים את האקדמיה מתוך אמונה שכל אחד יכול ללמוד את המקצוע — בתנאי שמלמדים אותו נכון, עם סבלנות ועם שיטה." },
+          { key: "image", label: "תמונת המומחה", type: "image", defaultValue: "" },
+        ],
+      },
+      {
+        key: "who_is_this_for",
+        title: "למי זה מתאים?",
+        fields: [
+          { key: "title", label: "כותרת", type: "text", defaultValue: "למי הקורס מתאים?" },
+          { key: "item1", label: "קהל 1", type: "text", defaultValue: "גברים שרוצים להחליף מקצוע ולהיכנס לתחום הספרות" },
+          { key: "item2", label: "קהל 2", type: "text", defaultValue: "צעירים אחרי צבא שמחפשים קריירה יצירתית ועצמאית" },
+          { key: "item3", label: "קהל 3", type: "text", defaultValue: "מי שמספר חברים/משפחה ורוצה להפוך את זה למקצוע" },
+          { key: "item4", label: "קהל 4", type: "text", defaultValue: "כל מי שמוכן ללמוד ולהשקיע — בלי צורך בניסיון קודם" },
+        ],
+      },
+      {
         key: "lead_form",
         title: "טופס השארת פרטים",
         fields: [
