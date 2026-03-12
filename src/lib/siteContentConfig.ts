@@ -334,6 +334,8 @@ export const siteContentConfig: PageConfig[] = [
           { key: "class_size", label: "גודל הכיתה", type: "text", defaultValue: "עד 8 תלמידים" },
           { key: "certificate", label: "תעודה", type: "text", defaultValue: "הסמכה רשמית" },
           { key: "next_cohort", label: "תאריך מחזור הבא", type: "text", defaultValue: "2026-04-15" },
+          { key: "spots_total", label: "סה״כ מקומות במחזור", type: "text", defaultValue: "8" },
+          { key: "spots_taken", label: "מקומות שנתפסו", type: "text", defaultValue: "5" },
         ],
       },
       {
