@@ -9,13 +9,15 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import SectionDivider from "@/components/ui/SectionDivider";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import GalleryGrid from "@/components/ui/GalleryGrid";
 import { Card } from "@/components/ui/card";
 
 import {
   Clock, Users, Award, Smartphone, Rocket, ClipboardList, MessageCircle,
   GraduationCap, Star, BookOpen, CheckCircle2, ShieldCheck, Sparkles,
   CalendarDays, MapPin, ChevronDown, BadgeCheck, BriefcaseBusiness,
-  Video, Scissors, HelpCircle, AlertTriangle, Target, UserCheck, Play
+  Video, Scissors, HelpCircle, AlertTriangle, Target, UserCheck, Play,
+  XCircle, ArrowRight, ShieldAlert, ImageIcon
 } from "lucide-react";
 
 import academyClassroom from "@/assets/academy-classroom.jpg";
@@ -75,6 +77,9 @@ const AcademyPage = () => {
   );
 
   const nextCohortStartISO = v("details", "next_cohort", "2026-04-15") + "T18:00:00.000+03:00";
+  const spotsTotal = parseInt(v("details", "spots_total", "8")) || 8;
+  const spotsTaken = parseInt(v("details", "spots_taken", "5")) || 5;
+  const spotsLeft = Math.max(0, spotsTotal - spotsTaken);
 
   const faq = useMemo(
     () => [
@@ -116,6 +121,40 @@ const AcademyPage = () => {
     ],
     [v]
   );
+
+  const testimonials = useMemo(
+    () => [1, 2, 3, 4, 5, 6].map((n) => ({
+      text: v("testimonials", `review${n}_text`, ""),
+      name: v("testimonials", `review${n}_name`, ""),
+      cohort: v("testimonials", `review${n}_cohort`, ""),
+      result: v("testimonials", `review${n}_result`, ""),
+      image: v("testimonials", `review${n}_image`, ""),
+    })).filter((t) => t.text && t.name),
+    [v]
+  );
+
+  const comparison = useMemo(
+    () => [1, 2, 3, 4].map((n) => ({
+      before: v("comparison", `before${n}`, ""),
+      after: v("comparison", `after${n}`, ""),
+    })).filter((c) => c.before && c.after),
+    [v]
+  );
+
+  const guarantees = useMemo(
+    () => [
+      v("guarantee", "item1", "שיעור ניסיון חינם — תראה איך עובדים לפני שמחליטים"),
+      v("guarantee", "item2", "ליווי עד השתלבות בעבודה — לא עוזבים אותך אחרי התעודה"),
+      v("guarantee", "item3", "קבוצות קטנות — אם לא מרגיש יחס אישי, זה לא אנחנו"),
+    ],
+    [v]
+  );
+
+  // Results gallery
+  const resultsGalleryRaw = v("results_gallery", "images", "[]");
+  const resultsGallery = useMemo(() => {
+    try { return JSON.parse(resultsGalleryRaw) as string[]; } catch { return []; }
+  }, [resultsGalleryRaw]);
 
   // ====== EFFECTS ======
   const [showSticky, setShowSticky] = useState(false);
@@ -183,11 +222,12 @@ const AcademyPage = () => {
         image={v("hero", "image") || courseBeginnerHero}
       />
 
-      {/* URGENCY BAR */}
+      {/* URGENCY BAR with spots remaining */}
       <UrgencyBar
         nextCohortStartISO={nextCohortStartISO}
         onScrollToLead={onScrollToLead}
         onPrimaryCTA={onPrimaryCTA}
+        spotsLeft={spotsLeft}
       />
 
       {/* ============ 2️⃣ VIDEO / INTRO ============ */}
@@ -237,9 +277,20 @@ const AcademyPage = () => {
 
       <SectionDivider from="light" to="dark" shape="waves" />
 
-      {/* ============ 3️⃣ PRIMARY FORM ============ */}
+      {/* ============ 3️⃣ PRIMARY FORM + OUTCOMES ============ */}
       <Section variant="dark">
         <div id="lead-section" className="scroll-mt-28" />
+
+        {/* Spots remaining indicator */}
+        {spotsLeft > 0 && spotsLeft <= 4 && (
+          <div className="mb-6 flex items-center justify-center gap-2 text-sm font-semibold">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent text-accent-foreground px-4 py-1.5 animate-pulse">
+              <Users className="w-4 h-4" />
+              נשארו רק {spotsLeft} מקומות במחזור הקרוב!
+            </span>
+          </div>
+        )}
+
         <AnimatedSection>
           <div className="grid lg:grid-cols-12 gap-10 items-stretch">
             <div className="lg:col-span-5">
@@ -415,8 +466,41 @@ const AcademyPage = () => {
 
       <SectionDivider from="light" to="dark" shape="waves" />
 
+      {/* ============ 🆕 COMPARISON SECTION ============ */}
+      <Section
+        title={v("comparison", "title", "לפני הקורס vs אחרי הקורס")}
+        variant="dark"
+      >
+        <AnimatedSection>
+          <div className="max-w-3xl mx-auto grid gap-4">
+            {comparison.map((row, idx) => (
+              <div key={idx} className="grid grid-cols-[1fr_auto_1fr] gap-3 items-center">
+                <Card className="bg-secondary text-secondary-foreground border-0 p-4 rounded-xl flex items-start gap-2">
+                  <XCircle className="w-5 h-5 mt-0.5 opacity-60 shrink-0" />
+                  <span className="opacity-80 text-sm">{row.before}</span>
+                </Card>
+                <ArrowRight className="w-5 h-5 opacity-50 shrink-0" />
+                <Card className="bg-accent/15 text-foreground border-0 p-4 rounded-xl flex items-start gap-2">
+                  <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80 shrink-0" />
+                  <span className="font-semibold text-sm">{row.after}</span>
+                </Card>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
+              <Smartphone className="w-5 h-5" />
+              אני רוצה להיות בצד הימני
+            </button>
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="dark" to="light" shape="steps" />
+
       {/* ============ 7️⃣ AUTHORITY SECTION ============ */}
-      <Section variant="dark">
+      <Section variant="light">
         <AnimatedSection>
           <div className="grid lg:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
             <div className="text-center lg:text-right">
@@ -446,10 +530,10 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="dark" to="light" shape="steps" />
+      <SectionDivider from="light" to="dark" shape="triangles" />
 
       {/* ============ 8️⃣ PROGRAM / PROCESS ============ */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד בפועל</>} variant="light">
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד בפועל</>} variant="dark">
         <AnimatedSection>
           <div className="grid lg:grid-cols-3 gap-6">
             {[
@@ -457,7 +541,7 @@ const AcademyPage = () => {
               { icon: Scissors, title: v("how_it_works", "step2_title", "2) תרגול מעשי"), desc: v("how_it_works", "step2_desc", "לומדים בסיס + מתרגלים בהדרכה צמודה עד ביטחון מלא.") },
               { icon: BriefcaseBusiness, title: v("how_it_works", "step3_title", "3) התחלת עבודה"), desc: v("how_it_works", "step3_desc", "תיק עבודות + ליווי והכוונה להשתלבות במספרות.") },
             ].map((step, idx) => (
-              <Card key={idx} className="bg-background text-foreground border-border p-6 rounded-2xl">
+              <Card key={idx} className="bg-secondary text-secondary-foreground border-0 p-6 rounded-2xl">
                 <step.icon className="w-10 h-10 mb-4 opacity-90" />
                 <h3 className="font-black text-xl mb-2">{step.title}</h3>
                 <p className="opacity-80">{step.desc}</p>
@@ -478,7 +562,7 @@ const AcademyPage = () => {
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {modules.map((module, index) => (
-                <div key={index} className="group flex items-center gap-3 p-4 bg-muted/40 hover:bg-muted/55 border border-border rounded-xl transition">
+                <div key={index} className="group flex items-center gap-3 p-4 bg-secondary/60 hover:bg-secondary/80 rounded-xl transition">
                   <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold">
                     {index + 1}
                   </div>
@@ -493,67 +577,140 @@ const AcademyPage = () => {
         {/* Micro proof cards */}
         <AnimatedSection delay={0.15}>
           <div className="grid md:grid-cols-3 gap-6 mt-10">
-            <Card className="p-6 rounded-2xl border-border text-foreground">
+            <Card className="p-6 rounded-2xl border-0 bg-secondary text-secondary-foreground">
               <Video className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg text-primary">{v("micro_proof", "card1_title", "תרגול מודרך")}</h3>
+              <h3 className="font-black text-lg">{v("micro_proof", "card1_title", "תרגול מודרך")}</h3>
               <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card1_desc", "לא רק תיאוריה — עובדים ידיים על הכלים")}</p>
             </Card>
-            <Card className="p-6 rounded-2xl border-border text-foreground">
+            <Card className="p-6 rounded-2xl border-0 bg-secondary text-secondary-foreground">
               <ShieldCheck className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg text-primary">{v("micro_proof", "card2_title", "סטנדרט היגיינה")}</h3>
+              <h3 className="font-black text-lg">{v("micro_proof", "card2_title", "סטנדרט היגיינה")}</h3>
               <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card2_desc", "איך לעבוד נכון ומקצועי לפי נהלים")}</p>
             </Card>
-            <Card className="p-6 rounded-2xl border-border text-foreground">
+            <Card className="p-6 rounded-2xl border-0 bg-secondary text-secondary-foreground">
               <BriefcaseBusiness className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg text-primary">{v("micro_proof", "card3_title", "כניסה לתעשייה")}</h3>
+              <h3 className="font-black text-lg">{v("micro_proof", "card3_title", "כניסה לתעשייה")}</h3>
               <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card3_desc", "איך למצוא מקום, איך להציג את עצמך")}</p>
             </Card>
           </div>
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="light" to="dark" shape="triangles" />
+      <SectionDivider from="dark" to="light" shape="curves" />
 
-      {/* ============ 9️⃣ TESTIMONIALS ============ */}
-      <Section variant="dark">
+      {/* ============ 🆕 RESULTS GALLERY ============ */}
+      {resultsGallery.length > 0 && (
+        <>
+          <Section
+            title={<><ImageIcon className="w-6 h-6 inline-block align-middle ml-1" /> {v("results_gallery", "title", "העבודות של הבוגרים שלנו")}</>}
+            subtitle={v("results_gallery", "subtitle", "ככה נראה הסטנדרט שלנו — תוצאות אמיתיות של תלמידים שהתחילו מאפס")}
+            variant="light"
+          >
+            <AnimatedSection>
+              <GalleryGrid images={resultsGallery} />
+
+              <div className="mt-8 text-center">
+                <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
+                  <Smartphone className="w-5 h-5" />
+                  גם אני רוצה ללמוד ככה
+                </button>
+              </div>
+            </AnimatedSection>
+          </Section>
+          <SectionDivider from="light" to="dark" shape="triangles" />
+        </>
+      )}
+
+      {/* ============ 9️⃣ TESTIMONIALS (expanded 6 slots) ============ */}
+      <Section variant={resultsGallery.length > 0 ? "dark" : "light"}>
         <AnimatedSection>
-          <div className="text-center max-w-4xl mx-auto">
+          <div className="text-center max-w-5xl mx-auto">
             <h2 className="mb-3 text-3xl md:text-4xl font-black">
               <MessageCircle className="w-6 h-6 inline-block align-middle ml-1" /> הבוגרים שלנו מדברים
             </h2>
             <p className="opacity-70 mb-10">אמיתי, קצר ולעניין — מה אנשים חוו ומה יצא להם מזה.</p>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-6 rounded-2xl border-0 text-right bg-secondary text-secondary-foreground">
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    {Array(5).fill(0).map((_, i) => <Star key={i} className="w-4 h-4 opacity-80" />)}
-                  </div>
-                  <span className="text-xs opacity-60">{v("testimonials", "review1_cohort", "מחזור 2024")}</span>
-                </div>
-                <p className="opacity-85 mb-4">"{v("testimonials", "review1_text", "תוך 3 חודשים עברתי מאפס ניסיון לעבודה במספרה מובילה. התרגול והיחס האישי עשו את ההבדל.")}"</p>
-                <p className="font-bold text-sm">— {v("testimonials", "review1_name", "דן")}</p>
-              </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {testimonials.map((t, idx) => (
+                <Card key={idx} className="p-5 rounded-2xl border-0 text-right bg-secondary text-secondary-foreground">
+                  {/* Avatar / image */}
+                  {t.image && (
+                    <div className="w-14 h-14 rounded-full overflow-hidden mb-4 border-2 border-border">
+                      <img src={t.image} alt={t.name} className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                  )}
 
-              <Card className="p-6 rounded-2xl border-0 text-right bg-secondary text-secondary-foreground">
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    {Array(5).fill(0).map((_, i) => <Star key={i} className="w-4 h-4 opacity-80" />)}
+                  <div className="flex items-center justify-between gap-4 mb-3">
+                    <div className="flex items-center gap-1">
+                      {Array(5).fill(0).map((_, i) => <Star key={i} className="w-3.5 h-3.5 opacity-80" />)}
+                    </div>
+                    <span className="text-xs opacity-60">{t.cohort}</span>
                   </div>
-                  <span className="text-xs opacity-60">{v("testimonials", "review2_cohort", "מחזור 2023")}</span>
-                </div>
-                <p className="opacity-85 mb-4">"{v("testimonials", "review2_text", "המקצועיות של הצוות ברמה אחרת. קיבלתי ביטחון אמיתי לעבוד מול לקוחות, גם אחרי הקורס המשיכו ללוות.")}"</p>
-                <p className="font-bold text-sm">— {v("testimonials", "review2_name", "אור")}</p>
-              </Card>
+
+                  <p className="opacity-85 mb-3 text-sm leading-relaxed">"{t.text}"</p>
+
+                  {/* Result badge */}
+                  {t.result && (
+                    <div className="flex items-center gap-2 text-xs font-semibold opacity-90 mb-3 bg-background/10 rounded-full px-3 py-1 w-fit">
+                      <BriefcaseBusiness className="w-3.5 h-3.5" />
+                      <span>{t.result}</span>
+                    </div>
+                  )}
+
+                  <p className="font-bold text-sm">— {t.name}</p>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
+                <Smartphone className="w-5 h-5" />
+                גם אני רוצה פרטים
+              </button>
             </div>
           </div>
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="dark" to="light" shape="curves" />
+      <SectionDivider from={resultsGallery.length > 0 ? "dark" : "light"} to="light" shape="steps" />
+
+      {/* ============ 🆕 GUARANTEE / RISK REVERSAL ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/15 mb-6">
+              <ShieldAlert className="w-8 h-8 text-accent" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black mb-2">
+              {v("guarantee", "title", "בלי סיכון. בלי הפתעות.")}
+            </h2>
+            <p className="opacity-70 text-lg mb-8">
+              {v("guarantee", "subtitle", "ההבטחה שלנו אליך")}
+            </p>
+
+            <div className="grid gap-4">
+              {guarantees.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 p-5 bg-muted/40 border border-border rounded-xl text-right">
+                  <ShieldCheck className="w-6 h-6 opacity-80 shrink-0" />
+                  <span className="font-semibold">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
+                <Smartphone className="w-5 h-5" />
+                שיחה ללא התחייבות בוואטסאפ
+              </button>
+            </div>
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="light" to="dark" shape="waves" />
 
       {/* ============ 🔟 SECOND FORM / CTA ============ */}
-      <Section variant="light">
+      <Section variant="dark">
         <AnimatedSection>
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-8">
@@ -561,23 +718,29 @@ const AcademyPage = () => {
                 <Smartphone className="w-6 h-6 inline-block align-middle ml-1" /> מעניין? בואו נדבר
               </h2>
               <p className="opacity-70">השאירו פרטים ונחזור אליכם בוואטסאפ — מהר, בלי התחייבות.</p>
+
+              {spotsLeft > 0 && spotsLeft <= 4 && (
+                <p className="mt-3 text-accent font-bold text-sm animate-pulse">
+                  ⚡ נשארו {spotsLeft} מקומות בלבד למחזור הקרוב
+                </p>
+              )}
             </div>
             <LeadForm v={v} onSend={onLeadSend} />
           </div>
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="light" to="dark" shape="waves" />
+      <SectionDivider from="dark" to="light" shape="curves" />
 
       {/* ============ 1️⃣1️⃣ WHO IS THIS FOR ============ */}
       <Section
         title={<><UserCheck className="w-6 h-6 inline-block align-middle ml-1" /> {v("who_is_this_for", "title", "למי הקורס מתאים?")}</>}
-        variant="dark"
+        variant="light"
       >
         <AnimatedSection>
           <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {whoIsThisFor.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-4 bg-secondary text-secondary-foreground rounded-xl border-0">
+              <div key={idx} className="flex items-start gap-3 p-4 bg-muted/40 border border-border rounded-xl">
                 <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80 shrink-0" />
                 <span className="opacity-90 font-semibold">{item}</span>
               </div>
@@ -585,7 +748,7 @@ const AcademyPage = () => {
           </div>
 
           <div className="mt-8 text-center">
-            <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
+            <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
               <Smartphone className="w-5 h-5" />
               בדיקת התאמה מהירה
             </button>
@@ -593,17 +756,17 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="dark" to="light" shape="steps" />
+      <SectionDivider from="light" to="dark" shape="steps" />
 
       {/* ============ 1️⃣2️⃣ FAQ ============ */}
-      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> שאלות נפוצות</>} variant="light">
+      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> שאלות נפוצות</>} variant="dark">
         <div id="faq" className="scroll-mt-28" />
         <AnimatedSection>
           <FaqAccordion items={faq} />
 
           <div className="mt-10 text-center">
             <p className="opacity-80 mb-4">יש עוד שאלה? שלחו הודעה ונענה מהר.</p>
-            <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
+            <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
               <Smartphone className="w-5 h-5" />
               שלחו שאלה בוואטסאפ
             </button>
@@ -611,7 +774,7 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from="light" to="dark" shape="curves" />
+      <SectionDivider from="dark" to="light" shape="curves" />
 
       {/* ============ 1️⃣3️⃣ FINAL CTA ============ */}
       <CTASection
@@ -619,12 +782,15 @@ const AcademyPage = () => {
         description={
           <>
             {v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
+            {spotsLeft > 0 && spotsLeft <= 4 && (
+              <span className="block mt-2 text-sm font-bold">🔥 נשארו רק {spotsLeft} מקומות!</span>
+            )}
             {v("cta", "note", "") && <span className="block mt-2 text-sm opacity-70">✦ {v("cta", "note", "כולל ערכת ציוד מקצועית מלאה")}</span>}
           </>
         }
         buttonLabel={<><Smartphone className="w-4 h-4" /> שריינו מקום / בדקו התאמה</>}
         buttonHref={buildWaLink("היי 👋 אני רוצה לשריין מקום למחזור הקרוב באקדמיה של Macho. אפשר פרטים?")}
-        variant="dark"
+        variant="light"
       />
 
       {/* STICKY WHATSAPP CTA */}
