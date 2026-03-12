@@ -49,7 +49,7 @@ const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA, spotsLef
       <div className="container mx-auto px-4 py-1 flex flex-col md:flex-row items-center justify-between gap-1">
         <div className="flex items-center gap-1.5 text-xs md:text-sm font-semibold">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>{urgencyText}</span>
+          <span>{urgencyText}{spotsText}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <button
