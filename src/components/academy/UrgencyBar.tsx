@@ -23,9 +23,10 @@ interface UrgencyBarProps {
   nextCohortStartISO: string;
   onScrollToLead: () => void;
   onPrimaryCTA: () => void;
+  spotsLeft?: number;
 }
 
-const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA }: UrgencyBarProps) => {
+const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA, spotsLeft }: UrgencyBarProps) => {
   const [timeLeft, setTimeLeft] = useState(() => getTimeParts(nextCohortStartISO));
 
   useEffect(() => {
@@ -39,12 +40,16 @@ const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA }: Urgenc
     ? `המחזור הבא מתחיל בעוד ${timeLeft.days} ימים • ${formatTwo(timeLeft.hours)}:${formatTwo(timeLeft.minutes)}:${formatTwo(timeLeft.seconds)}`
     : "המחזור הבא נפתח עכשיו — נשארו מקומות אחרונים";
 
+  const spotsText = spotsLeft !== undefined && spotsLeft > 0 && spotsLeft <= 4
+    ? ` • נשארו ${spotsLeft} מקומות!`
+    : "";
+
   return (
     <div className="sticky top-0 z-[45] bg-foreground text-background">
       <div className="container mx-auto px-4 py-1 flex flex-col md:flex-row items-center justify-between gap-1">
         <div className="flex items-center gap-1.5 text-xs md:text-sm font-semibold">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>{urgencyText}</span>
+          <span>{urgencyText}{spotsText}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <button
