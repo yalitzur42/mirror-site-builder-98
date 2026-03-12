@@ -23,9 +23,10 @@ interface UrgencyBarProps {
   nextCohortStartISO: string;
   onScrollToLead: () => void;
   onPrimaryCTA: () => void;
+  spotsLeft?: number;
 }
 
-const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA }: UrgencyBarProps) => {
+const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA, spotsLeft }: UrgencyBarProps) => {
   const [timeLeft, setTimeLeft] = useState(() => getTimeParts(nextCohortStartISO));
 
   useEffect(() => {
@@ -38,6 +39,10 @@ const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA }: Urgenc
   const urgencyText = timeLeft.diff > 0
     ? `המחזור הבא מתחיל בעוד ${timeLeft.days} ימים • ${formatTwo(timeLeft.hours)}:${formatTwo(timeLeft.minutes)}:${formatTwo(timeLeft.seconds)}`
     : "המחזור הבא נפתח עכשיו — נשארו מקומות אחרונים";
+
+  const spotsText = spotsLeft !== undefined && spotsLeft > 0 && spotsLeft <= 4
+    ? ` • נשארו ${spotsLeft} מקומות!`
+    : "";
 
   return (
     <div className="sticky top-0 z-[45] bg-foreground text-background">
