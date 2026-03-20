@@ -291,6 +291,34 @@ const AdminDashboard = () => {
                                   fieldKey={field.key}
                                 />
                               )}
+
+                              {field.type === "video" && (
+                                <div className="space-y-2">
+                                  {getFieldValue(currentPage.slug, section.key, field) && (
+                                    <video
+                                      src={getFieldValue(currentPage.slug, section.key, field)}
+                                      controls
+                                      className="w-full max-w-md rounded-lg border border-border"
+                                    />
+                                  )}
+                                  <div>
+                                    <label className={`inline-flex items-center gap-2 px-3 py-2 bg-muted rounded-lg cursor-pointer hover:bg-muted/80 transition-colors text-xs md:text-sm ${uploadingVideo ? 'opacity-50 pointer-events-none' : ''}`}>
+                                      {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                                      {uploadingVideo ? "מעלה סרטון..." : "העלה סרטון"}
+                                      <input
+                                        type="file"
+                                        accept="video/mp4,video/webm,video/quicktime"
+                                        className="hidden"
+                                        disabled={uploadingVideo}
+                                        onChange={(e) => {
+                                          const file = e.target.files?.[0];
+                                          if (file) handleVideoUpload(currentPage.slug, section.key, field.key, file);
+                                        }}
+                                      />
+                                    </label>
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           ))}
 
