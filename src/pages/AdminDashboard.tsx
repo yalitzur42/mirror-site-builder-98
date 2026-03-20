@@ -97,6 +97,28 @@ const AdminDashboard = () => {
     setFieldValue(pageSlug, sectionKey, fieldKey, publicUrl);
   };
 
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+
+  const handleVideoUpload = async (pageSlug: string, sectionKey: string, fieldKey: string, file: File) => {
+    const validationError = validateFile(file, true);
+    if (validationError) {
+      toast({ title: "שגיאה", description: validationError, variant: "destructive" });
+      return;
+    }
+    setUploadingVideo(true);
+    const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${file.name.split('.').pop()}`;
+    const { error } = await supabase.storage.from("site-videos").upload(filePath, file);
+    if (error) {
+      toast({ title: "שגיאה בהעלאת סרטון", description: error.message, variant: "destructive" });
+      setUploadingVideo(false);
+      return;
+    }
+    const { data: { publicUrl } } = supabase.storage.from("site-videos").getPublicUrl(filePath);
+    setFieldValue(pageSlug, sectionKey, fieldKey, publicUrl);
+    toast({ title: "הסרטון הועלה בהצלחה!" });
+    setUploadingVideo(false);
+  };
+
   const handleSaveSection = async (pageSlug: string, section: typeof siteContentConfig[0]["sections"][0]) => {
     setSaving(true);
     const upserts = section.fields.map(field => ({
