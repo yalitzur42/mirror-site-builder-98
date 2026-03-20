@@ -4,7 +4,7 @@
 export interface ContentField {
   key: string;
   label: string;
-  type: "text" | "textarea" | "image" | "gallery";
+  type: "text" | "textarea" | "image" | "gallery" | "video";
   defaultValue: string;
 }
 
