@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import {
-  LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap, Images, Settings
+  LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap, Images, Settings, Video
 } from "lucide-react";
 import GalleryFieldEditor from "@/components/admin/GalleryFieldEditor";
 
@@ -68,12 +68,16 @@ const AdminDashboard = () => {
     }));
   };
 
-  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"];
-  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+  const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"];
+  const ALLOWED_VIDEO_TYPES = ["video/mp4", "video/webm", "video/quicktime", "video/x-msvideo"];
+  const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
+  const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100MB
 
-  const validateFile = (file: File): string | null => {
-    if (!ALLOWED_TYPES.includes(file.type)) return `סוג קובץ לא נתמך: ${file.type}`;
-    if (file.size > MAX_FILE_SIZE) return `הקובץ גדול מדי (מקסימום 5MB)`;
+  const validateFile = (file: File, isVideo = false): string | null => {
+    const allowedTypes = isVideo ? ALLOWED_VIDEO_TYPES : ALLOWED_IMAGE_TYPES;
+    const maxSize = isVideo ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
+    if (!allowedTypes.includes(file.type)) return `סוג קובץ לא נתמך: ${file.type}`;
+    if (file.size > maxSize) return `הקובץ גדול מדי (מקסימום ${isVideo ? '100MB' : '5MB'})`;
     return null;
   };
 
@@ -91,6 +95,28 @@ const AdminDashboard = () => {
     }
     const { data: { publicUrl } } = supabase.storage.from("site-assets").getPublicUrl(filePath);
     setFieldValue(pageSlug, sectionKey, fieldKey, publicUrl);
+  };
+
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+
+  const handleVideoUpload = async (pageSlug: string, sectionKey: string, fieldKey: string, file: File) => {
+    const validationError = validateFile(file, true);
+    if (validationError) {
+      toast({ title: "שגיאה", description: validationError, variant: "destructive" });
+      return;
+    }
+    setUploadingVideo(true);
+    const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${file.name.split('.').pop()}`;
+    const { error } = await supabase.storage.from("site-videos").upload(filePath, file);
+    if (error) {
+      toast({ title: "שגיאה בהעלאת סרטון", description: error.message, variant: "destructive" });
+      setUploadingVideo(false);
+      return;
+    }
+    const { data: { publicUrl } } = supabase.storage.from("site-videos").getPublicUrl(filePath);
+    setFieldValue(pageSlug, sectionKey, fieldKey, publicUrl);
+    toast({ title: "הסרטון הועלה בהצלחה!" });
+    setUploadingVideo(false);
   };
 
   const handleSaveSection = async (pageSlug: string, section: typeof siteContentConfig[0]["sections"][0]) => {
@@ -209,7 +235,7 @@ const AdminDashboard = () => {
                           {section.fields.map(field => (
                             <div key={field.key} className="space-y-1.5">
                               <Label className="text-sm md:text-base text-foreground flex items-center gap-2">
-                                {field.type === "image" ? <Image className="w-4 h-4" /> : field.type === "gallery" ? <Images className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+                                {field.type === "image" ? <Image className="w-4 h-4" /> : field.type === "gallery" ? <Images className="w-4 h-4" /> : field.type === "video" ? <Video className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
                                 {field.label}
                               </Label>
 
@@ -264,6 +290,34 @@ const AdminDashboard = () => {
                                   sectionKey={section.key}
                                   fieldKey={field.key}
                                 />
+                              )}
+
+                              {field.type === "video" && (
+                                <div className="space-y-2">
+                                  {getFieldValue(currentPage.slug, section.key, field) && (
+                                    <video
+                                      src={getFieldValue(currentPage.slug, section.key, field)}
+                                      controls
+                                      className="w-full max-w-md rounded-lg border border-border"
+                                    />
+                                  )}
+                                  <div>
+                                    <label className={`inline-flex items-center gap-2 px-3 py-2 bg-muted rounded-lg cursor-pointer hover:bg-muted/80 transition-colors text-xs md:text-sm ${uploadingVideo ? 'opacity-50 pointer-events-none' : ''}`}>
+                                      {uploadingVideo ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                                      {uploadingVideo ? "מעלה סרטון..." : "העלה סרטון"}
+                                      <input
+                                        type="file"
+                                        accept="video/mp4,video/webm,video/quicktime"
+                                        className="hidden"
+                                        disabled={uploadingVideo}
+                                        onChange={(e) => {
+                                          const file = e.target.files?.[0];
+                                          if (file) handleVideoUpload(currentPage.slug, section.key, field.key, file);
+                                        }}
+                                      />
+                                    </label>
+                                  </div>
+                                </div>
                               )}
                             </div>
                           ))}

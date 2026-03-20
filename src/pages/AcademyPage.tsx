@@ -193,7 +193,7 @@ const AcademyPage = () => {
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
-  const videoUrl = v("video", "video_url", "");
+  const videoFile = v("video", "video_file", "");
   const videoThumbnail = v("video", "video_thumbnail", "");
 
   return (
@@ -243,14 +243,14 @@ const AcademyPage = () => {
               {v("video", "subtitle", "סרטון קצר שמסביר בדיוק מה תקבלו ואיך הקורס עובד")}
             </p>
 
-            {videoUrl ? (
+            {videoFile ? (
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border shadow-lg">
-                <iframe
-                  src={videoUrl}
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="סרטון האקדמיה"
+                <video
+                  src={videoFile}
+                  controls
+                  poster={videoThumbnail || undefined}
+                  className="w-full h-full object-cover"
+                  preload="metadata"
                 />
               </div>
             ) : (
