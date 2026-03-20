@@ -194,6 +194,7 @@ const AcademyPage = () => {
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
   const videoUrl = v("video", "video_url", "");
+  const videoThumbnail = v("video", "video_thumbnail", "");
 
   return (
     <Layout>
