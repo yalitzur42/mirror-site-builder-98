@@ -253,22 +253,22 @@ const AcademyPage = () => {
                 />
               </div>
             ) : (
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border">
-                <img
-                  src={academyClassroom}
-                  alt="כיתה באקדמיה"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                  <button
-                    onClick={onScrollToLead}
-                    className="flex items-center gap-3 rounded-full bg-foreground text-background px-8 py-4 font-bold text-lg hover:opacity-95 transition"
-                  >
-                    <Smartphone className="w-5 h-5" />
-                    קבלו פרטים נוספים
-                  </button>
+              <div className="space-y-4">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border">
+                  <img
+                    src={academyClassroom}
+                    alt="כיתה באקדמיה"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
+                <button
+                  onClick={onScrollToLead}
+                  className="inline-flex items-center gap-3 rounded-full bg-foreground text-background px-8 py-4 font-bold text-lg hover:opacity-95 transition mx-auto"
+                >
+                  <Smartphone className="w-5 h-5" />
+                  קבלו פרטים נוספים
+                </button>
               </div>
             )}
           </div>
