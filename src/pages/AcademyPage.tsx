@@ -257,7 +257,7 @@ const AcademyPage = () => {
               <div className="space-y-4">
                 <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border">
                   <img
-                    src={academyClassroom}
+                    src={videoThumbnail || academyClassroom}
                     alt="כיתה באקדמיה"
                     className="w-full h-full object-cover"
                     loading="lazy"
