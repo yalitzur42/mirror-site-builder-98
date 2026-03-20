@@ -235,7 +235,7 @@ const AdminDashboard = () => {
                           {section.fields.map(field => (
                             <div key={field.key} className="space-y-1.5">
                               <Label className="text-sm md:text-base text-foreground flex items-center gap-2">
-                                {field.type === "image" ? <Image className="w-4 h-4" /> : field.type === "gallery" ? <Images className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+                                {field.type === "image" ? <Image className="w-4 h-4" /> : field.type === "gallery" ? <Images className="w-4 h-4" /> : field.type === "video" ? <Video className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
                                 {field.label}
                               </Label>
 
