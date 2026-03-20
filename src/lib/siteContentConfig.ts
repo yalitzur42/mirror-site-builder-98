@@ -400,7 +400,7 @@ export const siteContentConfig: PageConfig[] = [
         fields: [
           { key: "title", label: "כותרת", type: "text", defaultValue: "צפו ותבינו למה באים ללמוד אצלנו" },
           { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "סרטון קצר שמסביר בדיוק מה תקבלו ואיך הקורס עובד" },
-          { key: "video_url", label: "קישור embed לסרטון (העתק מ-YouTube: שתף → הטמע → העתק את ה-src מתוך ה-iframe)", type: "text", defaultValue: "" },
+          { key: "video_file", label: "העלאת קובץ סרטון (MP4/WebM, עד 100MB)", type: "video", defaultValue: "" },
           { key: "video_thumbnail", label: "תמונת תצוגה לסרטון (מוצגת כשאין סרטון)", type: "image", defaultValue: "" },
         ],
       },
