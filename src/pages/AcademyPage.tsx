@@ -476,14 +476,14 @@ const AcademyPage = () => {
           <div className="max-w-3xl mx-auto grid gap-4">
             {comparison.map((row, idx) => (
               <div key={idx} className="grid grid-cols-[1fr_auto_1fr] gap-3 items-center">
-                <Card className="bg-secondary text-secondary-foreground border-0 p-4 rounded-xl flex items-start gap-2">
-                  <XCircle className="w-5 h-5 mt-0.5 opacity-60 shrink-0" />
-                  <span className="opacity-80 text-sm">{row.before}</span>
-                </Card>
-                <ArrowRight className="w-5 h-5 opacity-50 shrink-0 rotate-180" />
                 <Card className="bg-accent/15 text-foreground border-0 p-4 rounded-xl flex items-start gap-2">
                   <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80 shrink-0" />
                   <span className="font-semibold text-sm">{row.after}</span>
+                </Card>
+                <ArrowRight className="w-5 h-5 opacity-50 shrink-0" />
+                <Card className="bg-secondary text-secondary-foreground border-0 p-4 rounded-xl flex items-start gap-2">
+                  <XCircle className="w-5 h-5 mt-0.5 opacity-60 shrink-0" />
+                  <span className="opacity-80 text-sm">{row.before}</span>
                 </Card>
               </div>
             ))}
