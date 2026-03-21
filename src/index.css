@@ -130,7 +130,7 @@
   }
 
   body {
-    @apply text-foreground font-opensans text-base leading-relaxed;
+    @apply text-foreground font-opensans text-lg leading-relaxed;
     background-color: hsl(60 56% 91%);
     background-image: url('/images/marble-bg.png');
     background-size: 100% auto;
