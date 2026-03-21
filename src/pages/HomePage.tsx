@@ -105,7 +105,7 @@ const HomePage = () => {
       {/* Gallery */}
       <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> {v("gallery", "title", "מהעבודות שלנו")}</>} variant="light">
         <AnimatedSection>
-          <GalleryGrid images={galleryImages} />
+          <GalleryGrid images={galleryImages} variant="light" />
         </AnimatedSection>
       </Section>
 
