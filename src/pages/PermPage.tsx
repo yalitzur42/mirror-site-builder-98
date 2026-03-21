@@ -89,7 +89,7 @@ const PermPage = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {permTypes.map((type, index) => (
               <div key={index} className="group overflow-hidden rounded-xl">
-                <div className="aspect-[3/4] overflow-hidden rounded-xl">
+                <div className="aspect-[3/4] overflow-hidden rounded-xl border-2 border-primary-foreground">
                   <img src={type.image} alt={type.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="py-3 text-center">
