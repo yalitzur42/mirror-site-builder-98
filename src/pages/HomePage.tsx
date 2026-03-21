@@ -105,7 +105,7 @@ const HomePage = () => {
       {/* Gallery */}
       <Section title={<><Camera className="w-6 h-6 inline-block align-middle ml-1" /> {v("gallery", "title", "מהעבודות שלנו")}</>} variant="light">
         <AnimatedSection>
-          <GalleryGrid images={galleryImages} />
+          <GalleryGrid images={galleryImages} variant="light" />
         </AnimatedSection>
       </Section>
 
@@ -115,7 +115,7 @@ const HomePage = () => {
       <Section variant="dark">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <img src={v("perm", "image") || permHero} alt="פרם לגבר" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
+            <img src={v("perm", "image") || permHero} alt="פרם לגבר" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full border-2 border-foreground" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
              <h2 className="mb-4 font-extrabold"><Flame className="w-7 h-7 inline-block align-middle ml-1" /> {v("perm", "title", "פרם לגבר")}</h2>
@@ -174,7 +174,7 @@ const HomePage = () => {
             </motion.div>
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-            <img src={v("about_preview", "image") || barbershopInterior} alt="פנים Macho" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full" />
+            <img src={v("about_preview", "image") || barbershopInterior} alt="פנים Macho" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full border-2 border-primary-foreground" />
           </AnimatedSection>
         </div>
       </Section>
@@ -185,7 +185,7 @@ const HomePage = () => {
       <Section variant="dark">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <img src={v("owner", "image") || ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
+            <img src={v("owner", "image") || ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full border-2 border-foreground" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
             <img src={teamIcon} alt="צוות Macho" className="w-32 mb-4 object-contain" />

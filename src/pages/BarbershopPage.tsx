@@ -76,7 +76,7 @@ const BarbershopPage = () => {
             <div className="grid grid-cols-3 gap-6 mb-8">
               {barbers.map((barber, i) => (
                 <div key={i} className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-accent">
+                  <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary-foreground">
                     <img src={barber.image} alt={barber.nameHe} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="font-bold text-lg">{barber.nameHe}</h3>
