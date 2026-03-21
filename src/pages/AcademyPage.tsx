@@ -32,6 +32,7 @@ import LeadForm from "@/components/academy/LeadForm";
 import StatsCounter from "@/components/academy/StatsCounter";
 import FaqAccordion from "@/components/academy/FaqAccordion";
 import StickyWhatsApp from "@/components/academy/StickyWhatsApp";
+import SalaryCalculator from "@/components/academy/SalaryCalculator";
 
 function buildWaLink(text: string) {
   return _waLink(WA_ACADEMY, text);
@@ -357,6 +358,15 @@ const AcademyPage = () => {
       </Section>
 
       <SectionDivider from="dark" to="light" shape="curves" />
+
+      {/* ============ SALARY CALCULATOR ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <SalaryCalculator />
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="light" to="light" shape="waves" />
 
       {/* ============ 4️⃣ SOCIAL PROOF ============ */}
       <Section variant="light">
