@@ -158,7 +158,7 @@
   }
 
   h2 {
-    @apply text-3xl md:text-4xl leading-tight;
+    @apply text-4xl md:text-5xl leading-tight;
   }
 
   h3 {
