@@ -185,7 +185,7 @@ const HomePage = () => {
       <Section variant="dark">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <img src={v("owner", "image") || ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full" />
+            <img src={v("owner", "image") || ownerPortrait} alt="המייסד" className="max-w-md mx-auto rounded-lg w-full border-2 border-foreground" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
             <img src={teamIcon} alt="צוות Macho" className="w-32 mb-4 object-contain" />

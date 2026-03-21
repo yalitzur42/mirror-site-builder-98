@@ -31,7 +31,7 @@ const AboutPage = () => {
 
       <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <img src={v("who_we_are", "image") || teamPhoto} alt="הצוות שלנו" className="rounded-lg w-full max-w-md mx-auto" />
+          <img src={v("who_we_are", "image") || teamPhoto} alt="הצוות שלנו" className="rounded-lg w-full max-w-md mx-auto border-2 border-primary-foreground" />
           <div>
             <h2 className="mb-6"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> {v("who_we_are", "title", "מי אנחנו?")}</h2>
             <div className="space-y-4 opacity-80">

@@ -122,7 +122,7 @@ const PermPage = () => {
         <AnimatedSection>
           <h2 className="text-center mb-12"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד?</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <img src={v("process", "image") || gallery3} alt="תהליך פרם" className="rounded-xl w-full" />
+            <img src={v("process", "image") || gallery3} alt="תהליך פרם" className="rounded-xl w-full border-2 border-primary-foreground" />
             <div className="space-y-6">
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(35, 60%, 92%)' }}>
                 <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: 'hsl(35, 70%, 85%)' }}>

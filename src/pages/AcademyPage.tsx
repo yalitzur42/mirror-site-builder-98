@@ -255,7 +255,7 @@ const AcademyPage = () => {
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-primary-foreground">
                   <img
                     src={videoThumbnail || academyClassroom}
                     alt="כיתה באקדמיה"
