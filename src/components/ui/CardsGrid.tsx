@@ -24,7 +24,7 @@ const CardsGrid = ({ items, columns = 4 }: CardsGridProps) => {
     <div className={`grid ${gridCols[columns]} gap-3 md:gap-6`}>
       {items.map((item, index) => (
         <Link key={index} to={item.href || "#"} className="group">
-          <Card className="overflow-hidden bg-primary text-card-foreground hover:opacity-90 transition-opacity h-full border-border">
+          <Card className="overflow-hidden bg-primary text-card-foreground hover:opacity-90 transition-opacity h-full border-2 border-primary-foreground">
             {item.image ? (
               <div className="aspect-square overflow-hidden">
                 <img
