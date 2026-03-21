@@ -32,6 +32,7 @@ import LeadForm from "@/components/academy/LeadForm";
 import StatsCounter from "@/components/academy/StatsCounter";
 import FaqAccordion from "@/components/academy/FaqAccordion";
 import StickyWhatsApp from "@/components/academy/StickyWhatsApp";
+import SalaryCalculator from "@/components/academy/SalaryCalculator";
 
 function buildWaLink(text: string) {
   return _waLink(WA_ACADEMY, text);
