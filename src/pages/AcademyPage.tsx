@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import HeroSplit from "@/components/ui/HeroSplit";
+import AcademyHero from "@/components/academy/AcademyHero";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
@@ -210,10 +211,11 @@ const AcademyPage = () => {
       <div ref={heroAnchorRef} />
 
       {/* ============ 1️⃣ HERO ============ */}
-      <HeroSplit
+      <AcademyHero
         title={v("hero", "title", "האקדמיה של Macho")}
         subtitle={v("hero", "subtitle", "תוך 3 חודשים — בדרך לקריירה בספרות גברים")}
         description={v("hero", "description", "קורס למתחילים ללא ניסיון: הרבה תרגול, קבוצות קטנות, תעודה בסיום וליווי עד שמתחילים לעבוד.")}
+        backgroundImage={v("hero", "image", "")}
         primaryCta={{
           label: <><Smartphone className="w-4 h-4" /> בדקו התאמה לקורס</>,
           href: buildWaLink("היי 👋 אני רוצה לבדוק התאמה לקורס באקדמיה של Macho. אפשר פרטים?"),
@@ -222,7 +224,6 @@ const AcademyPage = () => {
           label: <><Play className="w-4 h-4" /> למידע נוסף</>,
           href: "#lead-section",
         }}
-        image={v("hero", "image") || courseBeginnerHero}
       />
 
       {/* URGENCY BAR with spots remaining */}
