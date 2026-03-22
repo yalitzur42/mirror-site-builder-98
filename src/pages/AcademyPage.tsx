@@ -33,6 +33,7 @@ import StatsCounter from "@/components/academy/StatsCounter";
 import FaqAccordion from "@/components/academy/FaqAccordion";
 import StickyWhatsApp from "@/components/academy/StickyWhatsApp";
 import SalaryCalculator from "@/components/academy/SalaryCalculator";
+import AcademyCarousels from "@/components/academy/AcademyCarousels";
 
 function buildWaLink(text: string) {
   return _waLink(WA_ACADEMY, text);
