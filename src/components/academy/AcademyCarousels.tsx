@@ -61,14 +61,14 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
           </h3>
           <div className="relative px-12">
             <Carousel opts={{ loop: true, direction: "rtl" }} className="w-full">
-              <CarouselContent className="-ml-3">
+              <CarouselContent>
                 {studentImages.map((url, i) => (
-                  <CarouselItem key={i} className="basis-1/2 pl-3">
-                    <div className="aspect-[3/4] rounded-2xl overflow-hidden border-2 border-primary-foreground shadow-md">
+                  <CarouselItem key={i}>
+                    <div className="rounded-2xl overflow-hidden border-2 border-primary-foreground shadow-md mx-auto max-w-[320px]">
                       <img
                         src={url}
                         alt={`תלמיד ${i + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto object-contain"
                         loading="lazy"
                       />
                     </div>
