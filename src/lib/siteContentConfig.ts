@@ -405,6 +405,22 @@ export const siteContentConfig: PageConfig[] = [
         ],
       },
       {
+        key: "whatsapp_reviews",
+        title: "קרוסלת ביקורות וואטסאפ (צילומי מסך)",
+        fields: [
+          { key: "title", label: "כותרת", type: "text", defaultValue: "מה אומרים עלינו בוואטסאפ" },
+          { key: "images", label: "צילומי מסך וואטסאפ", type: "gallery", defaultValue: "[]" },
+        ],
+      },
+      {
+        key: "student_photos",
+        title: "קרוסלת תמונות תלמידים",
+        fields: [
+          { key: "title", label: "כותרת", type: "text", defaultValue: "התלמידים שלנו בפעולה" },
+          { key: "images", label: "תמונות תלמידים", type: "gallery", defaultValue: "[]" },
+        ],
+      },
+      {
         key: "problems",
         title: "בעיות נפוצות (Problem Section)",
         fields: [
