@@ -278,6 +278,13 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
+      {/* ============ CAROUSELS: WhatsApp Reviews + Student Photos ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <AcademyCarousels v={v} />
+        </AnimatedSection>
+      </Section>
+
       <SectionDivider from="light" to="dark" shape="waves" />
 
       {/* ============ 3️⃣ PRIMARY FORM + OUTCOMES ============ */}
