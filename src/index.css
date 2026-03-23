@@ -312,33 +312,48 @@ body::after {
   transform: scale(0.97);
 }
 
-.btn-hero-polygon-outline {
-  --cut: 12px;
+/* Corner-frame hero secondary button */
+.btn-hero-corner-frame {
+  --corner: 30%;
+  --thickness: 2px;
+  --color: hsl(var(--foreground));
   @apply relative inline-flex items-center justify-center gap-2 px-8 py-3.5 font-black text-base cursor-pointer;
-  background: transparent;
   color: hsl(var(--foreground));
-  clip-path: polygon(
-    var(--cut) 0%, calc(100% - var(--cut)) 0%,
-    100% var(--cut), 100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%, var(--cut) 100%,
-    0% calc(100% - var(--cut)), 0% var(--cut)
-  );
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  background: transparent;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
-.btn-hero-polygon-outline::before {
+.btn-hero-corner-frame::before,
+.btn-hero-corner-frame::after {
   content: '';
   position: absolute;
-  inset: 2px;
-  background: transparent;
-  border: 2px solid hsl(var(--foreground));
-  clip-path: polygon(
-    var(--cut) 0%, calc(100% - var(--cut)) 0%,
-    100% var(--cut), 100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%, var(--cut) 100%,
-    0% calc(100% - var(--cut)), 0% var(--cut)
-  );
+  transition: width 0.35s ease, height 0.35s ease;
 }
-.btn-hero-polygon-outline:hover {
-  transform: scale(1.04);
-  background: hsl(var(--foreground) / 0.1);
+/* Top-right corner */
+.btn-hero-corner-frame::before {
+  top: 0;
+  right: 0;
+  width: var(--corner);
+  height: var(--corner);
+  border-top: var(--thickness) solid var(--color);
+  border-right: var(--thickness) solid var(--color);
+}
+/* Bottom-left corner */
+.btn-hero-corner-frame::after {
+  bottom: 0;
+  left: 0;
+  width: var(--corner);
+  height: var(--corner);
+  border-bottom: var(--thickness) solid var(--color);
+  border-left: var(--thickness) solid var(--color);
+}
+.btn-hero-corner-frame:hover {
+  transform: scale(1.03);
+}
+.btn-hero-corner-frame:hover::before,
+.btn-hero-corner-frame:hover::after {
+  width: 100%;
+  height: 100%;
+}
+.btn-hero-corner-frame:active {
+  transform: scale(0.97);
 }

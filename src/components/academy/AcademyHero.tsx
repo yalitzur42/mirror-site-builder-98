@@ -97,9 +97,9 @@ const AcademyHero = ({
                 )}
                 {secondaryCta && (
                   secondaryCta.href.startsWith("http") ? (
-                    <a href={secondaryCta.href} target="_blank" rel="noopener noreferrer" className="btn-hero-polygon-outline">{secondaryCta.label}</a>
+                    <a href={secondaryCta.href} target="_blank" rel="noopener noreferrer" className="btn-hero-corner-frame">{secondaryCta.label}</a>
                   ) : (
-                    <Link to={secondaryCta.href} className="btn-hero-polygon-outline">{secondaryCta.label}</Link>
+                    <Link to={secondaryCta.href} className="btn-hero-corner-frame">{secondaryCta.label}</Link>
                   )
                 )}
               </div>
