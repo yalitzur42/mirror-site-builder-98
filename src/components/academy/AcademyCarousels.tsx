@@ -54,7 +54,7 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
 
       {/* Student Photos Carousel - LEFT side (second in RTL) - 2 images visible */}
       {hasStudents && (
-        <div className="space-y-5">
+        <div className="space-y-5 order-1 md:order-2">
           <h3 className="text-xl md:text-2xl font-black text-center flex items-center justify-center gap-2">
             <Users className="w-5 h-5" />
             {v("student_photos", "title", "התלמידים שלנו בפעולה")}
