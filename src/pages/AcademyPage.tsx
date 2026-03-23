@@ -345,8 +345,8 @@ const AcademyPage = () => {
                     </div>
                   </div>
 
-                  <div className="relative min-h-[260px] md:min-h-full">
-                    <img src={v("outcomes", "image") || academyClassroom} alt="כיתה באקדמיה" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                  <div className="relative min-h-[360px] md:min-h-full">
+                    <img src={v("outcomes", "image") || academyClassroom} alt="כיתה באקדמיה" className="absolute inset-0 w-full h-full object-cover object-top" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     <div className="absolute bottom-4 right-4 left-4 text-right text-white">
                       <div className="text-sm opacity-90 flex items-center justify-end gap-2">
