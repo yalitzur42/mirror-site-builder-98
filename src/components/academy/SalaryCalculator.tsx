@@ -4,9 +4,13 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
 const SalaryCalculator = () => {
-  const [hoursPerDay, setHoursPerDay] = useState(8);
-  const [minutesPerCut, setMinutesPerCut] = useState(30);
-  const [pricePerCut, setPricePerCut] = useState(80);
+  const [hoursStr, setHoursStr] = useState("8");
+  const [minutesStr, setMinutesStr] = useState("30");
+  const [priceStr, setPriceStr] = useState("80");
+
+  const hoursPerDay = parseInt(hoursStr, 10) || 0;
+  const minutesPerCut = parseInt(minutesStr, 10) || 0;
+  const pricePerCut = parseInt(priceStr, 10) || 0;
 
   const cutsPerHour = minutesPerCut > 0 ? 60 / minutesPerCut : 0;
   const cutsPerDay = cutsPerHour * hoursPerDay;
@@ -14,14 +18,12 @@ const SalaryCalculator = () => {
   const workDaysPerMonth = 22;
   const monthlyEstimate = Math.round(dailyIncome * workDaysPerMonth);
 
-  const handleNumber = (value: string, setter: (n: number) => void, min: number, max: number) => {
+  const clamp = (value: string, setter: (s: string) => void, min: number, max: number) => {
     const num = parseInt(value, 10);
-    if (value === "") {
-      setter(min);
-      return;
-    }
-    if (!isNaN(num)) {
-      setter(Math.min(max, Math.max(min, num)));
+    if (isNaN(num) || num < min) {
+      setter(String(min));
+    } else if (num > max) {
+      setter(String(max));
     }
   };
 
