@@ -24,7 +24,7 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
     <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto items-start" dir="rtl">
       {/* WhatsApp Reviews Carousel - RIGHT side (first in RTL) - 1 image at a time */}
       {hasWhatsapp && (
-        <div className="space-y-5">
+        <div className="space-y-5 order-2 md:order-1">
           <h3 className="text-xl md:text-2xl font-black text-center flex items-center justify-center gap-2">
             <MessageCircle className="w-5 h-5" />
             {v("whatsapp_reviews", "title", "מה אומרים עלינו בוואטסאפ")}
