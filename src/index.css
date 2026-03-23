@@ -287,3 +287,58 @@ body::after {
 .btn-premium-fill:active {
   transform: scale(0.97);
 }
+
+/* Polygon-cut hero CTA button */
+.btn-hero-polygon {
+  --cut: 12px;
+  @apply relative inline-flex items-center justify-center gap-2 px-8 py-3.5 font-black text-base cursor-pointer;
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  clip-path: polygon(
+    var(--cut) 0%, calc(100% - var(--cut)) 0%,
+    100% var(--cut), 100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, var(--cut) 100%,
+    0% calc(100% - var(--cut)), 0% var(--cut)
+  );
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  letter-spacing: 0.02em;
+}
+.btn-hero-polygon:hover {
+  transform: scale(1.04);
+  background: hsl(var(--accent) / 0.9);
+  box-shadow: 0 6px 24px hsl(var(--accent) / 0.4);
+}
+.btn-hero-polygon:active {
+  transform: scale(0.97);
+}
+
+.btn-hero-polygon-outline {
+  --cut: 12px;
+  @apply relative inline-flex items-center justify-center gap-2 px-8 py-3.5 font-black text-base cursor-pointer;
+  background: transparent;
+  color: hsl(var(--foreground));
+  clip-path: polygon(
+    var(--cut) 0%, calc(100% - var(--cut)) 0%,
+    100% var(--cut), 100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, var(--cut) 100%,
+    0% calc(100% - var(--cut)), 0% var(--cut)
+  );
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.btn-hero-polygon-outline::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: transparent;
+  border: 2px solid hsl(var(--foreground));
+  clip-path: polygon(
+    var(--cut) 0%, calc(100% - var(--cut)) 0%,
+    100% var(--cut), 100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, var(--cut) 100%,
+    0% calc(100% - var(--cut)), 0% var(--cut)
+  );
+}
+.btn-hero-polygon-outline:hover {
+  transform: scale(1.04);
+  background: hsl(var(--foreground) / 0.1);
+}
