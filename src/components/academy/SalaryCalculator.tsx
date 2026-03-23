@@ -1,18 +1,29 @@
 import { useState } from "react";
 import { Calculator, Clock, Scissors, Banknote } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Slider } from "@/components/ui/slider";
+import { Input } from "@/components/ui/input";
 
 const SalaryCalculator = () => {
   const [hoursPerDay, setHoursPerDay] = useState(8);
   const [minutesPerCut, setMinutesPerCut] = useState(30);
   const [pricePerCut, setPricePerCut] = useState(80);
 
-  const cutsPerHour = 60 / minutesPerCut;
+  const cutsPerHour = minutesPerCut > 0 ? 60 / minutesPerCut : 0;
   const cutsPerDay = cutsPerHour * hoursPerDay;
   const dailyIncome = cutsPerDay * pricePerCut;
   const workDaysPerMonth = 22;
   const monthlyEstimate = Math.round(dailyIncome * workDaysPerMonth);
+
+  const handleNumber = (value: string, setter: (n: number) => void, min: number, max: number) => {
+    const num = parseInt(value, 10);
+    if (value === "") {
+      setter(min);
+      return;
+    }
+    if (!isNaN(num)) {
+      setter(Math.min(max, Math.max(min, num)));
+    }
+  };
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -26,72 +37,51 @@ const SalaryCalculator = () => {
 
       <Card className="bg-background text-foreground p-6 md:p-8 rounded-2xl border-2 border-foreground space-y-8">
         {/* Hours per day */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2 font-bold text-lg">
-              <Clock className="w-5 h-5" />
-              שעות עבודה ביום
-            </label>
-            <span className="text-2xl font-black">{hoursPerDay}</span>
-          </div>
-          <Slider
-            value={[hoursPerDay]}
-            onValueChange={([val]) => setHoursPerDay(val)}
-            min={4}
-            max={12}
-            step={1}
-            className="w-full"
+        <div className="flex items-center justify-between gap-4">
+          <label className="flex items-center gap-2 font-bold text-lg">
+            <Clock className="w-5 h-5" />
+            שעות עבודה ביום
+          </label>
+          <Input
+            type="number"
+            min={1}
+            max={24}
+            value={hoursPerDay}
+            onChange={(e) => handleNumber(e.target.value, setHoursPerDay, 1, 24)}
+            className="w-24 text-center text-xl font-black border-2 border-foreground/30"
           />
-          <div className="flex justify-between text-sm opacity-50">
-            <span>4 שעות</span>
-            <span>12 שעות</span>
-          </div>
         </div>
 
         {/* Minutes per cut */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2 font-bold text-lg">
-              <Scissors className="w-5 h-5" />
-              זמן לתספורת (דקות)
-            </label>
-            <span className="text-2xl font-black">{minutesPerCut}</span>
-          </div>
-          <Slider
-            value={[minutesPerCut]}
-            onValueChange={([val]) => setMinutesPerCut(val)}
-            min={15}
-            max={60}
-            step={5}
-            className="w-full"
+        <div className="flex items-center justify-between gap-4">
+          <label className="flex items-center gap-2 font-bold text-lg">
+            <Scissors className="w-5 h-5" />
+            זמן לתספורת (דקות)
+          </label>
+          <Input
+            type="number"
+            min={5}
+            max={120}
+            value={minutesPerCut}
+            onChange={(e) => handleNumber(e.target.value, setMinutesPerCut, 5, 120)}
+            className="w-24 text-center text-xl font-black border-2 border-foreground/30"
           />
-          <div className="flex justify-between text-sm opacity-50">
-            <span>15 דקות</span>
-            <span>60 דקות</span>
-          </div>
         </div>
 
         {/* Price per cut */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2 font-bold text-lg">
-              <Banknote className="w-5 h-5" />
-              מחיר לתספורת (₪)
-            </label>
-            <span className="text-2xl font-black">₪{pricePerCut}</span>
-          </div>
-          <Slider
-            value={[pricePerCut]}
-            onValueChange={([val]) => setPricePerCut(val)}
-            min={40}
-            max={200}
-            step={10}
-            className="w-full"
+        <div className="flex items-center justify-between gap-4">
+          <label className="flex items-center gap-2 font-bold text-lg">
+            <Banknote className="w-5 h-5" />
+            מחיר לתספורת (₪)
+          </label>
+          <Input
+            type="number"
+            min={1}
+            max={500}
+            value={pricePerCut}
+            onChange={(e) => handleNumber(e.target.value, setPricePerCut, 1, 500)}
+            className="w-24 text-center text-xl font-black border-2 border-foreground/30"
           />
-          <div className="flex justify-between text-sm opacity-50">
-            <span>₪40</span>
-            <span>₪200</span>
-          </div>
         </div>
 
         {/* Result */}
