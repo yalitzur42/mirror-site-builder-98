@@ -476,7 +476,7 @@ const AcademyPage = () => {
             {features.map((feature, index) => (
               <Card key={index} className="bg-background text-foreground border-border p-6 rounded-2xl hover:-translate-y-1 transition">
                 <feature.icon className="w-10 h-10 mb-3 opacity-90" />
-                <h3 className="font-black text-lg mb-1">{feature.title}</h3>
+                <h3 className="font-black text-lg mb-1 text-primary">{feature.title}</h3>
                 <p className="opacity-80 text-sm">{feature.description}</p>
               </Card>
             ))}
