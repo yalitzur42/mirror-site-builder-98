@@ -25,10 +25,10 @@ const StickyWhatsApp = ({ visible, onScrollToLead, onPrimaryCTA }: StickyWhatsAp
 
         <button
           onClick={onPrimaryCTA}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-whatsapp text-white px-5 py-3 text-sm md:text-base font-black shadow-lg hover:opacity-95 transition"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-whatsapp text-white px-6 py-3.5 text-base font-black shadow-[0_4px_20px_rgba(37,211,102,0.45)] hover:shadow-[0_6px_28px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-all duration-200 border-2 border-white/30"
           aria-label="WhatsApp"
         >
-          <Smartphone className="w-5 h-5" />
+          <Smartphone className="w-5 h-5 animate-pulse" />
           וואטסאפ עכשיו
         </button>
       </div>
