@@ -786,7 +786,7 @@ const AcademyPage = () => {
 
           <div className="mt-10 text-center">
             <p className="opacity-80 mb-4">יש עוד שאלה? שלחו הודעה ונענה מהר.</p>
-            <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
+            <button onClick={onPrimaryCTA} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
               שלחו שאלה בוואטסאפ
             </button>
