@@ -95,7 +95,7 @@ const HomePage = () => {
         </AnimatedSection>
         <AnimatedSection delay={0.3} className="text-center mt-12">
           <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-            <Link to="/academy"><BookOpen className="w-4 h-4" /> לכל הקורסים</Link>
+            <Link to="/academy"><BookOpen className="w-4 h-4" /> לדף האקדמיה</Link>
           </Button>
         </AnimatedSection>
       </Section>
