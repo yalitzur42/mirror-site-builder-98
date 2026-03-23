@@ -48,8 +48,9 @@ const SalaryCalculator = () => {
             type="number"
             min={1}
             max={24}
-            value={hoursPerDay}
-            onChange={(e) => handleNumber(e.target.value, setHoursPerDay, 1, 24)}
+            value={hoursStr}
+            onChange={(e) => setHoursStr(e.target.value)}
+            onBlur={() => clamp(hoursStr, setHoursStr, 1, 24)}
             className="w-24 text-center text-xl font-black border-2 border-foreground/30"
           />
         </div>
