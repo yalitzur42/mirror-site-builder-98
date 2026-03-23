@@ -445,7 +445,7 @@ const AcademyPage = () => {
           </div>
 
           <div className="mt-8 text-center">
-            <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-background text-foreground px-6 py-3 font-bold hover:opacity-95 transition">
+            <button onClick={onScrollToLead} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
               אני רוצה לבדוק אם זה בשבילי
             </button>
