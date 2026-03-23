@@ -75,8 +75,8 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="border-2 border-primary-foreground bg-primary-foreground text-background hover:bg-primary-foreground/80 -left-1 w-10 h-10" />
-              <CarouselNext className="border-2 border-primary-foreground bg-primary-foreground text-background hover:bg-primary-foreground/80 -right-1 w-10 h-10" />
+              <CarouselPrevious className="border-2 border-primary bg-background text-primary hover:bg-background/80 -left-1 w-10 h-10" />
+              <CarouselNext className="border-2 border-primary bg-background text-primary hover:bg-background/80 -right-1 w-10 h-10" />
             </Carousel>
           </div>
         </div>
