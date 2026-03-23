@@ -82,8 +82,9 @@ const SalaryCalculator = () => {
             type="number"
             min={1}
             max={500}
-            value={pricePerCut}
-            onChange={(e) => handleNumber(e.target.value, setPricePerCut, 1, 500)}
+            value={priceStr}
+            onChange={(e) => setPriceStr(e.target.value)}
+            onBlur={() => clamp(priceStr, setPriceStr, 1, 500)}
             className="w-24 text-center text-xl font-black border-2 border-foreground/30"
           />
         </div>
