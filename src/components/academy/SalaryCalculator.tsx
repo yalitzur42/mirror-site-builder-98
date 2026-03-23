@@ -65,8 +65,9 @@ const SalaryCalculator = () => {
             type="number"
             min={5}
             max={120}
-            value={minutesPerCut}
-            onChange={(e) => handleNumber(e.target.value, setMinutesPerCut, 5, 120)}
+            value={minutesStr}
+            onChange={(e) => setMinutesStr(e.target.value)}
+            onBlur={() => clamp(minutesStr, setMinutesStr, 5, 120)}
             className="w-24 text-center text-xl font-black border-2 border-foreground/30"
           />
         </div>
