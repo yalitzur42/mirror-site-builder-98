@@ -77,6 +77,60 @@ export type Database = {
         }
         Relationships: []
       }
+      stage_requests: {
+        Row: {
+          admin_note: string | null
+          id: string
+          photos_urls: string[] | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          stage: number
+          status: Database["public"]["Enums"]["stage_request_status"]
+          submitted_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_note?: string | null
+          id?: string
+          photos_urls?: string[] | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          stage: number
+          status?: Database["public"]["Enums"]["stage_request_status"]
+          submitted_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_note?: string | null
+          id?: string
+          photos_urls?: string[] | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          stage?: number
+          status?: Database["public"]["Enums"]["stage_request_status"]
+          submitted_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      student_stage: {
+        Row: {
+          current_stage: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          current_stage?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          current_stage?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       task_progress: {
         Row: {
           done: boolean | null
@@ -162,6 +216,39 @@ export type Database = {
         }
         Relationships: []
       }
+      weekly_income: {
+        Row: {
+          avg_price: number
+          created_at: string
+          haircuts_count: number
+          id: string
+          products_income: number
+          total: number
+          user_id: string
+          week_date: string
+        }
+        Insert: {
+          avg_price?: number
+          created_at?: string
+          haircuts_count?: number
+          id?: string
+          products_income?: number
+          total?: number
+          user_id: string
+          week_date: string
+        }
+        Update: {
+          avg_price?: number
+          created_at?: string
+          haircuts_count?: number
+          id?: string
+          products_income?: number
+          total?: number
+          user_id?: string
+          week_date?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -181,6 +268,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      stage_request_status: "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -309,6 +397,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      stage_request_status: ["pending", "approved", "rejected"],
     },
   },
 } as const
