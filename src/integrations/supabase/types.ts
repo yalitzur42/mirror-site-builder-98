@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string
+          id: string
+          role: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name: string
+          id: string
+          role?: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          role?: string
+        }
+        Relationships: []
+      }
       site_content: {
         Row: {
           content_value: string
@@ -52,6 +76,73 @@ export type Database = {
           updated_by?: string | null
         }
         Relationships: []
+      }
+      task_progress: {
+        Row: {
+          done: boolean | null
+          id: string
+          task_key: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          done?: boolean | null
+          id?: string
+          task_key: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          done?: boolean | null
+          id?: string
+          task_key?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "task_progress_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_devices: {
+        Row: {
+          created_at: string | null
+          device_id: string
+          device_name: string | null
+          id: string
+          last_seen: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          device_id: string
+          device_name?: string | null
+          id?: string
+          last_seen?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          device_id?: string
+          device_name?: string | null
+          id?: string
+          last_seen?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_devices_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
