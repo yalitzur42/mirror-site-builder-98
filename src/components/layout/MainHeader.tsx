@@ -59,7 +59,7 @@ const MainHeader = () => {
           {user && (
             <Link
               to="/academy/dashboard"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-extrabold bg-amber-500 text-foreground border-2 border-amber-500 hover:bg-transparent hover:text-amber-400 transition-all duration-300 shadow-lg"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-extrabold bg-background text-primary border-2 border-background hover:bg-transparent hover:text-background transition-all duration-300 shadow-lg"
               title="בית ספר דיגיטלי"
             >
               <GraduationCap className="w-5 h-5" />
