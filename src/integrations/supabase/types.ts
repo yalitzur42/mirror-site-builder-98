@@ -174,6 +174,10 @@ export type Database = {
         }
         Returns: boolean
       }
+      register_device: {
+        Args: { _device_id: string; _device_name?: string }
+        Returns: string
+      }
     }
     Enums: {
       app_role: "admin" | "user"
