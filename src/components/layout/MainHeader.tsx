@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Instagram, Navigation, Phone, Calendar } from "lucide-react";
+import { Menu, X, Instagram, Navigation, Phone, Calendar, LogIn, GraduationCap } from "lucide-react";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 import { TIKTOK_URL, INSTAGRAM_URL, WAZE_URL, PHONE_DISPLAY, BOOKING_URL } from "@/lib/constants";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
 { label: "אודות", href: "/about" },
@@ -17,14 +18,24 @@ const navItems = [
 
 const MainHeader = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-primary text-primary-foreground" style={{ backgroundImage: "url('/images/marble-bg.png')", backgroundSize: '100% auto', backgroundPosition: 'top center', backgroundRepeat: 'repeat-y' }}>
       <div className="container-main flex items-center justify-between py-[4px]">
-        {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img src={logo} alt="Mac'ho" className="w-auto mix-blend-multiply" style={{ height: '9rem' }} />
-        </Link>
+        {/* Logo + login link above */}
+        <div className="flex flex-col items-center gap-1">
+          <Link
+            to={user ? "/academy/dashboard" : "/academy/login"}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-background/95 text-foreground border border-background/40 hover:bg-transparent hover:text-background hover:border-background transition-all duration-300"
+          >
+            <LogIn className="w-3.5 h-3.5" />
+            {user ? "אזור תלמידים" : "התחברות"}
+          </Link>
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="Mac'ho" className="w-auto mix-blend-multiply" style={{ height: '9rem' }} />
+          </Link>
+        </div>
 
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) =>
@@ -43,8 +54,18 @@ const MainHeader = () => {
           )}
         </nav>
 
-        {/* Social Icons */}
+        {/* Social Icons + Digital School (when logged in) */}
         <div className="hidden lg:flex items-center gap-3">
+          {user && (
+            <Link
+              to="/academy/dashboard"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-extrabold bg-amber-500 text-foreground border-2 border-amber-500 hover:bg-transparent hover:text-amber-400 transition-all duration-300 shadow-lg"
+              title="בית ספר דיגיטלי"
+            >
+              <GraduationCap className="w-5 h-5" />
+              בית ספר דיגיטלי
+            </Link>
+          )}
           <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center w-11 h-11 rounded-full bg-background text-foreground border-2 border-background hover:bg-transparent hover:text-background transition-all duration-300">
             
