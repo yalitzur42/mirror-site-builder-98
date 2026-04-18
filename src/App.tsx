@@ -20,6 +20,8 @@ import ScrollToTop from "./components/ScrollToTop";
 
 const AdminLoginPage = lazy(() => import("./pages/AdminLoginPage"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const AcademyLoginPage = lazy(() => import("./pages/AcademyLoginPage"));
+const AcademyDashboardPage = lazy(() => import("./pages/AcademyDashboardPage"));
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/admin/login" element={<Suspense fallback={null}><AdminLoginPage /></Suspense>} />
               <Route path="/admin" element={<Suspense fallback={null}><AdminDashboard /></Suspense>} />
+              <Route path="/academy/login" element={<Suspense fallback={null}><AcademyLoginPage /></Suspense>} />
+              <Route path="/academy/dashboard" element={<Suspense fallback={null}><AcademyDashboardPage /></Suspense>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { getDeviceId, getDeviceName } from "@/lib/deviceId";
@@ -17,6 +16,12 @@ const AcademyLoginPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const { signIn, signOut, user, loading } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "כניסת תלמידים | אקדמיית Macho";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", "כניסה לאזור התלמידים של אקדמיית Macho. עד 2 מכשירים לתלמיד.");
+  }, []);
 
   // If already logged in, validate device and forward to dashboard
   useEffect(() => {
@@ -76,12 +81,6 @@ const AcademyLoginPage = () => {
           "radial-gradient(ellipse at top, hsl(25 35% 12%) 0%, hsl(25 40% 6%) 60%, hsl(0 0% 0%) 100%)",
       }}
     >
-      <Helmet>
-        <title>כניסת תלמידים | אקדמיית Macho</title>
-        <meta name="description" content="כניסה לאזור התלמידים של אקדמיית Macho. מותר עד 2 מכשירים לתלמיד." />
-        <meta name="robots" content="noindex,nofollow" />
-      </Helmet>
-
       {/* Decorative gold glow */}
       <div
         aria-hidden

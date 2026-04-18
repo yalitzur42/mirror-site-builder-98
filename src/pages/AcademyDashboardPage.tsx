@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { getDeviceId, getDeviceName } from "@/lib/deviceId";
@@ -13,6 +12,10 @@ const AcademyDashboardPage = () => {
   const navigate = useNavigate();
   const [checking, setChecking] = useState(true);
   const [deviceError, setDeviceError] = useState("");
+
+  useEffect(() => {
+    document.title = "אזור התלמידים | אקדמיית Macho";
+  }, []);
 
   useEffect(() => {
     if (loading) return;
@@ -72,11 +75,6 @@ const AcademyDashboardPage = () => {
           "radial-gradient(ellipse at top, hsl(25 35% 12%) 0%, hsl(25 40% 6%) 60%, hsl(0 0% 0%) 100%)",
       }}
     >
-      <Helmet>
-        <title>אזור התלמידים | אקדמיית Macho</title>
-        <meta name="robots" content="noindex,nofollow" />
-      </Helmet>
-
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <header
