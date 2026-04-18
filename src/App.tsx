@@ -22,6 +22,7 @@ const AdminLoginPage = lazy(() => import("./pages/AdminLoginPage"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const AcademyLoginPage = lazy(() => import("./pages/AcademyLoginPage"));
 const AcademyDashboardPage = lazy(() => import("./pages/AcademyDashboardPage"));
+const AcademyAdminPage = lazy(() => import("./pages/AcademyAdminPage"));
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
               <Route path="/admin" element={<Suspense fallback={null}><AdminDashboard /></Suspense>} />
               <Route path="/academy/login" element={<Suspense fallback={null}><AcademyLoginPage /></Suspense>} />
               <Route path="/academy/dashboard" element={<Suspense fallback={null}><AcademyDashboardPage /></Suspense>} />
+              <Route path="/academy/admin" element={<Suspense fallback={null}><AcademyAdminPage /></Suspense>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

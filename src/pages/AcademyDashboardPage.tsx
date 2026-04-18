@@ -1,158 +1,299 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { getDeviceId, getDeviceName } from "@/lib/deviceId";
 import { Button } from "@/components/ui/button";
-import { LogOut, GraduationCap, MonitorSmartphone, Loader2 } from "lucide-react";
+import { LogOut, Loader2, Trophy, Shield } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { STAGES } from "@/lib/academyStages";
+import StageCard from "@/components/academy/dashboard/StageCard";
+import TaskList from "@/components/academy/dashboard/TaskList";
+import PhotoUploader from "@/components/academy/dashboard/PhotoUploader";
+import MilestoneBox from "@/components/academy/dashboard/MilestoneBox";
+import SubmitStageButton from "@/components/academy/dashboard/SubmitStageButton";
+import WeeklyIncomeTracker from "@/components/academy/dashboard/WeeklyIncomeTracker";
+
+interface StageRequest {
+  stage: number;
+  status: "pending" | "approved" | "rejected";
+}
+
+const PAGE_BG = "radial-gradient(ellipse at top, #141414 0%, #0a0a0a 60%, #000 100%)";
 
 const AcademyDashboardPage = () => {
-  const { user, loading, signOut } = useAuth();
+  const { user, loading, signOut, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [checking, setChecking] = useState(true);
   const [deviceError, setDeviceError] = useState("");
+  const [currentStage, setCurrentStage] = useState(1);
+  const [requests, setRequests] = useState<StageRequest[]>([]);
+  const [photos, setPhotos] = useState<Record<number, string[]>>({});
+  const [taskProgress, setTaskProgress] = useState<Record<number, { done: number; total: number }>>({});
+  const [dataLoading, setDataLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "אזור התלמידים | אקדמיית Macho";
+    document.title = "מסע התלמיד | אקדמיית Macho";
   }, []);
 
+  // Auth + device validation
   useEffect(() => {
     if (loading) return;
     if (!user) {
       navigate("/academy/login", { replace: true });
       return;
     }
-
     const validate = async () => {
-      const { data, error } = await supabase.rpc("register_device", {
+      const { data } = await supabase.rpc("register_device", {
         p_device_id: getDeviceId(),
         p_device_name: getDeviceName(),
       });
       if (data === "limit_reached") {
-        setDeviceError("הגעת למגבלת 2 מכשירים. פנה לאקדמיה כדי להסיר מכשיר ישן.");
+        setDeviceError("הגעת למגבלת 2 מכשירים. פנה לאקדמיה.");
         await signOut();
         setTimeout(() => navigate("/academy/login", { replace: true }), 2500);
         return;
       }
-      if (error) {
-        console.error("register_device error:", error);
-      }
       setChecking(false);
     };
-
     void validate();
   }, [loading, user, navigate, signOut]);
+
+  // Load student data
+  const loadData = useCallback(async () => {
+    if (!user) return;
+    setDataLoading(true);
+
+    // Ensure stage row exists
+    const { data: stageRow } = await supabase
+      .from("student_stage")
+      .select("current_stage")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    if (!stageRow) {
+      await supabase.from("student_stage").insert({ user_id: user.id, current_stage: 1 });
+      setCurrentStage(1);
+    } else {
+      setCurrentStage(stageRow.current_stage);
+    }
+
+    // Load all requests
+    const { data: reqs } = await supabase
+      .from("stage_requests")
+      .select("stage, status")
+      .eq("user_id", user.id)
+      .order("submitted_at", { ascending: false });
+    setRequests((reqs || []) as StageRequest[]);
+
+    setDataLoading(false);
+  }, [user]);
+
+  useEffect(() => {
+    if (!checking && user) void loadData();
+  }, [checking, user, loadData]);
+
+  const setStagePhotos = (stage: number, p: string[]) => {
+    setPhotos((prev) => ({ ...prev, [stage]: p }));
+  };
 
   const handleSignOut = async () => {
     await signOut();
     navigate("/academy/login", { replace: true });
   };
 
+  // Per-stage status
+  const getStageStatus = (stageNum: number) => {
+    const stageReqs = requests.filter((r) => r.stage === stageNum);
+    const approved = stageReqs.some((r) => r.status === "approved");
+    const pending = stageReqs.some((r) => r.status === "pending") && !approved;
+    return { approved, pending };
+  };
+
+  // Overall progress
+  const overallPct = useMemo(() => {
+    const totalTasks = STAGES.reduce((s, st) => s + st.tasks.length, 0);
+    const doneTasks = Object.values(taskProgress).reduce((s, v) => s + v.done, 0);
+    return totalTasks ? (doneTasks / totalTasks) * 100 : 0;
+  }, [taskProgress]);
+
   if (loading || checking) {
     return (
       <div
         dir="rtl"
         className="min-h-screen flex flex-col items-center justify-center gap-4 p-4"
-        style={{
-          background:
-            "radial-gradient(ellipse at top, hsl(25 35% 12%) 0%, hsl(25 40% 6%) 60%, hsl(0 0% 0%) 100%)",
-        }}
+        style={{ background: PAGE_BG }}
       >
-        <Loader2 className="w-8 h-8 animate-spin" style={{ color: "hsl(40 70% 55%)" }} />
-        <p style={{ color: "hsl(40 40% 80%)" }}>{deviceError || "טוען..."}</p>
+        <Loader2 className="w-8 h-8 animate-spin" style={{ color: "#C9A84C" }} />
+        <p style={{ color: "#C9A84C" }}>{deviceError || "טוען..."}</p>
       </div>
     );
   }
 
   return (
-    <div
-      dir="rtl"
-      className="min-h-screen p-4 md:p-8"
-      style={{
-        background:
-          "radial-gradient(ellipse at top, hsl(25 35% 12%) 0%, hsl(25 40% 6%) 60%, hsl(0 0% 0%) 100%)",
-      }}
-    >
-      <div className="max-w-5xl mx-auto">
+    <div dir="rtl" className="min-h-screen p-3 md:p-6" style={{ background: PAGE_BG }}>
+      <div className="max-w-3xl mx-auto space-y-5">
         {/* Header */}
         <header
-          className="flex items-center justify-between rounded-2xl p-4 md:p-6 mb-8 border"
+          className="flex items-center justify-between rounded-2xl p-4 border-2"
           style={{
-            background: "hsl(25 30% 10% / 0.7)",
-            borderColor: "hsl(40 50% 30%)",
+            background: "rgba(10,10,10,0.85)",
+            borderColor: "#C9A84C",
             backdropFilter: "blur(10px)",
           }}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-1 min-w-0">
             <img src={logo} alt="Macho" className="h-12 w-auto mix-blend-screen" />
-            <div>
-              <h1
-                className="text-xl md:text-2xl font-extrabold"
-                style={{ color: "hsl(40 80% 65%)" }}
-              >
-                אזור התלמידים
+            <div className="min-w-0">
+              <h1 className="text-lg md:text-2xl font-extrabold truncate" style={{ color: "#C9A84C" }}>
+                מסע התלמיד
               </h1>
-              <p className="text-sm" style={{ color: "hsl(40 30% 70%)" }}>
+              <p className="text-xs md:text-sm truncate" style={{ color: "#888" }}>
                 {user?.email}
               </p>
             </div>
           </div>
-          <Button
-            onClick={handleSignOut}
-            variant="outline"
-            className="border"
-            style={{
-              borderColor: "hsl(40 50% 40%)",
-              color: "hsl(40 70% 70%)",
-              background: "transparent",
-            }}
-          >
-            <LogOut className="w-4 h-4" />
-            התנתק
-          </Button>
+          <div className="flex items-center gap-2">
+            {isAdmin && (
+              <Button
+                onClick={() => navigate("/academy/admin")}
+                size="sm"
+                className="font-bold"
+                style={{ background: "#C9A84C", color: "#000" }}
+              >
+                <Shield className="w-4 h-4" />
+                <span className="hidden md:inline">אדמין</span>
+              </Button>
+            )}
+            <Button
+              onClick={handleSignOut}
+              size="sm"
+              variant="outline"
+              style={{ borderColor: "#C9A84C", color: "#C9A84C", background: "transparent" }}
+            >
+              <LogOut className="w-4 h-4" />
+            </Button>
+          </div>
         </header>
 
-        {/* Welcome card */}
+        {/* Overall progress */}
         <div
-          className="rounded-2xl p-6 md:p-10 border-2 text-center"
-          style={{
-            background: "linear-gradient(180deg, hsl(25 30% 10% / 0.9), hsl(25 40% 6% / 0.95))",
-            borderColor: "hsl(40 70% 50% / 0.4)",
-            boxShadow: "0 25px 80px -10px hsl(40 80% 50% / 0.2)",
-          }}
+          className="rounded-2xl p-5 border-2"
+          style={{ background: "rgba(10,10,10,0.7)", borderColor: "#2a2a2a" }}
         >
-          <GraduationCap
-            className="w-16 h-16 mx-auto mb-4"
-            style={{ color: "hsl(40 80% 60%)" }}
-          />
-          <h2
-            className="text-3xl md:text-4xl font-extrabold mb-3"
-            style={{
-              background: "linear-gradient(135deg, hsl(40 90% 65%), hsl(40 70% 45%))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            ברוך הבא לאקדמיית Macho
-          </h2>
-          <p className="text-lg mb-6" style={{ color: "hsl(40 30% 80%)" }}>
-            כאן יופיעו הקורסים, השיעורים והחומרים שלך. בקרוב.
-          </p>
-
-          <div
-            className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm"
-            style={{
-              background: "hsl(40 30% 12% / 0.5)",
-              border: "1px solid hsl(40 50% 30%)",
-              color: "hsl(40 40% 80%)",
-            }}
-          >
-            <MonitorSmartphone className="w-4 h-4" style={{ color: "hsl(40 70% 55%)" }} />
-            המכשיר הזה רשום בחשבונך
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <Trophy className="w-5 h-5" style={{ color: "#C9A84C" }} />
+              <span className="font-extrabold text-lg" style={{ color: "#fff" }}>
+                התקדמות כוללת ל-10K בחודש
+              </span>
+            </div>
+            <span className="font-extrabold text-2xl" style={{ color: "#C9A84C" }}>
+              {overallPct.toFixed(0)}%
+            </span>
           </div>
+          <div className="h-4 rounded-full overflow-hidden" style={{ background: "#1a1a1a" }}>
+            <div
+              className="h-full transition-all"
+              style={{
+                width: `${overallPct}%`,
+                background: "linear-gradient(90deg, #C9A84C, #f0d070, #C9A84C)",
+                boxShadow: "0 0 20px rgba(201, 168, 76, 0.5)",
+              }}
+            />
+          </div>
+          <p className="text-sm mt-2" style={{ color: "#666" }}>
+            שלב נוכחי: <span style={{ color: "#C9A84C", fontWeight: 700 }}>{currentStage}/4</span>
+          </p>
         </div>
+
+        {dataLoading ? (
+          <div className="text-center py-8">
+            <Loader2 className="w-6 h-6 animate-spin mx-auto" style={{ color: "#C9A84C" }} />
+            <p className="mt-2 text-sm" style={{ color: "#666" }}>טוען את המסע שלך...</p>
+          </div>
+        ) : (
+          STAGES.map((stage) => {
+            const { approved, pending } = getStageStatus(stage.number);
+            const isLocked = stage.number > currentStage;
+            const isCurrent = stage.number === currentStage && !approved;
+            const isCompleted = approved && stage.number < currentStage;
+            const stagePhotos = photos[stage.number] || [];
+
+            return (
+              <StageCard
+                key={stage.number}
+                stageNumber={stage.number}
+                title={stage.title}
+                subtitle={stage.subtitle}
+                isLocked={isLocked}
+                isCurrent={isCurrent}
+                isCompleted={isCompleted}
+                pendingRequest={pending}
+              >
+                <TaskList
+                  userId={user!.id}
+                  stagePrefix={`stage-${stage.number}`}
+                  tasks={stage.tasks}
+                  disabled={approved}
+                  onProgressChange={(done, total) =>
+                    setTaskProgress((p) => ({ ...p, [stage.number]: { done, total } }))
+                  }
+                />
+
+                <MilestoneBox>{stage.milestone}</MilestoneBox>
+
+                {/* Income tracker for stage 3+ */}
+                {stage.number >= 3 && stage.number === currentStage && (
+                  <WeeklyIncomeTracker userId={user!.id} />
+                )}
+
+                {/* Upload + submit (not for final stage 4) */}
+                {stage.number < 4 && (
+                  <>
+                    <div>
+                      <h4 className="font-bold text-base mb-2" style={{ color: "#C9A84C" }}>
+                        📸 העלאת תמונות לפני/אחרי
+                      </h4>
+                      <PhotoUploader
+                        userId={user!.id}
+                        stage={stage.number}
+                        photos={stagePhotos}
+                        onChange={(p) => setStagePhotos(stage.number, p)}
+                        disabled={approved || pending}
+                      />
+                    </div>
+
+                    <SubmitStageButton
+                      userId={user!.id}
+                      stage={stage.number}
+                      photos={stagePhotos}
+                      pendingRequest={pending}
+                      approved={approved}
+                      onSubmitted={() => {
+                        setStagePhotos(stage.number, []);
+                        void loadData();
+                      }}
+                    />
+                  </>
+                )}
+
+                {stage.number === 4 && (
+                  <div
+                    className="rounded-xl p-5 text-center"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05))",
+                      border: "2px solid #C9A84C",
+                    }}
+                  >
+                    <p className="text-lg font-extrabold" style={{ color: "#C9A84C" }}>
+                      👑 אתה כבר אגדה. תמשיך להפציץ!
+                    </p>
+                  </div>
+                )}
+              </StageCard>
+            );
+          })
+        )}
       </div>
     </div>
   );
