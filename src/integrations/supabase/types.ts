@@ -175,7 +175,7 @@ export type Database = {
         Returns: boolean
       }
       register_device: {
-        Args: { _device_id: string; _device_name?: string }
+        Args: { p_device_id: string; p_device_name: string }
         Returns: string
       }
     }

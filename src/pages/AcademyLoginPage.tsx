@@ -33,18 +33,16 @@ const AcademyLoginPage = () => {
   const validateDeviceAndRedirect = async () => {
     try {
       const { data, error: rpcError } = await supabase.rpc("register_device", {
-        _device_id: getDeviceId(),
-        _device_name: getDeviceName(),
+        p_device_id: getDeviceId(),
+        p_device_name: getDeviceName(),
       });
-      if (rpcError) {
-        setError("שגיאה באימות המכשיר. נסה שוב.");
-        await signOut();
-        return;
-      }
       if (data === "limit_reached") {
         setError("הגעת למגבלת 2 מכשירים. פנה לאקדמיה כדי להסיר מכשיר ישן.");
         await signOut();
         return;
+      }
+      if (rpcError) {
+        console.error("register_device error:", rpcError);
       }
       navigate("/academy/dashboard");
     } catch {
