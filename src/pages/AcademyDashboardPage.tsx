@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { getDeviceId, getDeviceName } from "@/lib/deviceId";
 import { Button } from "@/components/ui/button";
-import { LogOut, Loader2, Trophy, Shield, Send, Loader2 as Spin } from "lucide-react";
+import { LogOut, Loader2, Trophy, Settings, Send, Loader2 as Spin } from "lucide-react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 import { STAGES } from "@/lib/academyStages";
@@ -16,6 +16,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 interface StageRequest {
   stage: number;
   status: "pending" | "approved" | "rejected";
+  admin_note: string | null;
+  submitted_at: string;
 }
 
 const PAGE_BG = "radial-gradient(ellipse at top, #1a1d2e 0%, #0f1119 60%, #050612 100%)";
@@ -78,7 +80,7 @@ const AcademyDashboardPage = () => {
 
     const { data: reqs } = await supabase
       .from("stage_requests")
-      .select("stage, status")
+      .select("stage, status, admin_note, submitted_at")
       .eq("user_id", user.id)
       .order("submitted_at", { ascending: false });
     setRequests((reqs || []) as StageRequest[]);
@@ -146,6 +148,16 @@ const AcademyDashboardPage = () => {
   }, [taskProgress]);
 
   const activeStatus = activeStage ? getStageStatus(activeStage) : { approved: false, pending: false };
+
+  // Latest rejection note for the active stage (only if no newer pending/approved request exists)
+  const activeRejection = useMemo(() => {
+    if (activeStage === null) return null;
+    const stageReqs = requests.filter((r) => r.stage === activeStage);
+    if (stageReqs.length === 0) return null;
+    // requests are already ordered desc by submitted_at
+    const latest = stageReqs[0];
+    return latest.status === "rejected" ? latest.admin_note : null;
+  }, [activeStage, requests]);
 
   // Submit-from-map flow
   const handleMapSubmit = (stage: number) => {
@@ -218,10 +230,15 @@ const AcademyDashboardPage = () => {
                 onClick={() => navigate("/academy/admin")}
                 size="sm"
                 className="font-bold"
-                style={{ background: "#C9A84C", color: "#000" }}
+                style={{
+                  background: "#C9A84C",
+                  color: "#000",
+                  boxShadow: "0 0 18px rgba(201,168,76,0.45)",
+                }}
+                title="ניהול"
               >
-                <Shield className="w-4 h-4" />
-                <span className="hidden md:inline">אדמין</span>
+                <Settings className="w-4 h-4" />
+                <span className="hidden md:inline">ניהול</span>
               </Button>
             )}
             <Button
@@ -307,6 +324,7 @@ const AcademyDashboardPage = () => {
         stage={activeStage}
         approved={activeStatus.approved}
         pending={activeStatus.pending}
+        rejectionNote={activeRejection}
         onSubmitted={loadData}
         onTaskProgress={(stage, done, total) =>
           setTaskProgress((p) => ({ ...p, [stage]: { done, total } }))

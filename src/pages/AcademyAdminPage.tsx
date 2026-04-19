@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -18,6 +20,8 @@ import {
   ClipboardList,
   TrendingUp,
   Eye,
+  UserPlus,
+  Copy,
 } from "lucide-react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
@@ -80,6 +84,64 @@ const AcademyAdminPage = () => {
     incomes: { week_date: string; total: number; haircuts_count: number }[];
     photos: string[];
   } | null>(null);
+
+  // Add Student dialog state
+  const [addOpen, setAddOpen] = useState(false);
+  const [addName, setAddName] = useState("");
+  const [addEmail, setAddEmail] = useState("");
+  const [addPassword, setAddPassword] = useState("");
+  const [addLoading, setAddLoading] = useState(false);
+  const [addResult, setAddResult] = useState<{ email: string; password: string; full_name: string } | null>(null);
+
+  const generatePassword = () => {
+    const chars = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+    let p = "";
+    for (let i = 0; i < 10; i++) p += chars.charAt(Math.floor(Math.random() * chars.length));
+    setAddPassword(p);
+  };
+
+  const submitAddStudent = async () => {
+    const name = addName.trim();
+    const email = addEmail.trim().toLowerCase();
+    if (!name) {
+      toast.error("חובה להזין שם מלא");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("אימייל לא תקין");
+      return;
+    }
+    if (addPassword.length < 6) {
+      toast.error("סיסמה צריכה להכיל לפחות 6 תווים");
+      return;
+    }
+    setAddLoading(true);
+    const { data, error } = await supabase.functions.invoke("create-student", {
+      body: { full_name: name, email, password: addPassword },
+    });
+    setAddLoading(false);
+    if (error || !data?.success) {
+      toast.error(data?.error || error?.message || "שגיאה ביצירת התלמיד");
+      return;
+    }
+    toast.success(`${name} נוסף בהצלחה 🔥`);
+    setAddResult({ email, password: addPassword, full_name: name });
+    setAddName("");
+    setAddEmail("");
+    setAddPassword("");
+    void loadAll();
+  };
+
+  const copyCredentials = async () => {
+    if (!addResult) return;
+    const text = `שלום ${addResult.full_name}!\nכניסה לאקדמיית Macho:\nהאתר: ${window.location.origin}/academy/login\nאימייל: ${addResult.email}\nסיסמה: ${addResult.password}\n\nמומלץ להחליף סיסמה אחרי הכניסה הראשונה.`;
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success("פרטי הכניסה הועתקו 📋");
+    } catch {
+      toast.error("לא הצלחתי להעתיק");
+    }
+  };
 
   useEffect(() => {
     document.title = "ניהול תלמידים | אקדמיית Macho";
@@ -316,7 +378,23 @@ const AcademyAdminPage = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap justify-end">
+            <Button
+              size="sm"
+              onClick={() => {
+                setAddResult(null);
+                setAddOpen(true);
+              }}
+              className="font-extrabold"
+              style={{
+                background: GOLD,
+                color: "#000",
+                boxShadow: "0 0 14px rgba(201,168,76,0.5)",
+              }}
+            >
+              <UserPlus className="w-4 h-4" />
+              <span className="hidden sm:inline">הוסף תלמיד</span>
+            </Button>
             <Button
               size="sm"
               variant="outline"
@@ -848,6 +926,158 @@ const AcademyAdminPage = () => {
           </button>
         </div>
       )}
+
+      {/* Add Student Dialog */}
+      <Dialog
+        open={addOpen}
+        onOpenChange={(o) => {
+          setAddOpen(o);
+          if (!o) setAddResult(null);
+        }}
+      >
+        <DialogContent
+          dir="rtl"
+          className="max-w-md border-2"
+          style={{ background: "#0f0f0f", borderColor: GOLD, color: "#fff" }}
+        >
+          <DialogHeader>
+            <DialogTitle className="text-right text-2xl font-extrabold flex items-center gap-2" style={{ color: GOLD }}>
+              <UserPlus className="w-6 h-6" />
+              הוסף תלמיד חדש
+            </DialogTitle>
+          </DialogHeader>
+
+          {addResult ? (
+            <div className="space-y-4">
+              <div
+                className="rounded-xl p-4 text-center"
+                style={{ background: "rgba(34,197,94,0.12)", border: "2px solid #22c55e" }}
+              >
+                <p className="font-extrabold text-lg" style={{ color: "#22c55e" }}>
+                  ✅ התלמיד נוצר בהצלחה!
+                </p>
+                <p className="text-sm mt-1" style={{ color: "#a8d4a8" }}>
+                  שלח את פרטי הכניסה לתלמיד באופן ידני
+                </p>
+              </div>
+
+              <div
+                className="rounded-xl p-4 space-y-2 font-mono text-sm"
+                style={{ background: "#1a1a1a", border: `1px solid ${GOLD}55` }}
+              >
+                <div>
+                  <span style={{ color: "#888" }}>שם: </span>
+                  <span style={{ color: "#fff" }}>{addResult.full_name}</span>
+                </div>
+                <div>
+                  <span style={{ color: "#888" }}>אימייל: </span>
+                  <span style={{ color: GOLD }}>{addResult.email}</span>
+                </div>
+                <div>
+                  <span style={{ color: "#888" }}>סיסמה: </span>
+                  <span style={{ color: GOLD }}>{addResult.password}</span>
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <Button
+                  onClick={copyCredentials}
+                  className="flex-1 font-extrabold"
+                  style={{ background: GOLD, color: "#000" }}
+                >
+                  <Copy className="w-4 h-4" />
+                  העתק פרטים לשליחה
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setAddResult(null)}
+                  style={{ borderColor: GOLD, color: GOLD, background: "transparent" }}
+                >
+                  עוד תלמיד
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="add-name" style={{ color: "#d0d0d0" }}>
+                  שם מלא
+                </Label>
+                <Input
+                  id="add-name"
+                  value={addName}
+                  onChange={(e) => setAddName(e.target.value)}
+                  placeholder="ישראל ישראלי"
+                  maxLength={100}
+                  style={{ background: "#1a1a1a", borderColor: "#2a2a2a", color: "#fff" }}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="add-email" style={{ color: "#d0d0d0" }}>
+                  אימייל
+                </Label>
+                <Input
+                  id="add-email"
+                  type="email"
+                  value={addEmail}
+                  onChange={(e) => setAddEmail(e.target.value)}
+                  placeholder="student@example.com"
+                  maxLength={255}
+                  dir="ltr"
+                  className="text-left"
+                  style={{ background: "#1a1a1a", borderColor: "#2a2a2a", color: "#fff" }}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="add-password" style={{ color: "#d0d0d0" }}>
+                  סיסמה זמנית
+                </Label>
+                <div className="flex gap-2">
+                  <Input
+                    id="add-password"
+                    value={addPassword}
+                    onChange={(e) => setAddPassword(e.target.value)}
+                    placeholder="לפחות 6 תווים"
+                    minLength={6}
+                    maxLength={72}
+                    dir="ltr"
+                    className="text-left flex-1"
+                    style={{ background: "#1a1a1a", borderColor: "#2a2a2a", color: "#fff" }}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={generatePassword}
+                    style={{ borderColor: GOLD, color: GOLD, background: "transparent" }}
+                  >
+                    🎲 צור
+                  </Button>
+                </div>
+              </div>
+
+              <Button
+                onClick={submitAddStudent}
+                disabled={addLoading}
+                className="w-full font-extrabold text-base h-11"
+                style={{
+                  background: GOLD,
+                  color: "#000",
+                  boxShadow: "0 0 18px rgba(201,168,76,0.45)",
+                }}
+              >
+                {addLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <UserPlus className="w-5 h-5" />}
+                צור תלמיד
+              </Button>
+
+              <p className="text-xs text-center" style={{ color: "#888" }}>
+                התלמיד ייווצר עם שלב 1 ויוכל להיכנס מיד עם הסיסמה הזמנית.
+              </p>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
