@@ -7,19 +7,15 @@ import { Button } from "@/components/ui/button";
 import { LogOut, Loader2, Trophy, Shield } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { STAGES } from "@/lib/academyStages";
-import StageCard from "@/components/academy/dashboard/StageCard";
-import TaskList from "@/components/academy/dashboard/TaskList";
-import PhotoUploader from "@/components/academy/dashboard/PhotoUploader";
-import MilestoneBox from "@/components/academy/dashboard/MilestoneBox";
-import SubmitStageButton from "@/components/academy/dashboard/SubmitStageButton";
-import WeeklyIncomeTracker from "@/components/academy/dashboard/WeeklyIncomeTracker";
+import JourneyMap from "@/components/academy/dashboard/JourneyMap";
+import StageDetailSheet from "@/components/academy/dashboard/StageDetailSheet";
 
 interface StageRequest {
   stage: number;
   status: "pending" | "approved" | "rejected";
 }
 
-const PAGE_BG = "radial-gradient(ellipse at top, #141414 0%, #0a0a0a 60%, #000 100%)";
+const PAGE_BG = "radial-gradient(ellipse at top, #0d1810 0%, #050a05 60%, #000 100%)";
 
 const AcademyDashboardPage = () => {
   const { user, loading, signOut, isAdmin } = useAuth();
@@ -28,9 +24,9 @@ const AcademyDashboardPage = () => {
   const [deviceError, setDeviceError] = useState("");
   const [currentStage, setCurrentStage] = useState(1);
   const [requests, setRequests] = useState<StageRequest[]>([]);
-  const [photos, setPhotos] = useState<Record<number, string[]>>({});
   const [taskProgress, setTaskProgress] = useState<Record<number, { done: number; total: number }>>({});
   const [dataLoading, setDataLoading] = useState(true);
+  const [activeStage, setActiveStage] = useState<number | null>(null);
 
   useEffect(() => {
     document.title = "מסע התלמיד | אקדמיית Macho";
@@ -64,7 +60,6 @@ const AcademyDashboardPage = () => {
     if (!user) return;
     setDataLoading(true);
 
-    // Ensure stage row exists
     const { data: stageRow } = await supabase
       .from("student_stage")
       .select("current_stage")
@@ -77,7 +72,6 @@ const AcademyDashboardPage = () => {
       setCurrentStage(stageRow.current_stage);
     }
 
-    // Load all requests
     const { data: reqs } = await supabase
       .from("stage_requests")
       .select("stage, status")
@@ -92,16 +86,11 @@ const AcademyDashboardPage = () => {
     if (!checking && user) void loadData();
   }, [checking, user, loadData]);
 
-  const setStagePhotos = (stage: number, p: string[]) => {
-    setPhotos((prev) => ({ ...prev, [stage]: p }));
-  };
-
   const handleSignOut = async () => {
     await signOut();
     navigate("/academy/login", { replace: true });
   };
 
-  // Per-stage status
   const getStageStatus = (stageNum: number) => {
     const stageReqs = requests.filter((r) => r.stage === stageNum);
     const approved = stageReqs.some((r) => r.status === "approved");
@@ -109,12 +98,21 @@ const AcademyDashboardPage = () => {
     return { approved, pending };
   };
 
-  // Overall progress
+  const approvedStages = useMemo(
+    () =>
+      Array.from(
+        new Set(requests.filter((r) => r.status === "approved").map((r) => r.stage)),
+      ),
+    [requests],
+  );
+
   const overallPct = useMemo(() => {
     const totalTasks = STAGES.reduce((s, st) => s + st.tasks.length, 0);
     const doneTasks = Object.values(taskProgress).reduce((s, v) => s + v.done, 0);
     return totalTasks ? (doneTasks / totalTasks) * 100 : 0;
   }, [taskProgress]);
+
+  const activeStatus = activeStage ? getStageStatus(activeStage) : { approved: false, pending: false };
 
   if (loading || checking) {
     return (
@@ -131,7 +129,7 @@ const AcademyDashboardPage = () => {
 
   return (
     <div dir="rtl" className="min-h-screen p-3 md:p-6" style={{ background: PAGE_BG }}>
-      <div className="max-w-3xl mx-auto space-y-5">
+      <div className="max-w-2xl mx-auto space-y-5">
         {/* Header */}
         <header
           className="flex items-center justify-between rounded-2xl p-4 border-2"
@@ -145,7 +143,7 @@ const AcademyDashboardPage = () => {
             <img src={logo} alt="Macho" className="h-12 w-auto mix-blend-screen" />
             <div className="min-w-0">
               <h1 className="text-lg md:text-2xl font-extrabold truncate" style={{ color: "#C9A84C" }}>
-                מסע התלמיד
+                המסע שלך
               </h1>
               <p className="text-xs md:text-sm truncate" style={{ color: "#888" }}>
                 {user?.email}
@@ -184,14 +182,14 @@ const AcademyDashboardPage = () => {
             <div className="flex items-center gap-2">
               <Trophy className="w-5 h-5" style={{ color: "#C9A84C" }} />
               <span className="font-extrabold text-lg" style={{ color: "#fff" }}>
-                התקדמות כוללת ל-10K בחודש
+                התקדמות כוללת
               </span>
             </div>
             <span className="font-extrabold text-2xl" style={{ color: "#C9A84C" }}>
               {overallPct.toFixed(0)}%
             </span>
           </div>
-          <div className="h-4 rounded-full overflow-hidden" style={{ background: "#1a1a1a" }}>
+          <div className="h-3 rounded-full overflow-hidden" style={{ background: "#1a1a1a" }}>
             <div
               className="h-full transition-all"
               style={{
@@ -201,100 +199,57 @@ const AcademyDashboardPage = () => {
               }}
             />
           </div>
-          <p className="text-sm mt-2" style={{ color: "#666" }}>
-            שלב נוכחי: <span style={{ color: "#C9A84C", fontWeight: 700 }}>{currentStage}/4</span>
-          </p>
+          <div className="flex items-center justify-between mt-3">
+            <p className="text-sm" style={{ color: "#aaa" }}>
+              שלב {currentStage} מתוך 4
+            </p>
+            <div className="flex gap-1.5">
+              {[1, 2, 3, 4].map((s) => (
+                <div
+                  key={s}
+                  className="w-2.5 h-2.5 rounded-full transition-all"
+                  style={{
+                    background: s <= currentStage ? "#C9A84C" : "#2a2a2a",
+                    boxShadow: s === currentStage ? "0 0 10px #C9A84C" : "none",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
+        {/* Game-map journey */}
         {dataLoading ? (
           <div className="text-center py-8">
             <Loader2 className="w-6 h-6 animate-spin mx-auto" style={{ color: "#C9A84C" }} />
             <p className="mt-2 text-sm" style={{ color: "#666" }}>טוען את המסע שלך...</p>
           </div>
         ) : (
-          STAGES.map((stage) => {
-            const { approved, pending } = getStageStatus(stage.number);
-            const isLocked = stage.number > currentStage;
-            const isCurrent = stage.number === currentStage && !approved;
-            const isCompleted = approved && stage.number < currentStage;
-            const stagePhotos = photos[stage.number] || [];
-
-            return (
-              <StageCard
-                key={stage.number}
-                stageNumber={stage.number}
-                title={stage.title}
-                subtitle={stage.subtitle}
-                isLocked={isLocked}
-                isCurrent={isCurrent}
-                isCompleted={isCompleted}
-                pendingRequest={pending}
-              >
-                <TaskList
-                  userId={user!.id}
-                  stagePrefix={`stage-${stage.number}`}
-                  tasks={stage.tasks}
-                  disabled={approved}
-                  onProgressChange={(done, total) =>
-                    setTaskProgress((p) => ({ ...p, [stage.number]: { done, total } }))
-                  }
-                />
-
-                <MilestoneBox>{stage.milestone}</MilestoneBox>
-
-                {/* Income tracker for stage 3+ */}
-                {stage.number >= 3 && stage.number === currentStage && (
-                  <WeeklyIncomeTracker userId={user!.id} />
-                )}
-
-                {/* Upload + submit (not for final stage 4) */}
-                {stage.number < 4 && (
-                  <>
-                    <div>
-                      <h4 className="font-bold text-base mb-2" style={{ color: "#C9A84C" }}>
-                        📸 העלאת תמונות לפני/אחרי
-                      </h4>
-                      <PhotoUploader
-                        userId={user!.id}
-                        stage={stage.number}
-                        photos={stagePhotos}
-                        onChange={(p) => setStagePhotos(stage.number, p)}
-                        disabled={approved || pending}
-                      />
-                    </div>
-
-                    <SubmitStageButton
-                      userId={user!.id}
-                      stage={stage.number}
-                      photos={stagePhotos}
-                      pendingRequest={pending}
-                      approved={approved}
-                      onSubmitted={() => {
-                        setStagePhotos(stage.number, []);
-                        void loadData();
-                      }}
-                    />
-                  </>
-                )}
-
-                {stage.number === 4 && (
-                  <div
-                    className="rounded-xl p-5 text-center"
-                    style={{
-                      background: "linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05))",
-                      border: "2px solid #C9A84C",
-                    }}
-                  >
-                    <p className="text-lg font-extrabold" style={{ color: "#C9A84C" }}>
-                      👑 אתה כבר אגדה. תמשיך להפציץ!
-                    </p>
-                  </div>
-                )}
-              </StageCard>
-            );
-          })
+          <JourneyMap
+            userId={user!.id}
+            currentStage={currentStage}
+            approvedStages={approvedStages}
+            onStageClick={(s) => setActiveStage(s)}
+          />
         )}
+
+        <p className="text-center text-sm" style={{ color: "#666" }}>
+          לחץ על שלב פתוח כדי לסמן משימות, להעלות תמונות ולשלוח בקשת מעבר
+        </p>
       </div>
+
+      <StageDetailSheet
+        open={activeStage !== null}
+        onClose={() => setActiveStage(null)}
+        userId={user?.id || ""}
+        stage={activeStage}
+        approved={activeStatus.approved}
+        pending={activeStatus.pending}
+        onSubmitted={loadData}
+        onTaskProgress={(stage, done, total) =>
+          setTaskProgress((p) => ({ ...p, [stage]: { done, total } }))
+        }
+      />
     </div>
   );
 };
