@@ -92,6 +92,26 @@ const StageDetailSheet = ({
             </TabsList>
 
             <TabsContent value="tasks" className="space-y-5 mt-0">
+              {rejectionNote && !approved && !pending && (
+                <div
+                  className="rounded-xl p-4 border-2"
+                  style={{
+                    background: "rgba(220, 38, 38, 0.12)",
+                    borderColor: "#dc2626",
+                    color: "#fecaca",
+                  }}
+                >
+                  <p className="font-extrabold text-base mb-1" style={{ color: "#fca5a5" }}>
+                    ⚠️ הבקשה הקודמת נדחתה
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#fecaca" }}>
+                    <strong>הערת יהלי:</strong> {rejectionNote}
+                  </p>
+                  <p className="text-xs mt-2" style={{ color: "#fca5a5" }}>
+                    שפר את הנקודות האלו והעלה תמונות חדשות לבקשה חוזרת.
+                  </p>
+                </div>
+              )}
               <TaskList
                 userId={userId}
                 stagePrefix={`stage-${stage}`}
