@@ -149,6 +149,16 @@ const AcademyDashboardPage = () => {
 
   const activeStatus = activeStage ? getStageStatus(activeStage) : { approved: false, pending: false };
 
+  // Latest rejection note for the active stage (only if no newer pending/approved request exists)
+  const activeRejection = useMemo(() => {
+    if (activeStage === null) return null;
+    const stageReqs = requests.filter((r) => r.stage === activeStage);
+    if (stageReqs.length === 0) return null;
+    // requests are already ordered desc by submitted_at
+    const latest = stageReqs[0];
+    return latest.status === "rejected" ? latest.admin_note : null;
+  }, [activeStage, requests]);
+
   // Submit-from-map flow
   const handleMapSubmit = (stage: number) => {
     setSubmitOpen(stage);
@@ -314,6 +324,7 @@ const AcademyDashboardPage = () => {
         stage={activeStage}
         approved={activeStatus.approved}
         pending={activeStatus.pending}
+        rejectionNote={activeRejection}
         onSubmitted={loadData}
         onTaskProgress={(stage, done, total) =>
           setTaskProgress((p) => ({ ...p, [stage]: { done, total } }))
