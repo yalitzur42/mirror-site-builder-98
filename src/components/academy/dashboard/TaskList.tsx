@@ -60,9 +60,10 @@ const TaskList = ({ userId, stagePrefix, tasks, disabled, onProgressChange }: Ta
   }
 
   return (
-    <ul className="space-y-2">
-      {tasks.map((t) => {
+    <ol className="space-y-2">
+      {tasks.map((t, idx) => {
         const done = progress[`${stagePrefix}:${t.key}`];
+        const num = idx + 1;
         return (
           <li key={t.key}>
             <button
@@ -78,13 +79,14 @@ const TaskList = ({ userId, stagePrefix, tasks, disabled, onProgressChange }: Ta
               }}
             >
               <div
-                className="w-6 h-6 rounded shrink-0 flex items-center justify-center"
+                className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center text-sm font-extrabold"
                 style={{
-                  background: done ? "#C9A84C" : "transparent",
-                  border: `2px solid ${done ? "#C9A84C" : "#444"}`,
+                  background: done ? "#C9A84C" : "#0a0a0a",
+                  border: `2px solid ${done ? "#C9A84C" : "#3a3a3a"}`,
+                  color: done ? "#000" : "#C9A84C",
                 }}
               >
-                {done && <Check className="w-4 h-4" style={{ color: "#000" }} strokeWidth={3} />}
+                {done ? <Check className="w-4 h-4" strokeWidth={3} /> : num}
               </div>
               <span
                 className="text-base flex-1"
@@ -99,7 +101,7 @@ const TaskList = ({ userId, stagePrefix, tasks, disabled, onProgressChange }: Ta
           </li>
         );
       })}
-    </ul>
+    </ol>
   );
 };
 
