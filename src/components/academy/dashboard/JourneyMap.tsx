@@ -311,6 +311,8 @@ function renderTaskNode(
   const stageUnlocked = stage <= currentStage;
   const colors = STAGE_COLORS[stage] || STAGE_COLORS[1];
 
+  const taskNumber = TASK_NUMBER[node.key];
+
   return (
     <div className="flex flex-col items-center gap-1.5">
       <div
@@ -339,6 +341,22 @@ function renderTaskNode(
           )
         ) : (
           <Lock className="w-5 h-5" style={{ color: "#444" }} />
+        )}
+
+        {/* Order number badge */}
+        {taskNumber && (
+          <div
+            className="absolute -top-2 -right-2 min-w-[22px] h-[22px] px-1 rounded-full flex items-center justify-center text-[11px] font-extrabold"
+            style={{
+              background: stageUnlocked ? "#000" : "#0d0d0d",
+              color: stageUnlocked ? colors.color : "#444",
+              border: `2px solid ${stageUnlocked ? colors.color : "#222"}`,
+              boxShadow: stageUnlocked ? `0 0 8px ${colors.color}66` : "none",
+              lineHeight: 1,
+            }}
+          >
+            {taskNumber}
+          </div>
         )}
       </div>
       <div
