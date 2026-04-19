@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      guides: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          is_published: boolean | null
+          order_index: number | null
+          stage_number: number
+          title: string
+          video_url: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_published?: boolean | null
+          order_index?: number | null
+          stage_number: number
+          title: string
+          video_url?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_published?: boolean | null
+          order_index?: number | null
+          stage_number?: number
+          title?: string
+          video_url?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string | null
