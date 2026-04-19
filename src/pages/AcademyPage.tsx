@@ -899,22 +899,39 @@ const AcademyPage = () => {
 
       <SectionDivider from="dark" to="light" shape="curves" />
 
-      {/* ============ 1️⃣3️⃣ FINAL CTA ============ */}
-      <CTASection
-        title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> {v("cta", "title", "מוכנים להתחיל קריירה חדשה?")}</>}
-        description={
-          <>
-            {v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
+      {/* ============ 1️⃣3️⃣ FINAL CTA — single big gold button ============ */}
+      <section className="py-16 md:py-24 section-light">
+        <div className="container-main">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
+              מעניין? בואו נדבר — בלי התחייבות
+            </h2>
+            <p className="text-base md:text-lg opacity-75 mb-9">
+              תוך כמה דקות נחזור אליך בוואטסאפ עם כל הפרטים על המחזור הקרוב.
+            </p>
+            <a
+              href={buildWaLink("היי 👋 אני רוצה פרטים על האקדמיה של Macho. אפשר לדבר?")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 px-10 md:px-14 py-5 md:py-6 rounded-full text-lg md:text-2xl font-black transition-all hover:scale-[1.04] active:scale-[0.97] shadow-2xl"
+              style={{
+                backgroundColor: "#C9A84C",
+                color: "#1a1208",
+                boxShadow: "0 8px 32px rgba(201,168,76,0.45)",
+              }}
+            >
+              <Smartphone className="w-6 h-6 md:w-7 md:h-7" />
+              שלח לי פרטים בוואטסאפ ←
+            </a>
             {spotsLeft > 0 && spotsLeft <= 4 && (
-              <span className="block mt-2 text-sm font-bold">🔥 נשארו רק {spotsLeft} מקומות!</span>
+              <p className="mt-5 text-sm md:text-base font-bold animate-pulse" style={{ color: "#b85a1a" }}>
+                🔥 נשארו רק {spotsLeft} מקומות במחזור הקרוב!
+              </p>
             )}
-            {v("cta", "note", "") && <span className="block mt-2 text-sm opacity-70">✦ {v("cta", "note", "כולל ערכת ציוד מקצועית מלאה")}</span>}
-          </>
-        }
-        buttonLabel={<><Smartphone className="w-4 h-4" /> שריינו מקום / בדקו התאמה</>}
-        buttonHref={buildWaLink("היי 👋 אני רוצה לשריין מקום למחזור הקרוב באקדמיה של Macho. אפשר פרטים?")}
-        variant="light"
-      />
+          </div>
+        </div>
+      </section>
+
 
       {/* STICKY WHATSAPP CTA */}
       <StickyWhatsApp visible={showSticky} onScrollToLead={onScrollToLead} onPrimaryCTA={onPrimaryCTA} />
