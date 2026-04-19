@@ -5,6 +5,8 @@ import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import HeroSplit from "@/components/ui/HeroSplit";
 import AcademyHero from "@/components/academy/AcademyHero";
+import AcademyHeroV2 from "@/components/academy/AcademyHeroV2";
+import AcademyStatsBar from "@/components/academy/AcademyStatsBar";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
@@ -211,19 +213,21 @@ const AcademyPage = () => {
       <div ref={heroAnchorRef} />
 
       {/* ============ 1️⃣ HERO ============ */}
-      <AcademyHero
-        title={v("hero", "title", "האקדמיה של Macho")}
-        subtitle={v("hero", "subtitle", "תוך 3 חודשים — בדרך לקריירה בספרות גברים")}
-        description={v("hero", "description", "קורס למתחילים ללא ניסיון: הרבה תרגול, קבוצות קטנות, תעודה בסיום וליווי עד שמתחילים לעבוד.")}
+      <AcademyHeroV2
+        badge={v("hero", "badge", "✂ הקורס המקצועי לספרים בישראל")}
+        title={v("hero", "title", "מאפס לספר מקצועי — תוך 4 שלבים")}
+        subtitle={v("hero", "subtitle", "הגיע הזמן שתרוויח 10,000 ₪ בחודש מהתספורות שלך")}
+        description={v("hero", "description", "הצטרף למאות ספרים שסיימו את האקדמיה של יהלי צור ובנו קריירה מקצועית — עם מפת דרכים ברורה, ליווי אישי, ומיני קורס מקצועי.")}
         backgroundImage={v("hero", "image", "")}
         primaryCta={{
-          label: <><Smartphone className="w-4 h-4" /> בדקו התאמה לקורס</>,
-          href: buildWaLink("היי 👋 אני רוצה לבדוק התאמה לקורס באקדמיה של Macho. אפשר פרטים?"),
+          label: <>הצטרף לאקדמיה ←</>,
+          href: buildWaLink("היי 👋 אני רוצה להצטרף לאקדמיה של Macho. אפשר פרטים?"),
         }}
         secondaryCta={{
-          label: <><Play className="w-4 h-4" /> למידע נוסף</>,
+          label: <>בדוק אם זה מתאים לי</>,
           href: "#lead-section",
         }}
+        socialProof={["+500 בוגרים", "ליווי אישי", "3 חודשים בלבד"]}
       />
 
       {/* URGENCY BAR with spots remaining */}
@@ -233,6 +237,18 @@ const AcademyPage = () => {
         onPrimaryCTA={onPrimaryCTA}
         spotsLeft={spotsLeft}
       />
+
+      {/* ============ SOCIAL PROOF STATS BAR ============ */}
+      <AcademyStatsBar />
+
+      {/* ============ SALARY CALCULATOR (moved up to second section) ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <SalaryCalculator />
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="light" to="light" shape="waves" />
 
       {/* ============ 2️⃣ VIDEO / INTRO ============ */}
       <Section variant="light">
@@ -368,14 +384,7 @@ const AcademyPage = () => {
 
       <SectionDivider from="dark" to="light" shape="curves" />
 
-      {/* ============ SALARY CALCULATOR ============ */}
-      <Section variant="light">
-        <AnimatedSection>
-          <SalaryCalculator />
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="light" to="light" shape="waves" />
+      {/* duplicate salary calculator removed — moved up to second section */}
 
       {/* ============ 4️⃣ SOCIAL PROOF ============ */}
       <Section variant="light">
@@ -428,30 +437,63 @@ const AcademyPage = () => {
 
       <SectionDivider from="light" to="dark" shape="triangles" />
 
-      {/* ============ 5️⃣ PROBLEM SECTION ============ */}
-      <Section
-        title={<><AlertTriangle className="w-6 h-6 inline-block align-middle ml-1" /> {v("problems", "title", "מרגיש שאתה תקוע?")}</>}
-        subtitle={v("problems", "subtitle", "הרבה גברים מגיעים אלינו עם אותן תחושות:")}
-        variant="dark"
+      {/* ============ 5️⃣ PROBLEM SECTION (redesigned) ============ */}
+      <section
+        className="py-16 md:py-24 relative"
+        style={{ backgroundColor: "#1a1a1a", color: "#ffffff" }}
       >
-        <AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {problems.map((pain, idx) => (
-              <Card key={idx} className="bg-secondary text-secondary-foreground border-0 p-5 rounded-2xl flex items-start gap-3">
-                <pain.icon className="w-5 h-5 mt-0.5 opacity-70 shrink-0" />
-                <span className="opacity-90">{pain.text}</span>
-              </Card>
-            ))}
-          </div>
+        <div className="container-main">
+          <AnimatedSection>
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <h2
+                className="text-3xl md:text-5xl font-black mb-3"
+                style={{ color: "#ffffff" }}
+              >
+                {v("problems", "title", "מרגיש שאתה תקוע?")}
+              </h2>
+              <p
+                className="text-base md:text-xl font-semibold"
+                style={{ color: "#C9A84C" }}
+              >
+                אנחנו יודעים בדיוק איך אתה מרגיש — כי עברנו את זה
+              </p>
+            </div>
 
-          <div className="mt-8 text-center">
-            <button onClick={onScrollToLead} className="btn-premium-fill">
-              <Smartphone className="w-5 h-5" />
-              אני רוצה לבדוק אם זה בשבילי
-            </button>
-          </div>
-        </AnimatedSection>
-      </Section>
+            <div className="grid md:grid-cols-2 gap-4 md:gap-5 max-w-4xl mx-auto">
+              {problems.map((pain, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-4 p-5 md:p-6 rounded-2xl border transition-transform hover:scale-[1.02]"
+                  style={{
+                    backgroundColor: "#252525",
+                    borderColor: "rgba(239,68,68,0.25)",
+                  }}
+                >
+                  <div
+                    className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full shrink-0"
+                    style={{ backgroundColor: "rgba(239,68,68,0.15)" }}
+                  >
+                    <XCircle className="w-6 h-6 md:w-7 md:h-7" style={{ color: "#ef4444" }} />
+                  </div>
+                  <span
+                    className="text-base md:text-lg font-semibold leading-snug"
+                    style={{ color: "rgba(255,255,255,0.92)" }}
+                  >
+                    {pain.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <button onClick={onScrollToLead} className="btn-premium-fill">
+                <Smartphone className="w-5 h-5" />
+                אני רוצה לבדוק אם זה בשבילי
+              </button>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
       <SectionDivider from="dark" to="light" shape="curves" />
 
@@ -486,29 +528,90 @@ const AcademyPage = () => {
 
       <SectionDivider from="light" to="dark" shape="waves" />
 
-      {/* ============ 🆕 COMPARISON SECTION ============ */}
+      {/* ============ 🆕 COMPARISON SECTION (redesigned with VS divider) ============ */}
       <Section
         title={v("comparison", "title", "לפני הקורס vs אחרי הקורס")}
         variant="dark"
       >
         <AnimatedSection>
-          <div className="max-w-3xl mx-auto grid gap-4">
-            {comparison.map((row, idx) => (
-              <div key={idx} className="grid grid-cols-[1fr_auto_1fr] gap-3 items-center">
-                <Card className="bg-accent/15 text-foreground border-0 p-4 rounded-xl flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80 shrink-0" />
-                  <span className="font-semibold text-sm">{row.after}</span>
-                </Card>
-                <ArrowRight className="w-5 h-5 opacity-50 shrink-0" />
-                <Card className="bg-secondary text-secondary-foreground border-0 p-4 rounded-xl flex items-start gap-2">
-                  <XCircle className="w-5 h-5 mt-0.5 opacity-60 shrink-0" />
-                  <span className="opacity-80 text-sm">{row.before}</span>
-                </Card>
+          <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_auto_1fr] gap-4 lg:gap-6 items-stretch relative">
+            {/* AFTER — RIGHT side (RTL: visually leading) — green */}
+            <div className="space-y-3 order-1">
+              <div
+                className="text-center font-black text-lg md:text-xl py-2 rounded-full mb-3"
+                style={{
+                  backgroundColor: "rgba(74,222,128,0.15)",
+                  color: "#4ade80",
+                  border: "1px solid rgba(74,222,128,0.4)",
+                }}
+              >
+                ✓ אחרי הקורס
               </div>
-            ))}
+              {comparison.map((row, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-3 p-4 rounded-xl"
+                  style={{
+                    backgroundColor: "#1a2e1a",
+                    border: "1px solid rgba(74,222,128,0.25)",
+                  }}
+                >
+                  <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" style={{ color: "#4ade80" }} />
+                  <span className="font-semibold text-sm md:text-base" style={{ color: "rgba(255,255,255,0.95)" }}>
+                    {row.after}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* VS divider */}
+            <div className="flex lg:flex-col items-center justify-center order-2 py-2 lg:py-0 lg:px-2">
+              <div className="hidden lg:block w-px h-full" style={{ background: "linear-gradient(to bottom, transparent, #C9A84C, transparent)" }} />
+              <div
+                className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full font-black text-2xl md:text-3xl shrink-0 lg:my-4 lg:absolute lg:top-1/2 lg:right-1/2 lg:-translate-y-1/2 lg:translate-x-1/2"
+                style={{
+                  backgroundColor: "#C9A84C",
+                  color: "#1a1208",
+                  boxShadow: "0 4px 24px rgba(201,168,76,0.4)",
+                  position: "relative",
+                }}
+              >
+                VS
+              </div>
+              <div className="hidden lg:block w-px h-full" style={{ background: "linear-gradient(to bottom, transparent, #C9A84C, transparent)" }} />
+            </div>
+
+            {/* BEFORE — LEFT side — red */}
+            <div className="space-y-3 order-3">
+              <div
+                className="text-center font-black text-lg md:text-xl py-2 rounded-full mb-3"
+                style={{
+                  backgroundColor: "rgba(239,68,68,0.12)",
+                  color: "#ef4444",
+                  border: "1px solid rgba(239,68,68,0.4)",
+                }}
+              >
+                ✗ לפני הקורס
+              </div>
+              {comparison.map((row, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-3 p-4 rounded-xl"
+                  style={{
+                    backgroundColor: "#1f1414",
+                    border: "1px solid rgba(239,68,68,0.2)",
+                  }}
+                >
+                  <XCircle className="w-5 h-5 mt-0.5 shrink-0" style={{ color: "#ef4444" }} />
+                  <span className="text-sm md:text-base" style={{ color: "rgba(255,255,255,0.8)" }}>
+                    {row.before}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-10 text-center">
             <button onClick={onScrollToLead} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
               אני רוצה להיות בצד הימני
@@ -796,22 +899,39 @@ const AcademyPage = () => {
 
       <SectionDivider from="dark" to="light" shape="curves" />
 
-      {/* ============ 1️⃣3️⃣ FINAL CTA ============ */}
-      <CTASection
-        title={<><Rocket className="w-6 h-6 inline-block align-middle ml-1" /> {v("cta", "title", "מוכנים להתחיל קריירה חדשה?")}</>}
-        description={
-          <>
-            {v("cta", "description", "שלחו הודעה עכשיו כדי לבדוק התאמה למחזור הקרוב. קבוצות קטנות — המקומות נגמרים מהר.")}
+      {/* ============ 1️⃣3️⃣ FINAL CTA — single big gold button ============ */}
+      <section className="py-16 md:py-24 section-light">
+        <div className="container-main">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
+              מעניין? בואו נדבר — בלי התחייבות
+            </h2>
+            <p className="text-base md:text-lg opacity-75 mb-9">
+              תוך כמה דקות נחזור אליך בוואטסאפ עם כל הפרטים על המחזור הקרוב.
+            </p>
+            <a
+              href={buildWaLink("היי 👋 אני רוצה פרטים על האקדמיה של Macho. אפשר לדבר?")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 px-10 md:px-14 py-5 md:py-6 rounded-full text-lg md:text-2xl font-black transition-all hover:scale-[1.04] active:scale-[0.97] shadow-2xl"
+              style={{
+                backgroundColor: "#C9A84C",
+                color: "#1a1208",
+                boxShadow: "0 8px 32px rgba(201,168,76,0.45)",
+              }}
+            >
+              <Smartphone className="w-6 h-6 md:w-7 md:h-7" />
+              שלח לי פרטים בוואטסאפ ←
+            </a>
             {spotsLeft > 0 && spotsLeft <= 4 && (
-              <span className="block mt-2 text-sm font-bold">🔥 נשארו רק {spotsLeft} מקומות!</span>
+              <p className="mt-5 text-sm md:text-base font-bold animate-pulse" style={{ color: "#b85a1a" }}>
+                🔥 נשארו רק {spotsLeft} מקומות במחזור הקרוב!
+              </p>
             )}
-            {v("cta", "note", "") && <span className="block mt-2 text-sm opacity-70">✦ {v("cta", "note", "כולל ערכת ציוד מקצועית מלאה")}</span>}
-          </>
-        }
-        buttonLabel={<><Smartphone className="w-4 h-4" /> שריינו מקום / בדקו התאמה</>}
-        buttonHref={buildWaLink("היי 👋 אני רוצה לשריין מקום למחזור הקרוב באקדמיה של Macho. אפשר פרטים?")}
-        variant="light"
-      />
+          </div>
+        </div>
+      </section>
+
 
       {/* STICKY WHATSAPP CTA */}
       <StickyWhatsApp visible={showSticky} onScrollToLead={onScrollToLead} onPrimaryCTA={onPrimaryCTA} />
