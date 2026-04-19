@@ -3,7 +3,15 @@ import confetti from "canvas-confetti";
 import { supabase } from "@/integrations/supabase/client";
 import { Lock, Check } from "lucide-react";
 import { JOURNEY_ROWS, STAGE_COLORS } from "@/lib/academyJourney";
+import { STAGES } from "@/lib/academyStages";
 import StarsBackground from "./StarsBackground";
+
+// Map task_key -> its 1-based order within its stage (per academyStages.ts)
+const TASK_NUMBER: Record<string, number> = (() => {
+  const m: Record<string, number> = {};
+  STAGES.forEach((s) => s.tasks.forEach((t, i) => (m[t.key] = i + 1)));
+  return m;
+})();
 
 interface JourneyMapProps {
   userId: string;
