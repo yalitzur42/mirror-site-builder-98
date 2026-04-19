@@ -926,6 +926,158 @@ const AcademyAdminPage = () => {
           </button>
         </div>
       )}
+
+      {/* Add Student Dialog */}
+      <Dialog
+        open={addOpen}
+        onOpenChange={(o) => {
+          setAddOpen(o);
+          if (!o) setAddResult(null);
+        }}
+      >
+        <DialogContent
+          dir="rtl"
+          className="max-w-md border-2"
+          style={{ background: "#0f0f0f", borderColor: GOLD, color: "#fff" }}
+        >
+          <DialogHeader>
+            <DialogTitle className="text-right text-2xl font-extrabold flex items-center gap-2" style={{ color: GOLD }}>
+              <UserPlus className="w-6 h-6" />
+              הוסף תלמיד חדש
+            </DialogTitle>
+          </DialogHeader>
+
+          {addResult ? (
+            <div className="space-y-4">
+              <div
+                className="rounded-xl p-4 text-center"
+                style={{ background: "rgba(34,197,94,0.12)", border: "2px solid #22c55e" }}
+              >
+                <p className="font-extrabold text-lg" style={{ color: "#22c55e" }}>
+                  ✅ התלמיד נוצר בהצלחה!
+                </p>
+                <p className="text-sm mt-1" style={{ color: "#a8d4a8" }}>
+                  שלח את פרטי הכניסה לתלמיד באופן ידני
+                </p>
+              </div>
+
+              <div
+                className="rounded-xl p-4 space-y-2 font-mono text-sm"
+                style={{ background: "#1a1a1a", border: `1px solid ${GOLD}55` }}
+              >
+                <div>
+                  <span style={{ color: "#888" }}>שם: </span>
+                  <span style={{ color: "#fff" }}>{addResult.full_name}</span>
+                </div>
+                <div>
+                  <span style={{ color: "#888" }}>אימייל: </span>
+                  <span style={{ color: GOLD }}>{addResult.email}</span>
+                </div>
+                <div>
+                  <span style={{ color: "#888" }}>סיסמה: </span>
+                  <span style={{ color: GOLD }}>{addResult.password}</span>
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <Button
+                  onClick={copyCredentials}
+                  className="flex-1 font-extrabold"
+                  style={{ background: GOLD, color: "#000" }}
+                >
+                  <Copy className="w-4 h-4" />
+                  העתק פרטים לשליחה
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setAddResult(null)}
+                  style={{ borderColor: GOLD, color: GOLD, background: "transparent" }}
+                >
+                  עוד תלמיד
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="add-name" style={{ color: "#d0d0d0" }}>
+                  שם מלא
+                </Label>
+                <Input
+                  id="add-name"
+                  value={addName}
+                  onChange={(e) => setAddName(e.target.value)}
+                  placeholder="ישראל ישראלי"
+                  maxLength={100}
+                  style={{ background: "#1a1a1a", borderColor: "#2a2a2a", color: "#fff" }}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="add-email" style={{ color: "#d0d0d0" }}>
+                  אימייל
+                </Label>
+                <Input
+                  id="add-email"
+                  type="email"
+                  value={addEmail}
+                  onChange={(e) => setAddEmail(e.target.value)}
+                  placeholder="student@example.com"
+                  maxLength={255}
+                  dir="ltr"
+                  className="text-left"
+                  style={{ background: "#1a1a1a", borderColor: "#2a2a2a", color: "#fff" }}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="add-password" style={{ color: "#d0d0d0" }}>
+                  סיסמה זמנית
+                </Label>
+                <div className="flex gap-2">
+                  <Input
+                    id="add-password"
+                    value={addPassword}
+                    onChange={(e) => setAddPassword(e.target.value)}
+                    placeholder="לפחות 6 תווים"
+                    minLength={6}
+                    maxLength={72}
+                    dir="ltr"
+                    className="text-left flex-1"
+                    style={{ background: "#1a1a1a", borderColor: "#2a2a2a", color: "#fff" }}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={generatePassword}
+                    style={{ borderColor: GOLD, color: GOLD, background: "transparent" }}
+                  >
+                    🎲 צור
+                  </Button>
+                </div>
+              </div>
+
+              <Button
+                onClick={submitAddStudent}
+                disabled={addLoading}
+                className="w-full font-extrabold text-base h-11"
+                style={{
+                  background: GOLD,
+                  color: "#000",
+                  boxShadow: "0 0 18px rgba(201,168,76,0.45)",
+                }}
+              >
+                {addLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <UserPlus className="w-5 h-5" />}
+                צור תלמיד
+              </Button>
+
+              <p className="text-xs text-center" style={{ color: "#888" }}>
+                התלמיד ייווצר עם שלב 1 ויוכל להיכנס מיד עם הסיסמה הזמנית.
+              </p>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
