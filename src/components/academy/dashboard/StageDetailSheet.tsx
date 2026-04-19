@@ -18,6 +18,7 @@ interface Props {
   stage: number | null;
   approved: boolean;
   pending: boolean;
+  rejectionNote?: string | null;
   onSubmitted: () => void;
   onTaskProgress: (stage: number, done: number, total: number) => void;
 }
@@ -29,6 +30,7 @@ const StageDetailSheet = ({
   stage,
   approved,
   pending,
+  rejectionNote,
   onSubmitted,
   onTaskProgress,
 }: Props) => {
