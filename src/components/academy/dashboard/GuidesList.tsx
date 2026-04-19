@@ -23,13 +23,23 @@ const GuidesList = ({ stage }: Props) => {
   useEffect(() => {
     const load = async () => {
       setLoading(true);
-      const { data } = await supabase
+      const { data } = await (supabase as unknown as {
+        from: (t: string) => {
+          select: (s: string) => {
+            eq: (c: string, v: unknown) => {
+              eq: (c: string, v: unknown) => {
+                order: (c: string, o: { ascending: boolean }) => Promise<{ data: Guide[] | null }>;
+              };
+            };
+          };
+        };
+      })
         .from("guides")
         .select("id, title, description, video_url, order_index")
         .eq("stage_number", stage)
         .eq("is_published", true)
         .order("order_index", { ascending: true });
-      setGuides((data || []) as Guide[]);
+      setGuides(data || []);
       setLoading(false);
     };
     void load();
