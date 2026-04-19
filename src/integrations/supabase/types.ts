@@ -18,32 +18,38 @@ export type Database = {
         Row: {
           created_at: string | null
           description: string | null
+          duration_minutes: number | null
           id: string
           is_published: boolean | null
           order_index: number | null
+          related_task_key: string | null
           stage_number: number
           title: string
-          video_url: string | null
+          video_path: string | null
         }
         Insert: {
           created_at?: string | null
           description?: string | null
+          duration_minutes?: number | null
           id?: string
           is_published?: boolean | null
           order_index?: number | null
+          related_task_key?: string | null
           stage_number: number
           title: string
-          video_url?: string | null
+          video_path?: string | null
         }
         Update: {
           created_at?: string | null
           description?: string | null
+          duration_minutes?: number | null
           id?: string
           is_published?: boolean | null
           order_index?: number | null
+          related_task_key?: string | null
           stage_number?: number
           title?: string
-          video_url?: string | null
+          video_path?: string | null
         }
         Relationships: []
       }

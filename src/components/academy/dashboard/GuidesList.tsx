@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Lock, PlayCircle } from "lucide-react";
 import { STAGE_COLORS } from "@/lib/academyJourney";
+import LessonPlayerModal from "./LessonPlayerModal";
 
 interface Guide {
   id: string;
   title: string;
   description: string | null;
   video_url: string | null;
+  video_path: string | null;
   order_index: number | null;
 }
 
@@ -18,6 +20,7 @@ interface Props {
 const GuidesList = ({ stage }: Props) => {
   const [guides, setGuides] = useState<Guide[]>([]);
   const [loading, setLoading] = useState(true);
+  const [openGuide, setOpenGuide] = useState<Guide | null>(null);
   const colors = STAGE_COLORS[stage] || STAGE_COLORS[1];
 
   useEffect(() => {
@@ -35,7 +38,7 @@ const GuidesList = ({ stage }: Props) => {
         };
       })
         .from("guides")
-        .select("id, title, description, video_url, order_index")
+        .select("id, title, description, video_url, video_path, order_index")
         .eq("stage_number", stage)
         .eq("is_published", true)
         .order("order_index", { ascending: true });
@@ -64,10 +67,7 @@ const GuidesList = ({ stage }: Props) => {
       >
         <div
           className="w-16 h-16 mx-auto rounded-full flex items-center justify-center text-3xl"
-          style={{
-            background: "#0a0a0a",
-            border: `2px solid ${colors.color}55`,
-          }}
+          style={{ background: "#0a0a0a", border: `2px solid ${colors.color}55` }}
         >
           <span style={{ filter: "grayscale(0.6)" }}>🎬</span>
         </div>
@@ -83,30 +83,29 @@ const GuidesList = ({ stage }: Props) => {
   }
 
   return (
-    <ul className="space-y-3">
-      {guides.map((g) => (
-        <li key={g.id}>
-          <a
-            href={g.video_url || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-start gap-3 p-3 rounded-xl transition-all hover:scale-[1.01]"
-            style={{
-              background: "#0f0f0f",
-              border: `1px solid ${colors.color}55`,
-            }}
-          >
-            <PlayCircle className="w-8 h-8 shrink-0 mt-0.5" style={{ color: colors.color }} />
-            <div className="flex-1 text-right">
-              <h5 className="font-extrabold text-base" style={{ color: "#fff" }}>{g.title}</h5>
-              {g.description && (
-                <p className="text-xs mt-1" style={{ color: "#999" }}>{g.description}</p>
-              )}
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="space-y-3">
+        {guides.map((g) => (
+          <li key={g.id}>
+            <button
+              type="button"
+              onClick={() => setOpenGuide(g)}
+              className="w-full flex items-start gap-3 p-3 rounded-xl transition-all hover:scale-[1.01] text-right"
+              style={{ background: "#0f0f0f", border: `1px solid ${colors.color}55` }}
+            >
+              <PlayCircle className="w-8 h-8 shrink-0 mt-0.5" style={{ color: colors.color }} />
+              <div className="flex-1">
+                <h5 className="font-extrabold text-base" style={{ color: "#fff" }}>{g.title}</h5>
+                {g.description && (
+                  <p className="text-xs mt-1" style={{ color: "#999" }}>{g.description}</p>
+                )}
+              </div>
+            </button>
+          </li>
+        ))}
+      </ul>
+      <LessonPlayerModal open={!!openGuide} onClose={() => setOpenGuide(null)} lesson={openGuide} />
+    </>
   );
 };
 

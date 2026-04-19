@@ -91,6 +91,7 @@ const StageDetailSheet = ({
               <TaskList
                 userId={userId}
                 stagePrefix={`stage-${stage}`}
+                stage={stage}
                 tasks={def.tasks}
                 disabled={approved}
                 onProgressChange={(d, t) => onTaskProgress(stage, d, t)}
