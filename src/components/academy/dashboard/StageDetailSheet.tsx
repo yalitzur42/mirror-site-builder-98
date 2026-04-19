@@ -33,6 +33,8 @@ const StageDetailSheet = ({
   onTaskProgress,
 }: Props) => {
   const [photos, setPhotos] = useState<string[]>([]);
+  const [progress, setProgress] = useState<{ done: number; total: number }>({ done: 0, total: 0 });
+  const allDone = progress.total > 0 && progress.done === progress.total;
   if (!stage) return null;
   const def = STAGES.find((s) => s.number === stage);
   if (!def) return null;
@@ -94,7 +96,10 @@ const StageDetailSheet = ({
                 stage={stage}
                 tasks={def.tasks}
                 disabled={approved}
-                onProgressChange={(d, t) => onTaskProgress(stage, d, t)}
+                onProgressChange={(d, t) => {
+                  setProgress({ done: d, total: t });
+                  onTaskProgress(stage, d, t);
+                }}
               />
 
               <MilestoneBox>{def.milestone}</MilestoneBox>
@@ -122,6 +127,7 @@ const StageDetailSheet = ({
                     photos={photos}
                     pendingRequest={pending}
                     approved={approved}
+                    ready={allDone && photos.length > 0}
                     onSubmitted={() => {
                       setPhotos([]);
                       onSubmitted();
