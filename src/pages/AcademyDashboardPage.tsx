@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { getDeviceId, getDeviceName } from "@/lib/deviceId";
 import { Button } from "@/components/ui/button";
-import { LogOut, Loader2, Trophy, Shield, Send, Loader2 as Spin } from "lucide-react";
+import { LogOut, Loader2, Trophy, Settings, Send, Loader2 as Spin } from "lucide-react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 import { STAGES } from "@/lib/academyStages";
@@ -218,10 +218,15 @@ const AcademyDashboardPage = () => {
                 onClick={() => navigate("/academy/admin")}
                 size="sm"
                 className="font-bold"
-                style={{ background: "#C9A84C", color: "#000" }}
+                style={{
+                  background: "#C9A84C",
+                  color: "#000",
+                  boxShadow: "0 0 18px rgba(201,168,76,0.45)",
+                }}
+                title="ניהול"
               >
-                <Shield className="w-4 h-4" />
-                <span className="hidden md:inline">אדמין</span>
+                <Settings className="w-4 h-4" />
+                <span className="hidden md:inline">ניהול</span>
               </Button>
             )}
             <Button
