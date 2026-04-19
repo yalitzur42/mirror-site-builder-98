@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { ListChecks, BookOpen } from "lucide-react";
 import { STAGES } from "@/lib/academyStages";
 import { STAGE_COLORS } from "@/lib/academyJourney";
 import TaskList from "./TaskList";
@@ -7,6 +9,7 @@ import PhotoUploader from "./PhotoUploader";
 import MilestoneBox from "./MilestoneBox";
 import SubmitStageButton from "./SubmitStageButton";
 import WeeklyIncomeTracker from "./WeeklyIncomeTracker";
+import GuidesList from "./GuidesList";
 
 interface Props {
   open: boolean;
@@ -57,62 +60,95 @@ const StageDetailSheet = ({
           <p className="text-sm text-right" style={{ color: "#aaa" }}>{def.subtitle}</p>
         </SheetHeader>
 
-        <div className="p-5 space-y-5">
-          <TaskList
-            userId={userId}
-            stagePrefix={`stage-${stage}`}
-            tasks={def.tasks}
-            disabled={approved}
-            onProgressChange={(d, t) => onTaskProgress(stage, d, t)}
-          />
-
-          <MilestoneBox>{def.milestone}</MilestoneBox>
-
-          {stage >= 3 && <WeeklyIncomeTracker userId={userId} />}
-
-          {stage < 4 && (
-            <>
-              <div>
-                <h4 className="font-bold text-base mb-2" style={{ color: colors.color }}>
-                  📸 העלאת תמונות לפני / אחרי
-                </h4>
-                <PhotoUploader
-                  userId={userId}
-                  stage={stage}
-                  photos={photos}
-                  onChange={setPhotos}
-                  disabled={approved || pending}
-                />
-              </div>
-
-              <SubmitStageButton
-                userId={userId}
-                stage={stage}
-                photos={photos}
-                pendingRequest={pending}
-                approved={approved}
-                onSubmitted={() => {
-                  setPhotos([]);
-                  onSubmitted();
-                  onClose();
-                }}
-              />
-            </>
-          )}
-
-          {stage === 4 && (
-            <div
-              className="rounded-xl p-5 text-center"
-              style={{
-                background: `linear-gradient(135deg, ${colors.color}26, ${colors.color}0d)`,
-                border: `2px solid ${colors.color}`,
-              }}
+        <div className="p-5">
+          <Tabs defaultValue="tasks" className="w-full">
+            <TabsList
+              className="grid grid-cols-2 w-full mb-5 h-auto p-1"
+              style={{ background: "#0f0f0f", border: "1px solid #1f1f1f" }}
             >
-              <p className="text-lg font-extrabold" style={{ color: colors.color }}>
-                👑 אתה כבר אגדה. תמשיך להפציץ!
-              </p>
-            </div>
-          )}
+              <TabsTrigger
+                value="tasks"
+                className="data-[state=active]:bg-transparent data-[state=active]:shadow-none flex items-center gap-2 py-2 font-extrabold"
+                style={{
+                  color: colors.color,
+                  // active styling via inline isn't reactive — rely on data-state via CSS below
+                }}
+              >
+                <ListChecks className="w-4 h-4" />
+                משימות
+              </TabsTrigger>
+              <TabsTrigger
+                value="guides"
+                className="data-[state=active]:bg-transparent data-[state=active]:shadow-none flex items-center gap-2 py-2 font-extrabold"
+                style={{ color: colors.color }}
+              >
+                <BookOpen className="w-4 h-4" />
+                מדריכים
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="tasks" className="space-y-5 mt-0">
+              <TaskList
+                userId={userId}
+                stagePrefix={`stage-${stage}`}
+                tasks={def.tasks}
+                disabled={approved}
+                onProgressChange={(d, t) => onTaskProgress(stage, d, t)}
+              />
+
+              <MilestoneBox>{def.milestone}</MilestoneBox>
+
+              {stage >= 3 && <WeeklyIncomeTracker userId={userId} />}
+
+              {stage < 4 && (
+                <>
+                  <div>
+                    <h4 className="font-bold text-base mb-2" style={{ color: colors.color }}>
+                      📸 העלאת תמונות לפני / אחרי
+                    </h4>
+                    <PhotoUploader
+                      userId={userId}
+                      stage={stage}
+                      photos={photos}
+                      onChange={setPhotos}
+                      disabled={approved || pending}
+                    />
+                  </div>
+
+                  <SubmitStageButton
+                    userId={userId}
+                    stage={stage}
+                    photos={photos}
+                    pendingRequest={pending}
+                    approved={approved}
+                    onSubmitted={() => {
+                      setPhotos([]);
+                      onSubmitted();
+                      onClose();
+                    }}
+                  />
+                </>
+              )}
+
+              {stage === 4 && (
+                <div
+                  className="rounded-xl p-5 text-center"
+                  style={{
+                    background: `linear-gradient(135deg, ${colors.color}26, ${colors.color}0d)`,
+                    border: `2px solid ${colors.color}`,
+                  }}
+                >
+                  <p className="text-lg font-extrabold" style={{ color: colors.color }}>
+                    👑 אתה כבר אגדה. תמשיך להפציץ!
+                  </p>
+                </div>
+              )}
+            </TabsContent>
+
+            <TabsContent value="guides" className="mt-0">
+              <GuidesList stage={stage} />
+            </TabsContent>
+          </Tabs>
         </div>
       </SheetContent>
     </Sheet>
