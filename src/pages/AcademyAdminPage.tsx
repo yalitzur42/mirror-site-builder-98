@@ -378,7 +378,23 @@ const AcademyAdminPage = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap justify-end">
+            <Button
+              size="sm"
+              onClick={() => {
+                setAddResult(null);
+                setAddOpen(true);
+              }}
+              className="font-extrabold"
+              style={{
+                background: GOLD,
+                color: "#000",
+                boxShadow: "0 0 14px rgba(201,168,76,0.5)",
+              }}
+            >
+              <UserPlus className="w-4 h-4" />
+              <span className="hidden sm:inline">הוסף תלמיד</span>
+            </Button>
             <Button
               size="sm"
               variant="outline"
