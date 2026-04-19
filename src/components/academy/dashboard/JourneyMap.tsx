@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import { supabase } from "@/integrations/supabase/client";
-import { Lock, Check } from "lucide-react";
+import { Lock, Check, Send } from "lucide-react";
 import { JOURNEY_ROWS, STAGE_COLORS } from "@/lib/academyJourney";
 import { STAGES } from "@/lib/academyStages";
 import StarsBackground from "./StarsBackground";
@@ -17,55 +17,83 @@ interface JourneyMapProps {
   userId: string;
   currentStage: number;
   approvedStages: number[];
+  pendingStages: number[];
   onStageClick: (stage: number) => void;
+  onSubmitStage?: (stage: number) => void;
 }
 
-const NODE_BIG = 88; // stage circle px
-const NODE_SMALL = 56; // task circle px
+const NODE_BIG = 92;
+const NODE_SMALL = 60;
 
-const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: JourneyMapProps) => {
+const JourneyMap = ({
+  userId,
+  currentStage,
+  approvedStages,
+  pendingStages,
+  onStageClick,
+  onSubmitStage,
+}: JourneyMapProps) => {
   const [progress, setProgress] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
+  const [recentlyDone, setRecentlyDone] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const [paths, setPaths] = useState<{ d: string; color: string }[]>([]);
+  const [paths, setPaths] = useState<{ d: string; color: string; lit: boolean }[]>([]);
   const prevApproved = useRef<number[]>(approvedStages);
+  const prevProgress = useRef<Record<string, boolean>>({});
 
-  // Load progress for all task nodes
+  // Load progress + subscribe to realtime updates
   useEffect(() => {
     const load = async () => {
-      const keys = JOURNEY_ROWS
-        .filter((r) => r.node.type === "task")
-        .map((r) => {
-          const t = r.node as { key: string };
-          // Find which stage this task belongs to by scanning rows above (closer to top)
-          // Task nodes between stage N (above) and stage N-1 (below) belong to stage N
-          // We approximate using academyStages mapping.
-          return resolveStageForKey(t.key) + ":" + t.key;
-        });
-      const fullKeys = keys.map((k) => `stage-${k}`);
       const { data } = await supabase
         .from("task_progress")
         .select("task_key, done")
-        .eq("user_id", userId)
-        .in("task_key", fullKeys);
+        .eq("user_id", userId);
       const map: Record<string, boolean> = {};
       (data || []).forEach((r) => {
         map[r.task_key] = !!r.done;
       });
       setProgress(map);
+      prevProgress.current = map;
       setLoading(false);
     };
     void load();
+
+    const channel = supabase
+      .channel(`task_progress_${userId}`)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "task_progress", filter: `user_id=eq.${userId}` },
+        (payload) => {
+          const row = (payload.new || payload.old) as { task_key: string; done: boolean };
+          setProgress((p) => ({ ...p, [row.task_key]: !!(payload.new as { done: boolean })?.done }));
+        },
+      )
+      .subscribe();
+    return () => {
+      void supabase.removeChannel(channel);
+    };
   }, [userId]);
 
-  // Compute SVG paths between consecutive nodes (curves)
+  // Detect newly completed tasks → trigger pop animation + check stage completion
+  useEffect(() => {
+    const prev = prevProgress.current;
+    Object.keys(progress).forEach((key) => {
+      if (progress[key] && !prev[key]) {
+        setRecentlyDone(key);
+        setTimeout(() => setRecentlyDone((r) => (r === key ? null : r)), 600);
+      }
+    });
+    prevProgress.current = progress;
+  }, [progress]);
+
+  // Compute SVG paths between consecutive nodes — and which segments are "lit"
   useEffect(() => {
     const compute = () => {
       const container = containerRef.current;
       if (!container) return;
       const cRect = container.getBoundingClientRect();
-      const newPaths: { d: string; color: string }[] = [];
+      const newPaths: { d: string; color: string; lit: boolean }[] = [];
 
       for (let i = 0; i < JOURNEY_ROWS.length - 1; i++) {
         const a = nodeRefs.current[`row-${i}`];
@@ -77,12 +105,9 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
         const y1 = ar.top + ar.height / 2 - cRect.top;
         const x2 = br.left + br.width / 2 - cRect.left;
         const y2 = br.top + br.height / 2 - cRect.top;
-        // Quadratic curve - control point pulled to opposite side
         const cx = (x1 + x2) / 2 + (x2 > x1 ? -40 : 40);
         const cy = (y1 + y2) / 2;
 
-        // Color: belongs to nearest stage downstream (the stage node below this segment)
-        // Walk forward from i+1 to find the next stage
         let stageColor = STAGE_COLORS[1].color;
         for (let k = i + 1; k < JOURNEY_ROWS.length; k++) {
           const n = JOURNEY_ROWS[k].node;
@@ -91,7 +116,12 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
             break;
           }
         }
-        newPaths.push({ d: `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`, color: stageColor });
+
+        // A segment is "lit" if both endpoints are completed (for tasks) or stage approved
+        const lit = isNodeCompleted(JOURNEY_ROWS[i].node, progress, approvedStages) &&
+          isNodeCompleted(JOURNEY_ROWS[i + 1].node, progress, approvedStages);
+
+        newPaths.push({ d: `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`, color: stageColor, lit });
       }
       setPaths(newPaths);
     };
@@ -103,7 +133,7 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
       ro.disconnect();
       window.removeEventListener("resize", compute);
     };
-  }, [loading]);
+  }, [loading, progress, approvedStages]);
 
   // Confetti when a new stage gets approved
   useEffect(() => {
@@ -118,6 +148,48 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
     }
     prevApproved.current = approvedStages;
   }, [approvedStages]);
+
+  // Stage task progress info
+  const stageTaskInfo = useMemo(() => {
+    const info: Record<number, { done: number; total: number; allDone: boolean }> = {};
+    STAGES.forEach((s) => {
+      const total = s.tasks.length;
+      const done = s.tasks.filter((t) => progress[`stage-${s.number}:${t.key}`]).length;
+      info[s.number] = { done, total, allDone: total > 0 && done === total };
+    });
+    return info;
+  }, [progress]);
+
+  // Confetti when last task of current stage gets completed
+  const prevAllDone = useRef<Record<number, boolean>>({});
+  useEffect(() => {
+    Object.keys(stageTaskInfo).forEach((k) => {
+      const stage = Number(k);
+      const now = stageTaskInfo[stage].allDone;
+      const before = prevAllDone.current[stage];
+      if (now && !before && stage <= currentStage && !approvedStages.includes(stage)) {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ["#C9A84C", "#22c55e", "#f0d070"],
+        });
+      }
+      prevAllDone.current[stage] = now;
+    });
+  }, [stageTaskInfo, currentStage, approvedStages]);
+
+  // Find the next incomplete task (in player progression order)
+  const nextTaskKey = useMemo(() => {
+    for (let s = 1; s <= currentStage; s++) {
+      const stageDef = STAGES.find((st) => st.number === s);
+      if (!stageDef) continue;
+      for (const t of stageDef.tasks) {
+        if (!progress[`stage-${s}:${t.key}`]) return t.key;
+      }
+    }
+    return null;
+  }, [progress, currentStage]);
 
   const totalHeight = useMemo(
     () => JOURNEY_ROWS.reduce((s, r) => s + r.height, 0) + 80,
@@ -135,18 +207,18 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
       style={{
         height: totalHeight,
         background:
-          "radial-gradient(ellipse at 50% 30%, #0f1f15 0%, #07120c 40%, #050505 100%)",
-        border: "2px solid #1a2a1a",
+          "radial-gradient(ellipse at 50% 30%, #1f2236 0%, #161827 45%, #0e1019 100%)",
+        border: "2px solid #2a2d40",
       }}
     >
       <StarsBackground />
 
-      {/* Subtle dark green texture */}
+      {/* Warm light spots behind active stage */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 10%, rgba(40,80,50,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(40,80,50,0.12) 0%, transparent 40%)",
+            "radial-gradient(circle at 50% 78%, rgba(201,168,76,0.12) 0%, transparent 35%), radial-gradient(circle at 20% 30%, rgba(155,89,182,0.08) 0%, transparent 40%), radial-gradient(circle at 80% 60%, rgba(231,76,60,0.06) 0%, transparent 40%)",
         }}
       />
 
@@ -156,16 +228,18 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
         style={{ zIndex: 1 }}
       >
         {paths.map((p, i) => (
-          <path
-            key={i}
-            d={p.d}
-            fill="none"
-            stroke={p.color}
-            strokeWidth={4}
-            strokeDasharray="10 8"
-            strokeLinecap="round"
-            opacity={0.55}
-          />
+          <g key={i}>
+            <path
+              d={p.d}
+              fill="none"
+              stroke={p.lit ? "#22c55e" : p.color}
+              strokeWidth={p.lit ? 5 : 4}
+              strokeDasharray={p.lit ? "12 4" : "10 8"}
+              strokeLinecap="round"
+              opacity={p.lit ? 0.95 : 0.55}
+              style={p.lit ? { filter: "drop-shadow(0 0 6px rgba(34,197,94,0.7))" } : undefined}
+            />
+          </g>
         ))}
       </svg>
 
@@ -179,7 +253,6 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
               className="relative w-full"
               style={{ height: row.height }}
             >
-              {/* Decor */}
               {row.decor?.map((d, di) => (
                 <div
                   key={di}
@@ -198,7 +271,6 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
                 </div>
               ))}
 
-              {/* Node */}
               <div
                 ref={(el) => (nodeRefs.current[`row-${idx}`] = el)}
                 className="absolute"
@@ -209,8 +281,23 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
                 }}
               >
                 {node.type === "stage"
-                  ? renderStageNode(node, isStageUnlocked(node.stage), isStageCompleted(node.stage), onStageClick)
-                  : renderTaskNode(node, progress, currentStage)}
+                  ? renderStageNode(
+                      node,
+                      isStageUnlocked(node.stage),
+                      isStageCompleted(node.stage),
+                      stageTaskInfo[node.stage] || { done: 0, total: 0, allDone: false },
+                      pendingStages.includes(node.stage),
+                      approvedStages.includes(node.stage),
+                      onStageClick,
+                      onSubmitStage,
+                    )
+                  : renderTaskNode(
+                      node,
+                      progress,
+                      currentStage,
+                      recentlyDone === node.key,
+                      nextTaskKey === node.key,
+                    )}
               </div>
             </div>
           );
@@ -226,77 +313,200 @@ const JourneyMap = ({ userId, currentStage, approvedStages, onStageClick }: Jour
           0%, 100% { box-shadow: 0 0 0 0 var(--glow), 0 0 30px var(--glow); }
           50% { box-shadow: 0 0 0 14px transparent, 0 0 50px var(--glow); }
         }
-        @keyframes journey-unlock {
-          0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
-          60% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
-          100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        @keyframes task-pop {
+          0% { transform: scale(1); }
+          40% { transform: scale(1.3); }
+          100% { transform: scale(1); }
+        }
+        @keyframes next-glow {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0), 0 0 14px rgba(201,168,76,0.5); }
+          50% { box-shadow: 0 0 0 8px rgba(201,168,76,0.15), 0 0 28px rgba(201,168,76,0.85); }
+        }
+        @keyframes ready-pulse {
+          0%, 100% { box-shadow: 0 0 18px rgba(34,197,94,0.6); transform: scale(1); }
+          50% { box-shadow: 0 0 38px rgba(34,197,94,0.9); transform: scale(1.05); }
         }
       `}</style>
     </div>
   );
 };
 
+function isNodeCompleted(
+  node: { type: "stage"; stage: number } | { type: "task"; key: string },
+  progress: Record<string, boolean>,
+  approvedStages: number[],
+) {
+  if (node.type === "stage") return approvedStages.includes(node.stage);
+  const stage = resolveStageForKey(node.key);
+  return !!progress[`stage-${stage}:${node.key}`];
+}
+
 function renderStageNode(
   node: { stage: number; emoji: string; title: string; color: string; glow: string },
   unlocked: boolean,
   completed: boolean,
+  taskInfo: { done: number; total: number; allDone: boolean },
+  pending: boolean,
+  approved: boolean,
   onClick: (stage: number) => void,
+  onSubmit?: (stage: number) => void,
 ) {
-  const baseColor = unlocked ? node.color : "#2a2a2a";
+  const baseColor = unlocked ? node.color : "#3a3a4a";
   const ringGlow = unlocked ? node.glow : "transparent";
+  const pct = taskInfo.total > 0 ? (taskInfo.done / taskInfo.total) * 100 : 0;
+  const showReadyBanner = unlocked && !approved && taskInfo.allDone;
+
+  // Progress ring SVG
+  const ringSize = NODE_BIG + 16;
+  const ringRadius = (ringSize - 8) / 2;
+  const ringCirc = 2 * Math.PI * ringRadius;
+  const ringOffset = ringCirc * (1 - pct / 100);
+
   return (
-    <button
-      type="button"
-      onClick={() => unlocked && onClick(node.stage)}
-      disabled={!unlocked}
-      className="flex flex-col items-center gap-2"
-      style={{ cursor: unlocked ? "pointer" : "not-allowed" }}
-    >
-      <div
-        className="relative rounded-full flex items-center justify-center font-extrabold transition-transform hover:scale-110"
-        style={{
-          width: NODE_BIG,
-          height: NODE_BIG,
-          background: unlocked
-            ? `radial-gradient(circle at 30% 30%, ${baseColor}, ${darken(baseColor)})`
-            : "linear-gradient(135deg, #1a1a1a, #0a0a0a)",
-          border: `4px solid ${unlocked ? baseColor : "#333"}`,
-          color: unlocked ? "#000" : "#555",
-          fontSize: "2.4rem",
-          // @ts-expect-error custom var
-          "--glow": ringGlow,
-          animation: unlocked && !completed ? "journey-pulse 2.4s ease-in-out infinite" : undefined,
-          filter: unlocked ? "none" : "grayscale(0.8)",
-        }}
+    <div className="flex flex-col items-center gap-2">
+      <button
+        type="button"
+        onClick={() => unlocked && onClick(node.stage)}
+        disabled={!unlocked}
+        className="flex flex-col items-center gap-2"
+        style={{ cursor: unlocked ? "pointer" : "not-allowed" }}
       >
-        {!unlocked ? (
-          <Lock className="w-9 h-9" strokeWidth={2.5} style={{ color: "#666" }} />
-        ) : completed ? (
-          <div className="relative">
-            <span style={{ opacity: 0.85 }}>{node.emoji}</span>
-            <div
-              className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center"
-              style={{ background: "#22c55e", border: "2px solid #000" }}
+        <div className="relative" style={{ width: ringSize, height: ringSize }}>
+          {/* Progress ring */}
+          {unlocked && taskInfo.total > 0 && !completed && (
+            <svg
+              className="absolute inset-0 -rotate-90"
+              width={ringSize}
+              height={ringSize}
+              style={{ pointerEvents: "none" }}
             >
-              <Check className="w-4 h-4" style={{ color: "#fff" }} strokeWidth={3} />
-            </div>
+              <circle
+                cx={ringSize / 2}
+                cy={ringSize / 2}
+                r={ringRadius}
+                fill="none"
+                stroke="rgba(255,255,255,0.08)"
+                strokeWidth={4}
+              />
+              <circle
+                cx={ringSize / 2}
+                cy={ringSize / 2}
+                r={ringRadius}
+                fill="none"
+                stroke={taskInfo.allDone ? "#22c55e" : node.color}
+                strokeWidth={4}
+                strokeDasharray={ringCirc}
+                strokeDashoffset={ringOffset}
+                strokeLinecap="round"
+                style={{
+                  transition: "stroke-dashoffset 0.6s ease, stroke 0.3s ease",
+                  filter: `drop-shadow(0 0 6px ${taskInfo.allDone ? "rgba(34,197,94,0.7)" : node.color + "99"})`,
+                }}
+              />
+            </svg>
+          )}
+
+          {/* Inner stage circle */}
+          <div
+            className="absolute rounded-full flex items-center justify-center font-extrabold transition-transform hover:scale-110"
+            style={{
+              width: NODE_BIG,
+              height: NODE_BIG,
+              top: 8,
+              left: 8,
+              background: unlocked
+                ? `radial-gradient(circle at 30% 30%, ${baseColor}, ${darken(baseColor)})`
+                : "linear-gradient(135deg, #2a2a3a, #1a1a25)",
+              border: `4px solid ${unlocked ? baseColor : "#3a3a4a"}`,
+              color: unlocked ? "#000" : "#7a7a85",
+              fontSize: "2.4rem",
+              // @ts-expect-error custom var
+              "--glow": ringGlow,
+              animation:
+                unlocked && !completed && !taskInfo.allDone
+                  ? "journey-pulse 2.4s ease-in-out infinite"
+                  : taskInfo.allDone && !approved
+                    ? "ready-pulse 1.5s ease-in-out infinite"
+                    : undefined,
+              filter: unlocked ? "none" : "grayscale(0.7)",
+            }}
+          >
+            {!unlocked ? (
+              <Lock className="w-9 h-9" strokeWidth={2.5} style={{ color: "#7a7a85" }} />
+            ) : completed || approved ? (
+              <Check className="w-12 h-12" style={{ color: "#fff" }} strokeWidth={3} />
+            ) : taskInfo.allDone ? (
+              <Check className="w-12 h-12" style={{ color: "#fff" }} strokeWidth={3} />
+            ) : (
+              <span>{node.emoji}</span>
+            )}
           </div>
-        ) : (
-          <span>{node.emoji}</span>
-        )}
-      </div>
-      <div
-        className="px-3 py-1 rounded-full text-xs font-extrabold whitespace-nowrap"
-        style={{
-          background: "rgba(0,0,0,0.7)",
-          border: `1.5px solid ${unlocked ? node.color : "#333"}`,
-          color: unlocked ? node.color : "#555",
-          backdropFilter: "blur(4px)",
-        }}
-      >
-        שלב {node.stage} — {node.title}
-      </div>
-    </button>
+        </div>
+        <div
+          className="px-3 py-1 rounded-full text-xs font-extrabold whitespace-nowrap"
+          style={{
+            background: "rgba(20,22,36,0.85)",
+            border: `1.5px solid ${unlocked ? node.color : "#3a3a4a"}`,
+            color: unlocked ? node.color : "#7a7a85",
+            backdropFilter: "blur(4px)",
+          }}
+        >
+          שלב {node.stage} — {node.title}
+          {unlocked && taskInfo.total > 0 && !approved && (
+            <span style={{ marginInlineStart: 6, opacity: 0.75 }}>
+              {taskInfo.done}/{taskInfo.total}
+            </span>
+          )}
+        </div>
+      </button>
+
+      {/* Ready-to-submit banner */}
+      {showReadyBanner && !pending && (
+        <div
+          className="rounded-xl px-3 py-2.5 text-center max-w-[260px] animate-fade-in"
+          style={{
+            background: "linear-gradient(135deg, rgba(201,168,76,0.22), rgba(201,168,76,0.08))",
+            border: "2px solid #C9A84C",
+            color: "#fff",
+            boxShadow: "0 0 24px rgba(201,168,76,0.45)",
+          }}
+        >
+          <p className="text-xs font-extrabold mb-2" style={{ color: "#C9A84C" }}>
+            🔥 כל הכבוד! השלמת את שלב {node.stage}
+          </p>
+          {onSubmit && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onSubmit(node.stage);
+              }}
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-extrabold"
+              style={{
+                background: "linear-gradient(135deg, #C9A84C, #f0d070)",
+                color: "#000",
+                animation: "ready-pulse 1.5s ease-in-out infinite",
+              }}
+            >
+              <Send className="w-3.5 h-3.5" />
+              שלח בקשת מעבר ליהלי
+            </button>
+          )}
+        </div>
+      )}
+      {showReadyBanner && pending && (
+        <div
+          className="rounded-xl px-3 py-2 text-center text-xs font-extrabold"
+          style={{
+            background: "rgba(201,168,76,0.08)",
+            border: "1.5px dashed #C9A84C",
+            color: "#C9A84C",
+          }}
+        >
+          ⏳ בקשתך נשלחה — ממתינה לאישור
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -304,6 +514,8 @@ function renderTaskNode(
   node: { key: string; emoji: string; label: string },
   progress: Record<string, boolean>,
   currentStage: number,
+  justCompleted: boolean,
+  isNext: boolean,
 ) {
   const stage = resolveStageForKey(node.key);
   const fullKey = `stage-${stage}:${node.key}`;
@@ -323,14 +535,24 @@ function renderTaskNode(
           background: stageUnlocked
             ? done
               ? "linear-gradient(135deg, #22c55e, #16a34a)"
-              : `linear-gradient(135deg, ${colors.color}33, #0a0a0a)`
-            : "#0d0d0d",
+              : `linear-gradient(135deg, ${colors.color}33, #1e1e1e)`
+            : "#1a1a1a",
           border: `3px solid ${
-            stageUnlocked ? (done ? "#22c55e" : colors.color) : "#222"
+            stageUnlocked ? (done ? "#22c55e" : colors.color) : "#2a2a35"
           }`,
           fontSize: "1.4rem",
-          boxShadow: done ? "0 0 20px rgba(34,197,94,0.4)" : "none",
+          boxShadow: done
+            ? "0 0 22px rgba(34,197,94,0.5)"
+            : stageUnlocked
+              ? `0 0 12px ${colors.color}55`
+              : "none",
           filter: stageUnlocked ? "none" : "grayscale(1)",
+          animation: justCompleted
+            ? "task-pop 0.6s ease-out"
+            : isNext && !done
+              ? "next-glow 1.8s ease-in-out infinite"
+              : undefined,
+          transition: "background 0.3s, border-color 0.3s, box-shadow 0.3s",
         }}
       >
         {stageUnlocked ? (
@@ -340,17 +562,16 @@ function renderTaskNode(
             <span>{node.emoji}</span>
           )
         ) : (
-          <Lock className="w-5 h-5" style={{ color: "#444" }} />
+          <Lock className="w-5 h-5" style={{ color: "#555" }} />
         )}
 
-        {/* Order number badge */}
         {taskNumber && (
           <div
             className="absolute -top-2 -right-2 min-w-[22px] h-[22px] px-1 rounded-full flex items-center justify-center text-[11px] font-extrabold"
             style={{
-              background: stageUnlocked ? "#000" : "#0d0d0d",
-              color: stageUnlocked ? colors.color : "#444",
-              border: `2px solid ${stageUnlocked ? colors.color : "#222"}`,
+              background: stageUnlocked ? "#0a0c14" : "#1a1a25",
+              color: stageUnlocked ? colors.color : "#555",
+              border: `2px solid ${stageUnlocked ? colors.color : "#2a2a35"}`,
               boxShadow: stageUnlocked ? `0 0 8px ${colors.color}66` : "none",
               lineHeight: 1,
             }}
@@ -362,8 +583,8 @@ function renderTaskNode(
       <div
         className="text-[11px] font-bold whitespace-nowrap px-2 py-0.5 rounded"
         style={{
-          color: stageUnlocked ? "#fff" : "#444",
-          background: "rgba(0,0,0,0.5)",
+          color: stageUnlocked ? "#e8e8e8" : "#555",
+          background: "rgba(14,16,25,0.7)",
         }}
       >
         {node.label}
@@ -373,7 +594,7 @@ function renderTaskNode(
 }
 
 function darken(hex: string) {
-  // simple darken by 25%
+  if (!hex.startsWith("#")) return hex;
   const c = hex.replace("#", "");
   const r = Math.max(0, parseInt(c.slice(0, 2), 16) - 50);
   const g = Math.max(0, parseInt(c.slice(2, 4), 16) - 50);
@@ -381,7 +602,6 @@ function darken(hex: string) {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-// Map a task key back to its stage number (matches academyStages.ts)
 function resolveStageForKey(key: string): number {
   const map: Record<string, number> = {
     ambassadors_list: 1,

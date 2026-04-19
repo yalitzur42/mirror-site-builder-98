@@ -31,6 +31,7 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
   const [loading, setLoading] = useState(true);
   const [lessons, setLessons] = useState<Record<string, LessonRef>>({});
   const [openLesson, setOpenLesson] = useState<LessonRef | null>(null);
+  const [poppingKey, setPoppingKey] = useState<string | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -71,6 +72,24 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
       setLoading(false);
     };
     void load();
+
+    // Realtime sync (so sheet reflects changes from map and vice versa)
+    const ch = supabase
+      .channel(`tasklist_${userId}_${stagePrefix}`)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "task_progress", filter: `user_id=eq.${userId}` },
+        (payload) => {
+          const row = (payload.new || payload.old) as { task_key: string };
+          if (!row.task_key.startsWith(`${stagePrefix}:`)) return;
+          const done = !!(payload.new as { done: boolean })?.done;
+          setProgress((p) => ({ ...p, [row.task_key]: done }));
+        },
+      )
+      .subscribe();
+    return () => {
+      void supabase.removeChannel(ch);
+    };
   }, [userId, stagePrefix, stage, tasks]);
 
   useEffect(() => {
@@ -83,6 +102,10 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
     const fullKey = `${stagePrefix}:${key}`;
     const newDone = !progress[fullKey];
     setProgress((p) => ({ ...p, [fullKey]: newDone }));
+    if (newDone) {
+      setPoppingKey(key);
+      setTimeout(() => setPoppingKey((k) => (k === key ? null : k)), 600);
+    }
     await supabase
       .from("task_progress")
       .upsert(
@@ -92,7 +115,7 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
   };
 
   if (loading) {
-    return <div className="text-sm" style={{ color: "#666" }}>טוען משימות...</div>;
+    return <div className="text-sm" style={{ color: "#a8a8b8" }}>טוען משימות...</div>;
   }
 
   return (
@@ -102,6 +125,7 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
           const done = progress[`${stagePrefix}:${t.key}`];
           const num = idx + 1;
           const lesson = lessons[t.key];
+          const popping = poppingKey === t.key;
           return (
             <li key={t.key} className="space-y-1.5">
               <button
@@ -110,26 +134,28 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
                 disabled={disabled}
                 className="w-full flex items-center gap-3 p-3 rounded-lg text-right transition-all"
                 style={{
-                  background: done ? "rgba(201, 168, 76, 0.08)" : "#0f0f0f",
-                  border: `1px solid ${done ? "#C9A84C" : "#252525"}`,
+                  background: done ? "#1a2e1a" : "#252535",
+                  border: `1px solid ${done ? "#22c55e" : "#3a3a4a"}`,
                   cursor: disabled ? "not-allowed" : "pointer",
                   opacity: disabled ? 0.6 : 1,
                 }}
               >
                 <div
-                  className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center text-sm font-extrabold"
+                  className="w-9 h-9 rounded-full shrink-0 flex items-center justify-center text-sm font-extrabold"
                   style={{
-                    background: done ? "#C9A84C" : "#0a0a0a",
-                    border: `2px solid ${done ? "#C9A84C" : "#3a3a3a"}`,
-                    color: done ? "#000" : "#C9A84C",
+                    background: done ? "#22c55e" : "#2a2a3a",
+                    border: `2px solid ${done ? "#22c55e" : "#5a5a6a"}`,
+                    color: done ? "#fff" : "#ffffff",
+                    animation: popping ? "task-pop 0.6s ease-out" : undefined,
+                    boxShadow: done ? "0 0 14px rgba(74,222,128,0.5)" : undefined,
                   }}
                 >
-                  {done ? <Check className="w-4 h-4" strokeWidth={3} /> : num}
+                  {done ? <Check className="w-5 h-5" strokeWidth={3} /> : num}
                 </div>
                 <span
                   className="text-base flex-1"
                   style={{
-                    color: done ? "#C9A84C" : "#fff",
+                    color: done ? "#4ade80" : "#e0e0e0",
                     textDecoration: done ? "line-through" : "none",
                   }}
                 >
@@ -142,7 +168,7 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
                   onClick={() => setOpenLesson(lesson)}
                   className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-sm font-extrabold transition-all hover:scale-[1.01]"
                   style={{
-                    background: "linear-gradient(180deg, rgba(201,168,76,0.18), rgba(201,168,76,0.08))",
+                    background: "linear-gradient(180deg, rgba(201,168,76,0.22), rgba(201,168,76,0.10))",
                     border: "1px solid #C9A84C",
                     color: "#C9A84C",
                   }}
@@ -160,6 +186,13 @@ const TaskList = ({ userId, stagePrefix, stage, tasks, disabled, onProgressChang
         onClose={() => setOpenLesson(null)}
         lesson={openLesson}
       />
+      <style>{`
+        @keyframes task-pop {
+          0% { transform: scale(1); }
+          40% { transform: scale(1.3); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
     </>
   );
 };
