@@ -16,6 +16,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 interface StageRequest {
   stage: number;
   status: "pending" | "approved" | "rejected";
+  admin_note: string | null;
+  submitted_at: string;
 }
 
 const PAGE_BG = "radial-gradient(ellipse at top, #1a1d2e 0%, #0f1119 60%, #050612 100%)";
@@ -78,7 +80,7 @@ const AcademyDashboardPage = () => {
 
     const { data: reqs } = await supabase
       .from("stage_requests")
-      .select("stage, status")
+      .select("stage, status, admin_note, submitted_at")
       .eq("user_id", user.id)
       .order("submitted_at", { ascending: false });
     setRequests((reqs || []) as StageRequest[]);
