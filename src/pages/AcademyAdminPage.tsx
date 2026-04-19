@@ -85,6 +85,64 @@ const AcademyAdminPage = () => {
     photos: string[];
   } | null>(null);
 
+  // Add Student dialog state
+  const [addOpen, setAddOpen] = useState(false);
+  const [addName, setAddName] = useState("");
+  const [addEmail, setAddEmail] = useState("");
+  const [addPassword, setAddPassword] = useState("");
+  const [addLoading, setAddLoading] = useState(false);
+  const [addResult, setAddResult] = useState<{ email: string; password: string; full_name: string } | null>(null);
+
+  const generatePassword = () => {
+    const chars = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+    let p = "";
+    for (let i = 0; i < 10; i++) p += chars.charAt(Math.floor(Math.random() * chars.length));
+    setAddPassword(p);
+  };
+
+  const submitAddStudent = async () => {
+    const name = addName.trim();
+    const email = addEmail.trim().toLowerCase();
+    if (!name) {
+      toast.error("חובה להזין שם מלא");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("אימייל לא תקין");
+      return;
+    }
+    if (addPassword.length < 6) {
+      toast.error("סיסמה צריכה להכיל לפחות 6 תווים");
+      return;
+    }
+    setAddLoading(true);
+    const { data, error } = await supabase.functions.invoke("create-student", {
+      body: { full_name: name, email, password: addPassword },
+    });
+    setAddLoading(false);
+    if (error || !data?.success) {
+      toast.error(data?.error || error?.message || "שגיאה ביצירת התלמיד");
+      return;
+    }
+    toast.success(`${name} נוסף בהצלחה 🔥`);
+    setAddResult({ email, password: addPassword, full_name: name });
+    setAddName("");
+    setAddEmail("");
+    setAddPassword("");
+    void loadAll();
+  };
+
+  const copyCredentials = async () => {
+    if (!addResult) return;
+    const text = `שלום ${addResult.full_name}!\nכניסה לאקדמיית Macho:\nהאתר: ${window.location.origin}/academy/login\nאימייל: ${addResult.email}\nסיסמה: ${addResult.password}\n\nמומלץ להחליף סיסמה אחרי הכניסה הראשונה.`;
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success("פרטי הכניסה הועתקו 📋");
+    } catch {
+      toast.error("לא הצלחתי להעתיק");
+    }
+  };
+
   useEffect(() => {
     document.title = "ניהול תלמידים | אקדמיית Macho";
   }, []);
