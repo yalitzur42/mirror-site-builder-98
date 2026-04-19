@@ -444,30 +444,63 @@ const AcademyPage = () => {
 
       <SectionDivider from="light" to="dark" shape="triangles" />
 
-      {/* ============ 5️⃣ PROBLEM SECTION ============ */}
-      <Section
-        title={<><AlertTriangle className="w-6 h-6 inline-block align-middle ml-1" /> {v("problems", "title", "מרגיש שאתה תקוע?")}</>}
-        subtitle={v("problems", "subtitle", "הרבה גברים מגיעים אלינו עם אותן תחושות:")}
-        variant="dark"
+      {/* ============ 5️⃣ PROBLEM SECTION (redesigned) ============ */}
+      <section
+        className="py-16 md:py-24 relative"
+        style={{ backgroundColor: "#1a1a1a", color: "#ffffff" }}
       >
-        <AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {problems.map((pain, idx) => (
-              <Card key={idx} className="bg-secondary text-secondary-foreground border-0 p-5 rounded-2xl flex items-start gap-3">
-                <pain.icon className="w-5 h-5 mt-0.5 opacity-70 shrink-0" />
-                <span className="opacity-90">{pain.text}</span>
-              </Card>
-            ))}
-          </div>
+        <div className="container-main">
+          <AnimatedSection>
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <h2
+                className="text-3xl md:text-5xl font-black mb-3"
+                style={{ color: "#ffffff" }}
+              >
+                {v("problems", "title", "מרגיש שאתה תקוע?")}
+              </h2>
+              <p
+                className="text-base md:text-xl font-semibold"
+                style={{ color: "#C9A84C" }}
+              >
+                אנחנו יודעים בדיוק איך אתה מרגיש — כי עברנו את זה
+              </p>
+            </div>
 
-          <div className="mt-8 text-center">
-            <button onClick={onScrollToLead} className="btn-premium-fill">
-              <Smartphone className="w-5 h-5" />
-              אני רוצה לבדוק אם זה בשבילי
-            </button>
-          </div>
-        </AnimatedSection>
-      </Section>
+            <div className="grid md:grid-cols-2 gap-4 md:gap-5 max-w-4xl mx-auto">
+              {problems.map((pain, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-4 p-5 md:p-6 rounded-2xl border transition-transform hover:scale-[1.02]"
+                  style={{
+                    backgroundColor: "#252525",
+                    borderColor: "rgba(239,68,68,0.25)",
+                  }}
+                >
+                  <div
+                    className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full shrink-0"
+                    style={{ backgroundColor: "rgba(239,68,68,0.15)" }}
+                  >
+                    <XCircle className="w-6 h-6 md:w-7 md:h-7" style={{ color: "#ef4444" }} />
+                  </div>
+                  <span
+                    className="text-base md:text-lg font-semibold leading-snug"
+                    style={{ color: "rgba(255,255,255,0.92)" }}
+                  >
+                    {pain.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <button onClick={onScrollToLead} className="btn-premium-fill">
+                <Smartphone className="w-5 h-5" />
+                אני רוצה לבדוק אם זה בשבילי
+              </button>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
       <SectionDivider from="dark" to="light" shape="curves" />
 
@@ -502,29 +535,90 @@ const AcademyPage = () => {
 
       <SectionDivider from="light" to="dark" shape="waves" />
 
-      {/* ============ 🆕 COMPARISON SECTION ============ */}
+      {/* ============ 🆕 COMPARISON SECTION (redesigned with VS divider) ============ */}
       <Section
         title={v("comparison", "title", "לפני הקורס vs אחרי הקורס")}
         variant="dark"
       >
         <AnimatedSection>
-          <div className="max-w-3xl mx-auto grid gap-4">
-            {comparison.map((row, idx) => (
-              <div key={idx} className="grid grid-cols-[1fr_auto_1fr] gap-3 items-center">
-                <Card className="bg-accent/15 text-foreground border-0 p-4 rounded-xl flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80 shrink-0" />
-                  <span className="font-semibold text-sm">{row.after}</span>
-                </Card>
-                <ArrowRight className="w-5 h-5 opacity-50 shrink-0" />
-                <Card className="bg-secondary text-secondary-foreground border-0 p-4 rounded-xl flex items-start gap-2">
-                  <XCircle className="w-5 h-5 mt-0.5 opacity-60 shrink-0" />
-                  <span className="opacity-80 text-sm">{row.before}</span>
-                </Card>
+          <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_auto_1fr] gap-4 lg:gap-6 items-stretch relative">
+            {/* AFTER — RIGHT side (RTL: visually leading) — green */}
+            <div className="space-y-3 order-1">
+              <div
+                className="text-center font-black text-lg md:text-xl py-2 rounded-full mb-3"
+                style={{
+                  backgroundColor: "rgba(74,222,128,0.15)",
+                  color: "#4ade80",
+                  border: "1px solid rgba(74,222,128,0.4)",
+                }}
+              >
+                ✓ אחרי הקורס
               </div>
-            ))}
+              {comparison.map((row, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-3 p-4 rounded-xl"
+                  style={{
+                    backgroundColor: "#1a2e1a",
+                    border: "1px solid rgba(74,222,128,0.25)",
+                  }}
+                >
+                  <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" style={{ color: "#4ade80" }} />
+                  <span className="font-semibold text-sm md:text-base" style={{ color: "rgba(255,255,255,0.95)" }}>
+                    {row.after}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* VS divider */}
+            <div className="flex lg:flex-col items-center justify-center order-2 py-2 lg:py-0 lg:px-2">
+              <div className="hidden lg:block w-px h-full" style={{ background: "linear-gradient(to bottom, transparent, #C9A84C, transparent)" }} />
+              <div
+                className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full font-black text-2xl md:text-3xl shrink-0 lg:my-4 lg:absolute lg:top-1/2 lg:right-1/2 lg:-translate-y-1/2 lg:translate-x-1/2"
+                style={{
+                  backgroundColor: "#C9A84C",
+                  color: "#1a1208",
+                  boxShadow: "0 4px 24px rgba(201,168,76,0.4)",
+                  position: "relative",
+                }}
+              >
+                VS
+              </div>
+              <div className="hidden lg:block w-px h-full" style={{ background: "linear-gradient(to bottom, transparent, #C9A84C, transparent)" }} />
+            </div>
+
+            {/* BEFORE — LEFT side — red */}
+            <div className="space-y-3 order-3">
+              <div
+                className="text-center font-black text-lg md:text-xl py-2 rounded-full mb-3"
+                style={{
+                  backgroundColor: "rgba(239,68,68,0.12)",
+                  color: "#ef4444",
+                  border: "1px solid rgba(239,68,68,0.4)",
+                }}
+              >
+                ✗ לפני הקורס
+              </div>
+              {comparison.map((row, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-3 p-4 rounded-xl"
+                  style={{
+                    backgroundColor: "#1f1414",
+                    border: "1px solid rgba(239,68,68,0.2)",
+                  }}
+                >
+                  <XCircle className="w-5 h-5 mt-0.5 shrink-0" style={{ color: "#ef4444" }} />
+                  <span className="text-sm md:text-base" style={{ color: "rgba(255,255,255,0.8)" }}>
+                    {row.before}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-10 text-center">
             <button onClick={onScrollToLead} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
               אני רוצה להיות בצד הימני
