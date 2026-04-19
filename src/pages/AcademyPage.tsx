@@ -213,19 +213,21 @@ const AcademyPage = () => {
       <div ref={heroAnchorRef} />
 
       {/* ============ 1️⃣ HERO ============ */}
-      <AcademyHero
-        title={v("hero", "title", "האקדמיה של Macho")}
-        subtitle={v("hero", "subtitle", "תוך 3 חודשים — בדרך לקריירה בספרות גברים")}
-        description={v("hero", "description", "קורס למתחילים ללא ניסיון: הרבה תרגול, קבוצות קטנות, תעודה בסיום וליווי עד שמתחילים לעבוד.")}
+      <AcademyHeroV2
+        badge={v("hero", "badge", "✂ הקורס המקצועי לספרים בישראל")}
+        title={v("hero", "title", "מאפס לספר מקצועי — תוך 4 שלבים")}
+        subtitle={v("hero", "subtitle", "הגיע הזמן שתרוויח 10,000 ₪ בחודש מהתספורות שלך")}
+        description={v("hero", "description", "הצטרף למאות ספרים שסיימו את האקדמיה של יהלי צור ובנו קריירה מקצועית — עם מפת דרכים ברורה, ליווי אישי, ומיני קורס מקצועי.")}
         backgroundImage={v("hero", "image", "")}
         primaryCta={{
-          label: <><Smartphone className="w-4 h-4" /> בדקו התאמה לקורס</>,
-          href: buildWaLink("היי 👋 אני רוצה לבדוק התאמה לקורס באקדמיה של Macho. אפשר פרטים?"),
+          label: <>הצטרף לאקדמיה ←</>,
+          href: buildWaLink("היי 👋 אני רוצה להצטרף לאקדמיה של Macho. אפשר פרטים?"),
         }}
         secondaryCta={{
-          label: <><Play className="w-4 h-4" /> למידע נוסף</>,
+          label: <>בדוק אם זה מתאים לי</>,
           href: "#lead-section",
         }}
+        socialProof={["+500 בוגרים", "ליווי אישי", "3 חודשים בלבד"]}
       />
 
       {/* URGENCY BAR with spots remaining */}
@@ -235,6 +237,18 @@ const AcademyPage = () => {
         onPrimaryCTA={onPrimaryCTA}
         spotsLeft={spotsLeft}
       />
+
+      {/* ============ SOCIAL PROOF STATS BAR ============ */}
+      <AcademyStatsBar />
+
+      {/* ============ SALARY CALCULATOR (moved up to second section) ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <SalaryCalculator />
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="light" to="light" shape="waves" />
 
       {/* ============ 2️⃣ VIDEO / INTRO ============ */}
       <Section variant="light">
