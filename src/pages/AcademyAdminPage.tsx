@@ -316,15 +316,25 @@ const AcademyAdminPage = () => {
               </p>
             </div>
           </div>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => navigate("/academy/dashboard")}
-            style={{ borderColor: GOLD, color: GOLD, background: "transparent" }}
-          >
-            <ArrowRight className="w-4 h-4" />
-            חזרה
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => navigate("/academy/admin/lessons")}
+              style={{ borderColor: GOLD, color: GOLD, background: "transparent" }}
+            >
+              🎬 שיעורים
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => navigate("/academy/dashboard")}
+              style={{ borderColor: GOLD, color: GOLD, background: "transparent" }}
+            >
+              <ArrowRight className="w-4 h-4" />
+              חזרה
+            </Button>
+          </div>
         </header>
 
         {/* Tabs */}
