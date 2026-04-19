@@ -384,14 +384,7 @@ const AcademyPage = () => {
 
       <SectionDivider from="dark" to="light" shape="curves" />
 
-      {/* ============ SALARY CALCULATOR ============ */}
-      <Section variant="light">
-        <AnimatedSection>
-          <SalaryCalculator />
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="light" to="light" shape="waves" />
+      {/* duplicate salary calculator removed — moved up to second section */}
 
       {/* ============ 4️⃣ SOCIAL PROOF ============ */}
       <Section variant="light">
