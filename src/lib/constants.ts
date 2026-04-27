@@ -6,11 +6,11 @@ export const BUSINESS_ADDRESS = "המחשלים 5, עפולה";
 export const BUSINESS_ADDRESS_NOTE = "אזור התעשייה עפולה";
 
 // Phone
-export const PHONE_DISPLAY = "054-4744031";
-export const PHONE_TEL = "0544744031";
+export const PHONE_DISPLAY = "054-980-8868";
+export const PHONE_TEL = "0549808868";
 
 // WhatsApp numbers (different per department)
-export const WA_GENERAL = "972544744031";    // General / Barbershop / Jobs
+export const WA_GENERAL = "972549808868";    // General / Barbershop / Jobs
 export const WA_PERM = "972552938579";       // Perm inquiries
 export const WA_ACADEMY = "972552935987";    // Academy inquiries
 
@@ -27,9 +27,9 @@ export const GMAPS_URL = `https://www.google.com/maps/search/?api=1&query=${enco
 
 // Hours
 export const BUSINESS_HOURS = [
-  { day: "ראשון - חמישי", time: "09:00 - 20:00" },
-  { day: "שישי", time: "08:00 - 14:00" },
-  { day: "שבת", time: "סגור" },
+  { day: "ראשון, שלישי עד חמישי", time: "09:00 - 20:00" },
+  { day: "שני", time: "סגור" },
+  { day: "שישי", time: "08:30 - 14:00" },
 ];
 
 // Helpers

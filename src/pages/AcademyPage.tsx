@@ -188,11 +188,16 @@ const AcademyPage = () => {
 
   const onLeadSend = (name: string, phone: string, goal: "info" | "fit" | "reserve") => {
     const goalText =
-      goal === "info" ? "אני רוצה עוד פרטים על האקדמיה" :
-      goal === "reserve" ? "אני רוצה לשריין מקום למחזור הקרוב" :
-      "אני רוצה לבדוק התאמה לקורס";
+      goal === "info" ? "רק פרטים" :
+      goal === "reserve" ? "שריון מקום" :
+      "בדיקת התאמה";
 
-    const lines = ["היי 👋", goalText, "", name ? `שם: ${name}` : "", phone ? `טלפון: ${phone}` : "", "", "אפשר לדבר? 🙂"].filter(Boolean);
+    const lines = [
+      "ליד חדש מהאקדמיה 🎓",
+      `שם: ${name || "-"}`,
+      `טלפון: ${phone || "-"}`,
+      `מעוניין ב: ${goalText}`,
+    ];
     window.open(buildWaLink(lines.join("\n")), "_blank", "noopener,noreferrer");
   };
 

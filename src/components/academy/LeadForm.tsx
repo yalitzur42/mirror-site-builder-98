@@ -78,7 +78,7 @@ const LeadForm = ({ v, onSend }: LeadFormProps) => {
           className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-3 font-bold hover:opacity-95 transition"
         >
           <Smartphone className="w-5 h-5" />
-          {v("lead_form", "button_text", "שלחו לי פרטים בוואטסאפ")}
+          {v("lead_form", "button_text", "שלח פרטים — נחזור אליך בהקדם")}
         </button>
 
         <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
