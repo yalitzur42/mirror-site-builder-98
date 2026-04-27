@@ -124,11 +124,11 @@ const BarbershopPage = () => {
             </div>
             <div>
               <div className="text-5xl font-black mb-2">{v("stats", "stat2_number", "5,000+")}</div>
-              <p className="opacity-70">{v("stats", "stat2_label", "לקוחות מרוצים")}</p>
+              <p className="opacity-70">{v("stats", "stat2_label", "גברים שיצאו מרוצים")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "1,500+")}</div>
-              <p className="opacity-70">{v("stats", "stat3_label", "ביקורות חיוביות")}</p>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "⭐ 5")}</div>
+              <p className="opacity-70">{v("stats", "stat3_label", "למעלה מ-1,000 ביקורות חיוביות בגוגל ובאיזי")}</p>
             </div>
           </div>
         </AnimatedSection>
