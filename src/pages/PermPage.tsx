@@ -28,15 +28,15 @@ const PermPage = () => {
   const defaultPermImages = [permClassic, permWaves, permTight, permLight];
 
   const permTypes = [1, 2, 3, 4].map((i, idx) => ({
-    name: v("perm_types", `type${i}_name`, ["תלתלים קלאסיים", "גלים טבעיים", "תלתלים צפופים", "פרם קל"][idx]),
+    name: v("perm_types", `type${i}_name`, ["תלתלים הדוקים", "תלתלים פתוחים", "שיער גלי", "פרם עדין"][idx]),
     image: v("perm_types", `type${i}_image`) || defaultPermImages[idx],
   }));
 
   const benefitIcons = [Shield, Clock, CheckCircle, Sparkles];
   const benefits = [1, 2, 3, 4].map((i, idx) => ({
     icon: benefitIcons[idx],
-    title: v("benefits", `benefit${i}_title`, ["מוצרים איכותיים", "תוצאות ארוכות", "מראה טבעי", "שיער בריא"][idx]),
-    description: v("benefits", `benefit${i}_desc`, ["מוצרים מקצועיים בלבד", "החזקה של חודשים", "תלתלים שנראים אמיתיים", "טיפול משקם ומזין"][idx]),
+    title: v("benefits", `benefit${i}_title`, ["מראה טבעי", "מחזיק לאורך זמן", "ראשונים והיחידים", "מותאם אישית"][idx]),
+    description: v("benefits", `benefit${i}_desc`, ["תלתלים שנראים כאילו נולדת איתם — לא 'פרמי'", "עם טיפוח נכון — הפרם נשמר ומחזיק חודשים", "אין עוד מקום בישראל שמתמחה ספציפית בפרם לגברים", "כל תוצאה בנויה לפי סוג השיער שלך בדיוק"][idx]),
   }));
 
   return (
@@ -129,8 +129,8 @@ const PermPage = () => {
                   <MessageCircle className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">1. {v("process", "step1_title", "ייעוץ ראשוני")}</h4>
-                  <p className="opacity-70">{v("process", "step1_desc", "פגישת היכרות קצרה – מבינים מה הסגנון שמתאים לך ומתאימים את סוג הפרם")}</p>
+                  <h4 className="font-bold text-lg mb-1">1. {v("process", "step1_title", "שיחת ייעוץ בוואטסאפ — חינם")}</h4>
+                  <p className="opacity-70">{v("process", "step1_desc", "שולחים תמונה ואומרים מה רוצים. אנחנו מגיבים עם: האם זה מתאים, איזה סוג פרם מומלץ, ומה לצפות.")}</p>
                 </div>
               </div>
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(140, 40%, 90%)' }}>
@@ -138,8 +138,8 @@ const PermPage = () => {
                   <Sparkles className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">2. {v("process", "step2_title", "הטיפול")}</h4>
-                  <p className="opacity-70">{v("process", "step2_desc", "כ-2 שעות של טיפול מקצועי עם מוצרים איכותיים. אתה פשוט יושב ונהנה")}</p>
+                  <h4 className="font-bold text-lg mb-1">2. {v("process", "step2_title", "הפגישה — כ-4 שעות")}</h4>
+                  <p className="opacity-70">{v("process", "step2_desc", "עושים את הפרם, עוברים לתספורת עם יהלי שמכניסה צורה לתלתלים, ויוצאים עם תוצאה מוכנה.")}</p>
                 </div>
               </div>
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(210, 50%, 92%)' }}>
@@ -147,8 +147,8 @@ const PermPage = () => {
                   <Trophy className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">3. {v("process", "step3_title", "תלתלים מושלמים!")}</h4>
-                  <p className="opacity-70">{v("process", "step3_desc", "יוצא מהמספרה עם לוק חדש לגמרי. התוצאה נשמרת 3-6 חודשים")}</p>
+                  <h4 className="font-bold text-lg mb-1">3. {v("process", "step3_title", "יוצאים מוכנים")}</h4>
+                  <p className="opacity-70">{v("process", "step3_desc", "תוצאה מושלמת + הדרכה מלאה על סידור שיער. ואם יש שאלות אחרי — תמיד אפשר לכתוב.")}</p>
                 </div>
               </div>
             </div>
@@ -167,9 +167,9 @@ const PermPage = () => {
               <Trophy className="w-8 h-8 text-accent" />
             </div>
             <div className="space-y-4 text-lg opacity-85 text-center">
-              <p><strong>Macho היו הראשונים בישראל</strong> {v("our_story", "paragraph1", "שהביאו את עולם הפרם לגברים לרמה מקצועית אמיתית. כשכולם עוד חשבו שפרם זה \"דבר של פעם\" – אנחנו כבר הבנו שזה הטרנד הבא.")}</p>
-              <p>{v("our_story", "paragraph2", "נסענו לחו\"ל, למדנו מהטובים בעולם, הבאנו את הטכנולוגיות המתקדמות ביותר ופיתחנו שיטות עבודה ייחודיות שמותאמות לשיער ולאקלים הישראלי.")}</p>
-              <p>{v("our_story", "paragraph3", "היום אנחנו גאים להיות המובילים בתחום – עם מאות גברים מרוצים שהפכו את הפרם לחלק בלתי נפרד מהסגנון שלהם.")} <strong>הניסיון שלנו הוא הביטוח שלכם.</strong></p>
+              <p>{v("our_story", "paragraph1", "לפני כשנתיים התחלנו להתעניין בפרם לגברים — תחום שכמעט לא היה קיים בישראל. ראינו שבעולם זה תחום מתוחכם ומבוקש, והחלטנו ללמוד את זה רצינית.")}</p>
+              <p>{v("our_story", "paragraph2", "למדנו מקורסים בחו\"ל, ניסינו על עצמנו לפני שניסינו על לקוחות, ובנינו שיטת עבודה שמותאמת לשיער הישראלי — שהוא לרוב עבה יותר ודורש גישה שונה.")}</p>
+              <p>{v("our_story", "paragraph3", "היום אנחנו הראשונים והיחידים בישראל שמתמחים ספציפית בפרם לגברים — ומגיעים אלינו אנשים מכל הארץ.")} <strong>הניסיון שלנו הוא הביטוח שלכם.</strong></p>
             </div>
           </div>
         </AnimatedSection>
