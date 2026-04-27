@@ -44,9 +44,9 @@ const PermPage = () => {
       <Breadcrumbs items={[{ label: "פרם לגבר" }]} />
 
       <HeroSplit
-        title={v("hero", "title", "פרם לגבר")}
-        subtitle={v("hero", "subtitle", "הראשונים והיחידים בישראל שמתמחים בזה.")}
-        description={v("hero", "description", "כשכולם עוד לא האמינו שפרם לגבר זה דבר — אנחנו כבר עבדנו על זה. למדנו מהטובים בעולם, ניסינו על עצמנו, ובנינו שיטה שעובדת על השיער הישראלי. היום מגיעים אלינו מכל הארץ.")}
+      title={v("hero", "title", "פרם לגבר")}
+      subtitle={v("hero", "subtitle", "השיער שתמיד רצית? הוא כבר שם. רק צריך להוציא אותו.")}
+      description={v("hero", "description", "תלתלים וגלים שנראים כאילו נולדת איתם. לא מאומץ. לא מלאכותי. סתם אתה - רק גרסה טובה יותר.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לייעוץ חינם</>, href: waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.") }}
         image={v("hero", "image") || permHero}
       />
