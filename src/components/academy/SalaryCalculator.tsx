@@ -31,11 +31,10 @@ const SalaryCalculator = () => {
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-8 md:mb-10">
         <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
-          <Calculator className="w-7 h-7 md:w-9 md:h-9 inline-block align-middle ml-2" />
-          כמה תוכל להרוויח בחודש? 💰
+          🧮 כמה תוכל להרוויח בחודש?
         </h2>
         <p className="opacity-75 text-lg md:text-xl">
-          הזן את המספרים שלך וראה את הפוטנציאל
+          הזז את הסליידר ותראה מספרים אמיתיים — לא הבטחות
         </p>
       </div>
 
