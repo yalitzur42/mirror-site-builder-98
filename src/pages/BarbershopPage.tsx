@@ -139,7 +139,7 @@ const BarbershopPage = () => {
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="mb-4"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> {v("join_team", "title", "ספר שרוצה להצטרף לצוות?")}</h2>
             <p className="text-lg opacity-80 mb-8">
-              {v("join_team", "description", "אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.")}
+              {v("join_team", "description", "אנחנו תמיד שמחים לשמוע מספרים שרוצים לעבוד בסביבה מקצועית עם סטנדרט אמיתי. אם אתה חושב שאתה מתאים — דבר איתנו.")}
             </p>
             <a
               href={waLink(WA_GENERAL, "היי, אני ספר ומעוניין להצטרף לצוות Macho")}

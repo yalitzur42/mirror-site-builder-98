@@ -45,8 +45,8 @@ const PermPage = () => {
 
       <HeroSplit
         title={v("hero", "title", "פרם לגבר")}
-        subtitle={v("hero", "subtitle", "תלתלים מושלמים לגברים")}
-        description={v("hero", "description", "תלתלים וגלים טבעיים לגברים. טכניקות מתקדמות, מראה טבעי ושירות מקצועי. Macho – החלוצים בפרם לגברים בישראל.")}
+        subtitle={v("hero", "subtitle", "הראשונים והיחידים בישראל שמתמחים בזה.")}
+        description={v("hero", "description", "כשכולם עוד לא האמינו שפרם לגבר זה דבר — אנחנו כבר עבדנו על זה. למדנו מהטובים בעולם, ניסינו על עצמנו, ובנינו שיטה שעובדת על השיער הישראלי. היום מגיעים אלינו מכל הארץ.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לייעוץ חינם</>, href: waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.") }}
         image={v("hero", "image") || permHero}
       />
