@@ -177,9 +177,9 @@ const PermPage = () => {
       <SectionDivider from="dark" to="light" shape="zigzag" />
 
       <CTASection
-        title={<><Waves className="w-6 h-6 inline-block align-middle ml-1" /> רוצים תלתלים?</>}
-        description={<><Target className="w-5 h-5 inline-block align-middle ml-1" /> לחצו לייעוץ חינם ללא התחייבות</>}
-        buttonLabel={<><Smartphone className="w-4 h-4" /> דברו איתנו בוואטסאפ</>}
+        title={<><Waves className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לשיער שתמיד רצית?</>}
+        description={<><Target className="w-5 h-5 inline-block align-middle ml-1" /> קבע תור עכשיו ותתחיל לקבל מחמאות על השיער</>}
+        buttonLabel={<><Smartphone className="w-4 h-4" /> קבע תור עכשיו</>}
         buttonHref={waLink(WA_PERM, "היי, אשמח לקבל עוד פרטים על תהליך הפרם.")}
         variant="light"
       />
