@@ -55,7 +55,7 @@ const PrivacyPage = () => {
             <h2 className="text-xl font-semibold text-foreground mb-3">6. יצירת קשר</h2>
             <p>לשאלות בנוגע למדיניות הפרטיות, ניתן ליצור קשר:</p>
             <ul className="list-disc pr-6 space-y-1">
-              <li>טלפון: 054-4744031</li>
+              <li>טלפון: 054-980-8868</li>
               <li>כתובת: המחשלים 5, עפולה</li>
             </ul>
           </section>
