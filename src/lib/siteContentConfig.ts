@@ -104,7 +104,7 @@ export const siteContentConfig: PageConfig[] = [
           { key: "title", label: "כותרת", type: "text", defaultValue: "הכירו את יהלי" },
           { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "יהלי צור – מייסד Macho" },
           { key: "paragraph1", label: "פסקה 1", type: "textarea", defaultValue: "עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את Macho מתוך חזון להביא שינוי אמיתי לעולם הטיפוח לגברים בישראל." },
-          { key: "paragraph2", label: "פסקה 2", type: "textarea", defaultValue: "בוגר קורסים מובילים בארץ ובעולם, ישראל משלב ידע מקצועי עמוק עם גישה אישית וחמה לכל לקוח." },
+          { key: "paragraph2", label: "פסקה 2", type: "textarea", defaultValue: "" },
           { key: "image", label: "תמונת המייסד", type: "image", defaultValue: "" },
         ],
       },
