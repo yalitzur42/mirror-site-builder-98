@@ -193,7 +193,7 @@ const HomePage = () => {
             <h3 className="text-xl font-bold mb-4">{v("owner", "subtitle", "יהלי צור — מייסד Macho")}</h3>
             <div className="space-y-4 text-lg">
               <p>{v("owner", "paragraph1", "ספר מקצועי עם מעל 6 שנות ניסיון. ב-2022 פתח את מאצו בעפולה מתוך אמונה שגבר מגיע לחוות תספורת ברמה אחרת — שירות אמיתי, תוצאה אמיתית.")}</p>
-              <p>{v("owner", "paragraph2", "מנהל צוות של 5 אנשים, מעביר קורס ספרות ומלמד תוצאות — לא רק טכניקה. כי ספר טוב זה לא רק מי שגוזר טוב, זה מי שהלקוח רוצה לחזור אליו.")}</p>
+              {v("owner", "paragraph2", "") && <p>{v("owner", "paragraph2", "")}</p>}
             </div>
           </AnimatedSection>
         </div>
