@@ -159,9 +159,9 @@ const BarbershopPage = () => {
       <SectionDivider from="dark" to="light" shape="steps" />
 
       <CTASection
-        title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לתספורת חדשה?</>}
+        title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכן לתספורת שתזכור?</>}
         description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו</>}
-        buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור בוואטסאפ</>}
+        buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור עכשיו</>}
         buttonHref={BOOKING_URL}
         variant="light"
       />
