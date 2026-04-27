@@ -911,10 +911,10 @@ const AcademyPage = () => {
         <div className="container-main">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
-              מעניין? בואו נדבר — בלי התחייבות
+              🔥 נשארו 2 מקומות בחודש הזה
             </h2>
             <p className="text-base md:text-lg opacity-75 mb-9">
-              תוך כמה דקות נחזור אליך בוואטסאפ עם כל הפרטים על המחזור הקרוב.
+              מעניין? בוא נדבר — בלי התחייבות. בשיחה של 15 דקות נבדוק ביחד אם זה מתאים לך, ונבנה לך מפת הכנסה אישית חינם.
             </p>
             <a
               href={buildWaLink("היי 👋 אני רוצה פרטים על האקדמיה של Macho. אפשר לדבר?")}
