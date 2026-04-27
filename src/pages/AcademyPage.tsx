@@ -49,22 +49,22 @@ const AcademyPage = () => {
   // ====== DATA (dynamic from admin) ======
   const modules = useMemo(
     () => [
-      v("modules", "module1", "מבוא לספרות גברים"),
-      v("modules", "module2", "כלי עבודה והיגיינה"),
-      v("modules", "module3", "טכניקות בסיסיות"),
-      v("modules", "module4", "תספורות קלאסיות"),
-      v("modules", "module5", "עיצוב זקן בסיסי"),
-      v("modules", "module6", "שירות לקוחות ומכירה"),
+      v("modules", "module1", "בסיס מספריים והכרת הראש"),
+      v("modules", "module2", "גזירת יום יום וסידור שיער"),
+      v("modules", "module3", "בסיס דירוגים ועבודה עם מכונה"),
+      v("modules", "module4", "זקן ודירוג אמצע"),
+      v("modules", "module5", "טייפר ומוייקן"),
+      v("modules", "module6", "שיווק, תמחור ובניית לקוחות"),
     ],
     [v]
   );
 
   const stats = useMemo(
     () => [
-      { value: parseInt(v("stats", "stat1_number", "15")) || 15, suffix: v("stats", "stat1_number", "15+").replace(/\d+/, ""), label: v("stats", "stat1_label", "שנות ניסיון בהוראה") },
-      { value: parseInt(v("stats", "stat2_number", "500")) || 500, suffix: v("stats", "stat2_number", "500+").replace(/\d+/, ""), label: v("stats", "stat2_label", "בוגרים עובדים בתעשייה") },
-      { value: parseInt(v("stats", "stat3_number", "98")) || 98, suffix: v("stats", "stat3_number", "98%").replace(/\d+/, ""), label: v("stats", "stat3_label", "שביעות רצון תלמידים") },
-      { value: parseInt(v("stats", "stat4_number", "12")) || 12, suffix: v("stats", "stat4_number", "12").replace(/\d+/, ""), label: v("stats", "stat4_label", "מחזורים בשנה") },
+      { value: parseInt(v("stats", "stat1_number", "20+")) || 20, suffix: v("stats", "stat1_number", "20+").replace(/\d+/, ""), label: v("stats", "stat1_label", "בוגרים עובדים בתחום") },
+      { value: parseInt(v("stats", "stat2_number", "100%")) || 100, suffix: v("stats", "stat2_number", "100%").replace(/\d+/, ""), label: v("stats", "stat2_label", "שביעות רצון בוגרים") },
+      { value: parseInt(v("stats", "stat3_number", "3")) || 3, suffix: v("stats", "stat3_number", "3").replace(/\d+/, ""), label: v("stats", "stat3_label", "חודשי קורס") },
+      { value: parseInt(v("stats", "stat4_number", "1 שנה")) || 1, suffix: v("stats", "stat4_number", "1 שנה").replace(/\d+/, ""), label: v("stats", "stat4_label", "ליווי אחרי הקורס") },
     ],
     [v]
   );
@@ -81,38 +81,40 @@ const AcademyPage = () => {
     [v]
   );
 
-  const nextCohortStartISO = v("details", "next_cohort", "2026-04-15") + "T18:00:00.000+03:00";
-  const spotsTotal = parseInt(v("details", "spots_total", "8")) || 8;
-  const spotsTaken = parseInt(v("details", "spots_taken", "5")) || 5;
+  const nextCohortStartISO = v("details", "next_cohort", "2026-06-01") + "T18:00:00.000+03:00";
+  const spotsTotal = parseInt(v("details", "spots_total", "2")) || 2;
+  const spotsTaken = parseInt(v("details", "spots_taken", "0")) || 0;
   const spotsLeft = Math.max(0, spotsTotal - spotsTaken);
 
   const faq = useMemo(
     () => [
-      { q: v("faq", "q1", "צריך ניסיון קודם?"), a: v("faq", "a1", "לא. הקורס מיועד למתחילים. מתחילים מהבסיס ומתקדמים לתרגול מעשי בהדרגה.") },
-      { q: v("faq", "q2", "כמה פעמים בשבוע לומדים?"), a: v("faq", "a2", "בד״כ 2–3 מפגשים בשבוע (תלוי במסלול).") },
-      { q: v("faq", "q3", "האם מקבלים תעודה?"), a: v("faq", "a3", "כן. בסיום הקורס ובהשלמת המטלות תקבלו תעודת הסמכה רשמית.") },
-      { q: v("faq", "q4", "יש ליווי אחרי הקורס?"), a: v("faq", "a4", "כן. יש קבוצת בוגרים/מנטורינג והכוונה להשתלבות במספרות.") },
-      { q: v("faq", "q5", "מה לגבי ציוד?"), a: v("faq", "a5", "כולל ערכת ציוד מקצועית בסיסית לכל תלמיד.") },
+      { q: v("faq", "q1", "צריך ניסיון קודם?"), a: v("faq", "a1", "לא. הקורס בנוי בדיוק למי שמתחיל מאפס. מתחילים מהבסיס ולא זורקים אותך למים.") },
+      { q: v("faq", "q2", "כמה פעמים בשבוע לומדים?"), a: v("faq", "a2", "8 שיעורים פרונטליים לאורך הקורס + שיעורי בית ותרגול עצמאי בין השיעורים.") },
+      { q: v("faq", "q3", "מקבלים תעודה?"), a: v("faq", "a3", "כן, תעודת סיום מאקדמיית מאצו.") },
+      { q: v("faq", "q4", "יש ליווי אחרי הקורס?"), a: v("faq", "a4", "כן — שנה של ליווי בפלטפורמה הדיגיטלית + אפשרות לשאול את יהלי ישירות.") },
+      { q: v("faq", "q5", "מה לגבי ציוד?"), a: v("faq", "a5", "בשיעורים עצמם הציוד מסופק. בהמשך נעזור לך לדעת בדיוק מה לקנות ואיפה.") },
+      { q: v("faq", "q6", "כמה עולה הקורס?"), a: v("faq", "a6", "השאר פרטים ונחזור אליך עם כל המידע — בלי התחייבות.") },
+      { q: v("faq", "q7", "איפה הקורס מתקיים?"), a: v("faq", "a7", "במספרה שלנו בעפולה, המחשלים 5.") },
     ],
     [v]
   );
 
   const problems = useMemo(
     () => [
-      { icon: AlertTriangle, text: v("problems", "pain1", "רוצה להחליף מקצוע אבל לא יודע מאיפה להתחיל") },
-      { icon: AlertTriangle, text: v("problems", "pain2", "למדת לבד מיוטיוב אבל חסר ביטחון לעבוד מול לקוחות") },
-      { icon: AlertTriangle, text: v("problems", "pain3", "פחד להשקיע כסף וזמן בלי ערבות שזה יוביל לעבודה") },
-      { icon: AlertTriangle, text: v("problems", "pain4", "מחפש מקצוע יצירתי עם חופש ושליטה בזמן שלך") },
+      { icon: AlertTriangle, text: v("problems", "pain1", "יצאת מהצבא ועדיין לא מצאת כיוון אמיתי") },
+      { icon: AlertTriangle, text: v("problems", "pain2", "ניסית ללמוד לבד מיוטיוב — חסר לך הביטחון לעבוד מול אנשים") },
+      { icon: AlertTriangle, text: v("problems", "pain3", "מפחד להשקיע כסף בקורס נוסף שלא יחזיר את עצמו") },
+      { icon: AlertTriangle, text: v("problems", "pain4", "רוצה מקצוע שייתן לך חופש, עצמאות ושליטה על הזמן שלך") },
     ],
     [v]
   );
 
   const solutions = useMemo(
     () => [
-      v("solution", "benefit1", "תרגול מעשי מיום ראשון — לא רק צופים"),
-      v("solution", "benefit2", "מנטור אישי שלוקח אותך יד ביד"),
-      v("solution", "benefit3", "ליווי גם אחרי הקורס עד שנכנסים לעבודה"),
-      v("solution", "benefit4", "ערכת ציוד מקצועית כלולה — מתחילים מוכנים"),
+      v("solution", "benefit1", "8 שיעורים פרונטליים עם יהלי — תרגול אמיתי מיום ראשון"),
+      v("solution", "benefit2", "פידבק אישי מיהלי על כל תספורת שתשלח"),
+      v("solution", "benefit3", "פלטפורמה דיגיטלית עם מפת דרכים ל-10K — שלב אחרי שלב"),
+      v("solution", "benefit4", "ליווי שנה אחרי הקורס — לא נעלמים"),
     ],
     [v]
   );
@@ -148,9 +150,9 @@ const AcademyPage = () => {
 
   const guarantees = useMemo(
     () => [
-      v("guarantee", "item1", "שיעור ניסיון חינם — תראה איך עובדים לפני שמחליטים"),
-      v("guarantee", "item2", "ליווי עד השתלבות בעבודה — לא עוזבים אותך אחרי התעודה"),
-      v("guarantee", "item3", "קבוצות קטנות — אם לא מרגיש יחס אישי, זה לא אנחנו"),
+      v("guarantee", "item1", "שיעור ניסיון — תראה איך זה עובד לפני שמחליטים"),
+      v("guarantee", "item2", "אם עשית את כל מה שביקשתי ועדיין אין לך ביטחון לעבוד — ממשיכים ביחד עד שיש. בלי תשלום נוסף."),
+      v("guarantee", "item3", "קורס 1 על 1 — יחס אישי שאי אפשר לקבל בכיתה"),
     ],
     [v]
   );
@@ -219,10 +221,10 @@ const AcademyPage = () => {
 
       {/* ============ 1️⃣ HERO ============ */}
       <AcademyHeroV2
-        badge={v("hero", "badge", "✂ הקורס המקצועי לספרים בישראל")}
-        title={v("hero", "title", "מאפס לספר מקצועי — תוך 4 שלבים")}
-        subtitle={v("hero", "subtitle", "הגיע הזמן שתרוויח 10,000 ₪ בחודש מהתספורות שלך")}
-        description={v("hero", "description", "הצטרף למאות ספרים שסיימו את האקדמיה של יהלי צור ובנו קריירה מקצועית — עם מפת דרכים ברורה, ליווי אישי, ומיני קורס מקצועי.")}
+        badge={v("hero", "badge", "✂ קורס ספרות גברים — עפולה")}
+        title={v("hero", "title", "מאפס ניסיון לספר עם יומן מלא")}
+        subtitle={v("hero", "subtitle", "תוך 3 חודשים. בלי הבטחות שווא — עם תוצאות אמיתיות.")}
+        description={v("hero", "description", "20+ בוגרים שיצאו מהקורס הזה וכיום עובדים, גובים כסף, ומרוויחים. לא כי יש להם כישרון מיוחד — כי יש להם שיטה. זו השיטה של יהלי.")}
         backgroundImage={v("hero", "image", "")}
         primaryCta={{
           label: <>הצטרף לאקדמיה ←</>,
@@ -232,7 +234,7 @@ const AcademyPage = () => {
           label: <>בדוק אם זה מתאים לי</>,
           href: "#lead-section",
         }}
-        socialProof={["+500 בוגרים", "ליווי אישי", "3 חודשים בלבד"]}
+        socialProof={["20+ בוגרים", "ליווי שנה", "קורס 1 על 1"]}
       />
 
       {/* URGENCY BAR with spots remaining */}
@@ -334,14 +336,14 @@ const AcademyPage = () => {
                 <div className="grid md:grid-cols-2 h-full">
                   <div className="p-6 md:p-8">
                     <h3 className="text-xl md:text-2xl font-black">
-                      {v("outcomes", "title", "מה יוצא לכם מזה בפועל?")}
+                      {v("outcomes", "title", "מה יוצא לך מזה בפועל?")}
                     </h3>
                     <ul className="mt-4 grid gap-3 text-sm md:text-base">
                       {[
-                        v("outcomes", "item1", "תספורות בביקוש גבוה (Fade/Taper/Classic)"),
-                        v("outcomes", "item2", "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)"),
-                        v("outcomes", "item3", "תיק עבודות לתחילת עבודה במספרות"),
-                        v("outcomes", "item4", "בטחון מקצועי מול לקוחות אמיתיים"),
+                        v("outcomes", "item1", "תסתפר ולא תתבייש — תדע לטפל בכל שיער ובכל סוג תספורת"),
+                        v("outcomes", "item2", "תלמד להביא לקוחות בלי אינסטגרם חזק"),
+                        v("outcomes", "item3", "תבנה תיק עבודות שיפתח לך דלתות"),
+                        v("outcomes", "item4", "תדע לגבות כסף, להעלות מחיר, ולשמור על לקוחות חוזרים"),
                       ].map((item) => (
                         <li key={item} className="flex items-start gap-2">
                           <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
@@ -357,11 +359,11 @@ const AcademyPage = () => {
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Users className="w-4 h-4 opacity-80" />
-                        <span>עד 8 תלמידים</span>
+                        <span>קורס 1 על 1</span>
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Award className="w-4 h-4 opacity-80" />
-                        <span>תעודה בסיום</span>
+                        <span>תעודת סיום</span>
                       </div>
                     </div>
                   </div>
