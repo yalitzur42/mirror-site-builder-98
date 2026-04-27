@@ -119,7 +119,7 @@ const PermPage = () => {
 
       <Section variant="light">
         <AnimatedSection>
-          <h2 className="text-center mb-12"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד?</h2>
+          <h2 className="text-center mb-12"><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> 3 שלבים לשיער שתמיד רצית</h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <img src={v("process", "image") || gallery3} alt="תהליך פרם" className="rounded-xl w-full border-2 border-primary-foreground" />
             <div className="space-y-6">
@@ -128,8 +128,8 @@ const PermPage = () => {
                   <MessageCircle className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">1. {v("process", "step1_title", "שיחת ייעוץ בוואטסאפ — חינם")}</h4>
-                  <p className="opacity-70">{v("process", "step1_desc", "שולחים תמונה ואומרים מה רוצים. אנחנו מגיבים עם: האם זה מתאים, איזה סוג פרם מומלץ, ומה לצפות.")}</p>
+                  <h4 className="font-bold text-lg mb-1">1. {v("process", "step1_title", "ייעוץ ראשוני")}</h4>
+                  <p className="opacity-70">{v("process", "step1_desc", "שולחים לנו הודעה בוואטסאפ עם סרטון של השיער ומה התוצאה שאתה רוצה. אנחנו בוחנים ומבינים מה מתאים לך - לפני שאתה בכלל מגיע.")}</p>
                 </div>
               </div>
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(140, 40%, 90%)' }}>
@@ -137,8 +137,8 @@ const PermPage = () => {
                   <Sparkles className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">2. {v("process", "step2_title", "הפגישה — כ-4 שעות")}</h4>
-                  <p className="opacity-70">{v("process", "step2_desc", "עושים את הפרם, עוברים לתספורת עם יהלי שמכניסה צורה לתלתלים, ויוצאים עם תוצאה מוכנה.")}</p>
+                  <h4 className="font-bold text-lg mb-1">2. {v("process", "step2_title", "הטיפול")}</h4>
+                  <p className="opacity-70">{v("process", "step2_desc", "כ-3 שעות של טיפול מקצועי. אתה פשוט יושב ונהנה. אחרי הפרם - תספורת מותאמת אצל יהלי + הסבר איך לסדר את השיער בבית.")}</p>
                 </div>
               </div>
               <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: 'hsl(210, 50%, 92%)' }}>
@@ -146,8 +146,8 @@ const PermPage = () => {
                   <Trophy className="w-7 h-7 text-foreground" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">3. {v("process", "step3_title", "יוצאים מוכנים")}</h4>
-                  <p className="opacity-70">{v("process", "step3_desc", "תוצאה מושלמת + הדרכה מלאה על סידור שיער. ואם יש שאלות אחרי — תמיד אפשר לכתוב.")}</p>
+                  <h4 className="font-bold text-lg mb-1">3. {v("process", "step3_title", "תלתלים מושלמים")}</h4>
+                  <p className="opacity-70">{v("process", "step3_desc", "יוצא מהמספרה עם לוק חדש לגמרי. תוצאה שנשמרת 4-6 חודשים.")}</p>
                 </div>
               </div>
             </div>
