@@ -117,16 +117,16 @@ const BarbershopPage = () => {
         <AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat1_number", "15+")}</div>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat1_number", "6+")}</div>
               <p className="opacity-70">{v("stats", "stat1_label", "שנות ניסיון")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat2_number", "10K+")}</div>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat2_number", "5,000+")}</div>
               <p className="opacity-70">{v("stats", "stat2_label", "לקוחות מרוצים")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "5★")}</div>
-              <p className="opacity-70">{v("stats", "stat3_label", "דירוג ממוצע")}</p>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "1,500+")}</div>
+              <p className="opacity-70">{v("stats", "stat3_label", "ביקורות חיוביות")}</p>
             </div>
           </div>
         </AnimatedSection>
