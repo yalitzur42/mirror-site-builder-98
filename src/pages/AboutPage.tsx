@@ -24,8 +24,8 @@ const AboutPage = () => {
       
       <HeroSplit
         title={v("hero", "title", "אודות Macho")}
-        subtitle={v("hero", "subtitle", "הסיפור שלנו")}
-        description={v("hero", "description", "Macho נוסדה מתוך תשוקה אמיתית לספרות גברים ורצון להביא שינוי לתחום. אנחנו מאמינים שכל גבר ראוי לטיפוח מקצועי ואיכותי.")}
+        subtitle={v("hero", "subtitle", "הסיפור שמאחורי המספרה")}
+        description={v("hero", "description", "מאצו לא נפתחה מתוך תוכנית עסקית. היא נפתחה כי יהלי רצה לבנות מקום שגבר יכנס אליו ויצא עם חוויה אמיתית — לא רק תספורת.")}
         image={v("hero", "image") || teamPhoto}
       />
 
@@ -33,10 +33,10 @@ const AboutPage = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <img src={v("who_we_are", "image") || teamPhoto} alt="הצוות שלנו" className="rounded-lg w-full max-w-md mx-auto border-2 border-primary-foreground" />
           <div>
-            <h2 className="mb-6"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> {v("who_we_are", "title", "מי אנחנו?")}</h2>
+            <h2 className="mb-6"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> {v("who_we_are", "title", "מי אנחנו")}</h2>
             <div className="space-y-4 opacity-80">
-              <p>{v("who_we_are", "paragraph1", "Macho הוקמה בשנת 2015 בעפולה, והפכה במהרה למוקד מוביל בתחום הספרות לגברים בישראל. מה שהתחיל כמספרה קטנה התפתח לרשת שכוללת מספרה, אקדמיה ללימודי ספרות ופרם מקצועי לגברים.")}</p>
-              <p>{v("who_we_are", "paragraph2", "הצוות שלנו מונה ספרים מקצועיים ומנוסים, שעוברים הכשרות מתמידות ומתעדכנים בטרנדים החדשים ביותר מכל העולם.")}</p>
+              <p>{v("who_we_are", "paragraph1", "מאצו נפתחה ב-2022 בעפולה. התחלנו כמספרת גברים, הוספנו פרם לגבר שלא היה קיים בישראל, ופתחנו אקדמיה מתוך רצון לחלוק את מה שלמדנו. מאצו גדל כי הלקוחות גדלו איתנו.")}</p>
+              <p>{v("who_we_are", "paragraph2", "הצוות שלנו — 4 ספרים וקוסמטיקאית — כולם הוכשרו על ידי יהלי. אותה שיטה, אותו סטנדרט. הלקוח לא תלוי במי שיצא לו.")}</p>
             </div>
           </div>
         </div>
@@ -51,21 +51,21 @@ const AboutPage = () => {
               <Target className="w-8 h-8 text-foreground" />
             </div>
             <h3 className="text-xl font-bold mb-4 text-secondary-foreground">{v("values", "mission_title", "המשימה שלנו")}</h3>
-            <p className="text-secondary-foreground opacity-70">{v("values", "mission_desc", "להעניק לכל גבר חוויית טיפוח מקצועית, אישית ואיכותית שתגרום לו להרגיש בטוח ומטופח.")}</p>
+            <p className="text-secondary-foreground opacity-70">{v("values", "mission_desc", "לתת לכל גבר שנכנס אלינו חוויה שהוא לא מצפה לה — ומוצא את עצמו חוזר בגללה.")}</p>
           </div>
           <div className="text-center p-8 bg-secondary rounded-lg">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
               <Eye className="w-8 h-8 text-foreground" />
             </div>
             <h3 className="text-xl font-bold mb-4 text-secondary-foreground">{v("values", "vision_title", "החזון שלנו")}</h3>
-            <p className="text-secondary-foreground opacity-70">{v("values", "vision_desc", "להפוך למותג המוביל בישראל בתחום הטיפוח לגברים, ולהכשיר את הדור הבא של הספרים המובילים.")}</p>
+            <p className="text-secondary-foreground opacity-70">{v("values", "vision_desc", "להפוך את מאצו למקום שגברים מגיעים אליו לא כי הוא קרוב, אלא כי אין כמוהו.")}</p>
           </div>
           <div className="text-center p-8 bg-secondary rounded-lg">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
               <Heart className="w-8 h-8 text-foreground" />
             </div>
             <h3 className="text-xl font-bold mb-4 text-secondary-foreground">{v("values", "values_title", "הערכים שלנו")}</h3>
-            <p className="text-secondary-foreground opacity-70">{v("values", "values_desc", "מקצועיות, יחס אישי, חדשנות מתמדת ומחויבות לשביעות רצון מלאה של הלקוחות.")}</p>
+            <p className="text-secondary-foreground opacity-70">{v("values", "values_desc", "עמידה בזמנים, דיבור ישיר, שירות שמכבד את הלקוח — ותספורת שתישאר טובה גם שלושה שבועות אחרי.")}</p>
           </div>
         </div>
       </Section>
