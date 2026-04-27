@@ -663,7 +663,7 @@ const AcademyPage = () => {
       <SectionDivider from="light" to="dark" shape="triangles" />
 
       {/* ============ 8️⃣ PROGRAM / PROCESS ============ */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> איך זה עובד בפועל</>} variant="dark">
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> ⚙️ השיטה שלנו — פשוטה, ברורה, עם תוצאות</>} variant="dark">
         <AnimatedSection>
           <div className="grid lg:grid-cols-3 gap-6">
             {[
