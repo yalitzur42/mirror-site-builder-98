@@ -65,9 +65,9 @@ const BarbershopPage = () => {
       <Breadcrumbs items={[{ label: "מספרת גברים" }]} />
 
       <HeroSplit
-        title={v("hero", "title", "מספרת גברים")}
-        subtitle={v("hero", "subtitle", "תספורת שאתה יוצא ממנה בביטחון")}
-        description={v("hero", "description", "כל הספרים שלנו עברו הכשרה אישית על ידי יהלי — כולם עובדים מאותו מתכון, עם אותו סטנדרט. אצלנו לא תלוי ביום שיצא לך. כל פעם תספורת טובה.")}
+        title={v("hero", "title", "Macho עפולה")}
+        subtitle={v("hero", "subtitle", "מספרת גברים פרימיום.")}
+        description={v("hero", "description", "חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         image={v("hero", "image") || barbershopInterior}
       />
