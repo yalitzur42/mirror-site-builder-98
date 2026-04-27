@@ -46,10 +46,10 @@ const HomePage = () => {
   ];
 
   const academyFeatures = [
-    { icon: GraduationCap, title: v("academy", "feature1_title", "הכשרה מקצועית"), description: v("academy", "feature1_desc", "תוכנית לימודים מקיפה") },
-    { icon: Users, title: v("academy", "feature2_title", "קבוצות קטנות"), description: v("academy", "feature2_desc", "יחס אישי לכל תלמיד") },
-    { icon: Award, title: v("academy", "feature3_title", "תעודה מוכרת"), description: v("academy", "feature3_desc", "הסמכה רשמית בסיום") },
-    { icon: Star, title: v("academy", "feature4_title", "מרצים מובילים"), description: v("academy", "feature4_desc", "הטובים בתחום") },
+    { icon: GraduationCap, title: v("academy", "feature1_title", "8 שיעורים פרונטליים"), description: v("academy", "feature1_desc", "לומדים ומתרגלים ישירות על לקוחות אמיתיים — לא רק תיאוריה") },
+    { icon: Users, title: v("academy", "feature2_title", "ליווי של שנה"), description: v("academy", "feature2_desc", "לא נעלמים אחרי הקורס — נשארים איתך עד שאתה עובד") },
+    { icon: Award, title: v("academy", "feature3_title", "פלטפורמה דיגיטלית"), description: v("academy", "feature3_desc", "מדריכים, מפת דרכים ופידבק — הכל במקום אחד") },
+    { icon: Star, title: v("academy", "feature4_title", "20+ בוגרים"), description: v("academy", "feature4_desc", "כולם עובדים בתחום ומרוויחים כסף אמיתי") },
   ];
 
   // Gallery: try dynamic, fall back to static
@@ -66,17 +66,17 @@ const HomePage = () => {
     <Layout>
       {/* Hero Section */}
       <HeroSplit
-        badge={<><Hand className="w-4 h-4 inline-block align-middle ml-1" /> {v("hero", "badge", "אהלן גבר, ברוך הבא!")}</>}
+        badge={<><Hand className="w-4 h-4 inline-block align-middle ml-1" /> {v("hero", "badge", "אהלן גבר, ברוך הבא למאצו ✂")}</>}
         title={v("hero", "title", "משפחת Macho")}
-        subtitle={v("hero", "subtitle", "מובילים את סצנת טיפוח השיער לגברים בישראל!")}
-        description={v("hero", "description", "מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר.")}
+        subtitle={v("hero", "subtitle", "מספרה. פרם. אקדמיה. הכל תחת קורת גג אחת.")}
+        description={v("hero", "description", "מאצו נבנתה מתוך אהבה אמיתית למקצוע ורצון לתת לכל גבר חוויה שהוא יזכור — תספורת מקצועית, פרם לגבר שאנחנו הראשונים והיחידים בישראל שמתמחים בו, ואקדמיה שמוציאה ספרים שמרוויחים כסף.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         secondaryCta={{ label: <><GraduationCap className="w-4 h-4" /> לאקדמיה</>, href: "/academy" }}
         image={v("hero", "image") || heroBarbershop}
       />
 
       {/* What We Offer */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> {v("services", "title", "מה תמצאו אצלנו?")}</>} variant="light">
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> {v("services", "title", "מה תמצא אצלנו")}</>} variant="light">
         <AnimatedSection>
           <CardsGrid items={servicesCards} columns={3} />
         </AnimatedSection>
@@ -87,7 +87,7 @@ const HomePage = () => {
       {/* Academy Section */}
       <Section
         title={<><GraduationCap className="w-6 h-6 inline-block align-middle ml-1" /> {v("academy", "title", "האקדמיה של Macho")}</>}
-        subtitle={v("academy", "subtitle", "הפוך את התשוקה שלך למקצוע. הצטרף לאקדמיה המובילה בישראל ללימודי ספרות גברים.")}
+        subtitle={v("academy", "subtitle", "מאפס ניסיון לספר שמכניס 10,000 ₪ בחודש. זה לא סלוגן — זה מה שהבוגרים שלנו עושים.")}
         variant="dark"
       >
         <AnimatedSection>
@@ -118,24 +118,24 @@ const HomePage = () => {
             <img src={v("perm", "image") || permHero} alt="פרם לגבר" className="rounded-lg w-full max-w-xs mx-auto lg:max-w-full border-2 border-foreground" />
           </AnimatedSection>
           <AnimatedSection direction="left" delay={0.2}>
-             <h2 className="mb-4 font-extrabold"><Flame className="w-7 h-7 inline-block align-middle ml-1" /> {v("perm", "title", "פרם לגבר")}</h2>
-             <p className="text-muted-foreground text-xl mb-6 font-semibold">
-               {v("perm", "description", "תלתלים מושלמים לגברים. טכנולוגיה מתקדמת, תוצאות מוכחות ושירות מקצועי.")}
-            </p>
-            <StaggerChildren className="space-y-3 mb-8" staggerDelay={0.1}>
-              <li className="flex items-center gap-3">
-                <Shield className="w-5 h-5 text-primary" />
-                <span>{v("perm", "bullet1", "מוצרים איכותיים ובטוחים")}</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-primary" />
-                <span>{v("perm", "bullet2", "תוצאות מהירות וארוכות טווח")}</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Heart className="w-5 h-5 text-primary" />
-                <span>{v("perm", "bullet3", "התאמה אישית לסגנון שלך")}</span>
-              </li>
-            </StaggerChildren>
+              <h2 className="mb-4 font-extrabold"><Flame className="w-7 h-7 inline-block align-middle ml-1" /> {v("perm", "title", "פרם לגבר")}</h2>
+              <p className="text-muted-foreground text-xl mb-6 font-semibold">
+                {v("perm", "description", "הראשונים והיחידים בישראל שמתמחים בפרם לגברים. תלתלים טבעיים שמחזיקים, לא פוגעים בשיער, ויוצאים בדיוק כמו שרצית.")}
+             </p>
+             <StaggerChildren className="space-y-3 mb-8" staggerDelay={0.1}>
+               <li className="flex items-center gap-3">
+                 <Shield className="w-5 h-5 text-primary" />
+                 <span>{v("perm", "bullet1", "מראה טבעי — לא 'פרמי'")}</span>
+               </li>
+               <li className="flex items-center gap-3">
+                 <Clock className="w-5 h-5 text-primary" />
+                 <span>{v("perm", "bullet2", "מחזיק לטווח ארוך")}</span>
+               </li>
+               <li className="flex items-center gap-3">
+                 <Heart className="w-5 h-5 text-primary" />
+                 <span>{v("perm", "bullet3", "מותאם לסוג השיער שלך")}</span>
+               </li>
+             </StaggerChildren>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -156,11 +156,11 @@ const HomePage = () => {
       <Section variant="light">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <AnimatedSection direction="right">
-            <h2 className="mb-6 font-extrabold"><Scissors className="w-7 h-7 inline-block align-middle ml-1" /> {v("about_preview", "title", "Macho – יותר מסתם מספרה")}</h2>
+            <h2 className="mb-6 font-extrabold"><Scissors className="w-7 h-7 inline-block align-middle ml-1" /> {v("about_preview", "title", "Macho — כי גבר מגיע ליותר")}</h2>
             <div className="space-y-4 text-lg">
-              <p>{v("about_preview", "paragraph1", "Macho נוסדה מתוך אהבה אמיתית למקצוע הספרות ורצון להעלות את רמת השירות לגברים בישראל. אנחנו מאמינים שכל גבר מגיע ליחס אישי, מקצועי ואיכותי.")}</p>
-              <p>{v("about_preview", "paragraph2", "הצוות שלנו עובר הכשרות מתמידות ומעודכן בטרנדים האחרונים מכל העולם. אנחנו גאים להביא את הטוב ביותר ללקוחות שלנו.")}</p>
-              <p>{v("about_preview", "paragraph3", "בין אם אתה מחפש תספורת קלאסית, עיצוב זקן מדויק או פרם מושלם – ב-Macho תמצא את הכל תחת קורת גג אחת.")}</p>
+              <p>{v("about_preview", "paragraph1", "מאצו נפתחה ב-2022 בעפולה מתוך אהבה אמיתית למקצוע. רצינו לבנות מקום שגבר יכנס אליו ויצא עם יותר מסתם תספורת — עם ביטחון, עם מראה שמתאים לו, עם הרגשה שמישהו פה באמת הקשיב.")}</p>
+              <p>{v("about_preview", "paragraph2", "התחלנו כמספרה, הוספנו פרם לגבר שלא היה קיים בישראל, ופתחנו אקדמיה מתוך רצון לחלוק את מה שלמדנו.")}</p>
+              <p>{v("about_preview", "paragraph3", "היום יש לנו צוות של 4 ספרים שכולם הוכשרו על ידי יהלי — אותה שיטה, אותו סטנדרט — בנוסף קוסמטיקאית. כל מה שגבר צריך, במקום אחד.")}</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -190,10 +190,10 @@ const HomePage = () => {
           <AnimatedSection direction="left" delay={0.2}>
             <img src={teamIcon} alt="צוות Macho" className="w-32 mb-4 object-contain" />
             <h2 className="mb-4 font-extrabold">{v("owner", "title", "הכירו את יהלי")}</h2>
-            <h3 className="text-xl font-bold mb-4">{v("owner", "subtitle", "יהלי צור – מייסד Macho")}</h3>
+            <h3 className="text-xl font-bold mb-4">{v("owner", "subtitle", "יהלי צור — מייסד Macho")}</h3>
             <div className="space-y-4 text-lg">
-              <p>{v("owner", "paragraph1", "עם ניסיון של למעלה מ-15 שנה בתחום הספרות, ישראל הקים את Macho מתוך חזון להביא שינוי אמיתי לעולם הטיפוח לגברים בישראל.")}</p>
-              <p>{v("owner", "paragraph2", "בוגר קורסים מובילים בארץ ובעולם, ישראל משלב ידע מקצועי עמוק עם גישה אישית וחמה לכל לקוח.")}</p>
+              <p>{v("owner", "paragraph1", "ספר מקצועי עם מעל 6 שנות ניסיון. ב-2022 פתח את מאצו בעפולה מתוך אמונה שגבר מגיע לחוות תספורת ברמה אחרת — שירות אמיתי, תוצאה אמיתית.")}</p>
+              <p>{v("owner", "paragraph2", "מנהל צוות של 5 אנשים, מעביר קורס ספרות ומלמד תוצאות — לא רק טכניקה. כי ספר טוב זה לא רק מי שגוזר טוב, זה מי שהלקוח רוצה לחזור אליו.")}</p>
             </div>
           </AnimatedSection>
         </div>
