@@ -69,7 +69,7 @@ const HomePage = () => {
         badge={<><Hand className="w-4 h-4 inline-block align-middle ml-1" /> {v("hero", "badge", "אהלן גבר, ברוך הבא למאצו ✂")}</>}
         title={v("hero", "title", "משפחת Macho")}
         subtitle={v("hero", "subtitle", "מספרה. פרם. אקדמיה. הכל תחת קורת גג אחת.")}
-        description={v("hero", "description", "מאצו נבנתה מתוך אהבה אמיתית למקצוע ורצון לתת לכל גבר חוויה שהוא יזכור — תספורת מקצועית, פרם לגבר שאנחנו הראשונים והיחידים בישראל שמתמחים בו, ואקדמיה שמוציאה ספרים שמרוויחים כסף.")}
+        description=""
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         secondaryCta={{ label: <><GraduationCap className="w-4 h-4" /> לאקדמיה</>, href: "/academy" }}
         image={v("hero", "image") || heroBarbershop}
@@ -193,7 +193,7 @@ const HomePage = () => {
             <h3 className="text-xl font-bold mb-4">{v("owner", "subtitle", "יהלי צור — מייסד Macho")}</h3>
             <div className="space-y-4 text-lg">
               <p>{v("owner", "paragraph1", "ספר מקצועי עם מעל 6 שנות ניסיון. ב-2022 פתח את מאצו בעפולה מתוך אמונה שגבר מגיע לחוות תספורת ברמה אחרת — שירות אמיתי, תוצאה אמיתית.")}</p>
-              <p>{v("owner", "paragraph2", "מנהל צוות של 5 אנשים, מעביר קורס ספרות ומלמד תוצאות — לא רק טכניקה. כי ספר טוב זה לא רק מי שגוזר טוב, זה מי שהלקוח רוצה לחזור אליו.")}</p>
+              {v("owner", "paragraph2", "") && <p>{v("owner", "paragraph2", "")}</p>}
             </div>
           </AnimatedSection>
         </div>
