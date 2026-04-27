@@ -64,8 +64,8 @@ const BarbershopPage = () => {
 
       <HeroSplit
         title={v("hero", "title", "מספרת גברים")}
-        subtitle={v("hero", "subtitle", "תספורות ברמה אחרת")}
-        description={v("hero", "description", "חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני.")}
+        subtitle={v("hero", "subtitle", "תספורת שאתה יוצא ממנה בביטחון")}
+        description={v("hero", "description", "כל הספרים שלנו עברו הכשרה אישית על ידי יהלי — כולם עובדים מאותו מתכון, עם אותו סטנדרט. אצלנו לא תלוי ביום שיצא לך. כל פעם תספורת טובה.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         image={v("hero", "image") || barbershopInterior}
       />
