@@ -64,8 +64,8 @@ const BarbershopPage = () => {
 
       <HeroSplit
         title={v("hero", "title", "מספרת גברים")}
-        subtitle={v("hero", "subtitle", "תספורות ברמה אחרת")}
-        description={v("hero", "description", "חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני.")}
+        subtitle={v("hero", "subtitle", "תספורת שאתה יוצא ממנה בביטחון")}
+        description={v("hero", "description", "כל הספרים שלנו עברו הכשרה אישית על ידי יהלי — כולם עובדים מאותו מתכון, עם אותו סטנדרט. אצלנו לא תלוי ביום שיצא לך. כל פעם תספורת טובה.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         image={v("hero", "image") || barbershopInterior}
       />
@@ -117,16 +117,16 @@ const BarbershopPage = () => {
         <AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat1_number", "15+")}</div>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat1_number", "6+")}</div>
               <p className="opacity-70">{v("stats", "stat1_label", "שנות ניסיון")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat2_number", "10K+")}</div>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat2_number", "5,000+")}</div>
               <p className="opacity-70">{v("stats", "stat2_label", "לקוחות מרוצים")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "5★")}</div>
-              <p className="opacity-70">{v("stats", "stat3_label", "דירוג ממוצע")}</p>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "1,500+")}</div>
+              <p className="opacity-70">{v("stats", "stat3_label", "ביקורות חיוביות")}</p>
             </div>
           </div>
         </AnimatedSection>
@@ -139,7 +139,7 @@ const BarbershopPage = () => {
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="mb-4"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> {v("join_team", "title", "ספר שרוצה להצטרף לצוות?")}</h2>
             <p className="text-lg opacity-80 mb-8">
-              {v("join_team", "description", "אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.")}
+              {v("join_team", "description", "אנחנו תמיד שמחים לשמוע מספרים שרוצים לעבוד בסביבה מקצועית עם סטנדרט אמיתי. אם אתה חושב שאתה מתאים — דבר איתנו.")}
             </p>
             <a
               href={waLink(WA_GENERAL, "היי, אני ספר ומעוניין להצטרף לצוות Macho")}
