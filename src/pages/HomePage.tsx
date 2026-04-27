@@ -69,7 +69,7 @@ const HomePage = () => {
         badge={<><Hand className="w-4 h-4 inline-block align-middle ml-1" /> {v("hero", "badge", "אהלן גבר, ברוך הבא למאצו ✂")}</>}
         title={v("hero", "title", "משפחת Macho")}
         subtitle={v("hero", "subtitle", "מספרה. פרם. אקדמיה. הכל תחת קורת גג אחת.")}
-        description={v("hero", "description", "מאצו נבנתה מתוך אהבה אמיתית למקצוע ורצון לתת לכל גבר חוויה שהוא יזכור — תספורת מקצועית, פרם לגבר שאנחנו הראשונים והיחידים בישראל שמתמחים בו, ואקדמיה שמוציאה ספרים שמרוויחים כסף.")}
+        description=""
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         secondaryCta={{ label: <><GraduationCap className="w-4 h-4" /> לאקדמיה</>, href: "/academy" }}
         image={v("hero", "image") || heroBarbershop}
