@@ -431,12 +431,12 @@ const AcademyPage = () => {
             <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
               <Users className="w-12 h-12 mx-auto mb-4" />
               <h3 className="font-bold text-xl mb-2">גודל הכיתה</h3>
-              <p className="opacity-70">{v("details", "class_size", "עד 8 תלמידים")}</p>
+              <p className="opacity-70">{v("details", "class_size", "קורס 1 על 1")}</p>
             </Card>
             <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
               <Award className="w-12 h-12 mx-auto mb-4" />
               <h3 className="font-bold text-xl mb-2">תעודה</h3>
-              <p className="opacity-70">{v("details", "certificate", "הסמכה רשמית")}</p>
+              <p className="opacity-70">{v("details", "certificate", "תעודת סיום")}</p>
             </Card>
           </div>
         </AnimatedSection>
@@ -507,7 +507,7 @@ const AcademyPage = () => {
       {/* ============ 6️⃣ SOLUTION SECTION ============ */}
       <Section
         title={<><Target className="w-6 h-6 inline-block align-middle ml-1" /> {v("solution", "title", "הדרך שלנו: מאפס לספר עובד")}</>}
-        subtitle={v("solution", "subtitle", "שיטת ההכשרה של Macho Academy נבנתה כדי לתת לך את כל מה שצריך בפועל — לא רק תיאוריה.")}
+        subtitle={v("solution", "subtitle", "לא מלמדים רק לגזור. מלמדים איך להיות ספר שאנשים רוצים לחזור אליו.")}
         variant="light"
       >
         <AnimatedSection>
@@ -642,10 +642,10 @@ const AcademyPage = () => {
                 {v("authority", "subtitle", "מייסד Macho Academy")}
               </p>
               <p className="opacity-85 text-base md:text-lg leading-relaxed mb-4">
-                {v("authority", "paragraph1", "ניסיון של למעלה מ-15 שנה בספרות גברים, מאות בוגרים שעובדים היום בתעשייה, ותשוקה אמיתית ללמד את המקצוע.")}
+                {v("authority", "paragraph1", "ספר מקצועי עם מעל 6 שנות ניסיון. פתח את מאצו ב-2022, בנה צוות, פיתח שיטת לימוד, ועזר ל-20+ אנשים להפוך את המקצוע הזה לפרנסה אמיתית.")}
               </p>
               <p className="opacity-80 text-base md:text-lg leading-relaxed">
-                {v("authority", "paragraph2", "יהלי הקים את האקדמיה מתוך אמונה שכל אחד יכול ללמוד את המקצוע — בתנאי שמלמדים אותו נכון, עם סבלנות ועם שיטה.")}
+                {v("authority", "paragraph2", "יהלי הקים את האקדמיה מתוך אמונה שכל אחד יכול ללמוד את המקצוע — אבל לא מספיק ללמד רק לגזור. צריך ללמד איך מביאים לקוחות, איך בונים יומן, ואיך מגיעים ל-10,000 ₪ בחודש.")}
               </p>
             </div>
             <div className="flex justify-center">
@@ -667,9 +667,9 @@ const AcademyPage = () => {
         <AnimatedSection>
           <div className="grid lg:grid-cols-3 gap-6">
             {[
-              { icon: MessageCircle, title: v("how_it_works", "step1_title", "1) בדיקת התאמה"), desc: v("how_it_works", "step1_desc", "שולחים הודעה קצרה/פרטים — ובודקים התאמה למסלול.") },
-              { icon: Scissors, title: v("how_it_works", "step2_title", "2) תרגול מעשי"), desc: v("how_it_works", "step2_desc", "לומדים בסיס + מתרגלים בהדרכה צמודה עד ביטחון מלא.") },
-              { icon: BriefcaseBusiness, title: v("how_it_works", "step3_title", "3) התחלת עבודה"), desc: v("how_it_works", "step3_desc", "תיק עבודות + ליווי והכוונה להשתלבות במספרות.") },
+              { icon: MessageCircle, title: v("how_it_works", "step1_title", "1) בדיקת התאמה"), desc: v("how_it_works", "step1_desc", "שולחים פרטים, מבינים אם זה מתאים ומה המסלול הנכון.") },
+              { icon: Scissors, title: v("how_it_works", "step2_title", "2) לומדים ומתרגלים"), desc: v("how_it_works", "step2_desc", "8 שיעורים פרונטליים + קורס דיגיטלי + שיעורי בית עם פידבק אישי.") },
+              { icon: BriefcaseBusiness, title: v("how_it_works", "step3_title", "3) יוצאים עובדים"), desc: v("how_it_works", "step3_desc", "תיק עבודות, מפת דרכים ל-10K, וליווי שנה — עד שאתה באמת שם.") },
             ].map((step, idx) => (
               <Card key={idx} className="bg-secondary text-secondary-foreground border-0 p-6 rounded-2xl">
                 <step.icon className="w-10 h-10 mb-4 opacity-90" />
@@ -812,7 +812,7 @@ const AcademyPage = () => {
               <ShieldAlert className="w-8 h-8 text-accent" />
             </div>
             <h2 className="text-3xl md:text-4xl font-black mb-2">
-              {v("guarantee", "title", "בלי סיכון. בלי הפתעות.")}
+              {v("guarantee", "title", "בלי הפתעות. בלי תירוצים.")}
             </h2>
             <p className="opacity-70 text-lg mb-8">
               {v("guarantee", "subtitle", "ההבטחה שלנו אליך")}
