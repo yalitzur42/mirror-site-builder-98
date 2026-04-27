@@ -29,13 +29,15 @@ const BarbershopPage = () => {
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
-  const defaultBarberImages = [barberLiav, barberNehoray, barberYali];
+  const defaultBarberImages = [barberLiav, barberNehoray, barberYali, barberLiav];
+  const defaultBarberNames = ["ליאב", "נהוראי", "יהלי", "עידן"];
+  const defaultBarberNamesEn = ["LIAV", "NEHORAY", "YALI", "IDAN"];
 
-  const barbers = [1, 2, 3].map((i, idx) => {
+  const barbers = [1, 2, 3, 4].map((i, idx) => {
     const pricesStr = v("pricing", `barber${i}_prices`, "70,80,70,100");
     return {
-      nameHe: v("pricing", `barber${i}_name`, ["ליאב", "נהוראי", "יהלי"][idx]),
-      nameEn: v("pricing", `barber${i}_name_en`, ["LIAV", "NEHORAY", "YALI"][idx]),
+      nameHe: v("pricing", `barber${i}_name`, defaultBarberNames[idx]),
+      nameEn: v("pricing", `barber${i}_name_en`, defaultBarberNamesEn[idx]),
       image: v("pricing", `barber${i}_image`) || defaultBarberImages[idx],
       prices: pricesStr.split(",").map(Number),
     };
@@ -63,9 +65,9 @@ const BarbershopPage = () => {
       <Breadcrumbs items={[{ label: "מספרת גברים" }]} />
 
       <HeroSplit
-        title={v("hero", "title", "מספרת גברים")}
-        subtitle={v("hero", "subtitle", "תספורת שאתה יוצא ממנה בביטחון")}
-        description={v("hero", "description", "כל הספרים שלנו עברו הכשרה אישית על ידי יהלי — כולם עובדים מאותו מתכון, עם אותו סטנדרט. אצלנו לא תלוי ביום שיצא לך. כל פעם תספורת טובה.")}
+        title={v("hero", "title", "Macho עפולה")}
+        subtitle={v("hero", "subtitle", "מספרת גברים פרימיום.")}
+        description={v("hero", "description", "חוויית ספרות מקצועית עם יחס אישי. הספרים שלנו מתמחים בכל סגנונות התספורות - מקלאסי ועד מודרני.")}
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         image={v("hero", "image") || barbershopInterior}
       />
@@ -73,7 +75,7 @@ const BarbershopPage = () => {
       <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light">
         <AnimatedSection>
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-4 gap-4 mb-8">
               {barbers.map((barber, i) => (
                 <div key={i} className="text-center">
                   <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary-foreground">
@@ -91,7 +93,7 @@ const BarbershopPage = () => {
                     {service.name}
                     {service.note && <span className="text-sm font-normal opacity-60 mr-2">{service.note}</span>}
                   </p>
-                  <div className="grid grid-cols-3 gap-6 text-center">
+                  <div className="grid grid-cols-4 gap-4 text-center">
                     {barbers.map((barber, bIdx) => (
                       <span key={bIdx} className="text-2xl font-black">₪{barber.prices[sIdx]}</span>
                     ))}
@@ -122,11 +124,11 @@ const BarbershopPage = () => {
             </div>
             <div>
               <div className="text-5xl font-black mb-2">{v("stats", "stat2_number", "5,000+")}</div>
-              <p className="opacity-70">{v("stats", "stat2_label", "לקוחות מרוצים")}</p>
+              <p className="opacity-70">{v("stats", "stat2_label", "גברים שיצאו מרוצים")}</p>
             </div>
             <div>
-              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "1,500+")}</div>
-              <p className="opacity-70">{v("stats", "stat3_label", "ביקורות חיוביות")}</p>
+              <div className="text-5xl font-black mb-2">{v("stats", "stat3_number", "⭐ 5")}</div>
+              <p className="opacity-70">{v("stats", "stat3_label", "למעלה מ-1,000 ביקורות חיוביות בגוגל ובאיזי")}</p>
             </div>
           </div>
         </AnimatedSection>
@@ -139,7 +141,7 @@ const BarbershopPage = () => {
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="mb-4"><Handshake className="w-6 h-6 inline-block align-middle ml-1" /> {v("join_team", "title", "ספר שרוצה להצטרף לצוות?")}</h2>
             <p className="text-lg opacity-80 mb-8">
-              {v("join_team", "description", "אנחנו תמיד שמחים לשמוע מספרים שרוצים לעבוד בסביבה מקצועית עם סטנדרט אמיתי. אם אתה חושב שאתה מתאים — דבר איתנו.")}
+              {v("join_team", "description", "אנחנו תמיד מחפשים ספרים מוכשרים שרוצים להתפתח ולעבוד בסביבה מקצועית ותומכת. אם אתה חושב שאתה מתאים – דבר איתנו.")}
             </p>
             <a
               href={waLink(WA_GENERAL, "היי, אני ספר ומעוניין להצטרף לצוות Macho")}
@@ -157,9 +159,9 @@ const BarbershopPage = () => {
       <SectionDivider from="dark" to="light" shape="steps" />
 
       <CTASection
-        title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכנים לתספורת חדשה?</>}
+        title={<><Scissors className="w-6 h-6 inline-block align-middle ml-1" /> מוכן לתספורת שתזכור?</>}
         description={<><Scissors className="w-5 h-5 inline-block align-middle ml-1" /> קבעו תור עכשיו</>}
-        buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור בוואטסאפ</>}
+        buttonLabel={<><Smartphone className="w-4 h-4" /> קבעו תור עכשיו</>}
         buttonHref={BOOKING_URL}
         variant="light"
       />
