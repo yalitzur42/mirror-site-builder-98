@@ -29,13 +29,15 @@ const BarbershopPage = () => {
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
-  const defaultBarberImages = [barberLiav, barberNehoray, barberYali];
+  const defaultBarberImages = [barberLiav, barberNehoray, barberYali, barberLiav];
+  const defaultBarberNames = ["ליאב", "נהוראי", "יהלי", "עידן"];
+  const defaultBarberNamesEn = ["LIAV", "NEHORAY", "YALI", "IDAN"];
 
-  const barbers = [1, 2, 3].map((i, idx) => {
+  const barbers = [1, 2, 3, 4].map((i, idx) => {
     const pricesStr = v("pricing", `barber${i}_prices`, "70,80,70,100");
     return {
-      nameHe: v("pricing", `barber${i}_name`, ["ליאב", "נהוראי", "יהלי"][idx]),
-      nameEn: v("pricing", `barber${i}_name_en`, ["LIAV", "NEHORAY", "YALI"][idx]),
+      nameHe: v("pricing", `barber${i}_name`, defaultBarberNames[idx]),
+      nameEn: v("pricing", `barber${i}_name_en`, defaultBarberNamesEn[idx]),
       image: v("pricing", `barber${i}_image`) || defaultBarberImages[idx],
       prices: pricesStr.split(",").map(Number),
     };
