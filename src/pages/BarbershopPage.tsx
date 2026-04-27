@@ -75,7 +75,7 @@ const BarbershopPage = () => {
       <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light">
         <AnimatedSection>
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-4 gap-4 mb-8">
               {barbers.map((barber, i) => (
                 <div key={i} className="text-center">
                   <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary-foreground">
@@ -93,7 +93,7 @@ const BarbershopPage = () => {
                     {service.name}
                     {service.note && <span className="text-sm font-normal opacity-60 mr-2">{service.note}</span>}
                   </p>
-                  <div className="grid grid-cols-3 gap-6 text-center">
+                  <div className="grid grid-cols-4 gap-4 text-center">
                     {barbers.map((barber, bIdx) => (
                       <span key={bIdx} className="text-2xl font-black">₪{barber.prices[sIdx]}</span>
                     ))}
