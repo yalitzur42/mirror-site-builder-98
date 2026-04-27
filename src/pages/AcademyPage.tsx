@@ -928,7 +928,7 @@ const AcademyPage = () => {
               }}
             >
               <Smartphone className="w-6 h-6 md:w-7 md:h-7" />
-              שלח לי פרטים בוואטסאפ ←
+              👉 שלח לי הודעה ב-WhatsApp
             </a>
             {spotsLeft > 0 && spotsLeft <= 4 && (
               <p className="mt-5 text-sm md:text-base font-bold animate-pulse" style={{ color: "#b85a1a" }}>
