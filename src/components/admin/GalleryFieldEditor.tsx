@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, X, Loader2, GripVertical } from "lucide-react";
+import { Upload, X, Loader2 } from "lucide-react";
 
 interface GalleryFieldEditorProps {
   value: string; // JSON array of URLs
@@ -15,6 +14,21 @@ interface GalleryFieldEditorProps {
 const GalleryFieldEditor = ({ value, onChange, pageSlug, sectionKey, fieldKey }: GalleryFieldEditorProps) => {
   const { toast } = useToast();
   const [uploading, setUploading] = useState(false);
+
+  const fileToBase64 = (file: File) =>
+    new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result;
+        if (typeof result !== "string") {
+          reject(new Error("קריאת הקובץ נכשלה"));
+          return;
+        }
+        resolve(result.split(",")[1] || "");
+      };
+      reader.onerror = () => reject(new Error("קריאת הקובץ נכשלה"));
+      reader.readAsDataURL(file);
+    });
 
   let images: string[] = [];
   try {
@@ -42,17 +56,37 @@ const GalleryFieldEditor = ({ value, onChange, pageSlug, sectionKey, fieldKey }:
         continue;
       }
       if (file.size > MAX_FILE_SIZE) {
-        toast({ title: "שגיאה", description: `${file.name} גדול מדי (מקסימום 5MB)`, variant: "destructive" });
+        toast({ title: "שגיאה", description: `${file.name} גדול מדי (מקסימום 20MB)`, variant: "destructive" });
         continue;
       }
-      const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}-${Math.random().toString(36).slice(2)}.${file.name.split('.').pop()}`;
-      const { error } = await supabase.storage.from("site-assets").upload(filePath, file);
-      if (error) {
-        toast({ title: "שגיאה בהעלאת תמונה", description: error.message, variant: "destructive" });
+      try {
+        const fileBase64 = await fileToBase64(file);
+        const { data, error } = await supabase.functions.invoke("admin-upload-asset", {
+          body: {
+            bucket: "site-assets",
+            pageSlug,
+            sectionKey,
+            fieldKey,
+            fileName: file.name,
+            contentType: file.type,
+            fileBase64,
+          },
+        });
+
+        if (error) {
+          throw new Error(error.message || "שגיאה לא ידועה בהעלאה");
+        }
+
+        if (!data?.publicUrl) {
+          throw new Error(data?.error || "לא התקבלה כתובת לתמונה");
+        }
+
+        newImages.push(data.publicUrl);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "שגיאה לא ידועה בהעלאה";
+        toast({ title: "שגיאה בהעלאת תמונה", description: message, variant: "destructive" });
         continue;
       }
-      const { data: { publicUrl } } = supabase.storage.from("site-assets").getPublicUrl(filePath);
-      newImages.push(publicUrl);
     }
 
     onChange(JSON.stringify(newImages));

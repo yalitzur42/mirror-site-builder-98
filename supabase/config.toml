@@ -2,3 +2,6 @@ project_id = "fykbqgorsjyqmljbqwja"
 
 [functions.create-student]
 verify_jwt = true
+
+[functions.admin-upload-asset]
+verify_jwt = true
