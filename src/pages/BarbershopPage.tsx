@@ -12,16 +12,17 @@ import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL, WA_GENERAL, waLink } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
-import barbershopInterior from "@/assets/barbershop-interior.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
+import barbershopInterior from "@/assets/barbershop-working.jpg";
+import gallery1 from "@/assets/haircut-sample-1.jpg";
+import gallery2 from "@/assets/haircut-sample-2.jpg";
+import gallery3 from "@/assets/haircut-sample-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import gallery6 from "@/assets/gallery-6.jpg";
-import barberLiav from "@/assets/barber-liav.jpg";
-import barberNehoray from "@/assets/barber-nehoray.jpg";
-import barberYali from "@/assets/barber-yali.jpg";
+import barberLiav from "@/assets/barber-liav-brown.jpg";
+import barberNehoray from "@/assets/barber-nehoray-brown.jpg";
+import barberYali from "@/assets/barber-yali-brown.jpg";
+import barberIdan from "@/assets/barber-idan-brown.jpg";
 
 const BarbershopPage = () => {
   const { v, loading } = useSiteContent("barbershop");
@@ -29,7 +30,7 @@ const BarbershopPage = () => {
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
-  const defaultBarberImages = [barberLiav, barberNehoray, barberYali, barberLiav];
+  const defaultBarberImages = [barberLiav, barberNehoray, barberYali, barberIdan];
   const defaultBarberNames = ["ליאב", "נהוראי", "יהלי", "עידן"];
   const defaultBarberNamesEn = ["LIAV", "NEHORAY", "YALI", "IDAN"];
 
