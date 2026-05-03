@@ -42,9 +42,8 @@ export function useSiteContent(pageSlug: string) {
 
       const map: ContentMap = {};
       data?.forEach((row) => {
-        if (row.content_value) {
-          map[`${row.section_key}__${row.field_key}`] = row.content_value;
-        }
+        // Store every row from DB — including empty strings — so admin clears propagate.
+        map[`${row.section_key}__${row.field_key}`] = row.content_value ?? "";
       });
 
       setContent(map);
@@ -55,10 +54,11 @@ export function useSiteContent(pageSlug: string) {
     return () => { cancelled = true; };
   }, [pageSlug]);
 
-  /** Get a field value: DB value → config default → fallback */
+  /** Get a field value: DB value (even if empty) → config default → fallback */
   const v = (sectionKey: string, fieldKey: string, fallback = ""): string => {
     const key = `${sectionKey}__${fieldKey}`;
-    return content[key] || defaults[key] || fallback;
+    if (key in content) return content[key];
+    return defaults[key] ?? fallback;
   };
 
   return { v, loading };
