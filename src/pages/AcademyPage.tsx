@@ -410,27 +410,7 @@ const AcademyPage = () => {
             </div>
           </div>
 
-          {/* Stats */}
-          <StatsCounter stats={stats} />
-
-          {/* Quick course cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
-              <Clock className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">משך הקורס</h3>
-              <p className="opacity-70">{v("details", "duration", "3 חודשים")}</p>
-            </Card>
-            <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
-              <Users className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">גודל הכיתה</h3>
-              <p className="opacity-70">{v("details", "class_size", "קורס 1 על 1")}</p>
-            </Card>
-            <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
-              <Award className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">תעודה</h3>
-              <p className="opacity-70">{v("details", "certificate", "תעודת סיום")}</p>
-            </Card>
-          </div>
+          {/* Stats and quick course cards removed per request */}
         </AnimatedSection>
       </Section>
 
