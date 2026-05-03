@@ -6,7 +6,7 @@ import PageSkeleton from "@/components/ui/PageSkeleton";
 import HeroSplit from "@/components/ui/HeroSplit";
 import AcademyHero from "@/components/academy/AcademyHero";
 import AcademyHeroV2 from "@/components/academy/AcademyHeroV2";
-import AcademyStatsBar from "@/components/academy/AcademyStatsBar";
+
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
