@@ -49,22 +49,14 @@ const AcademyPage = () => {
   // ====== DATA (dynamic from admin) ======
   const modules = useMemo(
     () => [
-      v("modules", "module1", "בסיס מספריים והכרת הראש"),
-      v("modules", "module2", "גזירת יום יום וסידור שיער"),
-      v("modules", "module3", "בסיס דירוגים ועבודה עם מכונה"),
-      v("modules", "module4", "זקן ודירוג אמצע"),
-      v("modules", "module5", "טייפר ומוייקן"),
-      v("modules", "module6", "שיווק, תמחור ובניית לקוחות"),
-    ],
-    [v]
-  );
-
-  const stats = useMemo(
-    () => [
-      { value: parseInt(v("stats", "stat1_number", "20+")) || 20, suffix: v("stats", "stat1_number", "20+").replace(/\d+/, ""), label: v("stats", "stat1_label", "בוגרים עובדים בתחום") },
-      { value: parseInt(v("stats", "stat2_number", "100%")) || 100, suffix: v("stats", "stat2_number", "100%").replace(/\d+/, ""), label: v("stats", "stat2_label", "שביעות רצון בוגרים") },
-      { value: parseInt(v("stats", "stat3_number", "3")) || 3, suffix: v("stats", "stat3_number", "3").replace(/\d+/, ""), label: v("stats", "stat3_label", "חודשי קורס") },
-      { value: parseInt(v("stats", "stat4_number", "1 שנה")) || 1, suffix: v("stats", "stat4_number", "1 שנה").replace(/\d+/, ""), label: v("stats", "stat4_label", "ליווי אחרי הקורס") },
+      v("modules", "module1", "🪒 שיעור 1 – יסודות המספריים + הכרת הראש והפנים"),
+      v("modules", "module2", "✂️ שיעור 2 – גזירות פרקטי, סידור שיער וחומרים + 7 שלבי קבלת לקוח"),
+      v("modules", "module3", "⚙️ שיעור 3 – יסודות המכונה ועבודה"),
+      v("modules", "module4", "🧔 שיעור 4 – זקן ומודליסט דירוג אמצע"),
+      v("modules", "module5", "🎯 שיעור 5 – מודליסט טייפר"),
+      v("modules", "module6", "🔥 שיעור 6 + 7 – מודליסט מולט + מוייקן"),
+      v("modules", "module7", "🚀 שיעור 8 – חודש וחצי אחרי סיום הקורס: 2 מודליסטים"),
+      v("modules", "module8", "💎 בונוס – תכנים דיגיטליים + מפת דרכים ל-10K בחודש"),
     ],
     [v]
   );
@@ -72,11 +64,11 @@ const AcademyPage = () => {
   const features = useMemo(
     () => [
       { icon: GraduationCap, title: v("why_us", "feature1_title", "הכשרה מעשית"), description: v("why_us", "feature1_desc", "לומדים תוך כדי עבודה אמיתית") },
-      { icon: Users, title: v("why_us", "feature2_title", "קבוצות קטנות"), description: v("why_us", "feature2_desc", "עד 8 תלמידים בכיתה") },
+      { icon: Users, title: v("why_us", "feature2_title", "קבוצות קטנות"), description: v("why_us", "feature2_desc", "עד 4 תלמידים בכיתה") },
       { icon: Award, title: v("why_us", "feature3_title", "תעודה מוכרת"), description: v("why_us", "feature3_desc", "הסמכה רשמית בסיום") },
-      { icon: Clock, title: v("why_us", "feature4_title", "גמישות בשעות"), description: v("why_us", "feature4_desc", "מסלולי בוקר/ערב") },
-      { icon: BookOpen, title: v("why_us", "feature5_title", "חומרי לימוד"), description: v("why_us", "feature5_desc", "ערכת ציוד מקצועית לכל תלמיד") },
-      { icon: Star, title: v("why_us", "feature6_title", "ליווי אישי"), description: v("why_us", "feature6_desc", "תמיכה גם אחרי הקורס") },
+      { icon: BookOpen, title: v("why_us", "feature4_title", "תכנים דיגיטליים"), description: v("why_us", "feature4_desc", "מדריכים עסקיים ושיווקיים") },
+      { icon: Target, title: v("why_us", "feature5_title", "מפת דרכים ל-10K"), description: v("why_us", "feature5_desc", "שלב אחרי שלב עד הכנסה") },
+      { icon: Star, title: v("why_us", "feature6_title", "מנטור אישי"), description: v("why_us", "feature6_desc", "תמיכה מקצועית, עסקית ושיווקית") },
     ],
     [v]
   );
