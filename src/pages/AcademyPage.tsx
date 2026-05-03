@@ -6,7 +6,7 @@ import PageSkeleton from "@/components/ui/PageSkeleton";
 import HeroSplit from "@/components/ui/HeroSplit";
 import AcademyHero from "@/components/academy/AcademyHero";
 import AcademyHeroV2 from "@/components/academy/AcademyHeroV2";
-import AcademyStatsBar from "@/components/academy/AcademyStatsBar";
+
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
@@ -23,16 +23,16 @@ import {
   XCircle, ArrowRight, ShieldAlert, ImageIcon
 } from "lucide-react";
 
-import academyClassroom from "@/assets/academy-classroom.jpg";
+import academyClassroom from "@/assets/student-1.jpg";
 import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";
-import ownerPortrait from "@/assets/owner-portrait.jpg";
+import ownerPortrait from "@/assets/barber-yali-brown.jpg";
 
 import { WA_ACADEMY, waLink as _waLink } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import UrgencyBar from "@/components/academy/UrgencyBar";
 import LeadForm from "@/components/academy/LeadForm";
-import StatsCounter from "@/components/academy/StatsCounter";
+
 import FaqAccordion from "@/components/academy/FaqAccordion";
 import StickyWhatsApp from "@/components/academy/StickyWhatsApp";
 import SalaryCalculator from "@/components/academy/SalaryCalculator";
@@ -49,22 +49,14 @@ const AcademyPage = () => {
   // ====== DATA (dynamic from admin) ======
   const modules = useMemo(
     () => [
-      v("modules", "module1", "בסיס מספריים והכרת הראש"),
-      v("modules", "module2", "גזירת יום יום וסידור שיער"),
-      v("modules", "module3", "בסיס דירוגים ועבודה עם מכונה"),
-      v("modules", "module4", "זקן ודירוג אמצע"),
-      v("modules", "module5", "טייפר ומוייקן"),
-      v("modules", "module6", "שיווק, תמחור ובניית לקוחות"),
-    ],
-    [v]
-  );
-
-  const stats = useMemo(
-    () => [
-      { value: parseInt(v("stats", "stat1_number", "20+")) || 20, suffix: v("stats", "stat1_number", "20+").replace(/\d+/, ""), label: v("stats", "stat1_label", "בוגרים עובדים בתחום") },
-      { value: parseInt(v("stats", "stat2_number", "100%")) || 100, suffix: v("stats", "stat2_number", "100%").replace(/\d+/, ""), label: v("stats", "stat2_label", "שביעות רצון בוגרים") },
-      { value: parseInt(v("stats", "stat3_number", "3")) || 3, suffix: v("stats", "stat3_number", "3").replace(/\d+/, ""), label: v("stats", "stat3_label", "חודשי קורס") },
-      { value: parseInt(v("stats", "stat4_number", "1 שנה")) || 1, suffix: v("stats", "stat4_number", "1 שנה").replace(/\d+/, ""), label: v("stats", "stat4_label", "ליווי אחרי הקורס") },
+      v("modules", "module1", "🪒 שיעור 1 – יסודות המספריים + הכרת הראש והפנים"),
+      v("modules", "module2", "✂️ שיעור 2 – גזירות פרקטי, סידור שיער וחומרים + 7 שלבי קבלת לקוח"),
+      v("modules", "module3", "⚙️ שיעור 3 – יסודות המכונה ועבודה"),
+      v("modules", "module4", "🧔 שיעור 4 – זקן ומודליסט דירוג אמצע"),
+      v("modules", "module5", "🎯 שיעור 5 – מודליסט טייפר"),
+      v("modules", "module6", "🔥 שיעור 6 + 7 – מודליסט מולט + מוייקן"),
+      v("modules", "module7", "🚀 שיעור 8 – חודש וחצי אחרי סיום הקורס: 2 מודליסטים"),
+      v("modules", "module8", "💎 בונוס – תכנים דיגיטליים + מפת דרכים ל-10K בחודש"),
     ],
     [v]
   );
@@ -72,11 +64,11 @@ const AcademyPage = () => {
   const features = useMemo(
     () => [
       { icon: GraduationCap, title: v("why_us", "feature1_title", "הכשרה מעשית"), description: v("why_us", "feature1_desc", "לומדים תוך כדי עבודה אמיתית") },
-      { icon: Users, title: v("why_us", "feature2_title", "קבוצות קטנות"), description: v("why_us", "feature2_desc", "עד 8 תלמידים בכיתה") },
+      { icon: Users, title: v("why_us", "feature2_title", "קבוצות קטנות"), description: v("why_us", "feature2_desc", "עד 4 תלמידים בכיתה") },
       { icon: Award, title: v("why_us", "feature3_title", "תעודה מוכרת"), description: v("why_us", "feature3_desc", "הסמכה רשמית בסיום") },
-      { icon: Clock, title: v("why_us", "feature4_title", "גמישות בשעות"), description: v("why_us", "feature4_desc", "מסלולי בוקר/ערב") },
-      { icon: BookOpen, title: v("why_us", "feature5_title", "חומרי לימוד"), description: v("why_us", "feature5_desc", "ערכת ציוד מקצועית לכל תלמיד") },
-      { icon: Star, title: v("why_us", "feature6_title", "ליווי אישי"), description: v("why_us", "feature6_desc", "תמיכה גם אחרי הקורס") },
+      { icon: BookOpen, title: v("why_us", "feature4_title", "תכנים דיגיטליים"), description: v("why_us", "feature4_desc", "מדריכים עסקיים ושיווקיים") },
+      { icon: Target, title: v("why_us", "feature5_title", "מפת דרכים ל-10K"), description: v("why_us", "feature5_desc", "שלב אחרי שלב עד הכנסה") },
+      { icon: Star, title: v("why_us", "feature6_title", "מנטור אישי"), description: v("why_us", "feature6_desc", "תמיכה מקצועית, עסקית ושיווקית") },
     ],
     [v]
   );
@@ -111,10 +103,10 @@ const AcademyPage = () => {
 
   const solutions = useMemo(
     () => [
-      v("solution", "benefit1", "8 שיעורים פרונטליים עם יהלי — תרגול אמיתי מיום ראשון"),
-      v("solution", "benefit2", "פידבק אישי מיהלי על כל תספורת שתשלח"),
-      v("solution", "benefit3", "פלטפורמה דיגיטלית עם מפת דרכים ל-10K — שלב אחרי שלב"),
-      v("solution", "benefit4", "ליווי שנה אחרי הקורס — לא נעלמים"),
+      v("solution", "benefit1", "🎯 מפת דרכים ברורה ל-10,000 ₪ בחודש"),
+      v("solution", "benefit2", "💪 ביטחון ושיטה ברורה מהיום הראשון"),
+      v("solution", "benefit3", "📈 שיטת גיוס לקוחות לכל שלב ולכל מקום שאתה נמצא"),
+      v("solution", "benefit4", "🤝 מנטור אישי לכל שאלה"),
     ],
     [v]
   );
@@ -150,9 +142,8 @@ const AcademyPage = () => {
 
   const guarantees = useMemo(
     () => [
-      v("guarantee", "item1", "שיעור ניסיון — תראה איך זה עובד לפני שמחליטים"),
-      v("guarantee", "item2", "אם עשית את כל מה שביקשתי ועדיין אין לך ביטחון לעבוד — ממשיכים ביחד עד שיש. בלי תשלום נוסף."),
-      v("guarantee", "item3", "קורס 1 על 1 — יחס אישי שאי אפשר לקבל בכיתה"),
+      v("guarantee", "item1", "✅ שיעור ניסיון — תראה איך זה עובד לפני שמחליטים"),
+      v("guarantee", "item2", "🛡️ אם עשית את כל מה שביקשתי ועדיין אין לך ביטחון לעבוד — ממשיכים ביחד עד שיש. בלי תשלום נוסף."),
     ],
     [v]
   );
@@ -224,17 +215,17 @@ const AcademyPage = () => {
         badge={v("hero", "badge", "✂ קורס ספרות גברים — עפולה")}
         title={v("hero", "title", "מאפס ניסיון לספר עם יומן מלא")}
         subtitle={v("hero", "subtitle", "תוך 3 חודשים. בלי הבטחות שווא — עם תוצאות אמיתיות.")}
-        description={v("hero", "description", "20+ בוגרים שיצאו מהקורס הזה וכיום עובדים, גובים כסף, ומרוויחים. לא כי יש להם כישרון מיוחד — כי יש להם שיטה. זו השיטה של יהלי.")}
+        description={v("hero", "description", "השיטה של יהלי — לימוד מקצועי, עסקי ושיווקי, עד שאתה באמת עובד ומרוויח.")}
         backgroundImage={v("hero", "image", "")}
         primaryCta={{
-          label: <>הצטרף לאקדמיה ←</>,
+          label: <>🎓 הצטרף לאקדמיה ←</>,
           href: buildWaLink("היי 👋 אני רוצה להצטרף לאקדמיה של Macho. אפשר פרטים?"),
         }}
         secondaryCta={{
-          label: <>בדוק אם זה מתאים לי</>,
+          label: <>✅ בדוק אם זה מתאים לי</>,
           href: "#lead-section",
         }}
-        socialProof={["20+ בוגרים", "ליווי שנה", "קורס 1 על 1"]}
+        socialProof={["✂️ הכשרה מעשית", "📜 תעודה מוכרת", "👥 קבוצות עד 4"]}
       />
 
       {/* URGENCY BAR with spots remaining */}
@@ -245,17 +236,7 @@ const AcademyPage = () => {
         spotsLeft={spotsLeft}
       />
 
-      {/* ============ SOCIAL PROOF STATS BAR ============ */}
-      <AcademyStatsBar />
-
-      {/* ============ SALARY CALCULATOR (moved up to second section) ============ */}
-      <Section variant="light">
-        <AnimatedSection>
-          <SalaryCalculator />
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="light" to="light" shape="waves" />
+      <SectionDivider from="dark" to="light" shape="waves" />
 
       {/* ============ 2️⃣ VIDEO / INTRO ============ */}
       <Section variant="light">
@@ -359,7 +340,7 @@ const AcademyPage = () => {
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Users className="w-4 h-4 opacity-80" />
-                        <span>קורס 1 על 1</span>
+                        <span>קבוצות עד 4 תלמידים</span>
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Award className="w-4 h-4 opacity-80" />
@@ -418,27 +399,7 @@ const AcademyPage = () => {
             </div>
           </div>
 
-          {/* Stats */}
-          <StatsCounter stats={stats} />
-
-          {/* Quick course cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
-              <Clock className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">משך הקורס</h3>
-              <p className="opacity-70">{v("details", "duration", "3 חודשים")}</p>
-            </Card>
-            <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
-              <Users className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">גודל הכיתה</h3>
-              <p className="opacity-70">{v("details", "class_size", "קורס 1 על 1")}</p>
-            </Card>
-            <Card className="bg-background text-foreground text-center p-6 border-border rounded-2xl hover:-translate-y-1 transition">
-              <Award className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">תעודה</h3>
-              <p className="opacity-70">{v("details", "certificate", "תעודת סיום")}</p>
-            </Card>
-          </div>
+          {/* Stats and quick course cards removed per request */}
         </AnimatedSection>
       </Section>
 
@@ -799,6 +760,13 @@ const AcademyPage = () => {
               </button>
             </div>
           </div>
+        </AnimatedSection>
+      </Section>
+
+      {/* ============ SALARY CALCULATOR (below testimonials) ============ */}
+      <Section variant={resultsGallery.length > 0 ? "dark" : "light"}>
+        <AnimatedSection>
+          <SalaryCalculator />
         </AnimatedSection>
       </Section>
 

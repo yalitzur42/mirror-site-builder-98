@@ -18,20 +18,20 @@ import { BOOKING_URL } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 // Import images (fallbacks)
-import heroBarbershop from "@/assets/hero-barbershop.jpg";
-import permHero from "@/assets/perm-hero.jpg";
-import barbershopInterior from "@/assets/barbershop-interior.jpg";
+import heroBarbershop from "@/assets/barbershop-working.jpg";
+import permHero from "@/assets/perm-hero-new.jpg";
+import barbershopInterior from "@/assets/barbershop-empty-clean.jpg";
 import ownerPortrait from "@/assets/owner-portrait.jpg";
 import teamIcon from "@/assets/team-icon.png";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
+import gallery1 from "@/assets/haircut-sample-1.jpg";
+import gallery2 from "@/assets/haircut-sample-2.jpg";
+import gallery3 from "@/assets/haircut-sample-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import gallery6 from "@/assets/gallery-6.jpg";
-import serviceAcademy from "@/assets/service-academy.jpg";
-import serviceHaircut from "@/assets/service-haircut.jpg";
-import servicePerm from "@/assets/service-perm.jpg";
+import serviceAcademy from "@/assets/graduate-certificate.jpg";
+import serviceHaircut from "@/assets/haircut-sample-2.jpg";
+import servicePerm from "@/assets/perm-hero-new.jpg";
 
 const HomePage = () => {
   const { v, loading } = useSiteContent("home");
