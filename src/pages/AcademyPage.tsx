@@ -340,7 +340,7 @@ const AcademyPage = () => {
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Users className="w-4 h-4 opacity-80" />
-                        <span>קורס 1 על 1</span>
+                        <span>קבוצות עד 4 תלמידים</span>
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Award className="w-4 h-4 opacity-80" />
