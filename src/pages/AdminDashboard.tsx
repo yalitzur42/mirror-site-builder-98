@@ -68,16 +68,16 @@ const AdminDashboard = () => {
     }));
   };
 
-  const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"];
+  const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif", "image/svg+xml", "image/heic", "image/heif", "image/avif"];
   const ALLOWED_VIDEO_TYPES = ["video/mp4", "video/webm", "video/quicktime", "video/x-msvideo"];
-  const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
+  const MAX_IMAGE_SIZE = 20 * 1024 * 1024; // 20MB
   const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100MB
 
   const validateFile = (file: File, isVideo = false): string | null => {
     const allowedTypes = isVideo ? ALLOWED_VIDEO_TYPES : ALLOWED_IMAGE_TYPES;
     const maxSize = isVideo ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
-    if (!allowedTypes.includes(file.type)) return `סוג קובץ לא נתמך: ${file.type}`;
-    if (file.size > maxSize) return `הקובץ גדול מדי (מקסימום ${isVideo ? '100MB' : '5MB'})`;
+    if (file.type && !allowedTypes.includes(file.type)) return `סוג קובץ לא נתמך: ${file.type || file.name}. נסה JPG/PNG/WEBP.`;
+    if (file.size > maxSize) return `הקובץ גדול מדי (מקסימום ${isVideo ? '100MB' : '20MB'})`;
     return null;
   };
 
