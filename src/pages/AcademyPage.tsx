@@ -215,17 +215,17 @@ const AcademyPage = () => {
         badge={v("hero", "badge", "✂ קורס ספרות גברים — עפולה")}
         title={v("hero", "title", "מאפס ניסיון לספר עם יומן מלא")}
         subtitle={v("hero", "subtitle", "תוך 3 חודשים. בלי הבטחות שווא — עם תוצאות אמיתיות.")}
-        description={v("hero", "description", "20+ בוגרים שיצאו מהקורס הזה וכיום עובדים, גובים כסף, ומרוויחים. לא כי יש להם כישרון מיוחד — כי יש להם שיטה. זו השיטה של יהלי.")}
+        description={v("hero", "description", "השיטה של יהלי — לימוד מקצועי, עסקי ושיווקי, עד שאתה באמת עובד ומרוויח.")}
         backgroundImage={v("hero", "image", "")}
         primaryCta={{
-          label: <>הצטרף לאקדמיה ←</>,
+          label: <>🎓 הצטרף לאקדמיה ←</>,
           href: buildWaLink("היי 👋 אני רוצה להצטרף לאקדמיה של Macho. אפשר פרטים?"),
         }}
         secondaryCta={{
-          label: <>בדוק אם זה מתאים לי</>,
+          label: <>✅ בדוק אם זה מתאים לי</>,
           href: "#lead-section",
         }}
-        socialProof={["20+ בוגרים", "ליווי שנה", "קורס 1 על 1"]}
+        socialProof={["✂️ הכשרה מעשית", "📜 תעודה מוכרת", "👥 קבוצות עד 4"]}
       />
 
       {/* URGENCY BAR with spots remaining */}
@@ -236,17 +236,7 @@ const AcademyPage = () => {
         spotsLeft={spotsLeft}
       />
 
-      {/* ============ SOCIAL PROOF STATS BAR ============ */}
-      <AcademyStatsBar />
-
-      {/* ============ SALARY CALCULATOR (moved up to second section) ============ */}
-      <Section variant="light">
-        <AnimatedSection>
-          <SalaryCalculator />
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="light" to="light" shape="waves" />
+      <SectionDivider from="dark" to="light" shape="waves" />
 
       {/* ============ 2️⃣ VIDEO / INTRO ============ */}
       <Section variant="light">
