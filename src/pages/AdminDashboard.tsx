@@ -81,20 +81,56 @@ const AdminDashboard = () => {
     return null;
   };
 
+  const fileToBase64 = (file: File) =>
+    new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result;
+        if (typeof result !== "string") {
+          reject(new Error("קריאת הקובץ נכשלה"));
+          return;
+        }
+        resolve(result.split(",")[1] || "");
+      };
+      reader.onerror = () => reject(new Error("קריאת הקובץ נכשלה"));
+      reader.readAsDataURL(file);
+    });
+
   const handleImageUpload = async (pageSlug: string, sectionKey: string, fieldKey: string, file: File) => {
     const validationError = validateFile(file);
     if (validationError) {
       toast({ title: "שגיאה", description: validationError, variant: "destructive" });
       return;
     }
-    const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${file.name.split('.').pop()}`;
-    const { error } = await supabase.storage.from("site-assets").upload(filePath, file);
-    if (error) {
-      toast({ title: "שגיאה בהעלאת תמונה", description: error.message, variant: "destructive" });
-      return;
+
+    try {
+      const fileBase64 = await fileToBase64(file);
+      const { data, error } = await supabase.functions.invoke("admin-upload-asset", {
+        body: {
+          bucket: "site-assets",
+          pageSlug,
+          sectionKey,
+          fieldKey,
+          fileName: file.name,
+          contentType: file.type,
+          fileBase64,
+        },
+      });
+
+      if (error) {
+        throw new Error(error.message || "שגיאה לא ידועה בהעלאה");
+      }
+
+      if (!data?.publicUrl) {
+        throw new Error(data?.error || "לא התקבלה כתובת לתמונה");
+      }
+
+      setFieldValue(pageSlug, sectionKey, fieldKey, data.publicUrl);
+      toast({ title: "התמונה הועלתה בהצלחה" });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "שגיאה לא ידועה בהעלאה";
+      toast({ title: "שגיאה בהעלאת תמונה", description: message, variant: "destructive" });
     }
-    const { data: { publicUrl } } = supabase.storage.from("site-assets").getPublicUrl(filePath);
-    setFieldValue(pageSlug, sectionKey, fieldKey, publicUrl);
   };
 
   const [uploadingVideo, setUploadingVideo] = useState(false);
