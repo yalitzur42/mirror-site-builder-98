@@ -763,6 +763,13 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
+      {/* ============ SALARY CALCULATOR (below testimonials) ============ */}
+      <Section variant={resultsGallery.length > 0 ? "dark" : "light"}>
+        <AnimatedSection>
+          <SalaryCalculator />
+        </AnimatedSection>
+      </Section>
+
       <SectionDivider from={resultsGallery.length > 0 ? "dark" : "light"} to="light" shape="steps" />
 
       {/* ============ 🆕 GUARANTEE / RISK REVERSAL ============ */}
