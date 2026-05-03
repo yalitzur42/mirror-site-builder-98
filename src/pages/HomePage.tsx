@@ -46,10 +46,10 @@ const HomePage = () => {
   ];
 
   const academyFeatures = [
-    { icon: GraduationCap, title: v("academy", "feature1_title", "8 שיעורים פרונטליים"), description: v("academy", "feature1_desc", "לומדים ומתרגלים ישירות על לקוחות אמיתיים — לא רק תיאוריה") },
-    { icon: Users, title: v("academy", "feature2_title", "ליווי של שנה"), description: v("academy", "feature2_desc", "לא נעלמים אחרי הקורס — נשארים איתך עד שאתה עובד") },
-    { icon: Award, title: v("academy", "feature3_title", "פלטפורמה דיגיטלית"), description: v("academy", "feature3_desc", "מדריכים, מפת דרכים ופידבק — הכל במקום אחד") },
-    { icon: Star, title: v("academy", "feature4_title", "20+ בוגרים"), description: v("academy", "feature4_desc", "כולם עובדים בתחום ומרוויחים כסף אמיתי") },
+    { icon: GraduationCap, title: v("academy", "feature1_title", "8 שיעורים פרונטליים"), description: v("academy", "feature1_desc", "") },
+    { icon: Users, title: v("academy", "feature2_title", "ליווי של שנה"), description: v("academy", "feature2_desc", "") },
+    { icon: Award, title: v("academy", "feature3_title", "פלטפורמה דיגיטלית"), description: v("academy", "feature3_desc", "") },
+    { icon: Star, title: v("academy", "feature4_title", "20+ בוגרים"), description: v("academy", "feature4_desc", "") },
   ];
 
   // Gallery: try dynamic, fall back to static
