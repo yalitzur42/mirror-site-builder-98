@@ -23,8 +23,8 @@ const GalleryFieldEditor = ({ value, onChange, pageSlug, sectionKey, fieldKey }:
     images = [];
   }
 
-  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"];
-  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+  const ALLOWED_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif", "image/svg+xml", "image/heic", "image/heif", "image/avif"];
+  const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
   const MAX_FILES = 20;
 
   const handleUpload = async (files: FileList | null) => {
