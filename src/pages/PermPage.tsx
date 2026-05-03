@@ -12,12 +12,12 @@ import PageSkeleton from "@/components/ui/PageSkeleton";
 import { WA_PERM, waLink } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
-import permHero from "@/assets/perm-hero.jpg";
-import permClassic from "@/assets/perm-classic.jpg";
-import permWaves from "@/assets/perm-waves.jpg";
-import permTight from "@/assets/perm-tight.jpg";
-import permLight from "@/assets/perm-light.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
+import permHero from "@/assets/perm-hero-new.jpg";
+import permClassic from "@/assets/perm-type-loose.jpg";
+import permWaves from "@/assets/perm-type-wavy.jpg";
+import permTight from "@/assets/perm-type-tight.jpg";
+import permLight from "@/assets/perm-type-texture.jpg";
+import gallery3 from "@/assets/haircut-sample-3.jpg";
 
 const PermPage = () => {
   const { v, loading } = useSiteContent("perm");
@@ -25,18 +25,18 @@ const PermPage = () => {
 
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
-  const defaultPermImages = [permClassic, permWaves, permTight, permLight];
+  const defaultPermImages = [permTight, permClassic, permWaves, permLight];
 
   const permTypes = [1, 2, 3, 4].map((i, idx) => ({
-    name: v("perm_types", `type${i}_name`, ["תלתלים הדוקים - מוגדרים, חדים ועם אופי חזק", "תלתלים פתוחים - גלים רחבים שנראים כמו טבע", "טקסטורה עדינה - פחות תלתלים, יותר חיים ונפח לשיער", "תלתלים טבעיים - רפויים ואותנטיים - כאילו ככה נולדת"][idx]),
+    name: v("perm_types", `type${i}_name`, ["תלתלים הדוקים 💪", "תלתלים פתוחים ✨", "תלתלים גליים 🌊", "טקסטורה עדינה 🍃"][idx]),
     image: v("perm_types", `type${i}_image`) || defaultPermImages[idx],
   }));
 
-  const benefitIcons = [Shield, Clock, CheckCircle, Sparkles];
+  const benefitIcons = [Trophy, Crown, Shield, Clock];
   const benefits = [1, 2, 3, 4].map((i, idx) => ({
     icon: benefitIcons[idx],
-    title: v("benefits", `benefit${i}_title`, ["תוצאה שנראית טבעית", "3 דקות בבוקר. זהו.", "מותאם אישית לשיער שלך", "שיער שנשאר בריא"][idx]),
-    description: v("benefits", `benefit${i}_desc`, ["אנשים לא יגידו \u201Cעשית פרם?\u201D - הם יגידו \u201Cהשיער שלך תמיד ככה?\u201D", "מרטיב, מסדר ביד, יוצא. אין עוד מלחמות מול המראה.", "יש עשרות סגנונות פרם שונים. אנחנו לוקחים את מה שאתה רוצה ומתאימים אותו בדיוק לשיער שלך.", "אנחנו עובדים עם מוצרים שנבחרו בקפידה - כאלה שמגנים על השיער לאורך כל הטיפול. יוצא רך, חי ועם לוק שמחזיק."][idx]),
+    title: v("benefits", `benefit${i}_title`, ["100+ לקוחות מרוצים 🏆", "היחידים בארץ 👑", "ניסיון מעל הכל 🎯", "מחזיק 4-6 חודשים ⏳"][idx]),
+    description: v("benefits", `benefit${i}_desc`, ["מאות גברים שעברו אצלנו וחזרו עוד פעם — וגם המליצו לחברים.", "המומחים היחידים בישראל שמתמחים בפרם לשיער של גבר.", "שנים של ניסיון ושיטה מוכחת — לא ניסויים על הראש שלך.", "תוצאה אמיתית שמחזיקה לאורך זמן — בלי להתאמץ."][idx]),
   }));
 
   return (
