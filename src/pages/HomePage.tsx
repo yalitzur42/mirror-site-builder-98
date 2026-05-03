@@ -40,9 +40,9 @@ const HomePage = () => {
   if (loading) return <Layout><PageSkeleton /></Layout>;
 
   const servicesCards = [
-    { title: v("services", "card1_title", "לימודי ספרות גברים"), description: v("services", "card1_desc", "הפוך את התשוקה למקצוע. האקדמיה המובילה בישראל לספרות גברים."), href: "/academy", image: v("services", "card1_image") || serviceAcademy },
-    { title: v("services", "card2_title", "תספורות גברים"), description: v("services", "card2_desc", "מקצוענים שיודעים בדיוק מה מתאים לך. לא מנחשים - יודעים."), href: "/barbershop", image: v("services", "card2_image") || serviceHaircut },
-    { title: v("services", "card3_title", "פרם לגבר"), description: v("services", "card3_desc", "היחידים בישראל שמתמחים בפרם לגברים. תלתלים שנראים כאילו נולדת איתם."), href: "/perm", image: v("services", "card3_image") || servicePerm },
+    { title: v("services", "card1_title", "לימודי ספרות גברים"), description: v("services", "card1_desc", ""), href: "/academy", image: v("services", "card1_image") || serviceAcademy },
+    { title: v("services", "card2_title", "תספורות גברים"), description: v("services", "card2_desc", ""), href: "/barbershop", image: v("services", "card2_image") || serviceHaircut },
+    { title: v("services", "card3_title", "פרם לגבר"), description: v("services", "card3_desc", ""), href: "/perm", image: v("services", "card3_image") || servicePerm },
   ];
 
   const academyFeatures = [
