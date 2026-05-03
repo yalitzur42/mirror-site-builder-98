@@ -23,9 +23,9 @@ import {
   XCircle, ArrowRight, ShieldAlert, ImageIcon
 } from "lucide-react";
 
-import academyClassroom from "@/assets/academy-classroom.jpg";
+import academyClassroom from "@/assets/student-1.jpg";
 import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";
-import ownerPortrait from "@/assets/owner-portrait.jpg";
+import ownerPortrait from "@/assets/barber-yali-brown.jpg";
 
 import { WA_ACADEMY, waLink as _waLink } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
