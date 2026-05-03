@@ -32,7 +32,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import UrgencyBar from "@/components/academy/UrgencyBar";
 import LeadForm from "@/components/academy/LeadForm";
-import StatsCounter from "@/components/academy/StatsCounter";
+
 import FaqAccordion from "@/components/academy/FaqAccordion";
 import StickyWhatsApp from "@/components/academy/StickyWhatsApp";
 import SalaryCalculator from "@/components/academy/SalaryCalculator";
