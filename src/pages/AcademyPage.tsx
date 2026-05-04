@@ -20,7 +20,7 @@ import {
   GraduationCap, Star, BookOpen, CheckCircle2, ShieldCheck, Sparkles,
   CalendarDays, MapPin, ChevronDown, BadgeCheck, BriefcaseBusiness,
   Video, Scissors, HelpCircle, AlertTriangle, Target, UserCheck, Play,
-  XCircle, ArrowRight, ShieldAlert, ImageIcon
+  XCircle, ArrowRight, ImageIcon
 } from "lucide-react";
 
 import academyClassroom from "@/assets/student-1.jpg";

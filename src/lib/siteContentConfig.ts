@@ -580,17 +580,6 @@ export const siteContentConfig: PageConfig[] = [
         ],
       },
       {
-        key: "guarantee",
-        title: "21 · ערבות / ביטול סיכון",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "בלי הפתעות. בלי תירוצים." },
-          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "ההבטחה שלנו אליך" },
-          { key: "item1", label: "ערבות 1", type: "text", defaultValue: "✅ שיעור ניסיון — תראה איך זה עובד לפני שמחליטים" },
-          { key: "item2", label: "ערבות 2", type: "text", defaultValue: "🛡️ אם עשית את כל מה שביקשתי ועדיין אין לך ביטחון לעבוד — ממשיכים ביחד עד שיש. בלי תשלום נוסף." },
-          { key: "cta_label", label: "כפתור תחתון", type: "text", defaultValue: "שיחה ללא התחייבות בוואטסאפ" },
-        ],
-      },
-      {
         key: "lead_form_2",
         title: "22 · טופס השארת פרטים שני (תחתון)",
         fields: [
