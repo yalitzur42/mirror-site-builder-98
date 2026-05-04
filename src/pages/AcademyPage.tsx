@@ -217,14 +217,18 @@ const AcademyPage = () => {
         description={v("hero", "description", "השיטה של יהלי — לימוד מקצועי, עסקי ושיווקי, עד שאתה באמת עובד ומרוויח.")}
         backgroundImage={v("hero", "image", "")}
         primaryCta={{
-          label: <>🎓 הצטרף לאקדמיה ←</>,
+          label: v("hero", "primary_cta_label", "🎓 הצטרף לאקדמיה ←"),
           href: buildWaLink("היי 👋 אני רוצה להצטרף לאקדמיה של Macho. אפשר פרטים?"),
         }}
         secondaryCta={{
-          label: <>✅ בדוק אם זה מתאים לי</>,
+          label: v("hero", "secondary_cta_label", "✅ בדוק אם זה מתאים לי"),
           href: "#lead-section",
         }}
-        socialProof={["✂️ הכשרה מעשית", "📜 תעודה מוכרת", "👥 קבוצות עד 4"]}
+        socialProof={[
+          v("hero", "social_proof1", "✂️ הכשרה מעשית"),
+          v("hero", "social_proof2", "📜 תעודה מוכרת"),
+          v("hero", "social_proof3", "👥 קבוצות עד 4"),
+        ]}
       />
 
       {/* URGENCY BAR with spots remaining */}
@@ -233,6 +237,7 @@ const AcademyPage = () => {
         onScrollToLead={onScrollToLead}
         onPrimaryCTA={onPrimaryCTA}
         spotsLeft={spotsLeft}
+        v={v}
       />
 
       <SectionDivider from="dark" to="light" shape="waves" />
@@ -274,7 +279,7 @@ const AcademyPage = () => {
                   className="inline-flex items-center gap-3 rounded-full bg-foreground text-background px-8 py-4 font-bold text-lg hover:opacity-95 transition mx-auto"
                 >
                   <Smartphone className="w-5 h-5" />
-                  קבלו פרטים נוספים
+                  {v("video", "fallback_button", "קבלו פרטים נוספים")}
                 </button>
               </div>
             )}
@@ -292,7 +297,7 @@ const AcademyPage = () => {
       {/* ============ SALARY CALCULATOR (after carousels) ============ */}
       <Section variant="light">
         <AnimatedSection>
-          <SalaryCalculator />
+          <SalaryCalculator v={v} />
         </AnimatedSection>
       </Section>
 
@@ -342,15 +347,15 @@ const AcademyPage = () => {
                     <div className="mt-6 flex flex-wrap gap-3">
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Clock className="w-4 h-4 opacity-80" />
-                        <span>3 חודשים</span>
+                        <span>{v("outcomes", "badge1", "3 חודשים")}</span>
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Users className="w-4 h-4 opacity-80" />
-                        <span>קבוצות עד 4 תלמידים</span>
+                        <span>{v("outcomes", "badge2", "קבוצות עד 4 תלמידים")}</span>
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Award className="w-4 h-4 opacity-80" />
-                        <span>תעודת סיום</span>
+                        <span>{v("outcomes", "badge3", "תעודת סיום")}</span>
                       </div>
                     </div>
                   </div>
@@ -361,7 +366,7 @@ const AcademyPage = () => {
                     <div className="absolute bottom-4 right-4 left-4 text-right text-white">
                       <div className="text-sm opacity-90 flex items-center justify-end gap-2">
                         <MapPin className="w-4 h-4" />
-                        <span>מיקום: יישלח בוואטסאפ</span>
+                        <span>{v("outcomes", "location_text", "מיקום: יישלח בוואטסאפ")}</span>
                       </div>
                       <div className="text-sm opacity-90 flex items-center justify-end gap-2 mt-1">
                         <CalendarDays className="w-4 h-4" />
@@ -429,7 +434,7 @@ const AcademyPage = () => {
                 className="text-base md:text-xl font-semibold"
                 style={{ color: "#C9A84C" }}
               >
-                אנחנו יודעים בדיוק איך אתה מרגיש — כי עברנו את זה
+                {v("problems", "subtitle", "אנחנו יודעים בדיוק איך אתה מרגיש — כי עברנו את זה")}
               </p>
             </div>
 
@@ -462,7 +467,7 @@ const AcademyPage = () => {
             <div className="mt-10 text-center">
               <button onClick={onScrollToLead} className="btn-premium-fill">
                 <Smartphone className="w-5 h-5" />
-                אני רוצה לבדוק אם זה בשבילי
+                {v("problems", "cta_label", "אני רוצה לבדוק אם זה בשבילי")}
               </button>
             </div>
           </AnimatedSection>
@@ -519,7 +524,7 @@ const AcademyPage = () => {
                   border: "1px solid rgba(74,222,128,0.4)",
                 }}
               >
-                ✓ אחרי הקורס
+                {v("comparison", "label_after", "✓ אחרי הקורס")}
               </div>
               {comparison.map((row, idx) => (
                 <div
@@ -565,7 +570,7 @@ const AcademyPage = () => {
                   border: "1px solid rgba(239,68,68,0.4)",
                 }}
               >
-                ✗ לפני הקורס
+                {v("comparison", "label_before", "✗ לפני הקורס")}
               </div>
               {comparison.map((row, idx) => (
                 <div
@@ -588,7 +593,7 @@ const AcademyPage = () => {
           <div className="mt-10 text-center">
             <button onClick={onScrollToLead} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
-              אני רוצה להיות בצד הימני
+              {v("comparison", "cta_label", "אני רוצה להיות בצד הימני")}
             </button>
           </div>
         </AnimatedSection>
@@ -630,7 +635,7 @@ const AcademyPage = () => {
       <SectionDivider from="light" to="dark" shape="triangles" />
 
       {/* ============ 8️⃣ PROGRAM / PROCESS ============ */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> ⚙️ השיטה שלנו — פשוטה, ברורה, עם תוצאות</>} variant="dark">
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> {v("how_it_works", "section_title", "⚙️ השיטה שלנו — פשוטה, ברורה, עם תוצאות")}</>} variant="dark">
         <AnimatedSection>
           <div className="grid lg:grid-cols-3 gap-6">
             {[
@@ -655,7 +660,7 @@ const AcademyPage = () => {
         <AnimatedSection delay={0.1}>
           <div className="mt-14">
             <h3 className="text-2xl md:text-3xl font-black text-center mb-8">
-              <ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס
+              <ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> {v("modules", "section_title", "תכני הקורס")}
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {modules.map((module, index) => (
@@ -709,7 +714,7 @@ const AcademyPage = () => {
               <div className="mt-8 text-center">
                 <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
                   <Smartphone className="w-5 h-5" />
-                  גם אני רוצה ללמוד ככה
+                  {v("results_gallery", "cta_label", "גם אני רוצה ללמוד ככה")}
                 </button>
               </div>
             </AnimatedSection>
@@ -723,9 +728,9 @@ const AcademyPage = () => {
         <AnimatedSection>
           <div className="text-center max-w-5xl mx-auto">
             <h2 className="mb-3 text-3xl md:text-4xl font-black">
-              <MessageCircle className="w-6 h-6 inline-block align-middle ml-1" /> הבוגרים שלנו מדברים
+              <MessageCircle className="w-6 h-6 inline-block align-middle ml-1" /> {v("testimonials", "section_title", "הבוגרים שלנו מדברים")}
             </h2>
-            <p className="opacity-70 mb-10">אמיתי, קצר ולעניין — מה אנשים חוו ומה יצא להם מזה.</p>
+            <p className="opacity-70 mb-10">{v("testimonials", "section_subtitle", "אמיתי, קצר ולעניין — מה אנשים חוו ומה יצא להם מזה.")}</p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {testimonials.map((t, idx) => (
@@ -762,7 +767,7 @@ const AcademyPage = () => {
             <div className="mt-8">
               <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
                 <Smartphone className="w-5 h-5" />
-                גם אני רוצה פרטים
+                {v("testimonials", "cta_label", "גם אני רוצה פרטים")}
               </button>
             </div>
           </div>
@@ -797,7 +802,7 @@ const AcademyPage = () => {
             <div className="mt-8">
               <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
                 <Smartphone className="w-5 h-5" />
-                שיחה ללא התחייבות בוואטסאפ
+                {v("guarantee", "cta_label", "שיחה ללא התחייבות בוואטסאפ")}
               </button>
             </div>
           </div>
@@ -812,9 +817,9 @@ const AcademyPage = () => {
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-black mb-3">
-                <Smartphone className="w-6 h-6 inline-block align-middle ml-1" /> מעניין? בואו נדבר
+                <Smartphone className="w-6 h-6 inline-block align-middle ml-1" /> {v("lead_form_2", "title", "מעניין? בואו נדבר")}
               </h2>
-              <p className="opacity-70">השאירו פרטים ונחזור אליכם בוואטסאפ — מהר, בלי התחייבות.</p>
+              <p className="opacity-70">{v("lead_form_2", "subtitle", "השאירו פרטים ונחזור אליכם בוואטסאפ — מהר, בלי התחייבות.")}</p>
 
               {spotsLeft > 0 && spotsLeft <= 4 && (
                 <p className="mt-3 text-accent font-bold text-sm animate-pulse">
@@ -847,7 +852,7 @@ const AcademyPage = () => {
           <div className="mt-8 text-center">
             <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
               <Smartphone className="w-5 h-5" />
-              בדיקת התאמה מהירה
+              {v("who_is_this_for", "cta_label", "בדיקת התאמה מהירה")}
             </button>
           </div>
         </AnimatedSection>
@@ -856,16 +861,16 @@ const AcademyPage = () => {
       <SectionDivider from="light" to="dark" shape="steps" />
 
       {/* ============ 1️⃣2️⃣ FAQ ============ */}
-      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> שאלות נפוצות</>} variant="dark">
+      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> {v("faq", "section_title", "שאלות נפוצות")}</>} variant="dark">
         <div id="faq" className="scroll-mt-28" />
         <AnimatedSection>
           <FaqAccordion items={faq} />
 
           <div className="mt-10 text-center">
-            <p className="opacity-80 mb-4">יש עוד שאלה? שלחו הודעה ונענה מהר.</p>
+            <p className="opacity-80 mb-4">{v("faq", "footer_text", "יש עוד שאלה? שלחו הודעה ונענה מהר.")}</p>
             <button onClick={onPrimaryCTA} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
-              שלחו שאלה בוואטסאפ
+              {v("faq", "cta_label", "שלחו שאלה בוואטסאפ")}
             </button>
           </div>
         </AnimatedSection>
@@ -878,10 +883,10 @@ const AcademyPage = () => {
         <div className="container-main">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
-              🔥 נשארו 2 מקומות בחודש הזה
+              {v("final_cta", "title", "🔥 נשארו 2 מקומות בחודש הזה")}
             </h2>
             <p className="text-base md:text-lg opacity-75 mb-9">
-              מעניין? בוא נדבר — בלי התחייבות. בשיחה של 15 דקות נבדוק ביחד אם זה מתאים לך, ונבנה לך מפת הכנסה אישית חינם.
+              {v("final_cta", "subtitle", "מעניין? בוא נדבר — בלי התחייבות. בשיחה של 15 דקות נבדוק ביחד אם זה מתאים לך, ונבנה לך מפת הכנסה אישית חינם.")}
             </p>
             <a
               href={buildWaLink("היי 👋 אני רוצה פרטים על האקדמיה של Macho. אפשר לדבר?")}
@@ -895,7 +900,7 @@ const AcademyPage = () => {
               }}
             >
               <Smartphone className="w-6 h-6 md:w-7 md:h-7" />
-              👉 שלח לי הודעה ב-WhatsApp
+              {v("final_cta", "button_text", "👉 שלח לי הודעה ב-WhatsApp")}
             </a>
             {spotsLeft > 0 && spotsLeft <= 4 && (
               <p className="mt-5 text-sm md:text-base font-bold animate-pulse" style={{ color: "#b85a1a" }}>

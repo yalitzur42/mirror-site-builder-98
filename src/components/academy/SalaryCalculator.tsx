@@ -1,12 +1,24 @@
 import { useState } from "react";
-import { Calculator, Clock, Scissors, Banknote } from "lucide-react";
+import { Clock, Scissors, Banknote } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-const SalaryCalculator = () => {
-  const [hoursStr, setHoursStr] = useState("8");
-  const [minutesStr, setMinutesStr] = useState("30");
-  const [priceStr, setPriceStr] = useState("80");
+interface SalaryCalculatorProps {
+  v?: (section: string, key: string, fallback?: string) => string;
+}
+
+const SalaryCalculator = ({ v }: SalaryCalculatorProps) => {
+  const get = (key: string, fallback: string) =>
+    v ? v("salary_calculator", key, fallback) : fallback;
+
+  const defaultHours = get("default_hours", "8");
+  const defaultMinutes = get("default_minutes", "30");
+  const defaultPrice = get("default_price", "80");
+  const workDaysPerMonth = parseInt(get("work_days", "22"), 10) || 22;
+
+  const [hoursStr, setHoursStr] = useState(defaultHours);
+  const [minutesStr, setMinutesStr] = useState(defaultMinutes);
+  const [priceStr, setPriceStr] = useState(defaultPrice);
 
   const hoursPerDay = parseInt(hoursStr, 10) || 0;
   const minutesPerCut = parseInt(minutesStr, 10) || 0;
@@ -15,7 +27,6 @@ const SalaryCalculator = () => {
   const cutsPerHour = minutesPerCut > 0 ? 60 / minutesPerCut : 0;
   const cutsPerDay = cutsPerHour * hoursPerDay;
   const dailyIncome = cutsPerDay * pricePerCut;
-  const workDaysPerMonth = 22;
   const monthlyEstimate = Math.round(dailyIncome * workDaysPerMonth);
 
   const clamp = (value: string, setter: (s: string) => void, min: number, max: number) => {
@@ -31,10 +42,10 @@ const SalaryCalculator = () => {
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-8 md:mb-10">
         <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
-          🧮 כמה תוכל להרוויח בחודש?
+          {get("title", "🧮 כמה תוכל להרוויח בחודש?")}
         </h2>
         <p className="opacity-75 text-lg md:text-xl">
-          הזז את הסליידר ותראה מספרים אמיתיים — לא הבטחות
+          {get("subtitle", "הזז את הסליידר ותראה מספרים אמיתיים — לא הבטחות")}
         </p>
       </div>
 
@@ -43,7 +54,7 @@ const SalaryCalculator = () => {
         <div className="flex items-center justify-between gap-4">
           <label className="flex items-center gap-2 font-bold text-lg md:text-xl">
             <Clock className="w-5 h-5 md:w-6 md:h-6" />
-            שעות עבודה ביום
+            {get("label_hours", "שעות עבודה ביום")}
           </label>
           <Input
             type="number"
@@ -60,7 +71,7 @@ const SalaryCalculator = () => {
         <div className="flex items-center justify-between gap-4">
           <label className="flex items-center gap-2 font-bold text-lg md:text-xl">
             <Scissors className="w-5 h-5 md:w-6 md:h-6" />
-            זמן לתספורת (דקות)
+            {get("label_minutes", "זמן לתספורת (דקות)")}
           </label>
           <Input
             type="number"
@@ -77,7 +88,7 @@ const SalaryCalculator = () => {
         <div className="flex items-center justify-between gap-4">
           <label className="flex items-center gap-2 font-bold text-lg md:text-xl">
             <Banknote className="w-5 h-5 md:w-6 md:h-6" />
-            מחיר לתספורת (₪)
+            {get("label_price", "מחיר לתספורת (₪)")}
           </label>
           <Input
             type="number"
@@ -93,7 +104,7 @@ const SalaryCalculator = () => {
         {/* Result */}
         <div className="border-t-2 border-foreground/20 pt-7 text-center space-y-2">
           <p className="opacity-70 font-bold text-base md:text-lg">
-            שכר חודשי מוערך (22 ימי עבודה)
+            {get("result_label", `שכר חודשי מוערך (${workDaysPerMonth} ימי עבודה)`)}
           </p>
           <div
             className="text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight"
@@ -115,7 +126,7 @@ const SalaryCalculator = () => {
             border: "1px solid rgba(201,168,76,0.3)",
           }}
         >
-          זה לא חלום — זה מה שבוגרי האקדמיה מרוויחים היום ✨
+          {get("footer_text", "זה לא חלום — זה מה שבוגרי האקדמיה מרוויחים היום ✨")}
         </div>
       </Card>
     </div>
