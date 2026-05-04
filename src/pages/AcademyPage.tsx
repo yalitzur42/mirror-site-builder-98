@@ -279,7 +279,7 @@ const AcademyPage = () => {
                   className="inline-flex items-center gap-3 rounded-full bg-foreground text-background px-8 py-4 font-bold text-lg hover:opacity-95 transition mx-auto"
                 >
                   <Smartphone className="w-5 h-5" />
-                  קבלו פרטים נוספים
+                  {v("video", "fallback_button", "קבלו פרטים נוספים")}
                 </button>
               </div>
             )}
@@ -297,7 +297,7 @@ const AcademyPage = () => {
       {/* ============ SALARY CALCULATOR (after carousels) ============ */}
       <Section variant="light">
         <AnimatedSection>
-          <SalaryCalculator />
+          <SalaryCalculator v={v} />
         </AnimatedSection>
       </Section>
 
