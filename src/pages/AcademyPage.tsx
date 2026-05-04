@@ -488,10 +488,10 @@ const AcademyPage = () => {
           {/* Why us features */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-background text-foreground border-border p-6 rounded-2xl hover:-translate-y-1 transition">
-                <feature.icon className="w-10 h-10 mb-3 opacity-90" />
-                <h3 className="font-black text-lg mb-1 text-primary">{feature.title}</h3>
-                <p className="opacity-80 text-sm">{feature.description}</p>
+              <Card key={index} className="bg-primary text-primary-foreground border-primary-foreground/20 p-6 rounded-2xl hover:-translate-y-1 transition">
+                <feature.icon className="w-10 h-10 mb-3 opacity-90 text-primary-foreground" />
+                <h3 className="font-black text-lg mb-1 text-primary-foreground">{feature.title}</h3>
+                <p className="opacity-80 text-sm text-primary-foreground">{feature.description}</p>
               </Card>
             ))}
           </div>
