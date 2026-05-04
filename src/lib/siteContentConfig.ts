@@ -502,18 +502,6 @@ export const siteContentConfig: PageConfig[] = [
         ],
       },
       {
-        key: "micro_proof",
-        title: "18 · כרטיסי הוכחה (3 כרטיסים)",
-        fields: [
-          { key: "card1_title", label: "כרטיס 1 - כותרת", type: "text", defaultValue: "תרגול מודרך" },
-          { key: "card1_desc", label: "כרטיס 1 - תיאור", type: "text", defaultValue: "לא רק תיאוריה — עובדים ידיים על הכלים" },
-          { key: "card2_title", label: "כרטיס 2 - כותרת", type: "text", defaultValue: "סטנדרט היגיינה" },
-          { key: "card2_desc", label: "כרטיס 2 - תיאור", type: "text", defaultValue: "איך לעבוד נכון ומקצועי לפי נהלים" },
-          { key: "card3_title", label: "כרטיס 3 - כותרת", type: "text", defaultValue: "כניסה לתעשייה" },
-          { key: "card3_desc", label: "כרטיס 3 - תיאור", type: "text", defaultValue: "איך למצוא מקום, איך להציג את עצמך" },
-        ],
-      },
-      {
         key: "results_gallery",
         title: "19 · גלריית תוצאות בוגרים",
         fields: [

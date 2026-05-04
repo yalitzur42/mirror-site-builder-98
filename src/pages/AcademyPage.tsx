@@ -666,26 +666,6 @@ const AcademyPage = () => {
           </div>
         </AnimatedSection>
 
-        {/* Micro proof cards */}
-        <AnimatedSection delay={0.15}>
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            <Card className="p-6 rounded-2xl border-0 bg-secondary text-secondary-foreground">
-              <Video className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg">{v("micro_proof", "card1_title", "תרגול מודרך")}</h3>
-              <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card1_desc", "לא רק תיאוריה — עובדים ידיים על הכלים")}</p>
-            </Card>
-            <Card className="p-6 rounded-2xl border-0 bg-secondary text-secondary-foreground">
-              <ShieldCheck className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg">{v("micro_proof", "card2_title", "סטנדרט היגיינה")}</h3>
-              <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card2_desc", "איך לעבוד נכון ומקצועי לפי נהלים")}</p>
-            </Card>
-            <Card className="p-6 rounded-2xl border-0 bg-secondary text-secondary-foreground">
-              <BriefcaseBusiness className="w-10 h-10 mb-3" />
-              <h3 className="font-black text-lg">{v("micro_proof", "card3_title", "כניסה לתעשייה")}</h3>
-              <p className="opacity-80 text-sm mt-1">{v("micro_proof", "card3_desc", "איך למצוא מקום, איך להציג את עצמך")}</p>
-            </Card>
-          </div>
-        </AnimatedSection>
       </Section>
 
       <SectionDivider from="dark" to="light" shape="curves" />
