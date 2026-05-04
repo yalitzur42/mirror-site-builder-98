@@ -365,23 +365,6 @@ export const siteContentConfig: PageConfig[] = [
         ],
       },
       {
-        key: "salary_calculator",
-        title: "07 · מחשבון שכר",
-        fields: [
-          { key: "title", label: "כותרת", type: "text", defaultValue: "🧮 כמה תוכל להרוויח בחודש?" },
-          { key: "subtitle", label: "תת כותרת", type: "text", defaultValue: "הזז את הסליידר ותראה מספרים אמיתיים — לא הבטחות" },
-          { key: "label_hours", label: "תווית - שעות עבודה ביום", type: "text", defaultValue: "שעות עבודה ביום" },
-          { key: "label_minutes", label: "תווית - דקות לתספורת", type: "text", defaultValue: "זמן לתספורת (דקות)" },
-          { key: "label_price", label: "תווית - מחיר לתספורת", type: "text", defaultValue: "מחיר לתספורת (₪)" },
-          { key: "default_hours", label: "ערך התחלתי - שעות", type: "text", defaultValue: "8" },
-          { key: "default_minutes", label: "ערך התחלתי - דקות", type: "text", defaultValue: "30" },
-          { key: "default_price", label: "ערך התחלתי - מחיר", type: "text", defaultValue: "80" },
-          { key: "work_days", label: "ימי עבודה בחודש", type: "text", defaultValue: "22" },
-          { key: "result_label", label: "תווית תוצאה", type: "text", defaultValue: "שכר חודשי מוערך (22 ימי עבודה)" },
-          { key: "footer_text", label: "טקסט תחתון", type: "text", defaultValue: "זה לא חלום — זה מה שבוגרי האקדמיה מרוויחים היום ✨" },
-        ],
-      },
-      {
         key: "lead_form",
         title: "08 · טופס השארת פרטים (ראשי)",
         fields: [
