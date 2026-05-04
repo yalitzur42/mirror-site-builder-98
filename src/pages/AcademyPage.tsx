@@ -290,6 +290,13 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
+      {/* ============ SALARY CALCULATOR (right after carousels) ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <SalaryCalculator />
+        </AnimatedSection>
+      </Section>
+
       <SectionDivider from="light" to="dark" shape="waves" />
 
       {/* ============ 3️⃣ PRIMARY FORM + OUTCOMES ============ */}
@@ -760,13 +767,6 @@ const AcademyPage = () => {
               </button>
             </div>
           </div>
-        </AnimatedSection>
-      </Section>
-
-      {/* ============ SALARY CALCULATOR (below testimonials) ============ */}
-      <Section variant={resultsGallery.length > 0 ? "dark" : "light"}>
-        <AnimatedSection>
-          <SalaryCalculator />
         </AnimatedSection>
       </Section>
 
