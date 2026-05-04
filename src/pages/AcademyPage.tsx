@@ -217,14 +217,18 @@ const AcademyPage = () => {
         description={v("hero", "description", "השיטה של יהלי — לימוד מקצועי, עסקי ושיווקי, עד שאתה באמת עובד ומרוויח.")}
         backgroundImage={v("hero", "image", "")}
         primaryCta={{
-          label: <>🎓 הצטרף לאקדמיה ←</>,
+          label: v("hero", "primary_cta_label", "🎓 הצטרף לאקדמיה ←"),
           href: buildWaLink("היי 👋 אני רוצה להצטרף לאקדמיה של Macho. אפשר פרטים?"),
         }}
         secondaryCta={{
-          label: <>✅ בדוק אם זה מתאים לי</>,
+          label: v("hero", "secondary_cta_label", "✅ בדוק אם זה מתאים לי"),
           href: "#lead-section",
         }}
-        socialProof={["✂️ הכשרה מעשית", "📜 תעודה מוכרת", "👥 קבוצות עד 4"]}
+        socialProof={[
+          v("hero", "social_proof1", "✂️ הכשרה מעשית"),
+          v("hero", "social_proof2", "📜 תעודה מוכרת"),
+          v("hero", "social_proof3", "👥 קבוצות עד 4"),
+        ]}
       />
 
       {/* URGENCY BAR with spots remaining */}
@@ -233,6 +237,7 @@ const AcademyPage = () => {
         onScrollToLead={onScrollToLead}
         onPrimaryCTA={onPrimaryCTA}
         spotsLeft={spotsLeft}
+        v={v}
       />
 
       <SectionDivider from="dark" to="light" shape="waves" />
