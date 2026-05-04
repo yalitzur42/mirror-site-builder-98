@@ -347,15 +347,15 @@ const AcademyPage = () => {
                     <div className="mt-6 flex flex-wrap gap-3">
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Clock className="w-4 h-4 opacity-80" />
-                        <span>3 חודשים</span>
+                        <span>{v("outcomes", "badge1", "3 חודשים")}</span>
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Users className="w-4 h-4 opacity-80" />
-                        <span>קבוצות עד 4 תלמידים</span>
+                        <span>{v("outcomes", "badge2", "קבוצות עד 4 תלמידים")}</span>
                       </div>
                       <div className="inline-flex items-center gap-2 rounded-full bg-background/10 px-4 py-2 text-sm">
                         <Award className="w-4 h-4 opacity-80" />
-                        <span>תעודת סיום</span>
+                        <span>{v("outcomes", "badge3", "תעודת סיום")}</span>
                       </div>
                     </div>
                   </div>
@@ -366,7 +366,7 @@ const AcademyPage = () => {
                     <div className="absolute bottom-4 right-4 left-4 text-right text-white">
                       <div className="text-sm opacity-90 flex items-center justify-end gap-2">
                         <MapPin className="w-4 h-4" />
-                        <span>מיקום: יישלח בוואטסאפ</span>
+                        <span>{v("outcomes", "location_text", "מיקום: יישלח בוואטסאפ")}</span>
                       </div>
                       <div className="text-sm opacity-90 flex items-center justify-end gap-2 mt-1">
                         <CalendarDays className="w-4 h-4" />
