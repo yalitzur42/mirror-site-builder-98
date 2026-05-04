@@ -635,7 +635,7 @@ const AcademyPage = () => {
       <SectionDivider from="light" to="dark" shape="triangles" />
 
       {/* ============ 8️⃣ PROGRAM / PROCESS ============ */}
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> ⚙️ השיטה שלנו — פשוטה, ברורה, עם תוצאות</>} variant="dark">
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> {v("how_it_works", "section_title", "⚙️ השיטה שלנו — פשוטה, ברורה, עם תוצאות")}</>} variant="dark">
         <AnimatedSection>
           <div className="grid lg:grid-cols-3 gap-6">
             {[
@@ -660,7 +660,7 @@ const AcademyPage = () => {
         <AnimatedSection delay={0.1}>
           <div className="mt-14">
             <h3 className="text-2xl md:text-3xl font-black text-center mb-8">
-              <ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> תכני הקורס
+              <ClipboardList className="w-6 h-6 inline-block align-middle ml-1" /> {v("modules", "section_title", "תכני הקורס")}
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {modules.map((module, index) => (
@@ -714,7 +714,7 @@ const AcademyPage = () => {
               <div className="mt-8 text-center">
                 <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
                   <Smartphone className="w-5 h-5" />
-                  גם אני רוצה ללמוד ככה
+                  {v("results_gallery", "cta_label", "גם אני רוצה ללמוד ככה")}
                 </button>
               </div>
             </AnimatedSection>
