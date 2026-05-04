@@ -434,7 +434,7 @@ const AcademyPage = () => {
                 className="text-base md:text-xl font-semibold"
                 style={{ color: "#C9A84C" }}
               >
-                אנחנו יודעים בדיוק איך אתה מרגיש — כי עברנו את זה
+                {v("problems", "subtitle", "אנחנו יודעים בדיוק איך אתה מרגיש — כי עברנו את זה")}
               </p>
             </div>
 
@@ -467,7 +467,7 @@ const AcademyPage = () => {
             <div className="mt-10 text-center">
               <button onClick={onScrollToLead} className="btn-premium-fill">
                 <Smartphone className="w-5 h-5" />
-                אני רוצה לבדוק אם זה בשבילי
+                {v("problems", "cta_label", "אני רוצה לבדוק אם זה בשבילי")}
               </button>
             </div>
           </AnimatedSection>
