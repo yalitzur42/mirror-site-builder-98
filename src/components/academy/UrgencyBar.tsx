@@ -24,9 +24,10 @@ interface UrgencyBarProps {
   onScrollToLead: () => void;
   onPrimaryCTA: () => void;
   spotsLeft?: number;
+  v?: (section: string, key: string, fallback?: string) => string;
 }
 
-const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA, spotsLeft }: UrgencyBarProps) => {
+const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA, spotsLeft, v }: UrgencyBarProps) => {
   const [timeLeft, setTimeLeft] = useState(() => getTimeParts(nextCohortStartISO));
 
   useEffect(() => {
@@ -36,9 +37,12 @@ const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA, spotsLef
     return () => window.clearInterval(t);
   }, [nextCohortStartISO]);
 
+  const get = (key: string, fallback: string) =>
+    v ? v("urgency_bar", key, fallback) : fallback;
+
   const urgencyText = timeLeft.diff > 0
     ? `המחזור הבא מתחיל בעוד ${timeLeft.days} ימים • ${formatTwo(timeLeft.hours)}:${formatTwo(timeLeft.minutes)}:${formatTwo(timeLeft.seconds)}`
-    : "המחזור הבא נפתח עכשיו — נשארו מקומות אחרונים";
+    : get("fallback_text", "המחזור הבא נפתח עכשיו — נשארו מקומות אחרונים");
 
   const spotsText = spotsLeft !== undefined && spotsLeft > 0 && spotsLeft <= 4
     ? ` • נשארו ${spotsLeft} מקומות!`
@@ -57,14 +61,14 @@ const UrgencyBar = ({ nextCohortStartISO, onScrollToLead, onPrimaryCTA, spotsLef
             className="inline-flex items-center gap-1.5 rounded-full bg-background text-foreground px-3 py-1 text-xs font-semibold hover:opacity-90 transition"
           >
             <BadgeCheck className="w-3.5 h-3.5" />
-            השארת פרטים מהירה
+            {get("cta1_label", "השארת פרטים מהירה")}
           </button>
           <button
             onClick={onPrimaryCTA}
             className="inline-flex items-center gap-1.5 rounded-full bg-background/10 text-background px-3 py-1 text-xs font-semibold hover:bg-background/15 transition"
           >
             <Smartphone className="w-3.5 h-3.5" />
-            וואטסאפ עכשיו
+            {get("cta2_label", "וואטסאפ עכשיו")}
           </button>
         </div>
       </div>
