@@ -290,6 +290,13 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
+      {/* ============ SALARY CALCULATOR (right after carousels) ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <SalaryCalculator />
+        </AnimatedSection>
+      </Section>
+
       <SectionDivider from="light" to="dark" shape="waves" />
 
       {/* ============ 3️⃣ PRIMARY FORM + OUTCOMES ============ */}
