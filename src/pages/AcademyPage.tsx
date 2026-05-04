@@ -139,13 +139,6 @@ const AcademyPage = () => {
     [v]
   );
 
-  const guarantees = useMemo(
-    () => [
-      v("guarantee", "item1", "✅ שיעור ניסיון — תראה איך זה עובד לפני שמחליטים"),
-      v("guarantee", "item2", "🛡️ אם עשית את כל מה שביקשתי ועדיין אין לך ביטחון לעבוד — ממשיכים ביחד עד שיש. בלי תשלום נוסף."),
-    ],
-    [v]
-  );
 
   // Results gallery
   const resultsGalleryRaw = v("results_gallery", "images", "[]");
@@ -774,42 +767,7 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
-      <SectionDivider from={resultsGallery.length > 0 ? "dark" : "light"} to="light" shape="steps" />
-
-      {/* ============ 🆕 GUARANTEE / RISK REVERSAL ============ */}
-      <Section variant="light">
-        <AnimatedSection>
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/15 mb-6">
-              <ShieldAlert className="w-8 h-8 text-accent" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black mb-2">
-              {v("guarantee", "title", "בלי הפתעות. בלי תירוצים.")}
-            </h2>
-            <p className="opacity-70 text-lg mb-8">
-              {v("guarantee", "subtitle", "ההבטחה שלנו אליך")}
-            </p>
-
-            <div className="grid gap-4">
-              {guarantees.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3 p-5 bg-muted/40 border border-border rounded-xl text-right">
-                  <ShieldCheck className="w-6 h-6 opacity-80 shrink-0" />
-                  <span className="font-semibold">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
-                <Smartphone className="w-5 h-5" />
-                {v("guarantee", "cta_label", "שיחה ללא התחייבות בוואטסאפ")}
-              </button>
-            </div>
-          </div>
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="light" to="dark" shape="waves" />
+      <SectionDivider from={resultsGallery.length > 0 ? "dark" : "light"} to="dark" shape="waves" />
 
       {/* ============ 🔟 SECOND FORM / CTA ============ */}
       <Section variant="dark">
