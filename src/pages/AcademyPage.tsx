@@ -524,7 +524,7 @@ const AcademyPage = () => {
                   border: "1px solid rgba(74,222,128,0.4)",
                 }}
               >
-                ✓ אחרי הקורס
+                {v("comparison", "label_after", "✓ אחרי הקורס")}
               </div>
               {comparison.map((row, idx) => (
                 <div
@@ -570,7 +570,7 @@ const AcademyPage = () => {
                   border: "1px solid rgba(239,68,68,0.4)",
                 }}
               >
-                ✗ לפני הקורס
+                {v("comparison", "label_before", "✗ לפני הקורס")}
               </div>
               {comparison.map((row, idx) => (
                 <div
@@ -593,7 +593,7 @@ const AcademyPage = () => {
           <div className="mt-10 text-center">
             <button onClick={onScrollToLead} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
-              אני רוצה להיות בצד הימני
+              {v("comparison", "cta_label", "אני רוצה להיות בצד הימני")}
             </button>
           </div>
         </AnimatedSection>
