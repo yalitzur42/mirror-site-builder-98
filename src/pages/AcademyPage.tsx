@@ -728,9 +728,9 @@ const AcademyPage = () => {
         <AnimatedSection>
           <div className="text-center max-w-5xl mx-auto">
             <h2 className="mb-3 text-3xl md:text-4xl font-black">
-              <MessageCircle className="w-6 h-6 inline-block align-middle ml-1" /> הבוגרים שלנו מדברים
+              <MessageCircle className="w-6 h-6 inline-block align-middle ml-1" /> {v("testimonials", "section_title", "הבוגרים שלנו מדברים")}
             </h2>
-            <p className="opacity-70 mb-10">אמיתי, קצר ולעניין — מה אנשים חוו ומה יצא להם מזה.</p>
+            <p className="opacity-70 mb-10">{v("testimonials", "section_subtitle", "אמיתי, קצר ולעניין — מה אנשים חוו ומה יצא להם מזה.")}</p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {testimonials.map((t, idx) => (
@@ -767,7 +767,7 @@ const AcademyPage = () => {
             <div className="mt-8">
               <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
                 <Smartphone className="w-5 h-5" />
-                גם אני רוצה פרטים
+                {v("testimonials", "cta_label", "גם אני רוצה פרטים")}
               </button>
             </div>
           </div>
@@ -802,7 +802,7 @@ const AcademyPage = () => {
             <div className="mt-8">
               <button onClick={onPrimaryCTA} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
                 <Smartphone className="w-5 h-5" />
-                שיחה ללא התחייבות בוואטסאפ
+                {v("guarantee", "cta_label", "שיחה ללא התחייבות בוואטסאפ")}
               </button>
             </div>
           </div>
@@ -817,9 +817,9 @@ const AcademyPage = () => {
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-black mb-3">
-                <Smartphone className="w-6 h-6 inline-block align-middle ml-1" /> מעניין? בואו נדבר
+                <Smartphone className="w-6 h-6 inline-block align-middle ml-1" /> {v("lead_form_2", "title", "מעניין? בואו נדבר")}
               </h2>
-              <p className="opacity-70">השאירו פרטים ונחזור אליכם בוואטסאפ — מהר, בלי התחייבות.</p>
+              <p className="opacity-70">{v("lead_form_2", "subtitle", "השאירו פרטים ונחזור אליכם בוואטסאפ — מהר, בלי התחייבות.")}</p>
 
               {spotsLeft > 0 && spotsLeft <= 4 && (
                 <p className="mt-3 text-accent font-bold text-sm animate-pulse">
@@ -852,7 +852,7 @@ const AcademyPage = () => {
           <div className="mt-8 text-center">
             <button onClick={onScrollToLead} className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3 font-bold hover:opacity-95 transition">
               <Smartphone className="w-5 h-5" />
-              בדיקת התאמה מהירה
+              {v("who_is_this_for", "cta_label", "בדיקת התאמה מהירה")}
             </button>
           </div>
         </AnimatedSection>
@@ -861,16 +861,16 @@ const AcademyPage = () => {
       <SectionDivider from="light" to="dark" shape="steps" />
 
       {/* ============ 1️⃣2️⃣ FAQ ============ */}
-      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> שאלות נפוצות</>} variant="dark">
+      <Section title={<><HelpCircle className="w-6 h-6 inline-block align-middle ml-1" /> {v("faq", "section_title", "שאלות נפוצות")}</>} variant="dark">
         <div id="faq" className="scroll-mt-28" />
         <AnimatedSection>
           <FaqAccordion items={faq} />
 
           <div className="mt-10 text-center">
-            <p className="opacity-80 mb-4">יש עוד שאלה? שלחו הודעה ונענה מהר.</p>
+            <p className="opacity-80 mb-4">{v("faq", "footer_text", "יש עוד שאלה? שלחו הודעה ונענה מהר.")}</p>
             <button onClick={onPrimaryCTA} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
-              שלחו שאלה בוואטסאפ
+              {v("faq", "cta_label", "שלחו שאלה בוואטסאפ")}
             </button>
           </div>
         </AnimatedSection>
@@ -883,10 +883,10 @@ const AcademyPage = () => {
         <div className="container-main">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
-              🔥 נשארו 2 מקומות בחודש הזה
+              {v("final_cta", "title", "🔥 נשארו 2 מקומות בחודש הזה")}
             </h2>
             <p className="text-base md:text-lg opacity-75 mb-9">
-              מעניין? בוא נדבר — בלי התחייבות. בשיחה של 15 דקות נבדוק ביחד אם זה מתאים לך, ונבנה לך מפת הכנסה אישית חינם.
+              {v("final_cta", "subtitle", "מעניין? בוא נדבר — בלי התחייבות. בשיחה של 15 דקות נבדוק ביחד אם זה מתאים לך, ונבנה לך מפת הכנסה אישית חינם.")}
             </p>
             <a
               href={buildWaLink("היי 👋 אני רוצה פרטים על האקדמיה של Macho. אפשר לדבר?")}
@@ -900,7 +900,7 @@ const AcademyPage = () => {
               }}
             >
               <Smartphone className="w-6 h-6 md:w-7 md:h-7" />
-              👉 שלח לי הודעה ב-WhatsApp
+              {v("final_cta", "button_text", "👉 שלח לי הודעה ב-WhatsApp")}
             </a>
             {spotsLeft > 0 && spotsLeft <= 4 && (
               <p className="mt-5 text-sm md:text-base font-bold animate-pulse" style={{ color: "#b85a1a" }}>
