@@ -640,10 +640,6 @@ const AcademyPage = () => {
                 <step.icon className="w-10 h-10 mb-4 opacity-90" />
                 <h3 className="font-black text-xl mb-2">{step.title}</h3>
                 <p className="opacity-80">{step.desc}</p>
-                <div className="mt-5 flex items-center gap-2 opacity-85 text-sm">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>שלב {idx + 1} מתוך 3</span>
-                </div>
               </Card>
             ))}
           </div>
