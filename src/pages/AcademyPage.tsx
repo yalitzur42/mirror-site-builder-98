@@ -283,17 +283,17 @@ const AcademyPage = () => {
         </AnimatedSection>
       </Section>
 
+      {/* ============ SALARY CALCULATOR (right after video/intro) ============ */}
+      <Section variant="light">
+        <AnimatedSection>
+          <SalaryCalculator />
+        </AnimatedSection>
+      </Section>
+
       {/* ============ CAROUSELS: WhatsApp Reviews + Student Photos ============ */}
       <Section variant="light">
         <AnimatedSection>
           <AcademyCarousels v={v} />
-        </AnimatedSection>
-      </Section>
-
-      {/* ============ SALARY CALCULATOR (right after carousels) ============ */}
-      <Section variant="light">
-        <AnimatedSection>
-          <SalaryCalculator />
         </AnimatedSection>
       </Section>
 
