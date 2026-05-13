@@ -412,8 +412,8 @@ const AcademyPage = () => {
 
       {/* ============ 5️⃣ PROBLEM SECTION (redesigned) ============ */}
       <section
-        className="py-16 md:py-24 relative"
-        style={{ backgroundColor: "#1a1a1a", color: "#ffffff" }}
+        className="py-16 md:py-24 relative bg-[#4e321d]"
+        style={{ color: "#ffffff" }}
       >
         <div className="container-main">
           <AnimatedSection>
