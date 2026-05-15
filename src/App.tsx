@@ -47,12 +47,12 @@ const App = () => (
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
-              <Route path="/admin/login" element={<Suspense fallback={null}><AdminLoginPage /></Suspense>} />
-              <Route path="/admin" element={<Suspense fallback={null}><AdminDashboard /></Suspense>} />
-              <Route path="/academy/login" element={<Suspense fallback={null}><AcademyLoginPage /></Suspense>} />
-              <Route path="/academy/dashboard" element={<Suspense fallback={null}><AcademyDashboardPage /></Suspense>} />
-              <Route path="/academy/admin" element={<Suspense fallback={null}><AcademyAdminPage /></Suspense>} />
-              <Route path="/academy/admin/lessons" element={<Suspense fallback={null}><AcademyAdminLessonsPage /></Suspense>} />
+              <Route path="/admin/login" element={<Suspense fallback={<BrandLoader fullScreen />}><AdminLoginPage /></Suspense>} />
+              <Route path="/admin" element={<Suspense fallback={<BrandLoader fullScreen />}><AdminDashboard /></Suspense>} />
+              <Route path="/academy/login" element={<Suspense fallback={<BrandLoader fullScreen />}><AcademyLoginPage /></Suspense>} />
+              <Route path="/academy/dashboard" element={<Suspense fallback={<BrandLoader fullScreen />}><AcademyDashboardPage /></Suspense>} />
+              <Route path="/academy/admin" element={<Suspense fallback={<BrandLoader fullScreen />}><AcademyAdminPage /></Suspense>} />
+              <Route path="/academy/admin/lessons" element={<Suspense fallback={<BrandLoader fullScreen />}><AcademyAdminLessonsPage /></Suspense>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
