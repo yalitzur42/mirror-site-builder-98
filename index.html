@@ -25,51 +25,40 @@
       position: fixed; inset: 0; z-index: 9999;
       background: hsl(25, 50%, 20%);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
       transition: opacity 0.4s ease;
     }
     #initial-splash.hide { opacity: 0; pointer-events: none; }
-    #initial-splash svg { width: 6rem; height: 6rem; }
-    #initial-splash .blade-top {
-      transform-origin: 50px 50px;
-      animation: splashScissorsTop 1.2s ease-in-out infinite;
+    #initial-splash img {
+      width: 10rem; height: auto; user-select: none;
+      animation: splashLogoPulse 1.8s ease-in-out infinite;
+      filter: drop-shadow(0 4px 24px hsl(60, 56%, 91%, 0.25));
     }
-    #initial-splash .blade-bottom {
-      transform-origin: 50px 50px;
-      animation: splashScissorsBottom 1.2s ease-in-out infinite;
+    #initial-splash .bar-track {
+      position: relative; width: 12rem; height: 2px;
+      background: hsl(60, 56%, 91%, 0.15); border-radius: 9999px; overflow: hidden;
     }
-    #initial-splash .label {
-      color: hsl(60, 56%, 91%); font-weight: 800; letter-spacing: 0.2em;
-      font-size: 1rem; text-transform: uppercase;
-      font-family: system-ui, -apple-system, sans-serif;
+    #initial-splash .bar {
+      position: absolute; top: 0; bottom: 0; width: 33%;
+      background: hsl(60, 56%, 91%); border-radius: 9999px;
+      animation: splashBarSlide 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
     }
-    @keyframes splashScissorsTop {
-      0%, 100% { transform: rotate(0deg); }
-      50%      { transform: rotate(-18deg); }
+    @keyframes splashLogoPulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.04); }
     }
-    @keyframes splashScissorsBottom {
-      0%, 100% { transform: rotate(0deg); }
-      50%      { transform: rotate(18deg); }
+    @keyframes splashBarSlide {
+      0%   { right: 100%; }
+      50%  { right: 0%; }
+      100% { right: -33%; }
     }
   </style>
 </head>
 
   <body>
     <div id="initial-splash">
-      <svg viewBox="0 0 100 100" fill="none" stroke="hsl(60, 56%, 91%)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="50" cy="50" r="3" fill="hsl(60, 56%, 91%)" />
-        <g class="blade-top">
-          <line x1="50" y1="50" x2="92" y2="22" />
-          <circle cx="22" cy="68" r="10" />
-          <line x1="50" y1="50" x2="30" y2="62" />
-        </g>
-        <g class="blade-bottom">
-          <line x1="50" y1="50" x2="92" y2="78" />
-          <circle cx="22" cy="32" r="10" />
-          <line x1="50" y1="50" x2="30" y2="38" />
-        </g>
-      </svg>
-      <div class="label">טוען…</div>
+      <img src="/logo.png" alt="Mac'ho" />
+      <div class="bar-track"><div class="bar"></div></div>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
