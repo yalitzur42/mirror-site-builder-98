@@ -48,6 +48,7 @@ const App = () => (
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
+              <Route path="/accessibility" element={<AccessibilityPage />} />
               <Route path="/admin/login" element={<Suspense fallback={<BrandLoader fullScreen />}><AdminLoginPage /></Suspense>} />
               <Route path="/admin" element={<Suspense fallback={<BrandLoader fullScreen />}><AdminDashboard /></Suspense>} />
               <Route path="/academy/login" element={<Suspense fallback={<BrandLoader fullScreen />}><AcademyLoginPage /></Suspense>} />
