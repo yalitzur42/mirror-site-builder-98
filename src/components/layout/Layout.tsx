@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import TopUtilityBar from "./TopUtilityBar";
 import MainHeader from "./MainHeader";
 import Footer from "./Footer";
+import AccessibilityMenu from "./AccessibilityMenu";
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,6 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
       <MainHeader />
       <main className="flex-1">{children}</main>
       <Footer />
+      <AccessibilityMenu />
     </div>
   );
 };

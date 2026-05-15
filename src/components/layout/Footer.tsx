@@ -93,6 +93,9 @@ const Footer = () => {
             <Link to="/terms" className="hover:text-foreground transition-colors">
               תקנון
             </Link>
+            <Link to="/accessibility" className="hover:text-foreground transition-colors">
+              הצהרת נגישות
+            </Link>
           </div>
         </div>
       </div>
