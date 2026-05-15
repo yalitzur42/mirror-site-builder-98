@@ -17,5 +17,5 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     splash.classList.add("hide");
     setTimeout(() => splash.remove(), 450);
-  }, 350);
+  }, 1800);
 });
