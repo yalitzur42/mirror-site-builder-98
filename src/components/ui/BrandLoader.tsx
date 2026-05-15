@@ -5,15 +5,13 @@ interface BrandLoaderProps {
   className?: string;
 }
 
-/**
- * Brand loader: the Mac'ho logo with a soft pulse and an indeterminate
- * cream progress bar underneath. Premium, minimal, and on-brand.
- */
+const LOTTIE_SRC = "https://lottie.host/embed/a5a33705-7f38-42ee-8d7d-e51fa4dee9cb/d6oiyOfPzM.lottie";
+
 const BrandLoader = ({ fullScreen = false, className }: BrandLoaderProps) => {
   const stage = (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-8",
+        "flex items-center justify-center",
         fullScreen ? "min-h-screen w-full" : "py-16",
         className
       )}
@@ -21,15 +19,12 @@ const BrandLoader = ({ fullScreen = false, className }: BrandLoaderProps) => {
       aria-live="polite"
       aria-label="טוען"
     >
-      <img
-        src="/logo.png"
-        alt="Mac'ho"
-        className="brand-loader-logo w-40 h-auto select-none"
-        draggable={false}
+      <iframe
+        src={LOTTIE_SRC}
+        title="Loader"
+        className="w-64 h-64 border-0 bg-transparent"
+        allow="autoplay"
       />
-      <div className="relative w-48 h-[2px] overflow-hidden bg-primary/15 rounded-full">
-        <div className="brand-loader-bar absolute top-0 bottom-0 w-1/3 bg-primary rounded-full" />
-      </div>
     </div>
   );
 
