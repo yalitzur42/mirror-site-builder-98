@@ -2,55 +2,33 @@ import { cn } from "@/lib/utils";
 
 interface BrandLoaderProps {
   fullScreen?: boolean;
-  label?: string;
   className?: string;
 }
 
 /**
- * Brand loader: animated scissors opening and closing in cream over brown.
- * Matches the site's premium barbershop aesthetic.
+ * Brand loader: the Mac'ho logo with a soft pulse and an indeterminate
+ * cream progress bar underneath. Premium, minimal, and on-brand.
  */
-const BrandLoader = ({ fullScreen = false, label = "טוען…", className }: BrandLoaderProps) => {
+const BrandLoader = ({ fullScreen = false, className }: BrandLoaderProps) => {
   const stage = (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-6",
+        "flex flex-col items-center justify-center gap-8",
         fullScreen ? "min-h-screen w-full" : "py-16",
         className
       )}
       role="status"
       aria-live="polite"
-      aria-label={label}
+      aria-label="טוען"
     >
-      <svg
-        viewBox="0 0 100 100"
-        className="brand-loader-scissors w-24 h-24"
-        fill="none"
-        stroke="hsl(var(--primary))"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {/* Pivot */}
-        <circle cx="50" cy="50" r="3" fill="hsl(var(--primary))" />
-
-        {/* Top blade + handle (rotates) */}
-        <g className="brand-loader-blade-top" style={{ transformOrigin: "50px 50px" }}>
-          <line x1="50" y1="50" x2="92" y2="22" />
-          <circle cx="22" cy="68" r="10" />
-          <line x1="50" y1="50" x2="30" y2="62" />
-        </g>
-
-        {/* Bottom blade + handle (rotates opposite) */}
-        <g className="brand-loader-blade-bottom" style={{ transformOrigin: "50px 50px" }}>
-          <line x1="50" y1="50" x2="92" y2="78" />
-          <circle cx="22" cy="32" r="10" />
-          <line x1="50" y1="50" x2="30" y2="38" />
-        </g>
-      </svg>
-
-      <div className="text-primary font-extrabold tracking-widest text-base uppercase">
-        {label}
+      <img
+        src="/logo.png"
+        alt="Mac'ho"
+        className="brand-loader-logo w-40 h-auto select-none"
+        draggable={false}
+      />
+      <div className="relative w-48 h-[2px] overflow-hidden bg-primary/15 rounded-full">
+        <div className="brand-loader-bar absolute top-0 bottom-0 w-1/3 bg-primary rounded-full" />
       </div>
     </div>
   );
