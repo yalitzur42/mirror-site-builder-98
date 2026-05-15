@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import { CONTACT_EMAIL, PHONE_DISPLAY, PHONE_NUMBER } from "@/lib/constants";
+import { PHONE_DISPLAY } from "@/lib/constants";
+
+const PHONE_TEL = "+972549808868";
+const CONTACT_EMAIL = "info@macho.co.il";
 
 const AccessibilityPage = () => {
   return (
