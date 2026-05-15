@@ -7,9 +7,8 @@ interface BrandLoaderProps {
 }
 
 /**
- * Brand loader: a polygon-cut "razor blade" sliding right-to-left (RTL),
- * leaving a cream trail across a brown stage. Matches the site's visual system
- * (primary brown bg, cream foreground, polygon-cut motif from hero buttons).
+ * Brand loader: animated scissors opening and closing in cream over brown.
+ * Matches the site's premium barbershop aesthetic.
  */
 const BrandLoader = ({ fullScreen = false, label = "טוען…", className }: BrandLoaderProps) => {
   const stage = (
@@ -23,22 +22,32 @@ const BrandLoader = ({ fullScreen = false, label = "טוען…", className }: B
       aria-live="polite"
       aria-label={label}
     >
-      <div className="relative w-64 h-16 overflow-hidden">
-        {/* Trail line */}
-        <div className="absolute top-1/2 right-0 left-0 h-[2px] -translate-y-1/2 bg-primary/15 rounded-full" />
-        <div className="brand-loader-trail absolute top-1/2 right-0 h-[2px] -translate-y-1/2 bg-primary rounded-full" />
+      <svg
+        viewBox="0 0 100 100"
+        className="brand-loader-scissors w-24 h-24"
+        fill="none"
+        stroke="hsl(var(--primary))"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Pivot */}
+        <circle cx="50" cy="50" r="3" fill="hsl(var(--primary))" />
 
-        {/* Razor blade */}
-        <div className="brand-loader-blade absolute top-1/2 -translate-y-1/2 right-0">
-          <div className="brand-loader-blade-shape relative w-14 h-7 flex items-center justify-center">
-            {/* Inner slit */}
-            <div className="absolute inset-y-2 left-2 right-2 bg-background/80 rounded-sm" />
-            {/* Edge highlight */}
-            <div className="absolute inset-x-3 top-[6px] h-[1px] bg-primary/60" />
-            <div className="absolute inset-x-3 bottom-[6px] h-[1px] bg-primary/60" />
-          </div>
-        </div>
-      </div>
+        {/* Top blade + handle (rotates) */}
+        <g className="brand-loader-blade-top" style={{ transformOrigin: "50px 50px" }}>
+          <line x1="50" y1="50" x2="92" y2="22" />
+          <circle cx="22" cy="68" r="10" />
+          <line x1="50" y1="50" x2="30" y2="62" />
+        </g>
+
+        {/* Bottom blade + handle (rotates opposite) */}
+        <g className="brand-loader-blade-bottom" style={{ transformOrigin: "50px 50px" }}>
+          <line x1="50" y1="50" x2="92" y2="78" />
+          <circle cx="22" cy="32" r="10" />
+          <line x1="50" y1="50" x2="30" y2="38" />
+        </g>
+      </svg>
 
       <div className="text-primary font-extrabold tracking-widest text-base uppercase">
         {label}
