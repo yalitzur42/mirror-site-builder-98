@@ -54,7 +54,7 @@ const AccessibilityPage = () => {
           <h2 className="text-2xl font-extrabold mb-3">פנייה לרכז הנגישות</h2>
           <p>נתקלתם בבעיית נגישות? נשמח לדעת ולתקן. ניתן לפנות אלינו:</p>
           <ul className="list-disc pr-6 mt-3 space-y-1">
-            <li>בטלפון: <a href={`tel:${PHONE_NUMBER}`} className="underline text-primary">{PHONE_DISPLAY}</a></li>
+            <li>בטלפון: <a href={`tel:${PHONE_TEL}`} className="underline text-primary">{PHONE_DISPLAY}</a></li>
             <li>במייל: <a href={`mailto:${CONTACT_EMAIL}`} className="underline text-primary">{CONTACT_EMAIL}</a></li>
           </ul>
           <p className="mt-3 text-sm text-muted-foreground">
