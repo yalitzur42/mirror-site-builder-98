@@ -111,7 +111,7 @@ const AccessibilityMenu = () => {
         aria-label="פתיחת תפריט נגישות"
         aria-expanded={open}
         className={cn(
-          "fixed z-[60] left-4 bottom-24 md:bottom-6",
+          "fixed z-[60] left-4 bottom-4 md:bottom-6",
           "w-14 h-14 rounded-full bg-primary text-primary-foreground",
           "flex items-center justify-center shadow-lg",
           "hover:scale-110 transition-transform",
