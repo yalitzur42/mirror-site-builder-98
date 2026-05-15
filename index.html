@@ -20,9 +20,73 @@
   <meta property="og:description" content="Mac&#39;ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים">
   <meta name="twitter:description" content="Mac&#39;ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+    #initial-splash {
+      position: fixed; inset: 0; z-index: 9999;
+      background: hsl(25, 50%, 20%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.5rem;
+      transition: opacity 0.4s ease;
+    }
+    #initial-splash.hide { opacity: 0; pointer-events: none; }
+    #initial-splash .stage {
+      position: relative; width: 16rem; height: 4rem; overflow: hidden;
+    }
+    #initial-splash .track {
+      position: absolute; top: 50%; right: 0; left: 0; height: 2px;
+      transform: translateY(-50%);
+      background: hsl(60, 56%, 91%, 0.15); border-radius: 9999px;
+    }
+    #initial-splash .trail {
+      position: absolute; top: 50%; right: 0; height: 2px;
+      transform: translateY(-50%) scaleX(0); transform-origin: right center;
+      background: hsl(60, 56%, 91%); border-radius: 9999px;
+      animation: splashTrail 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+    #initial-splash .blade {
+      position: absolute; top: 50%; right: 0;
+      width: 3.5rem; height: 1.75rem;
+      transform: translate(0, -50%);
+      animation: splashBlade 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+    #initial-splash .blade-shape {
+      position: relative; width: 100%; height: 100%;
+      background: hsl(60, 56%, 91%);
+      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
+      box-shadow: 0 0 18px hsl(60, 56%, 91%, 0.45);
+    }
+    #initial-splash .blade-shape::before {
+      content: ''; position: absolute; left: 8px; right: 8px; top: 8px; bottom: 8px;
+      background: hsl(25, 50%, 20%, 0.8); border-radius: 2px;
+    }
+    #initial-splash .label {
+      color: hsl(60, 56%, 91%); font-weight: 800; letter-spacing: 0.2em;
+      font-size: 1rem; text-transform: uppercase;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    @keyframes splashBlade {
+      0%   { transform: translate(0, -50%); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translate(calc(-100% - 200px), -50%); opacity: 0; }
+    }
+    @keyframes splashTrail {
+      0%   { transform: translateY(-50%) scaleX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      100% { transform: translateY(-50%) scaleX(1); opacity: 0; }
+    }
+  </style>
 </head>
 
   <body>
+    <div id="initial-splash">
+      <div class="stage">
+        <div class="track"></div>
+        <div class="trail"></div>
+        <div class="blade"><div class="blade-shape"></div></div>
+      </div>
+      <div class="label">טוען…</div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
