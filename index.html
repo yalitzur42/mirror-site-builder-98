@@ -24,41 +24,19 @@
     #initial-splash {
       position: fixed; inset: 0; z-index: 9999;
       background: hsl(25, 50%, 20%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 2rem;
+      display: flex; align-items: center; justify-content: center;
       transition: opacity 0.4s ease;
     }
     #initial-splash.hide { opacity: 0; pointer-events: none; }
-    #initial-splash img {
-      width: 10rem; height: auto; user-select: none;
-      animation: splashLogoPulse 1.8s ease-in-out infinite;
-      filter: drop-shadow(0 4px 24px hsl(60, 56%, 91%, 0.25));
-    }
-    #initial-splash .bar-track {
-      position: relative; width: 12rem; height: 2px;
-      background: hsl(60, 56%, 91%, 0.15); border-radius: 9999px; overflow: hidden;
-    }
-    #initial-splash .bar {
-      position: absolute; top: 0; bottom: 0; width: 33%;
-      background: hsl(60, 56%, 91%); border-radius: 9999px;
-      animation: splashBarSlide 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-    }
-    @keyframes splashLogoPulse {
-      0%, 100% { opacity: 0.7; transform: scale(1); }
-      50%      { opacity: 1;   transform: scale(1.04); }
-    }
-    @keyframes splashBarSlide {
-      0%   { right: 100%; }
-      50%  { right: 0%; }
-      100% { right: -33%; }
+    #initial-splash iframe {
+      width: 16rem; height: 16rem; border: 0; background: transparent;
     }
   </style>
 </head>
 
   <body>
     <div id="initial-splash">
-      <img src="/logo.png" alt="Mac'ho" />
-      <div class="bar-track"><div class="bar"></div></div>
+      <iframe src="https://lottie.host/embed/a5a33705-7f38-42ee-8d7d-e51fa4dee9cb/d6oiyOfPzM.lottie" title="Loader" allow="autoplay"></iframe>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
