@@ -20,7 +20,15 @@
   <meta property="og:description" content="Mac&#39;ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים">
   <meta name="twitter:description" content="Mac&#39;ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preload" as="font" type="font/ttf" href="/fonts/OpenSansHebrewCondensed-ExtraBold.ttf" crossorigin>
   <style>
+    @font-face {
+      font-family: 'Open Sans Hebrew Condensed';
+      src: url('/fonts/OpenSansHebrewCondensed-ExtraBold.ttf') format('truetype');
+      font-weight: 800;
+      font-style: normal;
+      font-display: block;
+    }
     #initial-splash {
       position: fixed; inset: 0; z-index: 9999;
       background: hsl(25, 50%, 20%);
@@ -42,19 +50,23 @@
       letter-spacing: 0.02em;
       line-height: 1;
       overflow: hidden;
+      visibility: hidden;
     }
+    #initial-splash.font-ready .splash-brand { visibility: visible; }
     #initial-splash .splash-brand span {
       display: inline-block;
       transform: translateY(110%);
       opacity: 0;
+    }
+    #initial-splash.font-ready .splash-brand span {
       animation: splash-letter-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
-    #initial-splash .splash-brand span:nth-child(1) { animation-delay: 0.1s; }
-    #initial-splash .splash-brand span:nth-child(2) { animation-delay: 0.22s; }
-    #initial-splash .splash-brand span:nth-child(3) { animation-delay: 0.34s; }
-    #initial-splash .splash-brand span:nth-child(4) { animation-delay: 0.46s; }
-    #initial-splash .splash-brand span:nth-child(5) { animation-delay: 0.58s; }
-    #initial-splash .splash-brand span:nth-child(6) { animation-delay: 0.70s; }
+    #initial-splash.font-ready .splash-brand span:nth-child(1) { animation-delay: 0.05s; }
+    #initial-splash.font-ready .splash-brand span:nth-child(2) { animation-delay: 0.15s; }
+    #initial-splash.font-ready .splash-brand span:nth-child(3) { animation-delay: 0.25s; }
+    #initial-splash.font-ready .splash-brand span:nth-child(4) { animation-delay: 0.35s; }
+    #initial-splash.font-ready .splash-brand span:nth-child(5) { animation-delay: 0.45s; }
+    #initial-splash.font-ready .splash-brand span:nth-child(6) { animation-delay: 0.55s; }
     @keyframes splash-letter-rise {
       to { transform: translateY(0); opacity: 1; }
     }
@@ -68,6 +80,19 @@
         <span>M</span><span>a</span><span>c</span><span>&rsquo;</span><span>h</span><span>o</span>
       </div>
     </div>
+    <script>
+      (function () {
+        var splash = document.getElementById('initial-splash');
+        if (!splash) return;
+        var reveal = function () { splash.classList.add('font-ready'); };
+        if (document.fonts && document.fonts.load) {
+          document.fonts.load("800 4rem 'Open Sans Hebrew Condensed'").then(reveal).catch(reveal);
+          setTimeout(reveal, 2000);
+        } else {
+          reveal();
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
