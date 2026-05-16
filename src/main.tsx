@@ -9,13 +9,12 @@ createRoot(document.getElementById("root")!).render(
   </StrictMode>
 );
 
-// Hide the initial splash loader once React has mounted.
-window.addEventListener("load", () => {
+// Hide the initial splash loader after a fixed duration from page start,
+// so it doesn't wait for the Lottie iframe's `load` event on fast connections.
+const hideSplash = () => {
   const splash = document.getElementById("initial-splash");
   if (!splash) return;
-  // Small delay so the animation reads as intentional, not a flash.
-  setTimeout(() => {
-    splash.classList.add("hide");
-    setTimeout(() => splash.remove(), 450);
-  }, 1800);
-});
+  splash.classList.add("hide");
+  setTimeout(() => splash.remove(), 450);
+};
+setTimeout(hideSplash, 1600);
