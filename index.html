@@ -20,15 +20,11 @@
   <meta property="og:description" content="Mac&#39;ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים">
   <meta name="twitter:description" content="Mac&#39;ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="preload" as="font" type="font/ttf" href="/fonts/OpenSansHebrewCondensed-ExtraBold.ttf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap">
   <style>
-    @font-face {
-      font-family: 'Open Sans Hebrew Condensed';
-      src: url('/fonts/OpenSansHebrewCondensed-ExtraBold.ttf') format('truetype');
-      font-weight: 800;
-      font-style: normal;
-      font-display: block;
-    }
     #initial-splash {
       position: fixed; inset: 0; z-index: 9999;
       background: hsl(25, 50%, 20%);
@@ -42,33 +38,52 @@
     }
     #initial-splash .splash-brand {
       direction: ltr;
-      display: flex; gap: 0.05em;
+      position: relative;
+      display: inline-flex;
       color: hsl(60, 56%, 91%);
-      font-family: 'Open Sans Hebrew Condensed', system-ui, sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      letter-spacing: 0.02em;
+      font-family: 'DM Serif Display', 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 9vw, 5rem);
       line-height: 1;
-      overflow: hidden;
+      letter-spacing: 0.005em;
+      padding-bottom: 0.18em;
       visibility: hidden;
     }
     #initial-splash.font-ready .splash-brand { visibility: visible; }
-    #initial-splash .splash-brand span {
+    #initial-splash .splash-brand .letter {
       display: inline-block;
       transform: translateY(110%);
       opacity: 0;
+      overflow: hidden;
     }
-    #initial-splash.font-ready .splash-brand span {
+    #initial-splash .splash-brand .underline {
+      position: absolute;
+      left: 22%;
+      right: 32%;
+      bottom: 0.05em;
+      height: 0.06em;
+      background: hsl(60, 56%, 91%);
+      transform: scaleX(0);
+      transform-origin: left center;
+      opacity: 0;
+    }
+    #initial-splash.font-ready .splash-brand .letter {
       animation: splash-letter-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
-    #initial-splash.font-ready .splash-brand span:nth-child(1) { animation-delay: 0.05s; }
-    #initial-splash.font-ready .splash-brand span:nth-child(2) { animation-delay: 0.15s; }
-    #initial-splash.font-ready .splash-brand span:nth-child(3) { animation-delay: 0.25s; }
-    #initial-splash.font-ready .splash-brand span:nth-child(4) { animation-delay: 0.35s; }
-    #initial-splash.font-ready .splash-brand span:nth-child(5) { animation-delay: 0.45s; }
-    #initial-splash.font-ready .splash-brand span:nth-child(6) { animation-delay: 0.55s; }
+    #initial-splash.font-ready .splash-brand .underline {
+      animation: splash-underline 0.7s 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    #initial-splash.font-ready .splash-brand .letter:nth-child(1) { animation-delay: 0.05s; }
+    #initial-splash.font-ready .splash-brand .letter:nth-child(2) { animation-delay: 0.15s; }
+    #initial-splash.font-ready .splash-brand .letter:nth-child(3) { animation-delay: 0.25s; }
+    #initial-splash.font-ready .splash-brand .letter:nth-child(4) { animation-delay: 0.35s; }
+    #initial-splash.font-ready .splash-brand .letter:nth-child(5) { animation-delay: 0.45s; }
+    #initial-splash.font-ready .splash-brand .letter:nth-child(6) { animation-delay: 0.55s; }
     @keyframes splash-letter-rise {
       to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes splash-underline {
+      to { transform: scaleX(1); opacity: 1; }
     }
   </style>
 </head>
@@ -77,7 +92,8 @@
     <div id="initial-splash">
       <iframe src="https://lottie.host/embed/a5a33705-7f38-42ee-8d7d-e51fa4dee9cb/d6oiyOfPzM.lottie" title="Loader" allow="autoplay"></iframe>
       <div class="splash-brand" aria-label="Mac'ho">
-        <span>M</span><span>a</span><span>c</span><span>&rsquo;</span><span>h</span><span>o</span>
+        <span class="letter">M</span><span class="letter">a</span><span class="letter">c</span><span class="letter">&rsquo;</span><span class="letter">h</span><span class="letter">o</span>
+        <span class="underline" aria-hidden="true"></span>
       </div>
     </div>
     <script>
@@ -86,7 +102,7 @@
         if (!splash) return;
         var reveal = function () { splash.classList.add('font-ready'); };
         if (document.fonts && document.fonts.load) {
-          document.fonts.load("800 4rem 'Open Sans Hebrew Condensed'").then(reveal).catch(reveal);
+          document.fonts.load("400 5rem 'DM Serif Display'").then(reveal).catch(reveal);
           setTimeout(reveal, 2000);
         } else {
           reveal();
