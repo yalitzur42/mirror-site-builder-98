@@ -33,6 +33,7 @@ const BrandLoader = ({ fullScreen = false, className }: BrandLoaderProps) => {
           color: "hsl(60, 56%, 91%)",
           fontSize: "clamp(2.5rem, 8vw, 4rem)",
           letterSpacing: "0.02em",
+          direction: "ltr",
         }}
       >
         {BRAND_LETTERS.map((ch, i) => (
