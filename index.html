@@ -24,12 +24,38 @@
     #initial-splash {
       position: fixed; inset: 0; z-index: 9999;
       background: hsl(25, 50%, 20%);
-      display: flex; align-items: center; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.25rem;
       transition: opacity 0.4s ease;
     }
     #initial-splash.hide { opacity: 0; pointer-events: none; }
     #initial-splash iframe {
       width: 16rem; height: 16rem; border: 0; background: transparent;
+    }
+    #initial-splash .splash-brand {
+      display: flex; gap: 0.05em;
+      color: hsl(60, 56%, 91%);
+      font-family: 'Open Sans Hebrew Condensed', system-ui, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      overflow: hidden;
+    }
+    #initial-splash .splash-brand span {
+      display: inline-block;
+      transform: translateY(110%);
+      opacity: 0;
+      animation: splash-letter-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    #initial-splash .splash-brand span:nth-child(1) { animation-delay: 0.1s; }
+    #initial-splash .splash-brand span:nth-child(2) { animation-delay: 0.22s; }
+    #initial-splash .splash-brand span:nth-child(3) { animation-delay: 0.34s; }
+    #initial-splash .splash-brand span:nth-child(4) { animation-delay: 0.46s; }
+    #initial-splash .splash-brand span:nth-child(5) { animation-delay: 0.58s; }
+    #initial-splash .splash-brand span:nth-child(6) { animation-delay: 0.70s; }
+    @keyframes splash-letter-rise {
+      to { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
@@ -37,6 +63,9 @@
   <body>
     <div id="initial-splash">
       <iframe src="https://lottie.host/embed/a5a33705-7f38-42ee-8d7d-e51fa4dee9cb/d6oiyOfPzM.lottie" title="Loader" allow="autoplay"></iframe>
+      <div class="splash-brand" aria-label="Mac'ho">
+        <span>M</span><span>a</span><span>c</span><span>&rsquo;</span><span>h</span><span>o</span>
+      </div>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
