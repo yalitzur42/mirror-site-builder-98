@@ -75,33 +75,32 @@ const BarbershopPage = () => {
 
       <Section title={<><Coins className="w-6 h-6 inline-block align-middle ml-1" /> מחירון</>} variant="light">
         <AnimatedSection>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-4 gap-4 mb-8">
-              {barbers.map((barber, i) => (
-                <div key={i} className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary-foreground">
+          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+            {barbers.map((barber, bIdx) => (
+              <div
+                key={bIdx}
+                className="rounded-2xl bg-primary text-primary-foreground border-2 border-primary-foreground/20 shadow-xl overflow-hidden flex flex-col"
+              >
+                <div className="relative bg-primary-foreground/5 px-3 pt-4 pb-3 text-center border-b border-primary-foreground/15">
+                  <div className="w-24 h-24 mx-auto mb-2 rounded-full overflow-hidden border-2 border-primary-foreground/40 shadow-lg">
                     <img src={barber.image} alt={barber.nameHe} className="w-full h-full object-cover" />
                   </div>
-                  <h3 className="font-bold text-lg">{barber.nameHe}</h3>
-                  <p className="text-sm opacity-60 font-semibold tracking-wider">{barber.nameEn}</p>
+                  <h3 className="font-extrabold text-xl leading-tight">{barber.nameHe}</h3>
+                  <p className="text-xs opacity-60 font-bold tracking-[0.2em]">{barber.nameEn}</p>
                 </div>
-              ))}
-            </div>
-            <div className="divide-y divide-border/30">
-              {services.map((service, sIdx) => (
-                <div key={sIdx} className="py-4">
-                  <p className="text-center font-bold text-lg mb-3">
-                    {service.name}
-                    {service.note && <span className="text-sm font-normal opacity-60 mr-2">{service.note}</span>}
-                  </p>
-                  <div className="grid grid-cols-4 gap-4 text-center">
-                    {barbers.map((barber, bIdx) => (
-                      <span key={bIdx} className="text-2xl font-black">₪{barber.prices[sIdx]}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+                <ul className="divide-y divide-primary-foreground/15 px-3">
+                  {services.map((service, sIdx) => (
+                    <li key={sIdx} className="py-3 flex flex-col items-center text-center gap-1">
+                      <span className="text-xs font-bold opacity-80 leading-tight">
+                        {service.name}
+                        {service.note && <span className="block text-[10px] font-normal opacity-60">{service.note}</span>}
+                      </span>
+                      <span className="text-2xl font-black">₪{barber.prices[sIdx]}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </AnimatedSection>
       </Section>
