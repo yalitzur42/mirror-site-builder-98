@@ -26,6 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap">
+  <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
   <style>
     #initial-splash {
       position: fixed; inset: 0; z-index: 9999;
@@ -35,9 +36,18 @@
       transition: opacity 0.4s ease;
     }
     #initial-splash.hide { opacity: 0; pointer-events: none; }
-    #initial-splash iframe {
-      width: 16rem; height: 16rem; border: 0; background: transparent;
+    #initial-splash .splash-lottie {
+      width: 16rem; height: 16rem;
+      display: flex; align-items: center; justify-content: center;
     }
+    #initial-splash .splash-lottie dotlottie-wc { width: 100%; height: 100%; }
+    #initial-splash .splash-fallback {
+      width: 4rem; height: 4rem; border-radius: 9999px;
+      border: 3px solid hsl(60, 56%, 91%, 0.25);
+      border-top-color: hsl(60, 56%, 91%);
+      animation: splash-spin 0.9s linear infinite;
+    }
+    @keyframes splash-spin { to { transform: rotate(360deg); } }
     #initial-splash .splash-brand {
       direction: ltr;
       position: relative;
@@ -92,7 +102,10 @@
 
   <body>
     <div id="initial-splash">
-      <iframe src="https://lottie.host/embed/a5a33705-7f38-42ee-8d7d-e51fa4dee9cb/d6oiyOfPzM.lottie" title="Loader" allow="autoplay"></iframe>
+      <div class="splash-lottie">
+        <div class="splash-fallback" aria-hidden="true"></div>
+        <dotlottie-wc src="https://lottie.host/a5a33705-7f38-42ee-8d7d-e51fa4dee9cb/d6oiyOfPzM.lottie" autoplay loop style="position:absolute;width:16rem;height:16rem"></dotlottie-wc>
+      </div>
       <div class="splash-brand" aria-label="Mac'ho">
         <span class="letter">M</span><span class="letter">a</span><span class="letter">c</span><span class="letter">&rsquo;</span><span class="letter">h</span><span class="letter">o</span>
         <span class="underline" aria-hidden="true"></span>
