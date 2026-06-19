@@ -3,27 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
-// Critical assets to wait for before mounting the app.
-const CRITICAL_IMAGES = ["/images/marble-bg.png", "/logo.png"];
-const MAX_WAIT_MS = 6000; // safety ceiling so we never hang on a slow asset
-const MIN_SPLASH_MS = 900; // make sure the loader doesn't flash on fast loads
-
-const preloadImage = (src: string) =>
-  new Promise<void>((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve();
-    img.onerror = () => resolve();
-    img.src = src;
-  });
-
-const waitForWindowLoad = () =>
-  new Promise<void>((resolve) => {
-    if (document.readyState === "complete") return resolve();
-    window.addEventListener("load", () => resolve(), { once: true });
-  });
-
-const withTimeout = <T,>(p: Promise<T>, ms: number) =>
-  Promise.race([p, new Promise<void>((resolve) => setTimeout(() => resolve(), ms))]);
+const MIN_SPLASH_MS = 600;
+const start = performance.now();
 
 const hideSplash = () => {
   const splash = document.getElementById("initial-splash");
@@ -32,28 +13,27 @@ const hideSplash = () => {
   setTimeout(() => splash.remove(), 450);
 };
 
-const mount = () => {
-  createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
-};
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
 
-const start = performance.now();
+// Hide splash once React paints, but enforce a brief minimum so it doesn't flash.
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    const elapsed = performance.now() - start;
+    const remaining = Math.max(0, MIN_SPLASH_MS - elapsed);
+    setTimeout(hideSplash, remaining);
+  });
+});
 
-const ready = Promise.all([
-  waitForWindowLoad(),
-  (document as Document & { fonts?: { ready: Promise<unknown> } }).fonts?.ready ?? Promise.resolve(),
-  ...CRITICAL_IMAGES.map(preloadImage),
-]);
+// Safety net: never let the splash linger.
+setTimeout(hideSplash, 4000);
 
-withTimeout(ready, MAX_WAIT_MS).then(() => {
-  const elapsed = performance.now() - start;
-  const remaining = Math.max(0, MIN_SPLASH_MS - elapsed);
-  setTimeout(() => {
-    mount();
-    // Give React one paint to populate #root before fading the splash.
-    requestAnimationFrame(() => requestAnimationFrame(hideSplash));
-  }, remaining);
+// Don't let stray unhandled rejections (e.g. Paper Shaders texture timing) bubble.
+window.addEventListener("unhandledrejection", (e) => {
+  if (String(e.reason?.message || e.reason).includes("Paper Shaders")) {
+    e.preventDefault();
+  }
 });
