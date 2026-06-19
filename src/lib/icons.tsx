@@ -254,5 +254,34 @@ export const XWrapped = wrap(X, "X");
 export { XWrapped as X };
 export const Zap = wrap(PhLightning, "Zap");
 
+// Additional Lucide-name aliases
+export const Contrast = wrap(PhCircleHalf, "Contrast");
+export const Sun = wrap(PhSun, "Sun");
+export const Moon = wrap(PhMoon, "Moon");
+export const Link2 = wrap(PhLink, "Link2");
+export const Type = wrap(PhTextAa, "Type");
+export const MousePointer2 = wrap(PhCursorClick, "MousePointer2");
+export const AlignJustify = wrap(PhTextAlignJustify, "AlignJustify");
+export const Pause = wrap(PhPause, "Pause");
+export const Play = wrap(PhPlay, "Play");
+export const RotateCcw = wrap(PhArrowCounterClockwise, "RotateCcw");
+export const Pencil = wrap(PhPencil, "Pencil");
+export const Trash2 = wrap(PhTrash, "Trash2");
+export const XCircle = wrap(PhXCircle, "XCircle");
+export const ImageWrapped = wrap(PhImage, "Image");
+export { ImageWrapped as Image };
+export const ImageIcon = wrap(PhImage, "ImageIcon");
+export const Images = wrap(PhImages, "Images");
+export const ClipboardList = wrap(PhClipboardText, "ClipboardList");
+export const UserPlus = wrap(PhUserPlus, "UserPlus");
+export const UserCheck = wrap(PhUserCheck, "UserCheck");
+export const Copy = wrap(PhCopy, "Copy");
+export const CalendarDays = wrap(PhCalendarDots, "CalendarDays");
+export const BriefcaseBusiness = wrap(PhBriefcase, "BriefcaseBusiness");
+export const Video = wrap(PhVideoCamera, "Video");
+export const LayoutDashboard = wrap(PhSquaresFour, "LayoutDashboard");
+export const Info = wrap(PhInfo, "Info");
+export const Droplets = wrap(PhDrop, "Droplets");
+
 // Type alias compatible with Lucide's LucideIcon
 export type LucideIcon = ComponentType<LucideCompatProps>;
