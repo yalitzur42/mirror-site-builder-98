@@ -54,7 +54,7 @@ const PermPage = () => {
       <Section
         title={<><Gem className="w-6 h-6 inline-block align-middle ml-1" /> היתרונות שלנו</>}
         variant="light"
-        className="bg-primary text-primary-foreground"
+        className="!bg-primary text-primary-foreground"
       >
         <StaggerChildren className="grid grid-cols-2 lg:grid-cols-4 gap-4" staggerDelay={0.12}>
           {benefits.map((benefit, index) => (
