@@ -36,9 +36,18 @@
       transition: opacity 0.4s ease;
     }
     #initial-splash.hide { opacity: 0; pointer-events: none; }
-    #initial-splash iframe {
-      width: 16rem; height: 16rem; border: 0; background: transparent;
+    #initial-splash .splash-lottie {
+      width: 16rem; height: 16rem;
+      display: flex; align-items: center; justify-content: center;
     }
+    #initial-splash .splash-lottie dotlottie-wc { width: 100%; height: 100%; }
+    #initial-splash .splash-fallback {
+      width: 4rem; height: 4rem; border-radius: 9999px;
+      border: 3px solid hsl(60, 56%, 91%, 0.25);
+      border-top-color: hsl(60, 56%, 91%);
+      animation: splash-spin 0.9s linear infinite;
+    }
+    @keyframes splash-spin { to { transform: rotate(360deg); } }
     #initial-splash .splash-brand {
       direction: ltr;
       position: relative;
