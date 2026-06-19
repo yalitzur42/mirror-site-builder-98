@@ -21,7 +21,7 @@ import {
   CalendarDays, MapPin, ChevronDown, BadgeCheck, BriefcaseBusiness,
   Video, Scissors, HelpCircle, AlertTriangle, Target, UserCheck, Play,
   XCircle, ArrowRight, ImageIcon
-} from "lucide-react";
+} from "@/lib/icons";
 
 import academyClassroom from "@/assets/student-1.jpg";
 import courseBeginnerHero from "@/assets/course-beginner-hero.jpg";

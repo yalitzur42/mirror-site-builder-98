@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, MapPin, Phone, Clock, Compass } from "lucide-react";
+import { Instagram, MapPin, Phone, Clock, Compass } from "@/lib/icons";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import logo from "@/assets/logo.png";
 import { TIKTOK_URL, INSTAGRAM_URL, BOOKING_URL, BUSINESS_ADDRESS, PHONE_DISPLAY } from "@/lib/constants";

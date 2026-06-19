@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Smartphone, MessageCircle, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Smartphone, MessageCircle, CheckCircle2, ShieldCheck } from "@/lib/icons";
 
 interface LeadFormProps {
   v: (section: string, key: string, fallback?: string) => string;

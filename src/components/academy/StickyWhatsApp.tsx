@@ -1,4 +1,4 @@
-import { Smartphone, BadgeCheck } from "lucide-react";
+import { Smartphone, BadgeCheck } from "@/lib/icons";
 
 interface StickyWhatsAppProps {
   visible: boolean;

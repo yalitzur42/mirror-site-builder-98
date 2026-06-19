@@ -4,7 +4,7 @@ import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import CTASection from "@/components/ui/CTASection";
 import SectionDivider from "@/components/ui/SectionDivider";
-import { Target, Eye, Heart, Handshake, Scissors, Smartphone, BookOpen } from "lucide-react";
+import { Target, Eye, Heart, Handshake, Scissors, Smartphone, BookOpen } from "@/lib/icons";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL } from "@/lib/constants";

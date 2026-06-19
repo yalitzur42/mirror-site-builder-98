@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
-import { TrendingUp, Save, Loader2 } from "lucide-react";
+import { TrendingUp, Save, Loader2 } from "@/lib/icons";
 import { toast } from "sonner";
 
 const MONTHLY_GOAL = 10000;

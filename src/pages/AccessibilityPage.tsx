@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import { Accessibility } from "lucide-react";
+import { Accessibility } from "@/lib/icons";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { PHONE_DISPLAY } from "@/lib/constants";
 

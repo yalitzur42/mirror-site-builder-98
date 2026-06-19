@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Check, PlayCircle } from "lucide-react";
+import { Check, PlayCircle } from "@/lib/icons";
 import LessonPlayerModal from "./LessonPlayerModal";
 
 interface Task {

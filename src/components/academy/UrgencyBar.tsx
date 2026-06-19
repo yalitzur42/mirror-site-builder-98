@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Sparkles, Smartphone, BadgeCheck } from "lucide-react";
+import { Sparkles, Smartphone, BadgeCheck } from "@/lib/icons";
 
 function formatTwo(n: number) {
   return String(n).padStart(2, "0");

@@ -1,6 +1,6 @@
 import { useRef, useState, DragEvent, ChangeEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Upload, X, Loader2, ImagePlus } from "lucide-react";
+import { Upload, X, Loader2, ImagePlus } from "@/lib/icons";
 import { toast } from "sonner";
 
 interface PhotoUploaderProps {

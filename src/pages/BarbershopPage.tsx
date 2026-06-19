@@ -6,7 +6,7 @@ import GalleryGrid from "@/components/ui/GalleryGrid";
 import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionDivider from "@/components/ui/SectionDivider";
-import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "lucide-react";
+import { MessageCircle, Scissors, Smartphone, Camera, Handshake, Coins } from "@/lib/icons";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL, WA_GENERAL, waLink } from "@/lib/constants";

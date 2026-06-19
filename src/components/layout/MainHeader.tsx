@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Instagram, Navigation, Phone, Calendar, LogIn, GraduationCap } from "lucide-react";
+import { Menu, X, Instagram, Navigation, Phone, Calendar, LogIn, GraduationCap } from "@/lib/icons";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";

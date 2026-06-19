@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { getDeviceId, getDeviceName } from "@/lib/deviceId";
 import { Button } from "@/components/ui/button";
-import { LogOut, Loader2, Trophy, Settings, Send, Loader2 as Spin } from "lucide-react";
+import { LogOut, Loader2, Trophy, Settings, Send, Loader2 as Spin } from "@/lib/icons";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 import { STAGES } from "@/lib/academyStages";

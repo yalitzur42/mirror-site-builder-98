@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2, Lock, PlayCircle } from "lucide-react";
+import { Loader2, Lock, PlayCircle } from "@/lib/icons";
 import { STAGE_COLORS } from "@/lib/academyJourney";
 import LessonPlayerModal from "./LessonPlayerModal";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Clock, Scissors, Banknote } from "lucide-react";
+import { Clock, Scissors, Banknote } from "@/lib/icons";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Send, Loader2, Clock, CheckCircle2 } from "lucide-react";
+import { Send, Loader2, Clock, CheckCircle2 } from "@/lib/icons";
 import { toast } from "sonner";
 
 interface Props {

@@ -8,7 +8,7 @@ import CTASection from "@/components/ui/CTASection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import StaggerChildren from "@/components/ui/StaggerChildren";
 import SectionDivider from "@/components/ui/SectionDivider";
-import { GraduationCap, Users, Award, Star, Clock, Shield, Heart, Sparkles, Flame, Camera, BookOpen, Rocket, Smartphone, Scissors, Hand } from "lucide-react";
+import { GraduationCap, Users, Award, Star, Clock, Shield, Heart, Sparkles, Flame, Camera, BookOpen, Rocket, Smartphone, Scissors, Hand } from "@/lib/icons";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";

@@ -3,7 +3,7 @@ import HeroSplit from "@/components/ui/HeroSplit";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { MapPin, Phone, Clock, Instagram, Navigation } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, Navigation } from "@/lib/icons";
 import TikTokIcon from "@/components/ui/TikTokIcon";
 import barbershopInterior from "@/assets/barbershop-interior.jpg";
 import { BUSINESS_ADDRESS, BUSINESS_ADDRESS_NOTE, PHONE_DISPLAY, PHONE_TEL, WAZE_URL, GMAPS_URL, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/constants";
