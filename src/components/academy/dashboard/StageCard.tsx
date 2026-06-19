@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Lock, CheckCircle2, Clock } from "lucide-react";
+import { Lock, CheckCircle2, Clock } from "@/lib/icons";
 
 interface StageCardProps {
   stageNumber: number;

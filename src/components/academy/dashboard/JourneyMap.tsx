@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import { supabase } from "@/integrations/supabase/client";
-import { Lock, Check, Send } from "lucide-react";
+import { Lock, Check, Send } from "@/lib/icons";
 import { JOURNEY_ROWS, STAGE_COLORS } from "@/lib/academyJourney";
 import { STAGES } from "@/lib/academyStages";
 import StarsBackground from "./StarsBackground";

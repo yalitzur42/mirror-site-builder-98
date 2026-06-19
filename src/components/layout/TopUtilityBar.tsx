@@ -1,4 +1,4 @@
-import { Navigation, Phone, Calendar } from "lucide-react";
+import { Navigation, Phone, Calendar } from "@/lib/icons";
 import { Warp } from "@paper-design/shaders-react";
 import { WAZE_URL, PHONE_DISPLAY, BOOKING_URL } from "@/lib/constants";
 

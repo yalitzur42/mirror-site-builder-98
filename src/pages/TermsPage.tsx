@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import { FileText } from "lucide-react";
+import { FileText } from "@/lib/icons";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const TermsPage = () => {

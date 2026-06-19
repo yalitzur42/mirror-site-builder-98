@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, X, Loader2 } from "lucide-react";
+import { Upload, X, Loader2 } from "@/lib/icons";
 
 interface GalleryFieldEditorProps {
   value: string; // JSON array of URLs

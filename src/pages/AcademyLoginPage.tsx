@@ -6,7 +6,7 @@ import { getDeviceId, getDeviceName } from "@/lib/deviceId";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Lock, Mail, LogIn, ShieldAlert, MonitorSmartphone } from "lucide-react";
+import { Lock, Mail, LogIn, ShieldAlert, MonitorSmartphone } from "@/lib/icons";
 import logo from "@/assets/logo.png";
 
 const AcademyLoginPage = () => {

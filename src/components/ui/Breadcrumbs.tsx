@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronLeft, Home } from "lucide-react";
+import { ChevronLeft, Home } from "@/lib/icons";
 
 interface BreadcrumbItem {
   label: string;

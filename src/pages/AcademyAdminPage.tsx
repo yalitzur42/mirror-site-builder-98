@@ -22,7 +22,7 @@ import {
   Eye,
   UserPlus,
   Copy,
-} from "lucide-react";
+} from "@/lib/icons";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 import { STAGES } from "@/lib/academyStages";

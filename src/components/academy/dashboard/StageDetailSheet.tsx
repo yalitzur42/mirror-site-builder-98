@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { ListChecks, BookOpen } from "lucide-react";
+import { ListChecks, BookOpen } from "@/lib/icons";
 import { STAGES } from "@/lib/academyStages";
 import { STAGE_COLORS } from "@/lib/academyJourney";
 import TaskList from "./TaskList";

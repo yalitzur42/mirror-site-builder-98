@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import {
   LogOut, Save, ChevronDown, ChevronLeft, Upload, Image, FileText, Loader2, LayoutDashboard, Home, Info, Scissors, Droplets, GraduationCap, Images, Settings, Video
-} from "lucide-react";
+} from "@/lib/icons";
 import GalleryFieldEditor from "@/components/admin/GalleryFieldEditor";
 
 const pageIcons: Record<string, typeof Home> = {

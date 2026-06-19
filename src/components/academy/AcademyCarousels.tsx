@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { MessageCircle, Users } from "lucide-react";
+import { MessageCircle, Users } from "@/lib/icons";
 
 interface AcademyCarouselsProps {
   v: (sectionKey: string, fieldKey: string, fallback?: string) => string;

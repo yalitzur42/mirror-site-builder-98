@@ -25,7 +25,7 @@ import {
   PlayCircle,
   CheckCircle2,
   XCircle,
-} from "lucide-react";
+} from "@/lib/icons";
 import { toast } from "sonner";
 import { STAGES } from "@/lib/academyStages";
 

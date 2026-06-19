@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Scissors, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Scissors, ArrowLeft, CheckCircle2 } from "@/lib/icons";
 
 interface CTAItem {
   label: ReactNode;

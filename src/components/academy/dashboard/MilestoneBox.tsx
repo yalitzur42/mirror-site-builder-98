@@ -1,4 +1,4 @@
-import { Target } from "lucide-react";
+import { Target } from "@/lib/icons";
 
 const MilestoneBox = ({ children }: { children: React.ReactNode }) => (
   <div
