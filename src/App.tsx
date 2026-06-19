@@ -40,6 +40,7 @@ const App = () => (
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/index" element={<Navigate to="/" replace />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/barbershop" element={<BarbershopPage />} />
               <Route path="/perm" element={<PermPage />} />
