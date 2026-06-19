@@ -51,20 +51,26 @@ const PermPage = () => {
         image={v("hero", "image") || permHero}
       />
 
-      <Section title={<><Gem className="w-6 h-6 inline-block align-middle ml-1" /> היתרונות שלנו</>} variant="light">
-        <AnimatedSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="p-6 bg-background/10 rounded-lg text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background/20 flex items-center justify-center">
-                  <benefit.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-                <p className="text-sm opacity-70">{benefit.description}</p>
+      <Section
+        title={<><Gem className="w-6 h-6 inline-block align-middle ml-1" /> היתרונות שלנו</>}
+        variant="light"
+        className="!bg-primary text-primary-foreground"
+      >
+        <StaggerChildren className="grid grid-cols-2 lg:grid-cols-4 gap-4" staggerDelay={0.12}>
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="group relative bg-background text-foreground rounded-2xl p-5 md:p-6 text-center border border-primary/20 shadow-lg overflow-hidden hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/40 via-primary to-primary/40" />
+              <div className="w-14 h-14 md:w-16 md:h-16 mx-auto mb-3 rounded-full bg-primary flex items-center justify-center shadow-inner">
+                <benefit.icon className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground" />
               </div>
-            ))}
-          </div>
-        </AnimatedSection>
+              <h3 className="font-black text-lg md:text-xl mb-2 leading-tight">{benefit.title}</h3>
+              <p className="text-sm opacity-75 leading-snug">{benefit.description}</p>
+            </div>
+          ))}
+        </StaggerChildren>
       </Section>
 
       <SectionDivider from="light" to="dark" shape="waves" />
