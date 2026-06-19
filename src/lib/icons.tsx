@@ -49,7 +49,7 @@ import {
   Minus as PhMinus,
   DotsThree as PhDotsThree,
   DotsThreeVertical as PhDotsThreeVertical,
-  GripVertical as PhGripVertical,
+  DotsSixVertical as PhGripVertical,
   Circle as PhCircle,
   Eye as PhEye,
   EyeSlash as PhEyeSlash,
@@ -76,7 +76,7 @@ import {
   ListChecks,
   Lock,
   MapPin,
-  Navigation,
+  NavigationArrow as PhNavigation,
   Phone,
   PlayCircle,
   Rocket,
@@ -191,8 +191,7 @@ export const Minus = wrap(PhMinus, "Minus");
 export const MonitorSmartphone = wrap(PhDeviceMobile, "MonitorSmartphone");
 export const MoreHorizontal = wrap(PhDotsThree, "MoreHorizontal");
 export const MoreVertical = wrap(PhDotsThreeVertical, "MoreVertical");
-export const NavigationWrapped = wrap(Navigation, "Navigation");
-export { NavigationWrapped as Navigation };
+export const Navigation = wrap(PhNavigation, "Navigation");
 export const PanelLeft = wrap(PhList, "PanelLeft");
 export const PhoneWrapped = wrap(Phone, "Phone");
 export { PhoneWrapped as Phone };
