@@ -4,8 +4,9 @@
 export interface ContentField {
   key: string;
   label: string;
-  type: "text" | "textarea" | "image" | "gallery" | "video";
+  type: "text" | "textarea" | "image" | "gallery" | "video" | "select";
   defaultValue: string;
+  options?: { value: string; label: string }[];
 }
 
 export interface ContentSection {
@@ -34,7 +35,16 @@ export const siteContentConfig: PageConfig[] = [
           { key: "title", label: "כותרת ראשית", type: "text", defaultValue: "משפחת Macho" },
           { key: "subtitle", label: "כותרת משנה", type: "text", defaultValue: "מובילים את סצנת טיפוח השיער לגברים בישראל!" },
           { key: "description", label: "תיאור", type: "textarea", defaultValue: "מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת ופרם מקצועי לגברים. אנחנו מאמינים ב'פרא מסודר' – לקבל את הפרא שיש בך ולנקות את המיותר." },
-          { key: "image", label: "תמונת רקע", type: "image", defaultValue: "" },
+          { key: "media_kind", label: "סוג מדיה (תמונה/סרטון)", type: "select", defaultValue: "image", options: [
+            { value: "image", label: "תמונה" },
+            { value: "video", label: "סרטון" },
+          ] },
+          { key: "media_layout", label: "תצוגת מדיה", type: "select", defaultValue: "boxed", options: [
+            { value: "boxed", label: "קוביה עם מסגרת" },
+            { value: "full", label: "לכל רוחב השורה" },
+          ] },
+          { key: "image", label: "תמונה (אם נבחר תמונה)", type: "image", defaultValue: "" },
+          { key: "video", label: "סרטון (אם נבחר סרטון)", type: "video", defaultValue: "" },
         ],
       },
       {

@@ -291,6 +291,18 @@ const AdminDashboard = () => {
                                 />
                               )}
 
+                              {field.type === "select" && (
+                                <select
+                                  value={getFieldValue(currentPage.slug, section.key, field)}
+                                  onChange={(e) => setFieldValue(currentPage.slug, section.key, field.key, e.target.value)}
+                                  className="w-full p-2.5 rounded-lg bg-background border border-border text-foreground text-sm md:text-base"
+                                >
+                                  {field.options?.map(opt => (
+                                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                                  ))}
+                                </select>
+                              )}
+
                               {field.type === "image" && (
                                 <div className="space-y-2">
                                   {getFieldValue(currentPage.slug, section.key, field) && (

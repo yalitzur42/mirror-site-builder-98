@@ -73,6 +73,9 @@ const HomePage = () => {
         primaryCta={{ label: <><Smartphone className="w-4 h-4" /> לקביעת תור</>, href: BOOKING_URL }}
         secondaryCta={{ label: <><GraduationCap className="w-4 h-4" /> לאקדמיה</>, href: "/academy" }}
         image={v("hero", "image") || heroBarbershop}
+        video={v("hero", "video")}
+        mediaKind={(v("hero", "media_kind", "image") as "image" | "video")}
+        mediaLayout={(v("hero", "media_layout", "boxed") as "boxed" | "full")}
       />
 
       {/* What We Offer */}
