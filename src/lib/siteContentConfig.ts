@@ -4,8 +4,9 @@
 export interface ContentField {
   key: string;
   label: string;
-  type: "text" | "textarea" | "image" | "gallery" | "video";
+  type: "text" | "textarea" | "image" | "gallery" | "video" | "select";
   defaultValue: string;
+  options?: { value: string; label: string }[];
 }
 
 export interface ContentSection {
