@@ -78,11 +78,12 @@ const HeroSplit = ({
         {/* Content */}
         <div className="container-main py-16 md:py-24 lg:py-32 pb-8 md:pb-12 relative z-10">
           {(() => {
-            const mediaSrc = mediaKind === "video" ? video : image;
+            const shouldShowVideo = mediaKind === "video" && Boolean(video) && !videoFailed;
+            const mediaSrc = shouldShowVideo ? video : image;
             const isFull = mediaLayout === "full";
 
             const mediaEl = mediaSrc ? (
-              mediaKind === "video" && !videoFailed ? (
+              shouldShowVideo ? (
                 <video
                   src={mediaSrc}
                   autoPlay
