@@ -72,70 +72,110 @@ const HeroSplit = ({
 
         {/* Content */}
         <div className="container-main py-16 md:py-24 lg:py-32 pb-8 md:pb-12 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div className="order-2 lg:order-1 text-center lg:text-right">
-              {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
+          {(() => {
+            const mediaSrc = mediaKind === "video" ? video : image;
+            const isFull = mediaLayout === "full";
 
-              {/* TITLE */}
-              <h1 className="hero-title-animate text-foreground mb-4 break-words overflow-hidden">
-                {title.split("").map((char, index) => (
-                  <span key={index} className="hero-letter" style={{ animationDelay: `${index * 0.05}s` }}>
-                    {char === " " ? "\u00A0" : char}
-                  </span>
-                ))}
-              </h1>
+            const mediaEl = mediaSrc ? (
+              mediaKind === "video" ? (
+                <video
+                  src={mediaSrc}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className={
+                    isFull
+                      ? "w-full max-h-[70vh] object-cover rounded-2xl shadow-2xl"
+                      : "w-full max-w-xs md:max-w-sm lg:max-w-md rounded-lg shadow-2xl border-2 border-foreground"
+                  }
+                />
+              ) : (
+                <img
+                  src={mediaSrc}
+                  alt={title}
+                  className={
+                    isFull
+                      ? "w-full max-h-[70vh] object-cover rounded-2xl shadow-2xl"
+                      : "w-full max-w-xs md:max-w-sm lg:max-w-md rounded-lg shadow-2xl border-2 border-foreground"
+                  }
+                />
+              )
+            ) : (
+              <div className="aspect-square bg-muted/20 rounded-lg flex items-center justify-center w-full max-w-md">
+                <span className="text-muted-foreground">מדיה</span>
+              </div>
+            );
 
-              {/* SUBTITLE */}
-              {subtitle && (
-                <p className="hero-subtitle-animate text-xl md:text-2xl lg:text-3xl text-accent font-bold mb-4 break-words overflow-hidden">
-                  {subtitle.split("").map((char, index) => (
-                    <span key={index} className="hero-letter" style={{ animationDelay: `${0.6 + index * 0.04}s` }}>
+            const textBlock = (
+              <div className={isFull ? "text-center" : "order-2 lg:order-1 text-center lg:text-right"}>
+                {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
+
+                <h1 className="hero-title-animate text-foreground mb-4 break-words overflow-hidden">
+                  {title.split("").map((char, index) => (
+                    <span key={index} className="hero-letter" style={{ animationDelay: `${index * 0.05}s` }}>
                       {char === " " ? "\u00A0" : char}
                     </span>
                   ))}
-                </p>
-              )}
+                </h1>
 
-              {description && (
-                <p className="hero-description text-muted-foreground text-lg md:text-xl mb-8 max-w-xl mx-auto lg:mx-0 break-words overflow-hidden">
-                  {description}
-                </p>
-              )}
+                {subtitle && (
+                  <p className="hero-subtitle-animate text-xl md:text-2xl lg:text-3xl text-accent font-bold mb-4 break-words overflow-hidden">
+                    {subtitle.split("").map((char, index) => (
+                      <span key={index} className="hero-letter" style={{ animationDelay: `${0.6 + index * 0.04}s` }}>
+                        {char === " " ? "\u00A0" : char}
+                      </span>
+                    ))}
+                  </p>
+                )}
 
-              {(primaryCta || secondaryCta) && (
-                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  {primaryCta && (
-                    primaryCta.href.startsWith("http") ? (
-                      <a href={primaryCta.href} target="_blank" rel="noopener noreferrer" className="btn-hero-polygon">{primaryCta.label}</a>
-                    ) : (
-                      <Link to={primaryCta.href} className="btn-hero-polygon">{primaryCta.label}</Link>
-                    )
-                  )}
-                  {secondaryCta && (
-                    secondaryCta.href.startsWith("http") ? (
-                      <a href={secondaryCta.href} target="_blank" rel="noopener noreferrer" className="btn-hero-corner-frame">{secondaryCta.label}</a>
-                    ) : (
-                      <Link to={secondaryCta.href} className="btn-hero-corner-frame">{secondaryCta.label}</Link>
-                    )
-                  )}
+                {description && (
+                  <p className={`hero-description text-muted-foreground text-lg md:text-xl mb-8 break-words overflow-hidden ${isFull ? "max-w-2xl mx-auto" : "max-w-xl mx-auto lg:mx-0"}`}>
+                    {description}
+                  </p>
+                )}
+
+                {(primaryCta || secondaryCta) && (
+                  <div className={`flex flex-wrap gap-4 ${isFull ? "justify-center" : "justify-center lg:justify-start"}`}>
+                    {primaryCta && (
+                      primaryCta.href.startsWith("http") ? (
+                        <a href={primaryCta.href} target="_blank" rel="noopener noreferrer" className="btn-hero-polygon">{primaryCta.label}</a>
+                      ) : (
+                        <Link to={primaryCta.href} className="btn-hero-polygon">{primaryCta.label}</Link>
+                      )
+                    )}
+                    {secondaryCta && (
+                      secondaryCta.href.startsWith("http") ? (
+                        <a href={secondaryCta.href} target="_blank" rel="noopener noreferrer" className="btn-hero-corner-frame">{secondaryCta.label}</a>
+                      ) : (
+                        <Link to={secondaryCta.href} className="btn-hero-corner-frame">{secondaryCta.label}</Link>
+                      )
+                    )}
+                  </div>
+                )}
+
+                {children}
+              </div>
+            );
+
+            if (isFull) {
+              return (
+                <div className="flex flex-col gap-10">
+                  <div className="w-full flex justify-center">{mediaEl}</div>
+                  {textBlock}
                 </div>
-              )}
+              );
+            }
 
-              {children}
-            </div>
-
-            {/* Image */}
-            <div className="order-1 lg:order-2 relative flex items-center justify-center">
-              {image ? (
-                <img src={image} alt={title} className="w-full max-w-xs md:max-w-sm lg:max-w-md rounded-lg shadow-2xl border-2 border-foreground" />
-              ) : (
-                <div className="aspect-square bg-muted/20 rounded-lg flex items-center justify-center">
-                  <span className="text-muted-foreground">תמונה</span>
+            return (
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {textBlock}
+                <div className="order-1 lg:order-2 relative flex items-center justify-center">
+                  {mediaEl}
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
     </div>
