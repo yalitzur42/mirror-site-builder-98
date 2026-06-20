@@ -11,6 +11,9 @@ interface HeroSplitProps {
   primaryCta?: { label: ReactNode; href: string };
   secondaryCta?: { label: ReactNode; href: string };
   image?: string;
+  video?: string;
+  mediaKind?: "image" | "video";
+  mediaLayout?: "boxed" | "full";
   children?: ReactNode;
 }
 
@@ -22,6 +25,9 @@ const HeroSplit = ({
   primaryCta,
   secondaryCta,
   image,
+  video,
+  mediaKind = "image",
+  mediaLayout = "boxed",
   children,
 }: HeroSplitProps) => {
   const [shaderReady, setShaderReady] = useState(false);
