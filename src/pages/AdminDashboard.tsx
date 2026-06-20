@@ -160,8 +160,38 @@ const AdminDashboard = () => {
         throw new Error(`העלאה נכשלה (${uploadRes.status}): ${txt.slice(0, 200)}`);
       }
 
+      const savedRows = [
+        {
+          page_slug: pageSlug,
+          section_key: sectionKey,
+          field_key: fieldKey,
+          field_type: "video",
+          field_label: "סרטון",
+          content_value: signed.publicUrl,
+          updated_by: user?.id,
+        },
+      ];
+
+      if (fieldKey === "video") {
+        savedRows.push({
+          page_slug: pageSlug,
+          section_key: sectionKey,
+          field_key: "media_kind",
+          field_type: "select",
+          field_label: "סוג מדיה (תמונה/סרטון)",
+          content_value: "video",
+          updated_by: user?.id,
+        });
+      }
+
+      const { error: saveError } = await supabase.from("site_content").upsert(savedRows, {
+        onConflict: "page_slug,section_key,field_key",
+      });
+      if (saveError) throw saveError;
+
       setFieldValue(pageSlug, sectionKey, fieldKey, signed.publicUrl);
-      toast({ title: "הסרטון הועלה בהצלחה!" });
+      if (fieldKey === "video") setFieldValue(pageSlug, sectionKey, "media_kind", "video");
+      toast({ title: "הסרטון הועלה ונשמר בהצלחה!" });
     } catch (err) {
       const message = err instanceof Error ? err.message : "שגיאה לא ידועה";
       toast({ title: "שגיאה בהעלאת סרטון", description: message, variant: "destructive" });
