@@ -31,12 +31,17 @@ const HeroSplit = ({
   children,
 }: HeroSplitProps) => {
   const [shaderReady, setShaderReady] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     // Delay shader mount slightly to ensure canvas dimensions are established
     const timer = requestAnimationFrame(() => setShaderReady(true));
     return () => cancelAnimationFrame(timer);
   }, []);
+
+  useEffect(() => {
+    setVideoFailed(false);
+  }, [video]);
 
   return (
     <div className="section-light">
@@ -77,13 +82,21 @@ const HeroSplit = ({
             const isFull = mediaLayout === "full";
 
             const mediaEl = mediaSrc ? (
-              mediaKind === "video" ? (
+              mediaKind === "video" && !videoFailed ? (
                 <video
                   src={mediaSrc}
                   autoPlay
                   muted
                   loop
                   playsInline
+                  preload="auto"
+                  poster={image}
+                  onError={() => setVideoFailed(true)}
+                  onLoadedData={(event) => {
+                    if (event.currentTarget.paused) {
+                      void event.currentTarget.play().catch(() => undefined);
+                    }
+                  }}
                   className={
                     isFull
                       ? "w-full max-h-[70vh] object-cover rounded-2xl shadow-2xl"
