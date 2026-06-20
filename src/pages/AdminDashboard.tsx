@@ -142,8 +142,22 @@ const AdminDashboard = () => {
       return;
     }
     setUploadingVideo(true);
-    const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${file.name.split('.').pop()}`;
-    const { error } = await supabase.storage.from("site-videos").upload(filePath, file);
+    const ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
+    const mimeMap: Record<string, string> = {
+      mp4: "video/mp4",
+      mov: "video/quicktime",
+      qt: "video/quicktime",
+      webm: "video/webm",
+      avi: "video/x-msvideo",
+      m4v: "video/mp4",
+    };
+    const contentType = file.type || mimeMap[ext] || "video/mp4";
+    const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${ext}`;
+    const { error } = await supabase.storage.from("site-videos").upload(filePath, file, {
+      contentType,
+      cacheControl: "3600",
+      upsert: true,
+    });
     if (error) {
       toast({ title: "שגיאה בהעלאת סרטון", description: error.message, variant: "destructive" });
       setUploadingVideo(false);
