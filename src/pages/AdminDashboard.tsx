@@ -380,6 +380,10 @@ const AdminDashboard = () => {
                                       />
                                     </label>
                                   </div>
+                                  <p className="text-xs text-muted-foreground leading-relaxed">
+                                    ⚠️ חשוב: יש להעלות סרטון בפורמט <strong>MP4 עם קודק H.264</strong>. סרטוני <strong>.mov</strong> מאייפון נשמרים בקודק HEVC ולא יוצגו בדפדפנים (Chrome / אנדרואיד).<br/>
+                                    באייפון: הגדרות → מצלמה → פורמטים → <strong>"הכי תואם"</strong>, או להמיר ב-cloudconvert.com.
+                                  </p>
                                 </div>
                               )}
                             </div>
