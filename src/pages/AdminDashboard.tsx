@@ -142,31 +142,32 @@ const AdminDashboard = () => {
       return;
     }
     setUploadingVideo(true);
-    const ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
-    const mimeMap: Record<string, string> = {
-      mp4: "video/mp4",
-      mov: "video/quicktime",
-      qt: "video/quicktime",
-      webm: "video/webm",
-      avi: "video/x-msvideo",
-      m4v: "video/mp4",
-    };
-    const contentType = file.type || mimeMap[ext] || "video/mp4";
-    const filePath = `${pageSlug}/${sectionKey}/${fieldKey}-${Date.now()}.${ext}`;
-    const { error } = await supabase.storage.from("site-videos").upload(filePath, file, {
-      contentType,
-      cacheControl: "3600",
-      upsert: true,
-    });
-    if (error) {
-      toast({ title: "שגיאה בהעלאת סרטון", description: error.message, variant: "destructive" });
+    try {
+      const { data: signed, error: signErr } = await supabase.functions.invoke("create-video-upload-url", {
+        body: { pageSlug, sectionKey, fieldKey, fileName: file.name },
+      });
+      if (signErr || !signed?.signedUrl) {
+        throw new Error(signErr?.message || signed?.error || "לא הצלחנו לקבל קישור העלאה");
+      }
+
+      const uploadRes = await fetch(signed.signedUrl, {
+        method: "PUT",
+        headers: { "Content-Type": file.type || "video/mp4", "x-upsert": "true" },
+        body: file,
+      });
+      if (!uploadRes.ok) {
+        const txt = await uploadRes.text();
+        throw new Error(`העלאה נכשלה (${uploadRes.status}): ${txt.slice(0, 200)}`);
+      }
+
+      setFieldValue(pageSlug, sectionKey, fieldKey, signed.publicUrl);
+      toast({ title: "הסרטון הועלה בהצלחה!" });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "שגיאה לא ידועה";
+      toast({ title: "שגיאה בהעלאת סרטון", description: message, variant: "destructive" });
+    } finally {
       setUploadingVideo(false);
-      return;
     }
-    const { data: { publicUrl } } = supabase.storage.from("site-videos").getPublicUrl(filePath);
-    setFieldValue(pageSlug, sectionKey, fieldKey, publicUrl);
-    toast({ title: "הסרטון הועלה בהצלחה!" });
-    setUploadingVideo(false);
   };
 
   const handleSaveSection = async (pageSlug: string, section: typeof siteContentConfig[0]["sections"][0]) => {
