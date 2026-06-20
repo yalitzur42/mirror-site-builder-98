@@ -31,17 +31,12 @@ const HeroSplit = ({
   children,
 }: HeroSplitProps) => {
   const [shaderReady, setShaderReady] = useState(false);
-  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     // Delay shader mount slightly to ensure canvas dimensions are established
     const timer = requestAnimationFrame(() => setShaderReady(true));
     return () => cancelAnimationFrame(timer);
   }, []);
-
-  useEffect(() => {
-    setVideoFailed(false);
-  }, [video]);
 
   return (
     <div className="section-light">
@@ -78,32 +73,34 @@ const HeroSplit = ({
         {/* Content */}
         <div className="container-main py-16 md:py-24 lg:py-32 pb-8 md:pb-12 relative z-10">
           {(() => {
-            const shouldShowVideo = mediaKind === "video" && Boolean(video) && !videoFailed;
+            const shouldShowVideo = mediaKind === "video" && Boolean(video);
             const mediaSrc = shouldShowVideo ? video : image;
             const isFull = mediaLayout === "full";
 
             const mediaEl = mediaSrc ? (
               shouldShowVideo ? (
                 <video
-                  src={mediaSrc}
+                  key={mediaSrc}
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="auto"
                   poster={image}
-                  onError={() => setVideoFailed(true)}
-                  onLoadedData={(event) => {
+                  aria-label={title}
+                  onCanPlay={(event) => {
                     if (event.currentTarget.paused) {
                       void event.currentTarget.play().catch(() => undefined);
                     }
                   }}
                   className={
                     isFull
-                      ? "w-full max-h-[70vh] object-cover rounded-2xl shadow-2xl"
-                      : "w-full max-w-xs md:max-w-sm lg:max-w-md rounded-lg shadow-2xl border-2 border-foreground"
+                      ? "w-full aspect-[16/7] max-h-[70vh] object-cover rounded-2xl shadow-2xl bg-card/30"
+                      : "w-full aspect-square max-w-xs md:max-w-sm lg:max-w-md object-cover rounded-lg shadow-2xl border-2 border-foreground bg-card/30"
                   }
-                />
+                >
+                  <source src={mediaSrc} type="video/mp4" />
+                </video>
               ) : (
                 <img
                   src={mediaSrc}
