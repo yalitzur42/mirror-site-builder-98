@@ -79,7 +79,7 @@ const HeroSplit = ({
 
   if (isFull) {
     return (
-      <div className="section-light">
+      <div className="text-foreground">
         <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden min-h-[520px] md:min-h-[620px] lg:min-h-[720px] flex items-center justify-center bg-[#2a1a0d]">
           {/* Full-width background media */}
           <div className="absolute inset-0">
@@ -131,7 +131,7 @@ const HeroSplit = ({
   }
 
   return (
-    <div className="section-light">
+    <div className="text-foreground">
       <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden" style={{ backgroundColor: "#3d2310" }}>
         <div className="container-main py-16 md:py-24 lg:py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
