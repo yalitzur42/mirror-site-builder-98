@@ -55,7 +55,7 @@ const HeroSplit = ({
     <div className={isFull ? "text-center" : "order-2 lg:order-1 text-center lg:text-right"}>
       {badge && <span className="inline-block text-accent text-sm mb-4">{badge}</span>}
 
-      <h1 className="hero-title-animate text-foreground mb-4 break-words">
+      <h1 className={`hero-title-animate text-foreground mb-4 break-words ${isFull ? "drop-shadow-2xl" : ""}`}>
         {title}
       </h1>
 
