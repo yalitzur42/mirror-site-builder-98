@@ -80,7 +80,7 @@ const HeroSplit = ({
   if (isFull) {
     return (
       <div className="text-foreground">
-        <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden min-h-[520px] md:min-h-[620px] lg:min-h-[720px] flex items-center justify-center bg-[#2a1a0d]">
+        <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden min-h-[520px] md:min-h-[620px] lg:min-h-[720px] flex items-start justify-center bg-[#2a1a0d]">
           {/* Full-width background media */}
           <div className="absolute inset-0">
             {shouldShowVideo && video ? (
@@ -105,23 +105,23 @@ const HeroSplit = ({
             ) : mediaSrc ? (
               <img src={mediaSrc} alt={title} className="h-full w-full object-cover" />
             ) : null}
-            {/* Dark gradient overlay for text readability */}
+            {/* Dark gradient overlay — lighter so the video stays visible */}
             <div
               className="absolute inset-0"
               style={{
                 background: `linear-gradient(
                   135deg,
-                  rgba(42, 26, 13, 0.82) 0%,
-                  rgba(61, 35, 16, 0.55) 40%,
-                  rgba(42, 26, 13, 0.50) 70%,
-                  rgba(42, 26, 13, 0.78) 100%
+                  rgba(42, 26, 13, 0.55) 0%,
+                  rgba(61, 35, 16, 0.30) 40%,
+                  rgba(42, 26, 13, 0.25) 70%,
+                  rgba(42, 26, 13, 0.50) 100%
                 )`,
               }}
             />
           </div>
 
-          <div className="container-main relative z-10 py-20 md:py-28 lg:py-36">
-            <div className="max-w-5xl mx-auto px-4 md:px-8">
+          <div className="container-main relative z-10 pt-16 md:pt-24 lg:pt-32 pb-10 md:pb-16 w-full">
+            <div className="max-w-5xl mx-auto px-4 md:px-8" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
               {textBlock}
             </div>
           </div>
