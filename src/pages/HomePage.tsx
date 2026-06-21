@@ -16,6 +16,7 @@ import { useSiteContent } from "@/hooks/useSiteContent";
 import PageSkeleton from "@/components/ui/PageSkeleton";
 import { BOOKING_URL } from "@/lib/constants";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useEffect, useState } from "react";
 
 // Import images (fallbacks)
 import heroBarbershop from "@/assets/barbershop-working.jpg";
@@ -37,7 +38,36 @@ const HomePage = () => {
   const { v, loading } = useSiteContent("home");
   usePageMeta({ title: "מספרה ואקדמיה לגברים", description: "Mac'ho - מספרה מקצועית לגברים, אקדמיה ללימודי ספרות ופרם לגברים בעפולה" });
 
-  if (loading) return <Layout><PageSkeleton /></Layout>;
+  const heroVideo = v("hero", "video");
+  const heroMediaKind = v("hero", "media_kind", "image");
+  const needsVideoPreload = !loading && heroMediaKind === "video" && Boolean(heroVideo);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    if (!needsVideoPreload) return;
+    setVideoReady(false);
+    const vid = document.createElement("video");
+    vid.muted = true;
+    vid.playsInline = true;
+    vid.preload = "auto";
+    vid.src = heroVideo!;
+    const done = () => setVideoReady(true);
+    vid.addEventListener("canplaythrough", done, { once: true });
+    vid.addEventListener("loadeddata", done, { once: true });
+    vid.addEventListener("error", done, { once: true });
+    // Safety timeout — don't block more than 6s
+    const timeout = window.setTimeout(done, 6000);
+    vid.load();
+    return () => {
+      window.clearTimeout(timeout);
+      vid.removeEventListener("canplaythrough", done);
+      vid.removeEventListener("loadeddata", done);
+      vid.removeEventListener("error", done);
+      vid.src = "";
+    };
+  }, [needsVideoPreload, heroVideo]);
+
+  if (loading || (needsVideoPreload && !videoReady)) return <Layout><PageSkeleton /></Layout>;
 
   const servicesCards = [
     { title: v("services", "card1_title", "לימודי ספרות גברים"), description: v("services", "card1_desc", ""), href: "/academy", image: v("services", "card1_image") || serviceAcademy },
