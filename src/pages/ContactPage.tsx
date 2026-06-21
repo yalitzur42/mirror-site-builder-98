@@ -64,7 +64,7 @@ const ContactPage = () => {
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 0 }}
           />
           <div className="container-main text-center relative z-10">
-            <h1 className="hero-title-animate mb-4">רוצים לעבוד איתנו?</h1>
+            <h1 className="hero-title-animate mb-4 text-primary">רוצים לעבוד איתנו?</h1>
             <p className="text-xl opacity-80 max-w-2xl mx-auto mb-8 text-foreground">
               <Handshake className="w-5 h-5 inline-block align-middle ml-1" /> אנחנו תמיד מחפשים אנשים מוכשרים שרוצים להיות חלק ממשפחת Macho. 
               בין אם אתם ספרים מנוסים או בוגרי קורסים שרוצים להתחיל – יש לנו מקום בשבילכם. <Zap className="w-5 h-5 inline-block align-middle ml-1" />
