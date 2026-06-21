@@ -208,8 +208,6 @@
   opacity: 0;
   transform: translateY(24px);
   animation: heroTitleIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  color: inherit;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes heroTitleIn {
