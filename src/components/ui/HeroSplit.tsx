@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Warp } from "@paper-design/shaders-react";
 
 interface HeroSplitProps {
   badge?: ReactNode;
@@ -133,6 +134,22 @@ const HeroSplit = ({
   return (
     <div className="text-foreground">
       <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden" style={{ backgroundColor: "#3d2310" }}>
+        {/* Warp shader animated brown background */}
+        <Warp
+          colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
+          speed={3.5}
+          scale={1.5}
+          distortion={0.6}
+          swirl={0.3}
+          swirlIterations={6}
+          softness={0.7}
+          shape="edge"
+          shapeScale={0.5}
+          proportion={0.5}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 0 }}
+        />
+        {/* Subtle dark overlay for text contrast */}
+        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(135deg, rgba(42,26,13,0.35) 0%, rgba(42,26,13,0.15) 50%, rgba(42,26,13,0.35) 100%)" }} />
         <div className="container-main py-16 md:py-24 lg:py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {textBlock}
