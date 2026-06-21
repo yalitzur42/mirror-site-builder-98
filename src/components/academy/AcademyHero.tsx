@@ -60,31 +60,23 @@ const AcademyHero = ({
         {/* Content - Centered */}
         <div className="container-main py-20 md:py-28 lg:py-36 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            {/* TITLE */}
-            <h1 className="hero-title-animate text-foreground mb-4 break-words overflow-hidden">
-              {title.split("").map((char, index) => (
-                <span key={index} className="hero-letter" style={{ animationDelay: `${index * 0.05}s` }}>
-                  {char === " " ? "\u00A0" : char}
-                </span>
-              ))}
-            </h1>
+          {/* TITLE */}
+          <h1 className="hero-title-animate text-foreground mb-4 break-words">
+            {title}
+          </h1>
 
-            {/* SUBTITLE */}
-            {subtitle && (
-              <p className="hero-subtitle-animate text-xl md:text-2xl lg:text-3xl text-accent font-bold mb-4 break-words overflow-hidden">
-                {subtitle.split("").map((char, index) => (
-                  <span key={index} className="hero-letter" style={{ animationDelay: `${0.6 + index * 0.04}s` }}>
-                    {char === " " ? "\u00A0" : char}
-                  </span>
-                ))}
-              </p>
-            )}
+          {/* SUBTITLE */}
+          {subtitle && (
+            <p className="hero-subtitle-animate text-xl md:text-2xl lg:text-3xl text-accent font-bold mb-4 break-words">
+              {subtitle}
+            </p>
+          )}
 
-            {description && (
-              <p className="hero-description text-muted-foreground text-lg md:text-xl mb-8 max-w-xl mx-auto break-words overflow-hidden">
-                {description}
-              </p>
-            )}
+          {description && (
+            <p className="hero-description text-muted-foreground text-lg md:text-xl mb-8 max-w-xl mx-auto break-words overflow-hidden">
+              {description}
+            </p>
+          )}
 
             {(primaryCta || secondaryCta) && (
               <div className="flex flex-wrap gap-4 justify-center">
