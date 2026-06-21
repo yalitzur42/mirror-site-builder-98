@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
 interface HeroSplitProps {
   badge?: ReactNode;
@@ -31,7 +30,7 @@ const HeroSplit = ({
 }: HeroSplitProps) => {
   return (
     <div className="section-light">
-      <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] pb-20 md:pb-28 overflow-hidden" style={{ backgroundColor: '#3d2310' }}>
+      <section className="relative z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden" style={{ backgroundColor: '#3d2310' }}>
         <div className="absolute inset-0 bg-primary" />
 
         {/* Content */}
@@ -135,9 +134,35 @@ const HeroSplit = ({
 
             if (isFull) {
               return (
-                <div className="flex flex-col gap-10">
-                  <div className="w-full flex justify-center">{mediaEl}</div>
-                  {textBlock}
+                <div className="relative min-h-[520px] md:min-h-[620px] flex items-center justify-center overflow-hidden rounded-b-[32px] md:rounded-b-[64px]">
+                  <div className="absolute inset-0">
+                    {shouldShowVideo && video ? (
+                      <video
+                        key={video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        poster={image}
+                        aria-label={title}
+                        onCanPlay={(event) => {
+                          if (event.currentTarget.paused) {
+                            void event.currentTarget.play().catch(() => undefined);
+                          }
+                        }}
+                        className="h-full w-full object-cover"
+                      >
+                        <source src={video} type="video/mp4" />
+                      </video>
+                    ) : mediaSrc ? (
+                      <img src={mediaSrc} alt={title} className="h-full w-full object-cover" />
+                    ) : null}
+                    <div className="absolute inset-0 bg-primary/70" />
+                  </div>
+                  <div className="relative z-10 w-full max-w-5xl px-4 md:px-8 py-20 md:py-28">
+                    {textBlock}
+                  </div>
                 </div>
               );
             }
