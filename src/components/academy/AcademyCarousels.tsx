@@ -33,7 +33,7 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
             <Carousel opts={{ loop: true, direction: "rtl" }} className="w-full">
               <CarouselContent>
                 {whatsappImages.map((url, i) => (
-                  <CarouselItem key={i}>
+                  <CarouselItem key={i} className="basis-full lg:basis-1/2">
                     <div className="rounded-2xl overflow-hidden border-2 border-primary-foreground shadow-md mx-auto max-w-[320px]">
                       <img
                         src={url}
