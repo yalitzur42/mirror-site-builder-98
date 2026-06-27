@@ -128,12 +128,14 @@ const VideoWithSound = ({ src }: { src: string }) => {
           type="button"
           onClick={handlePlay}
           aria-label="הפעל סרטון עם סאונד"
-          className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
+          className="absolute inset-0 z-20 flex items-center justify-center bg-gradient-to-t from-black/70 via-black/20 to-black/30 hover:from-black/80 transition-colors group"
         >
-          <span className="flex items-center justify-center w-20 h-20 rounded-full bg-secondary/95 text-primary shadow-2xl ring-4 ring-secondary/30 group-hover:scale-110 transition-transform">
-            <Play className="w-9 h-9 mr-[-3px]" weight="fill" />
+          <span className="relative flex items-center justify-center w-16 h-16 rounded-full bg-primary text-secondary shadow-[0_8px_30px_rgba(0,0,0,0.6)] ring-2 ring-secondary/80 group-hover:scale-110 transition-transform">
+            <span className="absolute inset-0 rounded-full bg-secondary/30 animate-ping" />
+            <Play className="relative w-7 h-7 ml-[2px]" weight="fill" />
           </span>
         </button>
+
       )}
     </div>
   );
