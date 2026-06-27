@@ -252,11 +252,15 @@ const AcademyPage = () => {
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-primary-foreground shadow-lg">
                 <video
                   src={videoFile}
-                  controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   poster={videoThumbnail || undefined}
                   className="w-full h-full object-cover"
                   preload="metadata"
                 />
+
               </div>
             ) : (
               <div className="space-y-4">
