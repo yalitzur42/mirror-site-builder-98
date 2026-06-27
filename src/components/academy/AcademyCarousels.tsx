@@ -65,13 +65,31 @@ const PhoneFrame = ({ children }: { children: React.ReactNode }) => (
 const arrowClass =
   "border-2 border-secondary bg-secondary/10 text-secondary hover:bg-secondary hover:text-primary w-10 h-10 backdrop-blur-sm";
 
+const VIDEO_PLAY_EVENT = "academy-video-play";
+
 const VideoWithSound = ({ src }: { src: string }) => {
   const ref = useRef<HTMLVideoElement>(null);
+  const idRef = useRef<string>(Math.random().toString(36).slice(2));
   const [activated, setActivated] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<string>).detail;
+      if (detail === idRef.current) return;
+      const el = ref.current;
+      if (!el) return;
+      el.pause();
+      el.muted = true;
+      setActivated(false);
+    };
+    window.addEventListener(VIDEO_PLAY_EVENT, handler);
+    return () => window.removeEventListener(VIDEO_PLAY_EVENT, handler);
+  }, []);
 
   const handlePlay = () => {
     const el = ref.current;
     if (!el) return;
+    window.dispatchEvent(new CustomEvent(VIDEO_PLAY_EVENT, { detail: idRef.current }));
     el.muted = false;
     el.currentTime = 0;
     el.volume = 1;
@@ -105,6 +123,7 @@ const VideoWithSound = ({ src }: { src: string }) => {
     </div>
   );
 };
+
 
 
 const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
