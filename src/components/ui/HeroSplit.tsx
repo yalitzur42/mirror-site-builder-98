@@ -106,23 +106,29 @@ const HeroSplit = ({
             ) : mediaSrc ? (
               <img src={mediaSrc} alt={title} className="h-full w-full object-cover" />
             ) : null}
-            {/* Dark gradient overlay — lighter so the video stays visible */}
+            {/* Stronger gradient + radial vignette behind text for legibility */}
             <div
               className="absolute inset-0"
               style={{
                 background: `linear-gradient(
-                  135deg,
-                  rgba(42, 26, 13, 0.55) 0%,
-                  rgba(61, 35, 16, 0.30) 40%,
-                  rgba(42, 26, 13, 0.25) 70%,
-                  rgba(42, 26, 13, 0.50) 100%
+                  180deg,
+                  rgba(20, 12, 6, 0.78) 0%,
+                  rgba(30, 18, 9, 0.55) 35%,
+                  rgba(20, 12, 6, 0.45) 70%,
+                  rgba(20, 12, 6, 0.78) 100%
                 )`,
+              }}
+            />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `radial-gradient(ellipse at 50% 28%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%)`,
               }}
             />
           </div>
 
           <div className="container-main relative z-10 pt-16 md:pt-24 lg:pt-32 pb-10 md:pb-16 w-full">
-            <div className="max-w-5xl mx-auto px-4 md:px-8" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
+            <div className="max-w-5xl mx-auto px-4 md:px-8" style={{ textShadow: '0 2px 14px rgba(0,0,0,0.9), 0 0 32px rgba(0,0,0,0.7)' }}>
               {textBlock}
             </div>
           </div>
