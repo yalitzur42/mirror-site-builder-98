@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import type { CarouselApi } from "@/components/ui/carousel";
 import { Warp } from "@paper-design/shaders-react";
-import { MessageCircle, Users } from "@/lib/icons";
+import { MessageCircle, Users, Play } from "@/lib/icons";
 
 interface AcademyCarouselsProps {
   v: (sectionKey: string, fieldKey: string, fallback?: string) => string;
@@ -64,6 +64,48 @@ const PhoneFrame = ({ children }: { children: React.ReactNode }) => (
 
 const arrowClass =
   "border-2 border-secondary bg-secondary/10 text-secondary hover:bg-secondary hover:text-primary w-10 h-10 backdrop-blur-sm";
+
+const VideoWithSound = ({ src }: { src: string }) => {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [activated, setActivated] = useState(false);
+
+  const handlePlay = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.muted = false;
+    el.currentTime = 0;
+    el.volume = 1;
+    el.play().then(() => setActivated(true)).catch(() => setActivated(true));
+  };
+
+  return (
+    <div className="relative w-full h-full">
+      <video
+        ref={ref}
+        src={src}
+        className="w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+      />
+      {!activated && (
+        <button
+          type="button"
+          onClick={handlePlay}
+          aria-label="הפעל סרטון עם סאונד"
+          className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
+        >
+          <span className="flex items-center justify-center w-20 h-20 rounded-full bg-secondary/95 text-primary shadow-2xl ring-4 ring-secondary/30 group-hover:scale-110 transition-transform">
+            <Play className="w-9 h-9 mr-[-3px]" weight="fill" />
+          </span>
+        </button>
+      )}
+    </div>
+  );
+};
+
 
 const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
   const whatsappImages: string[] = useMemo(() => {
@@ -191,15 +233,7 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
                         <CarouselItem key={i}>
                           {isVideo ? (
                             <PhoneFrame>
-                              <video
-                                src={url}
-                                className="w-full h-full object-cover"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                preload="metadata"
-                              />
+                              <VideoWithSound src={url} />
                             </PhoneFrame>
                           ) : (
                             <div className="rounded-2xl overflow-hidden shadow-xl mx-auto max-w-[320px]">
