@@ -15,5 +15,6 @@ export function useBusinessHours(): { hours: BusinessHourRow[]; loading: boolean
     { day: "שבת", time: v("hours", "saturday", "סגור") },
   ];
 
+
   return { hours, loading };
 }

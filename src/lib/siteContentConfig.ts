@@ -625,14 +625,28 @@ export const siteContentConfig: PageConfig[] = [
     title: "הגדרות כלליות",
     sections: [
       {
+        key: "business",
+        title: "פרטי העסק",
+        fields: [
+          { key: "address", label: "כתובת", type: "text", defaultValue: "המחשלים 5, עפולה" },
+          { key: "address_note", label: "הערת כתובת", type: "text", defaultValue: "אזור התעשייה עפולה" },
+          { key: "phone_display", label: "טלפון (תצוגה)", type: "text", defaultValue: "054-980-8868" },
+          { key: "phone_tel", label: "טלפון (לחיוג, ספרות בלבד)", type: "text", defaultValue: "0549808868" },
+          { key: "instagram_url", label: "קישור אינסטגרם", type: "text", defaultValue: "https://www.instagram.com/macho.afula" },
+          { key: "tiktok_url", label: "קישור טיקטוק", type: "text", defaultValue: "https://www.tiktok.com/@yali.tzur" },
+        ],
+      },
+      {
         key: "hours",
         title: "שעות פעילות",
         fields: [
-          { key: "sunday_thursday", label: "ראשון - חמישי", type: "text", defaultValue: "09:00 - 20:00" },
-          { key: "friday", label: "שישי", type: "text", defaultValue: "08:00 - 14:00" },
+          { key: "sunday_thursday", label: "ראשון, שלישי - חמישי", type: "text", defaultValue: "09:00 - 20:00" },
+          { key: "monday", label: "שני", type: "text", defaultValue: "סגור" },
+          { key: "friday", label: "שישי", type: "text", defaultValue: "08:30 - 14:00" },
           { key: "saturday", label: "שבת", type: "text", defaultValue: "סגור" },
         ],
       },
     ],
+
   },
 ];
