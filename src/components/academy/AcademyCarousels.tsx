@@ -62,19 +62,33 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
           <div className="relative px-12">
             <Carousel opts={{ loop: true, direction: "rtl" }} className="w-full">
               <CarouselContent>
-                {studentImages.map((url, i) => (
-                  <CarouselItem key={i}>
-                    <div className="rounded-2xl overflow-hidden border-2 border-primary-foreground shadow-md mx-auto max-w-[320px]">
-                      <img
-                        src={url}
-                        alt={`תלמיד ${i + 1}`}
-                        className="w-full h-auto object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
+                {studentImages.map((url, i) => {
+                  const isVideo = /\.(mp4|webm|mov|m4v|ogg)(\?.*)?$/i.test(url) || url.includes("/site-videos/");
+                  return (
+                    <CarouselItem key={i}>
+                      <div className="rounded-2xl overflow-hidden border-2 border-primary-foreground shadow-md mx-auto max-w-[320px] bg-black/5">
+                        {isVideo ? (
+                          <video
+                            src={url}
+                            className="w-full h-auto object-contain"
+                            controls
+                            playsInline
+                            preload="metadata"
+                          />
+                        ) : (
+                          <img
+                            src={url}
+                            alt={`תלמיד ${i + 1}`}
+                            className="w-full h-auto object-contain"
+                            loading="lazy"
+                          />
+                        )}
+                      </div>
+                    </CarouselItem>
+                  );
+                })}
               </CarouselContent>
+
               <CarouselPrevious className="border-2 border-primary bg-background text-primary hover:bg-background/80 -left-1 w-10 h-10" />
               <CarouselNext className="border-2 border-primary bg-background text-primary hover:bg-background/80 -right-1 w-10 h-10" />
             </Carousel>
