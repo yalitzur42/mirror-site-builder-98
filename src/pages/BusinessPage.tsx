@@ -33,7 +33,7 @@ const BusinessPage = () => {
         title="פרטי העסק"
         subtitle="Macho – עפולה"
         description={<>כל מה שצריך לדעת לפני שמגיעים אלינו. מיקום, שעות פעילות ודרכי התקשרות.</>}
-        image={barbershopInterior}
+        image={businessHero.url}
       />
 
       <Section variant="light">
