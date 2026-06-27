@@ -145,6 +145,7 @@ const VideoWithSound = ({ src }: { src: string }) => {
             <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--primary) / 0.35)" }} />
             <span
               aria-hidden="true"
+              dir="ltr"
               style={{
                 display: "block",
                 width: 0,
@@ -152,9 +153,10 @@ const VideoWithSound = ({ src }: { src: string }) => {
                 borderTop: "14px solid transparent",
                 borderBottom: "14px solid transparent",
                 borderLeft: "22px solid hsl(var(--primary-foreground))",
-                marginInlineStart: 4,
+                transform: "translateX(4px)",
               }}
             />
+
           </span>
         </button>
       )}
