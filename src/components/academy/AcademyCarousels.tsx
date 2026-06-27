@@ -1,11 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import type { CarouselApi } from "@/components/ui/carousel";
 import { Warp } from "@paper-design/shaders-react";
 import { MessageCircle, Users } from "@/lib/icons";
 
 interface AcademyCarouselsProps {
   v: (sectionKey: string, fieldKey: string, fallback?: string) => string;
+}
+
+function chunk<T>(arr: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
 }
 
 const Dots = ({ api }: { api: CarouselApi | undefined }) => {
@@ -34,9 +40,7 @@ const Dots = ({ api }: { api: CarouselApi | undefined }) => {
           onClick={() => api?.scrollTo(i)}
           aria-label={`עבור לשקופית ${i + 1}`}
           className={`h-2 rounded-full transition-all duration-300 ${
-            i === selected
-              ? "w-8 bg-secondary"
-              : "w-2 bg-secondary/40 hover:bg-secondary/70"
+            i === selected ? "w-8 bg-secondary" : "w-2 bg-secondary/40 hover:bg-secondary/70"
           }`}
         />
       ))}
@@ -58,6 +62,9 @@ const PhoneFrame = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const arrowClass =
+  "border-2 border-secondary bg-secondary/10 text-secondary hover:bg-secondary hover:text-primary w-10 h-10 backdrop-blur-sm";
+
 const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
   const whatsappImages: string[] = useMemo(() => {
     try { return JSON.parse(v("whatsapp_reviews", "images", "[]")); } catch { return []; }
@@ -76,13 +83,14 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
 
   if (!hasWhatsapp && !hasStudents) return null;
 
+  const whatsappPairs = chunk(whatsappImages, 2);
+
   return (
     <div
       dir="rtl"
       className="relative max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55)] ring-1 ring-secondary/20"
       style={{ backgroundColor: "#3d2310" }}
     >
-      {/* Brown 3D warp shader background */}
       <Warp
         colors={["#3d2310", "#5a351a", "#4B2E1A", "#2a1a0d", "#6b4226"]}
         speed={3.5}
@@ -96,57 +104,68 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
         proportion={0.5}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 0 }}
       />
-      {/* Dark overlay for content contrast */}
       <div
         className="absolute inset-0 z-[1]"
         style={{ background: "linear-gradient(135deg, rgba(42,26,13,0.45) 0%, rgba(42,26,13,0.2) 50%, rgba(42,26,13,0.45) 100%)" }}
       />
 
-      <div className="relative z-10 p-6 md:p-10 text-secondary">
+      <div className="relative z-10 p-6 md:p-10">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* WhatsApp Reviews */}
           {hasWhatsapp && (
             <div className="space-y-5 order-2 md:order-1">
-              <h3 className="text-xl md:text-2xl font-black text-center flex items-center justify-center gap-2 text-secondary">
+              <h3
+                className="text-xl md:text-2xl font-black text-center flex items-center justify-center gap-2"
+                style={{ color: "hsl(var(--secondary))" }}
+              >
                 <MessageCircle className="w-5 h-5" />
                 {v("whatsapp_reviews", "title", "מה אומרים עלינו בוואטסאפ")}
               </h3>
 
-              {/* MOBILE: 1 per slide horizontal */}
-              <div className="md:hidden">
+              {/* MOBILE: 1 per slide */}
+              <div className="md:hidden relative px-12">
                 <Carousel opts={{ loop: true, direction: "rtl" }} setApi={setWaMobileApi} className="w-full">
                   <CarouselContent>
                     {whatsappImages.map((url, i) => (
                       <CarouselItem key={i}>
                         <div className="rounded-2xl overflow-hidden shadow-xl mx-auto max-w-[320px]">
-                          <img src={url} alt={`ביקורת וואטסאפ ${i + 1}`} className="w-full h-auto object-contain" loading="lazy" />
+                          <img src={url} alt={`ביקורת ${i + 1}`} className="w-full h-auto object-contain" loading="lazy" />
                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
+                  <CarouselPrevious className={`${arrowClass} -left-1`} />
+                  <CarouselNext className={`${arrowClass} -right-1`} />
                 </Carousel>
                 <Dots api={waMobileApi} />
               </div>
 
-              {/* DESKTOP: vertical carousel, 2 visible stacked one below the other */}
-              <div className="hidden md:block">
-                <Carousel
-                  orientation="vertical"
-                  opts={{ loop: true }}
-                  setApi={setWaDesktopApi}
-                  className="w-full"
-                >
-                  <CarouselContent className="h-[560px]">
-                    {whatsappImages.map((url, i) => (
-                      <CarouselItem key={i} className="basis-1/2">
-                        <div className="h-full flex items-center justify-center">
-                          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[300px] max-h-full">
-                            <img src={url} alt={`ביקורת וואטסאפ ${i + 1}`} className="w-full h-auto object-contain" loading="lazy" />
-                          </div>
+              {/* DESKTOP: 2 stacked per slide */}
+              <div className="hidden md:block relative px-12">
+                <Carousel opts={{ loop: true, direction: "rtl" }} setApi={setWaDesktopApi} className="w-full">
+                  <CarouselContent>
+                    {whatsappPairs.map((pair, i) => (
+                      <CarouselItem key={i}>
+                        <div className="flex flex-col gap-4 items-center">
+                          {pair.map((url, j) => (
+                            <div
+                              key={j}
+                              className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[300px]"
+                            >
+                              <img
+                                src={url}
+                                alt={`ביקורת ${i * 2 + j + 1}`}
+                                className="w-full h-auto object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          ))}
                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
+                  <CarouselPrevious className={`${arrowClass} -left-1`} />
+                  <CarouselNext className={`${arrowClass} -right-1`} />
                 </Carousel>
                 <Dots api={waDesktopApi} />
               </div>
@@ -156,11 +175,14 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
           {/* Student Photos / Videos */}
           {hasStudents && (
             <div className="space-y-5 order-1 md:order-2">
-              <h3 className="text-xl md:text-2xl font-black text-center flex items-center justify-center gap-2 text-secondary">
+              <h3
+                className="text-xl md:text-2xl font-black text-center flex items-center justify-center gap-2"
+                style={{ color: "hsl(var(--secondary))" }}
+              >
                 <Users className="w-5 h-5" />
                 {v("student_photos", "title", "התלמידים שלנו בפעולה")}
               </h3>
-              <div className="relative">
+              <div className="relative px-12">
                 <Carousel opts={{ loop: true, direction: "rtl" }} setApi={setStApi} className="w-full">
                   <CarouselContent>
                     {studentImages.map((url, i) => {
@@ -188,6 +210,8 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
                       );
                     })}
                   </CarouselContent>
+                  <CarouselPrevious className={`${arrowClass} -left-1`} />
+                  <CarouselNext className={`${arrowClass} -right-1`} />
                 </Carousel>
                 <Dots api={stApi} />
               </div>
