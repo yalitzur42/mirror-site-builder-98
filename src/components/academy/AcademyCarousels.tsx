@@ -135,13 +135,20 @@ const VideoWithSound = ({ src }: { src: string }) => {
           aria-label="הפעל סרטון עם סאונד"
           className="absolute inset-0 z-20 flex items-end justify-center bg-gradient-to-t from-black/85 via-black/25 to-transparent pb-6 transition-colors hover:from-black/90 group"
         >
-          <span className="relative flex h-[68px] w-[68px] items-center justify-center rounded-full bg-secondary shadow-[0_10px_35px_rgba(0,0,0,0.75)] ring-4 ring-primary/80 transition-transform group-hover:scale-110">
-            <span className="absolute inset-0 rounded-full bg-secondary/35 animate-ping" />
-            <span
+          <span
+            className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full shadow-[0_10px_35px_rgba(0,0,0,0.75)] transition-transform group-hover:scale-110"
+            style={{ background: "hsl(var(--secondary))", border: "3px solid hsl(var(--primary))" }}
+          >
+            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--secondary) / 0.35)" }} />
+            <svg
+              viewBox="0 0 24 24"
+              width="34"
+              height="34"
               aria-hidden="true"
-              className="relative mr-1 h-0 w-0 border-y-[15px] border-r-0 border-l-[26px] border-y-transparent"
-              style={{ borderLeftColor: "hsl(var(--primary))" }}
-            />
+              style={{ marginInlineStart: 4, display: "block" }}
+            >
+              <polygon points="6,4 6,20 20,12" fill="hsl(var(--primary))" />
+            </svg>
           </span>
         </button>
       )}
