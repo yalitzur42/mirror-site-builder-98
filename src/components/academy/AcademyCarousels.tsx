@@ -96,6 +96,14 @@ const VideoWithSound = ({ src }: { src: string }) => {
     el.play().then(() => setActivated(true)).catch(() => setActivated(true));
   };
 
+  const handlePause = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.pause();
+    el.muted = true;
+    setActivated(false);
+  };
+
   return (
     <div className="relative w-full h-full">
       <video
@@ -108,7 +116,14 @@ const VideoWithSound = ({ src }: { src: string }) => {
         playsInline
         preload="metadata"
       />
-      {!activated && (
+      {activated ? (
+        <button
+          type="button"
+          onClick={handlePause}
+          aria-label="עצור סרטון"
+          className="absolute inset-0 z-20 bg-transparent hover:bg-black/20 transition-colors"
+        />
+      ) : (
         <button
           type="button"
           onClick={handlePlay}
