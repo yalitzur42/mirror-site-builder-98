@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import type { CarouselApi } from "@/components/ui/carousel";
 import { Warp } from "@paper-design/shaders-react";
-import { MessageCircle, Users } from "@/lib/icons";
+import { MessageCircle, Users, Play, VolumeX, Volume2 } from "@/lib/icons";
 
 interface AcademyCarouselsProps {
   v: (sectionKey: string, fieldKey: string, fallback?: string) => string;
