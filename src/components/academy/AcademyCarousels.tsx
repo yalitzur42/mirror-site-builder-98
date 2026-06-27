@@ -148,8 +148,8 @@ const VideoWithSound = ({ src }: { src: string }) => {
                 height: 0,
                 borderTop: "14px solid transparent",
                 borderBottom: "14px solid transparent",
-                borderRight: "22px solid hsl(var(--primary))",
-                marginInlineEnd: 4,
+                borderLeft: "22px solid hsl(var(--primary))",
+                marginInlineStart: 4,
               }}
             />
           </span>
