@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import type { CarouselApi } from "@/components/ui/carousel";
 import { Warp } from "@paper-design/shaders-react";
-import { MessageCircle, Users, Play } from "@/lib/icons";
+import { MessageCircle, Users } from "@/lib/icons";
 
 interface AcademyCarouselsProps {
   v: (sectionKey: string, fieldKey: string, fallback?: string) => string;
@@ -130,9 +130,13 @@ const VideoWithSound = ({ src }: { src: string }) => {
           aria-label="הפעל סרטון עם סאונד"
           className="absolute inset-0 z-20 flex items-center justify-center bg-gradient-to-t from-black/70 via-black/20 to-black/30 hover:from-black/80 transition-colors group"
         >
-          <span className="relative flex items-center justify-center w-16 h-16 rounded-full bg-secondary text-primary shadow-[0_8px_30px_rgba(0,0,0,0.6)] ring-2 ring-primary/40 group-hover:scale-110 transition-transform">
-            <span className="absolute inset-0 rounded-full bg-secondary/40 animate-ping" />
-            <Play className="relative w-7 h-7 ml-[2px]" weight="fill" />
+          <span className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-secondary shadow-[0_10px_35px_rgba(0,0,0,0.65)] ring-2 ring-primary/70 transition-transform group-hover:scale-110">
+            <span className="absolute inset-0 rounded-full bg-secondary/45 animate-ping" />
+            <span
+              aria-hidden="true"
+              className="relative mr-1 h-0 w-0 border-y-[14px] border-r-0 border-l-[24px] border-y-transparent"
+              style={{ borderLeftColor: "hsl(var(--primary))" }}
+            />
           </span>
 
         </button>
