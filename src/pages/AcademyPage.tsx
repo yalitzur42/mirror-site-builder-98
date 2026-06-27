@@ -334,6 +334,7 @@ const AcademyPage = () => {
                         v("outcomes", "item2", "תלמד להביא לקוחות בלי אינסטגרם חזק"),
                         v("outcomes", "item3", "תבנה תיק עבודות שיפתח לך דלתות"),
                         v("outcomes", "item4", "תדע לגבות כסף, להעלות מחיר, ולשמור על לקוחות חוזרים"),
+                        v("outcomes", "item5", "ליווי אישי גם אחרי סיום הקורס"),
                       ].map((item) => (
                         <li key={item} className="flex items-start gap-2">
                           <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
