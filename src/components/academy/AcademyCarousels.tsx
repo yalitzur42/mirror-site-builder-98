@@ -123,9 +123,12 @@ const VideoWithSound = ({ src }: { src: string }) => {
           aria-label="עצור סרטון"
           className="absolute inset-0 z-20 flex items-end justify-center bg-transparent pb-6 transition-colors hover:bg-black/20 group"
         >
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary shadow-[0_8px_24px_rgba(0,0,0,0.55)] ring-2 ring-primary/70 transition-transform group-hover:scale-105">
-            <span className="h-5 w-1.5 rounded-sm bg-primary" />
-            <span className="mr-1.5 h-5 w-1.5 rounded-sm bg-primary" />
+          <span
+            className="flex h-12 w-12 items-center justify-center rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.55)] transition-transform group-hover:scale-105"
+            style={{ background: "hsl(var(--primary))", border: "2px solid hsl(var(--primary-foreground))" }}
+          >
+            <span className="h-5 w-1.5 rounded-sm" style={{ background: "hsl(var(--primary-foreground))" }} />
+            <span className="mr-1.5 h-5 w-1.5 rounded-sm" style={{ background: "hsl(var(--primary-foreground))" }} />
           </span>
         </button>
       ) : (
@@ -137,18 +140,21 @@ const VideoWithSound = ({ src }: { src: string }) => {
         >
           <span
             className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full shadow-[0_10px_35px_rgba(0,0,0,0.75)] transition-transform group-hover:scale-110"
-            style={{ background: "hsl(var(--secondary))", border: "3px solid hsl(var(--primary))" }}
+            style={{ background: "hsl(var(--primary))", border: "3px solid hsl(var(--primary-foreground))" }}
           >
-            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--secondary) / 0.35)" }} />
-            <svg
-              viewBox="0 0 24 24"
-              width="34"
-              height="34"
+            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--primary) / 0.35)" }} />
+            <span
               aria-hidden="true"
-              style={{ marginInlineStart: 4, display: "block" }}
-            >
-              <polygon points="6,4 6,20 20,12" fill="hsl(var(--primary))" />
-            </svg>
+              style={{
+                display: "block",
+                width: 0,
+                height: 0,
+                borderTop: "14px solid transparent",
+                borderBottom: "14px solid transparent",
+                borderLeft: "22px solid hsl(var(--primary-foreground))",
+                marginInlineStart: 4,
+              }}
+            />
           </span>
         </button>
       )}
