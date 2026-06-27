@@ -140,15 +140,18 @@ const VideoWithSound = ({ src }: { src: string }) => {
             style={{ background: "hsl(var(--secondary))", border: "3px solid hsl(var(--primary))" }}
           >
             <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--secondary) / 0.35)" }} />
-            <svg
-              viewBox="0 0 24 24"
-              width="34"
-              height="34"
+            <span
               aria-hidden="true"
-              style={{ marginInlineStart: 4, display: "block" }}
-            >
-              <polygon points="6,4 6,20 20,12" fill="hsl(var(--primary))" />
-            </svg>
+              style={{
+                display: "block",
+                width: 0,
+                height: 0,
+                borderTop: "14px solid transparent",
+                borderBottom: "14px solid transparent",
+                borderRight: "22px solid hsl(var(--primary))",
+                marginInlineEnd: 4,
+              }}
+            />
           </span>
         </button>
       )}
