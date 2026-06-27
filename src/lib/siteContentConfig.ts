@@ -469,7 +469,7 @@ export const siteContentConfig: PageConfig[] = [
           { key: "after3", label: "אחרי 3", type: "text", defaultValue: "קריירה חדשה עם ביקוש גבוה" },
           { key: "before4", label: "לפני 4", type: "text", defaultValue: "לא יודע איך להיכנס לתעשייה" },
           { key: "after4", label: "אחרי 4", type: "text", defaultValue: "ליווי + הכוונה להשתלבות בעבודה" },
-          { key: "cta_label", label: "כפתור תחתון", type: "text", defaultValue: "אני רוצה להיות בצד הימני" },
+          { key: "cta_label", label: "כפתור תחתון", type: "text", defaultValue: "אני רוצה להיות בצד הנכון" },
         ],
       },
       {
