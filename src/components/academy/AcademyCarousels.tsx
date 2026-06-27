@@ -121,26 +121,29 @@ const VideoWithSound = ({ src }: { src: string }) => {
           type="button"
           onClick={handlePause}
           aria-label="עצור סרטון"
-          className="absolute inset-0 z-20 bg-transparent hover:bg-black/20 transition-colors"
-        />
+          className="absolute inset-0 z-20 flex items-end justify-center bg-transparent pb-6 transition-colors hover:bg-black/20 group"
+        >
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary shadow-[0_8px_24px_rgba(0,0,0,0.55)] ring-2 ring-primary/70 transition-transform group-hover:scale-105">
+            <span className="h-5 w-1.5 rounded-sm bg-primary" />
+            <span className="mr-1.5 h-5 w-1.5 rounded-sm bg-primary" />
+          </span>
+        </button>
       ) : (
         <button
           type="button"
           onClick={handlePlay}
           aria-label="הפעל סרטון עם סאונד"
-          className="absolute inset-0 z-20 flex items-center justify-center bg-gradient-to-t from-black/70 via-black/20 to-black/30 hover:from-black/80 transition-colors group"
+          className="absolute inset-0 z-20 flex items-end justify-center bg-gradient-to-t from-black/85 via-black/25 to-transparent pb-6 transition-colors hover:from-black/90 group"
         >
-          <span className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-secondary shadow-[0_10px_35px_rgba(0,0,0,0.65)] ring-2 ring-primary/70 transition-transform group-hover:scale-110">
-            <span className="absolute inset-0 rounded-full bg-secondary/45 animate-ping" />
+          <span className="relative flex h-[68px] w-[68px] items-center justify-center rounded-full bg-secondary shadow-[0_10px_35px_rgba(0,0,0,0.75)] ring-4 ring-primary/80 transition-transform group-hover:scale-110">
+            <span className="absolute inset-0 rounded-full bg-secondary/35 animate-ping" />
             <span
               aria-hidden="true"
-              className="relative mr-1 h-0 w-0 border-y-[14px] border-r-0 border-l-[24px] border-y-transparent"
+              className="relative mr-1 h-0 w-0 border-y-[15px] border-r-0 border-l-[26px] border-y-transparent"
               style={{ borderLeftColor: "hsl(var(--primary))" }}
             />
           </span>
-
         </button>
-
       )}
     </div>
   );
