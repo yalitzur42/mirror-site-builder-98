@@ -123,9 +123,12 @@ const VideoWithSound = ({ src }: { src: string }) => {
           aria-label="עצור סרטון"
           className="absolute inset-0 z-20 flex items-end justify-center bg-transparent pb-6 transition-colors hover:bg-black/20 group"
         >
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary shadow-[0_8px_24px_rgba(0,0,0,0.55)] ring-2 ring-primary/70 transition-transform group-hover:scale-105">
-            <span className="h-5 w-1.5 rounded-sm bg-primary" />
-            <span className="mr-1.5 h-5 w-1.5 rounded-sm bg-primary" />
+          <span
+            className="flex h-12 w-12 items-center justify-center rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.55)] transition-transform group-hover:scale-105"
+            style={{ background: "hsl(var(--primary))", border: "2px solid hsl(var(--primary-foreground))" }}
+          >
+            <span className="h-5 w-1.5 rounded-sm" style={{ background: "hsl(var(--primary-foreground))" }} />
+            <span className="mr-1.5 h-5 w-1.5 rounded-sm" style={{ background: "hsl(var(--primary-foreground))" }} />
           </span>
         </button>
       ) : (
