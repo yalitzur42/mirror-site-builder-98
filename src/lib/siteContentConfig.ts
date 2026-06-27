@@ -400,6 +400,7 @@ export const siteContentConfig: PageConfig[] = [
           { key: "item2", label: "תוצאה 2", type: "text", defaultValue: "עבודה נקייה ומדויקת (קווים, מעברים, סימטריה)" },
           { key: "item3", label: "תוצאה 3", type: "text", defaultValue: "תיק עבודות לתחילת עבודה במספרות" },
           { key: "item4", label: "תוצאה 4", type: "text", defaultValue: "בטחון מקצועי מול לקוחות אמיתיים" },
+          { key: "item5", label: "תוצאה 5", type: "text", defaultValue: "ליווי אישי גם אחרי סיום הקורס" },
           { key: "badge1", label: "תגית 1 (משך)", type: "text", defaultValue: "3 חודשים" },
           { key: "badge2", label: "תגית 2 (גודל קבוצה)", type: "text", defaultValue: "קבוצות עד 4 תלמידים" },
           { key: "badge3", label: "תגית 3 (תעודה)", type: "text", defaultValue: "תעודת סיום" },
