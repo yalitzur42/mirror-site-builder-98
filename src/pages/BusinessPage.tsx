@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { MapPin, Phone, Clock, Instagram, Navigation } from "@/lib/icons";
 import TikTokIcon from "@/components/ui/TikTokIcon";
-import barbershopInterior from "@/assets/barbershop-interior.jpg";
+import businessHero from "@/assets/business-hero.png.asset.json";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useBusinessHours } from "@/hooks/useBusinessHours";
 import { useSiteContent } from "@/hooks/useSiteContent";
@@ -33,7 +33,7 @@ const BusinessPage = () => {
         title="פרטי העסק"
         subtitle="Macho – עפולה"
         description={<>כל מה שצריך לדעת לפני שמגיעים אלינו. מיקום, שעות פעילות ודרכי התקשרות.</>}
-        image={barbershopInterior}
+        image={businessHero.url}
       />
 
       <Section variant="light">
