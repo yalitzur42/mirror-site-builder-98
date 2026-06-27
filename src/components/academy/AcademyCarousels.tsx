@@ -137,9 +137,9 @@ const VideoWithSound = ({ src }: { src: string }) => {
         >
           <span
             className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full shadow-[0_10px_35px_rgba(0,0,0,0.75)] transition-transform group-hover:scale-110"
-            style={{ background: "hsl(var(--secondary))", border: "3px solid hsl(var(--primary))" }}
+            style={{ background: "hsl(var(--primary))", border: "3px solid hsl(var(--primary-foreground))" }}
           >
-            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--secondary) / 0.35)" }} />
+            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--primary) / 0.35)" }} />
             <span
               aria-hidden="true"
               style={{
@@ -148,7 +148,7 @@ const VideoWithSound = ({ src }: { src: string }) => {
                 height: 0,
                 borderTop: "14px solid transparent",
                 borderBottom: "14px solid transparent",
-                borderLeft: "22px solid hsl(var(--primary))",
+                borderLeft: "22px solid hsl(var(--primary-foreground))",
                 marginInlineStart: 4,
               }}
             />
