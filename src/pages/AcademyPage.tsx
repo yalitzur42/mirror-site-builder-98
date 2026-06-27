@@ -587,7 +587,7 @@ const AcademyPage = () => {
           <div className="mt-10 text-center">
             <button onClick={onScrollToLead} className="btn-premium-fill">
               <Smartphone className="w-5 h-5" />
-              {v("comparison", "cta_label", "אני רוצה להיות בצד הימני")}
+              {v("comparison", "cta_label", "אני רוצה להיות בצד הנכון")}
             </button>
           </div>
         </AnimatedSection>
