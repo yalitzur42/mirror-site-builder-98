@@ -191,15 +191,7 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
                         <CarouselItem key={i}>
                           {isVideo ? (
                             <PhoneFrame>
-                              <video
-                                src={url}
-                                className="w-full h-full object-cover"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                preload="metadata"
-                              />
+                              <VideoWithSound src={url} />
                             </PhoneFrame>
                           ) : (
                             <div className="rounded-2xl overflow-hidden shadow-xl mx-auto max-w-[320px]">
