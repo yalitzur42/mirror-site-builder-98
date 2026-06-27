@@ -145,7 +145,6 @@ const VideoWithSound = ({ src }: { src: string }) => {
           </span>
         </button>
       )}
-      )}
     </div>
   );
 };
