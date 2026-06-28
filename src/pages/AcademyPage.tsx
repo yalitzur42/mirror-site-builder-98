@@ -337,7 +337,6 @@ const AcademyPage = () => {
                         v("outcomes", "item5", "ליווי אישי גם אחרי סיום הקורס"),
                       ].map((item) => (
                         <li key={item} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 mt-0.5 opacity-80" />
                           <span className="opacity-85">{item}</span>
                         </li>
                       ))}
