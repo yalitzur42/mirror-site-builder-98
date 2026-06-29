@@ -20,7 +20,7 @@ const Footer = () => {
             <p className="text-muted-foreground mb-4">
               מובילים את סצנת טיפוח השיער לגברים בישראל. מאקדמיה ללימודי ספרות גברים, דרך מספרה ברמה אחרת.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 justify-center md:justify-start">
               <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <TikTokIcon className="w-5 h-5" />
               </a>
@@ -56,11 +56,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-4"><Phone className="w-4 h-4 inline-block align-middle ml-1" /> פרטי קשר</h4>
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-muted-foreground justify-center md:justify-start">
                 <MapPin className="w-4 h-4 shrink-0" />
                 <span>{BUSINESS_ADDRESS}</span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-muted-foreground justify-center md:justify-start">
                 <Phone className="w-4 h-4 shrink-0" />
                 <span>{PHONE_DISPLAY}</span>
               </div>
@@ -72,7 +72,7 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4"><Clock className="w-4 h-4 inline-block align-middle ml-1" /> שעות פעילות</h4>
             <div className="space-y-2 text-muted-foreground">
               {hours.map((h) => (
-                <div key={h.day} className="flex items-center gap-2">
+                <div key={h.day} className="flex items-center gap-2 justify-center md:justify-start">
                   <Clock className="w-4 h-4 shrink-0" />
                   <span>{h.day}: {h.time}</span>
                 </div>
