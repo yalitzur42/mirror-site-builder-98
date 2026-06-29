@@ -2,9 +2,27 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, X, Loader2, Video, GripVertical } from "@/lib/icons";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  TouchSensor,
+  KeyboardSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  arrayMove,
+  rectSortingStrategy,
+  useSortable,
+  sortableKeyboardCoordinates,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface GalleryFieldEditorProps {
-  value: string; // JSON array of URLs
+  value: string;
   onChange: (value: string) => void;
   pageSlug: string;
   sectionKey: string;
@@ -14,11 +32,102 @@ interface GalleryFieldEditorProps {
 const isVideoUrl = (url: string) =>
   /\.(mp4|webm|mov|m4v|ogg)(\?.*)?$/i.test(url) || url.includes("/site-videos/");
 
+interface SortableItemProps {
+  id: string;
+  url: string;
+  index: number;
+  total: number;
+  onRemove: () => void;
+  onMove: (to: number) => void;
+}
+
+const SortableItem = ({ id, url, index, total, onRemove, onMove }: SortableItemProps) => {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.4 : 1,
+    zIndex: isDragging ? 50 : "auto",
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={`relative group aspect-square rounded-lg overflow-hidden border bg-muted touch-none ${
+        isDragging ? "ring-2 ring-primary" : "border-border"
+      }`}
+    >
+      {isVideoUrl(url) ? (
+        <>
+          <video src={url} className="w-full h-full object-cover pointer-events-none" muted playsInline preload="metadata" />
+          <span className="absolute top-1 left-1 bg-black/70 text-white rounded-full p-1 z-10">
+            <Video className="w-3 h-3" />
+          </span>
+        </>
+      ) : (
+        <img src={url} alt={`פריט ${index + 1}`} className="w-full h-full object-cover pointer-events-none" />
+      )}
+
+      {/* Drag handle — covers most of the tile so dragging works on touch */}
+      <button
+        type="button"
+        {...attributes}
+        {...listeners}
+        className="absolute inset-0 cursor-grab active:cursor-grabbing z-0"
+        aria-label="גרור לסידור"
+      />
+
+      {/* Grip indicator */}
+      <span className="absolute top-1 left-1/2 -translate-x-1/2 bg-black/70 text-white rounded p-1 pointer-events-none z-10">
+        <GripVertical className="w-3.5 h-3.5" />
+      </span>
+
+      <button
+        type="button"
+        onClick={onRemove}
+        className="absolute top-1 right-1 w-7 h-7 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center z-20 shadow"
+      >
+        <X className="w-3.5 h-3.5" />
+      </button>
+
+      <div className="absolute bottom-1 right-1 flex gap-0.5 z-20">
+        <button
+          type="button"
+          onClick={() => onMove(index - 1)}
+          disabled={index === 0}
+          className="w-7 h-7 bg-black/80 text-white rounded text-sm disabled:opacity-30 active:bg-primary"
+          title="הזז אחורה"
+        >
+          →
+        </button>
+        <button
+          type="button"
+          onClick={() => onMove(index + 1)}
+          disabled={index === total - 1}
+          className="w-7 h-7 bg-black/80 text-white rounded text-sm disabled:opacity-30 active:bg-primary"
+          title="הזז קדימה"
+        >
+          ←
+        </button>
+      </div>
+
+      <span className="absolute bottom-1 left-1 text-[10px] bg-black/70 text-white px-1.5 py-0.5 rounded font-bold z-10">
+        {index + 1}
+      </span>
+    </div>
+  );
+};
+
 const GalleryFieldEditor = ({ value, onChange, pageSlug, sectionKey, fieldKey }: GalleryFieldEditorProps) => {
   const { toast } = useToast();
   const [uploading, setUploading] = useState(false);
-  const [dragIndex, setDragIndex] = useState<number | null>(null);
-  const [overIndex, setOverIndex] = useState<number | null>(null);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 8 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+  );
 
   const fileToBase64 = (file: File) =>
     new Promise<string>((resolve, reject) => {
@@ -44,8 +153,8 @@ const GalleryFieldEditor = ({ value, onChange, pageSlug, sectionKey, fieldKey }:
 
   const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif", "image/svg+xml", "image/heic", "image/heif", "image/avif"];
   const ALLOWED_VIDEO_TYPES = ["video/mp4", "video/webm", "video/quicktime", "video/x-m4v", "video/ogg"];
-  const MAX_IMAGE_SIZE = 20 * 1024 * 1024; // 20MB
-  const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100MB
+  const MAX_IMAGE_SIZE = 20 * 1024 * 1024;
+  const MAX_VIDEO_SIZE = 100 * 1024 * 1024;
   const MAX_FILES = 20;
 
   const uploadImage = async (file: File): Promise<string | null> => {
@@ -120,102 +229,44 @@ const GalleryFieldEditor = ({ value, onChange, pageSlug, sectionKey, fieldKey }:
 
   const moveItem = (from: number, to: number) => {
     if (from === to || from < 0 || to < 0 || from >= images.length || to >= images.length) return;
-    const next = [...images];
-    const [item] = next.splice(from, 1);
-    next.splice(to, 0, item);
-    onChange(JSON.stringify(next));
+    onChange(JSON.stringify(arrayMove(images, from, to)));
   };
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+    const from = images.findIndex((_, i) => `item-${i}` === active.id);
+    const to = images.findIndex((_, i) => `item-${i}` === over.id);
+    if (from === -1 || to === -1) return;
+    onChange(JSON.stringify(arrayMove(images, from, to)));
+  };
+
+  const ids = images.map((_, i) => `item-${i}`);
 
   return (
     <div className="space-y-3">
       {images.length > 0 && (
         <>
           <p className="text-xs text-muted-foreground">
-            💡 גרור פריטים כדי לשנות את הסדר. החצים מאפשרים סידור מדויק גם במובייל.
+            💡 גרור פריטים כדי לשנות סדר (במובייל — לחץ והחזק ואז גרור). אפשר גם להשתמש בחצים.
           </p>
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-            {images.map((url, index) => (
-              <div
-                key={`${url}-${index}`}
-                draggable
-                onDragStart={(e) => {
-                  setDragIndex(index);
-                  e.dataTransfer.effectAllowed = "move";
-                }}
-                onDragOver={(e) => {
-                  e.preventDefault();
-                  e.dataTransfer.dropEffect = "move";
-                  if (overIndex !== index) setOverIndex(index);
-                }}
-                onDragLeave={() => {
-                  if (overIndex === index) setOverIndex(null);
-                }}
-                onDrop={(e) => {
-                  e.preventDefault();
-                  if (dragIndex !== null) moveItem(dragIndex, index);
-                  setDragIndex(null);
-                  setOverIndex(null);
-                }}
-                onDragEnd={() => {
-                  setDragIndex(null);
-                  setOverIndex(null);
-                }}
-                className={`relative group aspect-square rounded-lg overflow-hidden border bg-muted cursor-move transition-all ${
-                  overIndex === index ? "ring-2 ring-primary scale-95" : "border-border"
-                } ${dragIndex === index ? "opacity-40" : ""}`}
-              >
-                {isVideoUrl(url) ? (
-                  <>
-                    <video src={url} className="w-full h-full object-cover pointer-events-none" muted playsInline preload="metadata" />
-                    <span className="absolute top-1 left-1 bg-black/70 text-white rounded-full p-1">
-                      <Video className="w-3 h-3" />
-                    </span>
-                  </>
-                ) : (
-                  <img src={url} alt={`פריט ${index + 1}`} className="w-full h-full object-cover pointer-events-none" />
-                )}
-
-                {/* Drag handle indicator */}
-                <span className="absolute top-1 right-1/2 translate-x-1/2 bg-black/60 text-white rounded p-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <GripVertical className="w-3 h-3" />
-                </span>
-
-                <button
-                  type="button"
-                  onClick={() => removeImage(index)}
-                  className="absolute top-1 right-1 w-6 h-6 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-
-                {/* Arrow controls for mobile / fine ordering */}
-                <div className="absolute bottom-1 right-1 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                  <button
-                    type="button"
-                    onClick={() => moveItem(index, index - 1)}
-                    disabled={index === 0}
-                    className="w-6 h-6 bg-black/70 text-white rounded text-xs disabled:opacity-30 hover:bg-black"
-                    title="הזז אחורה"
-                  >
-                    →
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => moveItem(index, index + 1)}
-                    disabled={index === images.length - 1}
-                    className="w-6 h-6 bg-black/70 text-white rounded text-xs disabled:opacity-30 hover:bg-black"
-                    title="הזז קדימה"
-                  >
-                    ←
-                  </button>
-                </div>
-
-                <span className="absolute bottom-1 left-1 text-[10px] bg-black/60 text-white px-1.5 py-0.5 rounded font-bold">
-                  {index + 1}
-                </span>
+          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+            <SortableContext items={ids} strategy={rectSortingStrategy}>
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+                {images.map((url, index) => (
+                  <SortableItem
+                    key={ids[index]}
+                    id={ids[index]}
+                    url={url}
+                    index={index}
+                    total={images.length}
+                    onRemove={() => removeImage(index)}
+                    onMove={(to) => moveItem(index, to)}
+                  />
+                ))}
               </div>
-            ))}
-          </div>
+            </SortableContext>
+          </DndContext>
         </>
       )}
 
