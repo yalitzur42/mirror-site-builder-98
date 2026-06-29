@@ -60,7 +60,18 @@ const SortableItem = ({ id, url, index, total, onRemove, onMove }: SortableItemP
     >
       {isVideoUrl(url) ? (
         <>
-          <video src={url} className="w-full h-full object-cover pointer-events-none" muted playsInline preload="metadata" />
+          <video
+            src={`${url}#t=0.5`}
+            className="w-full h-full object-cover pointer-events-none bg-black"
+            muted
+            playsInline
+            preload="auto"
+            crossOrigin="anonymous"
+            onLoadedMetadata={(e) => {
+              const v = e.currentTarget;
+              try { v.currentTime = 0.5; } catch {}
+            }}
+          />
           <span className="absolute top-1 left-1 bg-black/70 text-white rounded-full p-1 z-10">
             <Video className="w-3 h-3" />
           </span>
