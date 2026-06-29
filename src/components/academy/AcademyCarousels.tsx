@@ -108,13 +108,17 @@ const VideoWithSound = ({ src }: { src: string }) => {
     <div className="relative w-full h-full">
       <video
         ref={ref}
-        src={src}
+        src={`${src}${src.includes("#") ? "" : "#t=0.5"}`}
         className="w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
         preload="metadata"
+        onLoadedMetadata={(e) => {
+          const el = e.currentTarget;
+          try { if (el.currentTime < 0.1) el.currentTime = 0.5; } catch { /* noop */ }
+        }}
       />
       {activated ? (
         <button
