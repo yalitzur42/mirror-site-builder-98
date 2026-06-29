@@ -251,14 +251,20 @@ const AcademyPage = () => {
             {videoFile ? (
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-primary-foreground shadow-lg">
                 <video
-                  src={videoFile}
+                  src={`${videoFile}${videoFile.includes("#") ? "" : "#t=0.5"}`}
                   autoPlay
                   loop
                   muted
                   playsInline
                   poster={videoThumbnail || undefined}
                   className="w-full h-full object-cover"
-                  preload="metadata"
+                  preload="auto"
+                  onLoadedMetadata={(e) => {
+                    const el = e.currentTarget;
+                    try { if (el.currentTime < 0.1) el.currentTime = 0.5; } catch { /* noop */ }
+                    el.play().catch(() => { /* autoplay blocked */ });
+                  }}
+                  onCanPlay={(e) => { e.currentTarget.play().catch(() => { /* noop */ }); }}
                 />
 
               </div>
