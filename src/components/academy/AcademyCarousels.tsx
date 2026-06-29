@@ -114,11 +114,13 @@ const VideoWithSound = ({ src }: { src: string }) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         onLoadedMetadata={(e) => {
           const el = e.currentTarget;
           try { if (el.currentTime < 0.1) el.currentTime = 0.5; } catch { /* noop */ }
+          el.play().catch(() => { /* autoplay blocked */ });
         }}
+        onCanPlay={(e) => { e.currentTarget.play().catch(() => { /* noop */ }); }}
       />
       {activated ? (
         <button
