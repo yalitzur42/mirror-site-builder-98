@@ -459,6 +459,32 @@ html.a11y-no-anim *::after {
   scroll-behavior: auto !important;
 }
 
+/* Mobile-only: center all text content */
+@media (max-width: 767px) {
+  body,
+  body h1,
+  body h2,
+  body h3,
+  body h4,
+  body h5,
+  body h6,
+  body p,
+  body li,
+  body span,
+  body a,
+  body label,
+  body blockquote,
+  body figcaption {
+    text-align: center !important;
+  }
+  /* Keep form inputs readable in their natural direction */
+  body input,
+  body textarea,
+  body select {
+    text-align: right !important;
+  }
+}
+
 /* Keyboard focus visible everywhere */
 *:focus-visible {
   outline: 3px solid hsl(var(--primary)) !important;
