@@ -289,8 +289,12 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
                 <Users className="w-5 h-5" />
                 {v("student_photos", "title", "התלמידים שלנו בפעולה")}
               </h3>
-              <div className="relative px-12">
-                <Carousel opts={{ loop: true, direction: "rtl" }} setApi={setStApi} className="w-full">
+              <div className={`relative ${studentImages.length > 1 ? "px-12" : ""}`}>
+                <Carousel
+                  opts={{ loop: studentImages.length > 1, direction: "rtl", watchDrag: studentImages.length > 1 }}
+                  setApi={setStApi}
+                  className="w-full"
+                >
                   <CarouselContent>
                     {studentImages.map((url, i) => {
                       const isVideo = /\.(mp4|webm|mov|m4v|ogg)(\?.*)?$/i.test(url) || url.includes("/site-videos/");
@@ -309,10 +313,14 @@ const AcademyCarousels = ({ v }: AcademyCarouselsProps) => {
                       );
                     })}
                   </CarouselContent>
-                  <CarouselPrevious className={`${arrowClass} -left-1`} />
-                  <CarouselNext className={`${arrowClass} -right-1`} />
+                  {studentImages.length > 1 && (
+                    <>
+                      <CarouselPrevious className={`${arrowClass} -left-1`} />
+                      <CarouselNext className={`${arrowClass} -right-1`} />
+                    </>
+                  )}
                 </Carousel>
-                <Dots api={stApi} />
+                {studentImages.length > 1 && <Dots api={stApi} />}
               </div>
             </div>
           )}
