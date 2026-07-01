@@ -51,6 +51,39 @@ const PermPage = () => {
         image={v("hero", "image") || permHero}
       />
 
+      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> סוגי פרם</>} variant="light">
+        <AnimatedSection>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {permTypes.map((type, index) => (
+              <div key={index} className="group overflow-hidden rounded-xl">
+                <div className="aspect-[3/4] overflow-hidden rounded-xl border-2 border-primary-foreground">
+                  <img src={type.image} alt={type.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="py-3 text-center">
+                  <h3 className="font-bold text-lg">{type.name}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="light" to="dark" shape="triangles" />
+
+      <Section variant="dark">
+        <AnimatedSection>
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="mb-6">{v("what_is_perm", "title", "מה זה בעצם פרם?")}</h2>
+            <div className="space-y-4 text-lg opacity-85">
+              <p>{v("what_is_perm", "paragraph1", "פרם הוא טיפול שמקבע לשיער שלך צורה חדשה - גלים, תלתלים, או טקסטורה - לתקופה של כמה חודשים. הפרם של 2024 הוא לא מה שאתה חושב. הטכנולוגיה התפתחה מאוד בשנים האחרונות - המוצרים בטוחים, התוצאה טבעית והשיער נשאר בריא.")}</p>
+              <p><strong>למי זה מתאים?</strong> {v("what_is_perm", "paragraph2", "לכל גבר שרוצה להוסיף נפח, טקסטורה וסגנון לשיער שלו. בין אם השיער שלך ישר לגמרי ובין אם יש לך גלים קלים - פרם יכול לשדרג את הלוק שלך ברמות.")}</p>
+            </div>
+          </div>
+        </AnimatedSection>
+      </Section>
+
+      <SectionDivider from="dark" to="light" shape="waves" />
+
       <Section
         title={<><Gem className="w-6 h-6 inline-block align-middle ml-1" /> היתרונות שלנו</>}
         variant="light"
@@ -71,39 +104,6 @@ const PermPage = () => {
             </div>
           ))}
         </StaggerChildren>
-      </Section>
-
-      <SectionDivider from="light" to="dark" shape="waves" />
-
-      <Section variant="dark">
-        <AnimatedSection>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="mb-6">{v("what_is_perm", "title", "מה זה בעצם פרם?")}</h2>
-            <div className="space-y-4 text-lg opacity-85">
-              <p>{v("what_is_perm", "paragraph1", "פרם הוא טיפול שמקבע לשיער שלך צורה חדשה - גלים, תלתלים, או טקסטורה - לתקופה של כמה חודשים. הפרם של 2024 הוא לא מה שאתה חושב. הטכנולוגיה התפתחה מאוד בשנים האחרונות - המוצרים בטוחים, התוצאה טבעית והשיער נשאר בריא.")}</p>
-              <p><strong>למי זה מתאים?</strong> {v("what_is_perm", "paragraph2", "לכל גבר שרוצה להוסיף נפח, טקסטורה וסגנון לשיער שלו. בין אם השיער שלך ישר לגמרי ובין אם יש לך גלים קלים - פרם יכול לשדרג את הלוק שלך ברמות.")}</p>
-            </div>
-          </div>
-        </AnimatedSection>
-      </Section>
-
-      <SectionDivider from="dark" to="light" shape="triangles" />
-
-      <Section title={<><Sparkles className="w-6 h-6 inline-block align-middle ml-1" /> סוגי פרם</>} variant="light">
-        <AnimatedSection>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {permTypes.map((type, index) => (
-              <div key={index} className="group overflow-hidden rounded-xl">
-                <div className="aspect-[3/4] overflow-hidden rounded-xl border-2 border-primary-foreground">
-                  <img src={type.image} alt={type.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="py-3 text-center">
-                  <h3 className="font-bold text-lg">{type.name}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
       </Section>
 
       <SectionDivider from="light" to="dark" shape="curves" />
